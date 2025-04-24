@@ -140,8 +140,7 @@ _conteúdo_
 ## 3.2 Requisitos Não Funcionais (RNFs)
 
 <div align="center">
-<sub>Tabela X - Requisitos não funcionais</sub>
-</div>
+<sub>Tabela X - Requisitos não funcionais</sub><br>
 
 
 | **RNF#** | **Descrição**                                                                                                                   | **Aspecto de Qualidade (ISO 25010)** | **Prioridade** |
@@ -162,9 +161,35 @@ _conteúdo_
 | RNF14   | O modelo de ML deve ser re-treinado semanalmente por meio de um cron job automatizado com dados atualizados.                    | Funcionalidade Adequada              | Baixa          |
 | RNF15   | A exibição das recomendações deve seguir boas práticas de usabilidade (como as heurísticas de Nielsen) e ser validada com testes de usabilidade com usuários reais. | Usabilidade                          | Média          |
 
-<div align="center">
 <sup>Material produzido pelos autores (2025)</sup>
+</div><br>
+
+### Tabela de Testes para Requisitos Não Funcionais
+
+<div align="center">
+<sub>Tabela X - Testes associados aos Requisitos Não Funcionais</sub><br>
+
+| **Caso de Teste**       | **RNF#** | **Descrição do Teste**                                                                                      | **Pré-condição**                                              | **Caso de Aceite**                                                                 | **Caso de Recusa**                                                                     |
+|-------------------------|---------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| CT-RNF01                | RNF01   | Medir o tempo de resposta de uma recomendação via ML sob carga normal de uso.                              | Servidor ativo com modelo treinado e base de dados populada.  | Tempo de resposta ≤ 2 segundos.                                                   | Tempo de resposta > 2 segundos.                                                        |
+| CT-RNF02                | RNF02   | Simular 100 acessos simultâneos e medir o tempo médio de resposta das requisições padrão (não-ML).          | Sistema em ambiente de teste com suporte a concorrência.      | Tempo médio de resposta < 1 segundo por requisição.                               | Tempo médio de resposta ≥ 1 segundo.                                                   |
+| CT-RNF03                | RNF03   | Verificar se endpoint `/metrics` existe e retorna dados compatíveis com ferramentas de monitoramento.                       | O componente a ser testado está em execução e acessível na rede.                         | Endpoint acessível e com retorno estruturado.                                     | Endpoint inexistente ou com erro/estrutura inválida.                                   |
+| CT-RNF04                | RNF04   | Verificar se todos os serviços rodam em containers e estão hospedados em ambiente de nuvem.                 | Sistema implantado.                                            | Todos os containers ativos em ambiente cloud.                                     | Componentes rodando fora de containers ou fora da nuvem.                               |
+| CT-RNF05                | RNF05   | Verificar se o app é compatível apenas com Android 10 ou superior.                                          | APK instalado em diferentes versões do Android.               | Funciona em Android 10+, falha em versões anteriores.                            | Funciona em Android < 10 ou não funciona em Android ≥ 10                                                            |
+| CT-RNF06                | RNF06   | Verificar se as APIs REST estão documentadas, versionadas e autenticadas por provedor externo.              | Ambiente de desenvolvimento com APIs expostas.                 | Documentação disponível, uso de Auth0 ou Firebase ativo.                         | Falta documentação, ausência de versionamento ou autenticação manual.                  |
+| CT-RNF07                | RNF07   | Verificar a modularidade do sistema inspecionando a arquitetura e código-fonte.                             | Código-fonte acessível e estruturado.                          | Componentes independentes e bem separados.                                       | Código acoplado e sem separação clara de responsabilidades.                            |
+| CT-RNF08                | RNF08   | Verificar se o sistema de recomendação está em infraestrutura separada e acessível via API.                 | Backend e ML ativos.                                           | Comunicação feita exclusivamente por API entre backend e sistema de ML.          | Integração direta sem separação física/lógica entre os sistemas.                       |
+| CT-RNF09                | RNF09   | Testar comunicação entre app e backend/sistema de ML com Wireshark e inspecionar se é feita via HTTPS com TLS ≥ 1.2.    | Servidores configurados com TLS.                              | Certificado válido e conexão segura.                                             | Conexão HTTP ou TLS inferior a 1.2.                                                     |
+| CT-RNF10                | RNF10   | Testar o fluxo de autenticação com MFA ativado.                                                             | Usuário com MFA configurado.                                  | MFA solicitado e validado corretamente.                                          | Login sem solicitação de segundo fator ou falha de verificação.                        |
+| CT-RNF11                | RNF11   | Simular armazenamento local de dados sensíveis e verificar criptografia.                                   | Dispositivo com dados armazenados.                            | Dados criptografados com algoritmo simétrico forte (ex: AES-256).               | Dados em texto plano ou criptografia fraca.                                            |
+| CT-RNF12                | RNF12   | Simular falha no sistema de recomendação e observar comportamento do app.                                   | Sistema de ML offline.                                        | App exibe mensagem amigável e sugestão padrão, com botão "Tentar novamente".     | App trava ou exibe erro genérico.                                                      |
+| CT-RNF13                | RNF13   | Verificar logs de uptime e incidentes no último mês.                                                        | Sistema em produção.                                           | Uptime ≥ 99,5% no período analisado.                                             | Uptime < 99,5%.                                                                        |
+| CT-RNF14                | RNF14   | Inspecionar logs do cron job de re-treinamento e verificar execução semanal.                                | Base de dados com histórico de execuções.                      | Execução semanal registrada sem falhas.                                          | Execução não ocorre ou ocorre com erro/frequência incorreta.                          |
+| CT-RNF15                | RNF15   | Avaliar a interface de recomendações com base nas heurísticas de Nielsen e testes com pelo menos 5 usuários reais.       | Protótipo funcional e grupo de usuários disponíveis.            | Feedback positivo ≥ 80% em testes.                                               | Reclamações recorrentes ou reprovação nos testes.                                      |
+
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
+
 
 ## 3.3 Correlação RFs e RNFs
 _conteúdo_
