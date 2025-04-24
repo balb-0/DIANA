@@ -62,13 +62,52 @@ Padrão de Nomenclatura das Branches:
 > **hotfix/[nome-do-hotfix]**: Correção urgente diretamente na produção. Exemplo: hotfix/corrige-bug-em-producao
 
 ## 2.3 Diretrizes de Uso das Branches
-- Cada nova funcionalidade deve ser desenvolvida em uma branch de feature criada a partir da branch develop.
-  - Nomeação das branches de features deve seguir o padrão feature/[nome-da-feature].
-- Todas as novas funcionalidades devem ser desenvolvidas em branches de features e integradas na branch develop através de pull requests.
-- Commits diretos na branch main são proibidos! 
-  - Configurem o Github para proteger de commits direto para a main.
-- Branches de hotfix devem ser criadas a partir da branch main para corrigir problemas críticos em produção.
-  - Nomeação das branches de hotfix deve seguir o padrão hotfix/[nome-do-hotfix].
+
+Este projeto adota uma estratégia de ramificação baseada no Gitflow, com diretrizes claras para garantir organização, rastreabilidade e integração eficiente entre as contribuições do time.
+
+### Criação de Funcionalidades
+
+- Toda nova funcionalidade deve ser desenvolvida em uma branch do tipo `feat`, criada a partir da branch `develop`.
+- O nome da branch deve seguir o padrão:
+
+```
+feat/nome-da-feature
+```
+
+Exemplo:
+
+```
+feat/cadastro-usuario
+```
+
+### Integração e Pull Requests
+
+- Após finalizada, a branch de feature deve ser integrada na `develop` via Pull Request (PR).
+- O PR deve ser revisado por pelo menos um membro da equipe antes do merge.
+
+### Commits Diretos na Main
+
+- **Commits diretos na branch `main` são proibidos.**
+- A proteção da branch `main` está garantida no GitHub para evitar alterações não revisadas e imprevistos perigosos para o projeto.
+
+### Correções Críticas (Hotfixes)
+
+- Em caso de erros críticos em produção, uma branch do tipo `hotfix` é criada diretamente a partir da `main`.
+- O nome da branch deve seguir o padrão:
+
+```
+hotfix/descricao-do-hotfix
+```
+
+Exemplo:
+
+```
+hotfix/corrige-autenticacao
+```
+
+- Após a correção, a branch deve ser mergeada tanto na `main` quanto na `develop`.
+
+Seguindo essas diretrizes, garantimos maior controle sobre o fluxo de desenvolvimento e reduzimos riscos durante deploys e integrações.
 
 # 3. Políticas de Commit
 Integrar "Conventional Commits" nas políticas de commit ajuda a manter um histórico de commits claro e estruturado, facilitando a automação de processos como geração de changelogs e versionamento semântico.
