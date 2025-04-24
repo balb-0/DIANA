@@ -138,7 +138,33 @@ _conteúdo_
 _conteúdo_ 
 
 ## 3.2 Requisitos Não Funcionais (RNFs)
-_conteúdo_
+
+<div align="center">
+<sub>Tabela X - Requisitos não funcionais</sub>
+</div>
+
+
+| **RNF#** | **Descrição**                                                                                                                   | **Aspecto de Qualidade (ISO 25010)** | **Prioridade** |
+|---------|-----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|----------------|
+| RNF01   | O sistema deve responder às requisições de recomendação baseadas em machine learning em até 2 segundos, mesmo sob condições normais de operação. | Desempenho e Eficiência              | Média          |
+| RNF02   | O sistema deve suportar pelo menos 100 acessos simultâneos, mantendo o tempo de resposta médio de requisições padrão (não-ML) abaixo de 1 segundo por requisição. | Desempenho e Eficiência              | Média          |
+| RNF03   | O sistema deve expor métricas de desempenho por meio de um endpoint dedicado. | Desempenho e Eficiência              | Média          |
+| RNF04   | O sistema deve ser containerizado e projetado para rodar exclusivamente em ambientes de nuvem, garantindo portabilidade e escalabilidade. | Portabilidade                        | Alta           |
+| RNF05   | O app deve ser desenvolvido exclusivamente para Android (versão 10 ou superior).                                                 | Compatibilidade                      | Baixa          |
+| RNF06   | O sistema deve usar APIs RESTful bem documentadas e versionadas, com autenticação via provedor de terceiros (como Auth0 ou Firebase), garantindo segurança e compatibilidade entre os componentes. | Compatibilidade                      | Média          |
+| RNF07   | A estrutura do aplicativo deve ser organizada de forma modular, com responsabilidades claras e desacopladas entre os componentes, permitindo a evolução do código com baixo impacto em outras partes do sistema. | Manutenibilidade                     | Alta           |
+| RNF08   | O sistema de recomendação (ML) deve rodar em infraestrutura separada do backend do app, sendo acessado exclusivamente via API. Essa separação deve permitir manutenção independente entre os dois sistemas. | Manutenibilidade                     | Alta           |
+| RNF09   | A comunicação entre o app, o backend e o sistema de recomendação deve ser feita via HTTPS com TLS 1.2 ou superior.               | Segurança                            | Alta           |
+| RNF10   | A autenticação de acesso ao app deve ser feita com uso de autenticação multifator (MFA).                                         | Segurança                            | Média          |
+| RNF11   | Dados sensíveis eventualmente armazenados localmente devem estar criptografados utilizando criptografia simétrica forte.         | Segurança                            | Alta           |
+| RNF12   | Em falha do sistema de recomendação, o app deve mostrar mensagem clara e oferecer ao menos 1 sugestão padrão, além de opção para tentar novamente. | Confiabilidade                       | Alta           |
+| RNF13   | O sistema deve ter disponibilidade de no mínimo 99,5% mensal.                                                                    | Confiabilidade                       | Baixa          |
+| RNF14   | O modelo de ML deve ser re-treinado semanalmente por meio de um cron job automatizado com dados atualizados.                    | Funcionalidade Adequada              | Baixa          |
+| RNF15   | A exibição das recomendações deve seguir boas práticas de usabilidade (como as heurísticas de Nielsen) e ser validada com testes de usabilidade com usuários reais. | Usabilidade                          | Média          |
+
+<div align="center">
+<sup>Material produzido pelos autores (2025)</sup>
+</div>
 
 ## 3.3 Correlação RFs e RNFs
 _conteúdo_
