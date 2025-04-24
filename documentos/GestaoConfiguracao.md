@@ -49,7 +49,15 @@ Este documento estabelece diretrizes claras para a utilização de boas prática
 _conteúdo_
 
 ## 2.1 Visão Geral do Gitflow
-Nota: Fornecer uma breve explicação sobre o Gitflow e sua importância para o gerenciamento eficiente do código fonte.
+
+O Gitflow é uma estratégia de versionamento pensada para um controle mais eficiente do versionamento de código em em desenvolvimento de projetos. O modelo propõe uma estruturação de _branches_ com papéis bem definidos, ajudando na organização, previsibilidade eficiência no desenvolvimento de um produto.
+
+A principal ideia do Gitflow é separar as funcionalidades em desenvolvimento do código que está sendo produzido, por meio do uso de _branches_ como `main`, `develop`, `feature`, `docs` e `fix`. Essa divisão simplifica a colaboração em equipe, a iteratividade do desenvolvimento e o controle de versões, especialmente em projetos que adotam sprints, deploys regulares e diversas entregas simultâneas.
+
+A adoção do Gitflow permite:
+- Rastreamento de mudanças.
+- Simplicidade na criação de versões estáveis.
+- Um fluxo de trabalho que se adapta ao desenvolvimento iterativo e colaborativo.
 
 ## 2.2 Estrutura de Branches
 Padrão de Nomenclatura das Branches:
