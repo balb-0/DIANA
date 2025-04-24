@@ -99,7 +99,13 @@ _conteúdo_
 _conteúdo_
 
 ## 2.1 Contexto da Indústria do Parceiro
-_conteúdo_
+&nbsp;&nbsp; O BTG Pactual começou em 1983 como uma distribuidora de títulos no Rio de Janeiro e, em 1989, tornou-se banco ao abrir escritório em São Paulo. Em 1998, iniciou sua internacionalização com uma corretora em Nova York. Em 2009, a BTG Investments adquiriu o UBS Pactual, formando o Banco BTG Pactual, especializado em capital de investimento, capital de risco e gestão de ativos globais. Reconhecido como o maior banco de investimentos independente da região, o BTG Pactual é líder em diversos segmentos, como assessoria financeira e subscrição de títulos.
+
+&nbsp;&nbsp;Atualmente, o banco está presente em mais de doze países, com escritórios no Brasil, Estados Unidos (Nova York e Miami), Reino Unido (Londres), Portugal, Espanha, Argentina, Chile, Colômbia, Peru e México, além de operações relevantes na Europa, o que reforça sua atuação global e capacidade de atender clientes em diferentes mercados financeiros.
+
+&nbsp;&nbsp;Hoje, o BTG Pactual oferece uma ampla gama de serviços financeiros para empresas, investidores institucionais e clientes corporativos. É referência em assessoria para fusões e aquisições (M&A), estruturação e distribuição de ofertas públicas de ações (IPOs e follow-ons), emissão de dívidas (debêntures, bonds, securitizações) e consultoria estratégica em operações de mercado de capitais e reestruturações financeiras.
+
+&nbsp;&nbsp;Seu time de Investment Banking se destaca pela experiência, presença internacional e profundo conhecimento dos mercados locais, entregando soluções personalizadas e inovadoras para clientes dos mais variados setores, como infraestrutura, energia, saúde, tecnologia, consumo e agronegócio. Além disso, o BTG Pactual integra áreas como mercado de capitais, crédito, tesouraria e gestão de ativos, proporcionando uma abordagem completa e eficiente para cada operação, sempre com foco em construir relacionamentos de longo prazo e oferecer suporte estratégico em operações complexas e relevantes no cenário nacional e internacional.
 
 ## 2.2 Problema
 _conteúdo_
