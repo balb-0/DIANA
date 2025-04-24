@@ -71,29 +71,46 @@ Padrão de Nomenclatura das Branches:
   - Nomeação das branches de hotfix deve seguir o padrão hotfix/[nome-do-hotfix].
 
 # 3. Políticas de Commit
-Integrar "Conventional Commits" nas políticas de commit ajuda a manter um histórico de commits claro e estruturado, facilitando a automação de processos como geração de changelogs e versionamento semântico.
 
-As mensagens de commit devem seguir o padrão de Conventional Commits para garantir clareza e consistência.
+Para manter um histórico de desenvolvimento claro, rastreável e eficiente para desenvolvimento do proejto, este projeto adota o padrão **Conventional Commits**.
 
-Formato: [Tipo][Escopo opcional]: Mensagem clara e descritiva.
+### Formato
 
-Os tipos devem ser:
+As mensagens de commit devem seguir o seguinte formato:
 
-> **feat**: Uma nova funcionalidade para o usuário.
-> **fix**: Correção de bug.
-> **docs**: Mudanças na documentação.
-> **style**: Mudanças que não afetam o significado do código (espaços em branco, formatação, etc.).
-> **refactor**: Uma mudança de código que não corrige um bug nem adiciona uma funcionalidade.
-> **test**: Adição ou correção de testes.
-> **chore**: Atualizações de tarefas de build ou ferramentas auxiliares e bibliotecas, como a geração de documentação.
+```
+<tipo>[escopo opcional]: <mensagem curta e objetiva>
+```
 
-Exemplo de commit: feat(auth): add login feature with JWT
+### Tipos permitidos
 
-Proibido:
-- O uso de emojis nas mensagens de commit, e commits com mensagens vagas como "melhorias" ou "atualizações".
+> **feat**: Adição de uma nova funcionalidade  
+> **fix**: Correção de um bug  
+> **docs**: Alterações na documentação  
+> **style**: Alterações que não afetam a lógica (espaçamento, indentação, ponto e vírgula, etc.)  
+> **config**: Adições que alterem configurações internas ou internas ao projeto (`.gitignore` ou GitHub, por exemplo)  
+> **test**: Criação ou modificação de testes  
+> **chore**: Atualizações de configurações, ferramentas, bibliotecas, etc.
 
-IMPORTANTE!
-- Realizar commits frequentes (diários) para facilitar o rastreamento de mudanças e a colaboração.
+### Exemplo prático
+
+```
+feat(auth): adiciona component de login com JWT
+```
+
+Esse commit representa a adição de uma nova funcionalidade (`feat`) relacionada à autenticação (`auth`), com uma mensagem clara sobre o que foi feito.
+
+### Recomendações
+
+- Escreva a mensagem no imperativo (ex: "adiciona", "corrige", "cria").
+- Evite commits genéricos como "atualização", "ajustes", "coisas".
+- Commits devem ser pequenos e frequentes - de forma a ajudar o acompanhamento de desenvolvimento de features.
+- Commits com múltiplas alterações devem ser evitados — prefira dividir por propósito.
+
+Essa padronização contribui para a manutenção do código, facilita a revisão por pares e melhora a compreensão do histórico por toda a equipe.
+
+### Proibido:
+- O uso de emojis nas mensagens de commits é proibido.
 
 # 4. Política de Push e Pull Requests
 
