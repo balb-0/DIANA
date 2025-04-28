@@ -13,14 +13,14 @@
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/anacdejesus/">Ana Carolina Pacheco</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>
+- <a href="https://www.linkedin.com/in/gabriel-nascimento-563382243/">Gabriel Nascimento</a>
+- <a href="https://www.linkedin.com/in/joao-souza-campos/">João Victor de Souza Campos</a>
+- <a href="https://www.linkedin.com/in/lucas-tort/">Lucas Cozzolino Tort</a>
+- <a href="https://www.linkedin.com/in/natalycunha/">Nathaly Cunha</a>
+- <a href="https://www.linkedin.com/in/thiagovolcati/">Thiago Volcati</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Balbo</a>
 
 
 # Sumário
