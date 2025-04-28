@@ -124,9 +124,6 @@ _conteúdo_
 </div>
 <br>
 
-
-  **Nota**: _Insira aqui informações sobre o que se trata o projeto e que valor ele vai entregar, Objetivos do Produto e O que o produto faz e não faz._
-
 ## 2.4 Personas e Jornada do Usuário
 _conteúdo_
 
