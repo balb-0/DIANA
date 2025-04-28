@@ -123,6 +123,8 @@ _conteúdo_
 
 A modelagem dos fluxos de negócio AS-IS e TO-BE, apresentada a seguir via BPMN, é fundamental para visualizar as limitações do processo atual e o valor agregado pela solução proposta.
 
+[Link de acesso aos fluxos no Miro](https://miro.com/app/board/uXjVIGy2aYQ=/?share_link_id=918758245621)
+
 **Fluxo AS-IS (Processo Atual):**
 <div align="center">
 <sup>Figura X - Fluxo de Negócios Atual</sup>
