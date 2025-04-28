@@ -139,6 +139,7 @@ O fluxo atual de recomendação e adequação de investimentos depende significa
 * **Risco de Desalinhamento:** Há um risco inerente de desalinhamento entre o perfil formal do cliente e sua carteira real, o que pode levar a problemas de conformidade regulatória e suitability.
 <br>
 ---
+
 **Fluxo TO-BE (Processo Proposto com a Solução):**
 <div align="center">
 <sup>Figura X - Fluxo de Negócios Atual</sup>
@@ -151,7 +152,7 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 
 * **Recomendações Contextualizadas:** A solução considera o histórico do cliente e utiliza filtros para sugerir ajustes ou novas recomendações de investimento que sejam verdadeiramente personalizadas e aderentes ao perfil de risco e objetivos do investidor.
 * **Proatividade e Eficiência:** O assessor ganha eficiência com a automação da análise e pode atuar de forma mais proativa na gestão da carteira dos clientes, apoiado por informações e sugestões geradas pelo sistema.
-* **Adequação com Interesse REAL do cliente** Facilita no processo de retorno ao perfil de investidor do cliente. Caso um cliente tenha feitos investimentos fora do seu feitio de maneira pontual, o sistema entrega produtos que vão de encontro com seu perfil original, caso seja de interesse do cliente.
+* **Adequação com Interesse REAL do cliente:** Facilita no processo de retorno ao perfil de investidor do cliente. Caso um cliente tenha feitos investimentos fora do seu feitio de maneira pontual, o sistema entrega produtos que vão de encontro com seu perfil original, caso seja de interesse do cliente.
 
 
 ## 2.6 Matriz de Risco do Projeto
