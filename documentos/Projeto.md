@@ -38,6 +38,7 @@
   - [2.6 Matriz de Risco do Projeto](#26-matriz-de-risco-do-projeto)
   - [2.7 Ideação](#27-ideação)
   - [2.8 Canvas do Projeto](#28-canvas-do-projeto)
+  - [2.9 Estimativa de Investimento](#29-estimativa-de-investimento)
 - [3. Requisitos do Projeto](#3-requisitos-do-projeto)
   - [3.1 Requisitos Funcionais (RFs)](#31-requisitos-funcionais-rfs)
   - [3.2 Requisitos Não Funcionais (RNFs)](#32-requisitos-não-funcionais-rnfs)
@@ -139,6 +140,53 @@ Obs.: Seção dedicada a discussão sobre ideias e priorização de features.
 
 ## 2.8 Canvas do Projeto
 _conteúdo_
+
+## 2.9 Estimativa de Investimento
+
+&emsp;O texto à seguir, apresenta uma estimativa de investimento para o desenvolvimento e manutenção, pelo período de 1 ano, de um aplicativo de suporte à análise de carteiras de investimento, destinado aos assessores do banco de investimento BTG Pactual.
+
+&emsp;O foco da estimativa considera um perfil de custo padrão, utilizando informações atualizadas do mercado (abril de 2025), levando em conta salários médios da área de tecnologia, custos de software e preços de infraestrutura em nuvem.
+
+&emsp;A seguir são detalhados os valores estimados para o desenvolvimento e manutenção do projeto durante 12 meses, considerando as categorias da Pessoas, Software e Infraestrutura.
+
+### Pessoas
+| Cargo                  | Salário Mensal (R$) | Quantidade | Custo em 12 meses (R$) |
+|-------------------------|---------------------|------------|------------------------|
+| Desenvolvedor Backend   | 8.000                | 1          | 96.000                 |
+| Desenvolvedor Frontend  | 7.000                | 1          | 84.000                 |
+| UX/UI Designer          | 6.000                | 0,5        | 36.000                 |
+| Product Owner (PO)      | 10.000               | 0,5        | 60.000                 |
+| Analista de QA          | 6.500                | 0,5        | 39.000                 |
+| **Total Pessoas**       |                     |            | **315.000**             |
+
+### Software
+| Item                               | Custo Mensal (R$) | Custo em 12 meses (R$) |
+|------------------------------------|-------------------|------------------------|
+| Licença Figma Professional (UX/UI) | 80                | 960                    |
+| IDE JetBrains (ex: WebStorm)       | 40                | 480                    |
+| API Externa (se necessário)        | 200               | 2.400                  |
+| Plataforma GitHub Teams            | 20                | 240                    |
+| **Total Software**                 |                   | **4.080**              |
+
+### Infraestrutura
+| Item                                  | Custo Mensal (R$) | Custo em 12 meses (R$) |
+|---------------------------------------|-------------------|------------------------|
+| AWS EC2 (Servidor Médio)              | 400               | 4.800                  |
+| AWS RDS (Banco de Dados Gerenciado)   | 300               | 3.600                  |
+| AWS S3 (Storage Básico)               | 100               | 1.200                  |
+| Domínio + Hospedagem Simples          | 50                | 600                    |
+| Ferramenta de Monitoramento (ex: UptimeRobot) | 100         | 1.200                  |
+| **Total Infraestrutura**              |                   | **11.400**             |
+
+### Custo Total Estimado
+| Categoria        | Total (R$) |
+|------------------|------------|
+| Pessoas          | 315.000    |
+| Software         | 4.080      |
+| Infraestrutura   | 11.400     |
+| **Total Geral**  | **330.480** |
+
+&emsp;A estimativa de investimento apresentada acima foi construída com base em valores de mercado atualizados até o mês de abril de 2025, considerando a realidade brasileira para o setor de tecnologia e desenvolvimento de software.
 
 # 3. Requisitos do Projeto
 _conteúdo_
