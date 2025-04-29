@@ -13,14 +13,14 @@
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/anacdejesus/">Ana Carolina Pacheco</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>
+- <a href="https://www.linkedin.com/in/gabriel-nascimento-563382243/">Gabriel Nascimento</a>
+- <a href="https://www.linkedin.com/in/joao-souza-campos/">João Victor de Souza Campos</a>
+- <a href="https://www.linkedin.com/in/lucas-tort/">Lucas Cozzolino Tort</a>
+- <a href="https://www.linkedin.com/in/natalycunha/">Nataly Cunha</a>
+- <a href="https://www.linkedin.com/in/thiagovolcati/">Thiago Volcati</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Balbo</a>
 
 
 # Sumário
@@ -36,7 +36,7 @@
 - [5. Infraestrutura como Código](#5-infraestrutura-como-código)
 - [6. Gestão de Arquivos Sensíveis](#6-gestao-de-arquivos-sensiveis)
 - [7. Política de Rollback](#7-política-de-rollback)
-- [8. Registro de Variáveis de Ambiente][#8-registro-de-variaveis-de-ambiente]
+- [8. Registro de Variáveis de Ambiente](#8-registro-de-variaveis-de-ambiente)
 - [Referências](#referências)
 
 # 1. Introdução
@@ -49,7 +49,15 @@ Este documento estabelece diretrizes claras para a utilização de boas prática
 _conteúdo_
 
 ## 2.1 Visão Geral do Gitflow
-Nota: Fornecer uma breve explicação sobre o Gitflow e sua importância para o gerenciamento eficiente do código fonte.
+
+O Gitflow é uma estratégia de versionamento pensada para um controle mais eficiente do versionamento de código em em desenvolvimento de projetos. O modelo propõe uma estruturação de _branches_ com papéis bem definidos, ajudando na organização, previsibilidade eficiência no desenvolvimento de um produto.
+
+A principal ideia do Gitflow é separar as funcionalidades em desenvolvimento do código que está sendo produzido, por meio do uso de _branches_ como `main`, `develop`, `feature`, `docs` e `fix`. Essa divisão simplifica a colaboração em equipe, a iteratividade do desenvolvimento e o controle de versões, especialmente em projetos que adotam sprints, deploys regulares e diversas entregas simultâneas.
+
+A adoção do Gitflow permite:
+- Rastreamento de mudanças.
+- Simplicidade na criação de versões estáveis.
+- Um fluxo de trabalho que se adapta ao desenvolvimento iterativo e colaborativo.
 
 ## 2.2 Estrutura de Branches
 Padrão de Nomenclatura das Branches:
