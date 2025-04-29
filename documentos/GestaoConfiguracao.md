@@ -112,27 +112,31 @@ Essa padronização contribui para a manutenção do código, facilita a revisã
 ### Proibido:
 - O uso de emojis nas mensagens de commits é proibido.
 
-# 4. Política de Push e Pull Requests
+## 4. Política de Push e Pull Requests
 
-**Políticas de Push**:
-- Não é permitido fazer push diretamente para a main ou dev.
-- Todas as contribuições devem ser feitas via branches e submetidas por meio de pull requests.
+### Políticas de Push
 
-**Regras de Push**:
-- Todo código deve passar por revisão de código por pares antes de ser mergeado.
-- A revisão só deve ser aprovada se os testes automatizados forem bem-sucedidos e os critérios de qualidade (cobertura de testes, análise de código) forem atendidos.
+- Não é permitido realizar push diretamente na branch `main`.
+- Todas as alterações no projeto devem ser feitas por meio de branches individuais, seguindo a convenção estabelecida (ex: `feat/nome-da-feature`, `fix/corrige-bug`).
+- O push só é permitido em branches auxiliares (feat, fix, etc.), que deverão ser integradas por meio de Pull Requests.
 
-**Revisão por Pares - Critério de Aprovação**:
-- O pull request deve ser revisado por, no mínimo, uma pessoa.
-- A revisão de código deve considerar: 
-  - Está funcional e resolve o problema proposto.
-  - Passou em todos os testes automatizados.
-  - Cobertura mínima de testes (60% ou mais). 
-  - Verificação de boas práticas de código.
-  - Não introduz duplicidade de código.
-- Após a aprovação, a branch deve ser mergeada na dev e o pull request pode ser fechado. 
-- O Scrum Master da Sprint é responsável por subir os artefatos para a MAIN ao final da Sprint.
+### Regras de Pull Request
 
+- Todo código deve ser submetido via Pull Request e passar por uma revisão obrigatória antes de ser mergeado.
+- O projeto possui um template de PR no GitHub que deve ser preenchido de forma a evidenciar as mudanças propostas naquele _pull request_.
+- A branch só poderá ser mergeada após aprovação por, no mínimo, um revisor.
+
+### Critérios de Aprovação
+
+- O código submetido resolve de forma clara e objetiva o problema ou funcionalidade proposta.
+- Deve seguir os padrões de estilo e boas práticas definidas pelo time.
+- Não deve conter duplicações de código nem funcionalidades inacabadas.
+- O template deve estar preenchido e os checks deve estar marcados para que o PR seja aprovado.
+
+### Integração com a Branch `dev` e `main`
+
+- Após aprovação, o PR será mergeado na branch `dev`.
+- Ao final da sprint, o Scrum e o PO são responsáveis por realizar o merge da `dev` na `main`, junto com os artefatos finais da entrega.
 
 ## 5. Infraestrutura como Código
 - Uso obrigatório de Docker para padronizar ambientes de desenvolvimento e produção.
