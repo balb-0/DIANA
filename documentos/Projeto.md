@@ -123,9 +123,24 @@ _conteúdo_
 &emsp;Outro benefício relevante é a melhoria da transparência no relacionamento com os investidores, já que a atuação do assessor passa a ser embasada por dados objetivos de conformidade. Por fim, a ferramenta poderá servir como base para sistemas futuros de recomendação automatizada de realocação de carteiras, bem como pode ser oferecida como White Label a um mercado de assessoria de investimentos, indicando caminhos de ajuste que mantenham o investidor dentro de seu perfil declarado, sem comprometer as oportunidades de crescimento e retorno.
 
 ## 2.3 Visão do Projeto e do Produto
-  _conteúdo_
 
-  **Nota**: _Insira aqui informações sobre o que se trata o projeto e que valor ele vai entregar, Objetivos do Produto e O que o produto faz e não faz._
+&nbsp;&nbsp;&nbsp;&nbsp;O projeto desenvolvido para o time do BTG Pactual consiste em um aplicativo direcionado para gestores e assessores que será capaz de analisar os perfis dos clientes e compará-los com suas carteiras de investimento atuais. Com isso, será possível identificar eventuais inconsistências entre o perfil do investidor e os ativos que ele possui, permitindo uma sugestão de adequação quando necessário. Em decorrência disso, esse projeto gera valor tanto para os assessores, que terão um controle mais preciso sobre a carteira de seus clientes e poderão orientá-los de forma mais eficiente, quanto para o investidor final, que terá uma carteira mais alinhada ao seu perfil, promovendo uma melhor gestão de risco e maior potencial de retorno de acordo com suas preferências e tolerâncias.
+
+&nbsp;&nbsp;&nbsp;&nbsp;O produto tem como principal objetivo analisar o perfil e a carteira de investimentos dos clientes. Caso sejam encontradas incompatibilidades, o sistema irá sugerir ajustes para garantir que os ativos estejam coerentes com o perfil do investidor.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A seguir, um template com informações sobre o que o nosso sistema é, o que não é, o que faz e o que não faz.
+
+<br>
+<div align="center">
+<sub>Figura x - Faz ou não faz</sub>
+<br>
+<br>
+<img src="../documentos/img/faz-naofaz.jpg" alt='Imagem com a descrição do que o nosso aplicativo faz ou não faz' width="100%">
+<br>
+<br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+<br>
 
 ## 2.4 Personas e Jornada do Usuário
 _conteúdo_
