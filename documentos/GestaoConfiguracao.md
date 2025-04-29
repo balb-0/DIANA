@@ -49,17 +49,28 @@ Este documento estabelece diretrizes claras para a utilização de boas prática
 _conteúdo_
 
 ## 2.1 Visão Geral do Gitflow
-Nota: Fornecer uma breve explicação sobre o Gitflow e sua importância para o gerenciamento eficiente do código fonte.
+Nota: Fornecer uma breve explicação sobre o Gitflow e a importância para o gerenciamento mais eficiente do código do projeto.
 
 ## 2.2 Estrutura de Branches
-Padrão de Nomenclatura das Branches:
 
-> **main**: Contém o código pronto para produção.
-> **dev**: Integração contínua das novas funcionalidades em desenvolvimento.
-> **feature/[nome-da-feature]**: Para desenvolvimento de novas funcionalidades. Exemplo: feature/integracao-api
-> **bugfix/[nome-do-bug]**: Para correção de bugs. Exemplo: bugfix/corrige-login
-> **release/[versao]**: Preparação para lançamento de uma nova versão. Exemplo: release/v1.0.0
-> **hotfix/[nome-do-hotfix]**: Correção urgente diretamente na produção. Exemplo: hotfix/corrige-bug-em-producao
+A organização do fluxo de desenvolvimento do projeto será baseada em uma estrutura de branches inspirada no modelo Gitflow. Essa estrutura permite separar claramente as diferentes etapas de desenvolvimento, testes e produção, garantindo controle e rastreabilidade do código.
+
+Abaixo estão os padrões de nomenclatura adotados:
+
+> **main**: Contém o código final e estável, pronto para ser colocado em produção.
+
+> **dev**: Branch de integração contínua onde novas funcionalidades são agrupadas antes de irem para a `main`.
+
+> **feat/[nome-da-feature]**: Utilizada para o desenvolvimento de novas funcionalidades a partir da branch `dev`.  
+Exemplo: `feature/integracao-api`
+
+> **fix/[nome-do-bug]**: Utilizada para corrigir bugs encontrados durante o desenvolvimento, também originada da `dev`.  
+Exemplo: `bugfix/corrige-login`
+
+> **hotfix/[nome-do-hotfix]**: Usada para corrigir erros críticos encontrados em produção. Originada da `main` e mergeada tanto na `main` quanto na `dev`.  
+Exemplo: `hotfix/corrige-bug-em-producao`
+
+Esta estrutura favorece a organização do trabalho em equipe, facilita a automação de deploys e permite o rastreamento de alterações com mais segurança ao longo das sprints.
 
 ## 2.3 Diretrizes de Uso das Branches
 - Cada nova funcionalidade deve ser desenvolvida em uma branch de feature criada a partir da branch develop.
