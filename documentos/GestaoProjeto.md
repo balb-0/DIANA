@@ -13,14 +13,15 @@
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/anacdejesus/">Ana Carolina de Jesus Pacheco da Silva</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>
+- <a href="https://www.linkedin.com/in/gabriel-nascimento-563382243/">Gabriel Nascimento</a>
+- <a href="https://www.linkedin.com/in/joao-souza-campos/">João Victor de Souza Campos</a>
+- <a href="https://www.linkedin.com/in/lucas-tort/">Lucas Cozzolino Tort</a>
+- <a href="https://www.linkedin.com/in/natalycunha/">Nataly Cunha</a>
+- <a href="https://www.linkedin.com/in/thiagovolcati/">Thiago Volcati</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Balbo</a>
+
 
 
 # Sumário
@@ -40,14 +41,56 @@
   - [4.3 Lições Aprendidas](#43-lições-aprendidas)
 
 # 1. Introdução
-_conteúdo_
-**Nota:** Insira informações sobreobjetivo do documento
+
+## 1.1 Objetivo do Documento
+&nbsp;&nbsp;&nbsp;&nbsp;Este documento tem como objetivo registrar a evolução do trabalho realizado pelo grupo ao longo do desenvolvimento do projeto, por meio do destaque dos pontos fortes e fracos ao longo das sprints, além de ações de melhorias a serem realizadas para melhor desenvolvimento do grupo.
+
+---
 
 # 2. Avaliação das Sprints
-_conteúdo_
+
+&nbsp;&nbsp;&nbsp;&nbsp;A seguir, serão apresentadas as revisões individuais de cada sprint, com seus respectivos pontos fortes, fracos e ações de melhoria propostas.
 
 ## 2.1 Sprint 1
-_conteúdo_
+
+### Análise da Sprint Review
+
+#### **Pontos Fortes**
+
+- Engajamento do grupo com o projeto desde o início.
+- Boa autogestão dos membros nas tarefas e decisões do time.
+- Desenvolvimento de uma postura crítica e reflexiva sobre o próprio progresso.
+
+#### **Pontos Fracos**
+
+- Baixa adesão às dailys, prejudicando o alinhamento contínuo da equipe.
+- Falta de comprometimento com os rituais ágeis (como daily, planning, review e retro).
+- Redução do tempo produtivo devido a um feriado, impactando a entrega final da sprint.
+
+---
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Baixa adesão às dailys
+
+##### Ações de melhoria:
+
+- Estabelecer regras participação, com horários fixos e presença obrigatória.
+- Registrar ausências recorrentes para discutir em retrospectiva e buscar soluções conjuntas.
+
+#### 2. Falta de comprometimento com os rituais ágeis
+
+##### Ações de melhoria:
+
+- Criar lembretes automáticos no canal de comunicação do time para reforçar a rotina.
+
+#### 3. Redução do tempo produtivo por feriado
+
+##### Ações de melhoria:
+
+- Antecipar o planejamento considerando o calendário.
+- Focar na entrega das tarefas mais críticas antes das datas com menor disponibilidade.
+- Dividir entregas grandes em partes menores para facilitar a distribuição ao longo da sprint.
 
 ## 2.2 Sprint 2
 _conteúdo_
