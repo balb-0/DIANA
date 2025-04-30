@@ -267,9 +267,11 @@ _conteúdo_
 
 &emsp;Requisitos Não Funcionais (RNFs): especificam as restrições, qualidades e condições que o sistema deve atender, com base nos atributos do modelo ISO/IEC 25010, tais como desempenho, segurança, manutenibilidade e usabilidade.
 
-&emsp;Além disso, apresenta-se uma correlação entre os RFs e os RNFs, visando garantir a rastreabilidade entre as funcionalidades e os critérios de qualidade, assegurando 
+&emsp;Além disso, apresenta-se uma correlação entre os RFs e os RNFs, visando garantir a rastreabilidade entre as funcionalidades e os critérios de qualidade, assegurando a confiabilidade e consistência ao produto.
 
 ## 3.1 Requisitos Funcionais (RFs)
+
+&emsp;Os Requisitos Funcionais (RFs) representam as funcionalidades que o sistema deve obrigatoriamente oferecer para atender às necessidades dos usuários e alcançar os objetivos de negócio. Eles descrevem o comportamento esperado do sistema diante de diferentes interações e contextos de uso, definindo claramente "o que" o sistema deve fazer. Neste projeto, os RFs foram derivados das features propostas, refinados por meio das personas e descritos tanto tecnicamente quanto na forma de user stories.
 
 <div align="center">
 <sub>Tabela X - Requisitos funcionais</sub><br>
@@ -330,6 +332,8 @@ _conteúdo_
 </div>
 
 ## 3.2 Requisitos Não Funcionais (RNFs)
+
+&emsp;Os Requisitos Não Funcionais (RNFs) especificam as qualidades e restrições que o sistema deve respeitar, como desempenho, segurança, usabilidade, manutenibilidade, entre outros. Diferentemente dos RFs, os RNFs não dizem respeito ao comportamento direto do sistema, mas à forma como esse comportamento deve ser entregue. Neste projeto, os RNFs foram definidos com base nas diretrizes da norma ISO/IEC 25010 e abordam critérios técnicos essenciais para garantir robustez, escalabilidade e boa experiência de uso.
 
 <div align="center">
 <sub>Tabela X - Requisitos não funcionais</sub><br>
@@ -409,7 +413,24 @@ _conteúdo_
 
 
 ## 3.3 Correlação RFs e RNFs
-_conteúdo_
+
+<div align="center">
+<sub>Tabela X - Tabela de Correlação RFs e RNFs</sub><br>
+
+| Requisito Funcional | RNFs Correlatos                  | Justificativa da Correlação |
+|---------------------|----------------------------------|-----------------------------|
+| RF01                | RNF03, RNF05, RNF08              | A importação e processamento de dados exigem APIs bem estruturadas, ambiente cloud escalável e comunicação segura. |
+| RF02                | RNF01, RNF07, RNF13              | O cálculo do perfil deve ser rápido (desempenho), separado do backend (modularidade) e atualizado com re-treinamento automático. |
+| RF03                | RNF01, RNF02                     | A verificação de conformidade exige desempenho sob carga e resposta rápida mesmo com múltiplos acessos. |
+| RF04                | RNF11, RNF13                     | A recomendação deve lidar com falhas de sistema (resiliência) e refletir atualização contínua do modelo de ML. |
+| RF05                | RNF06, RNF14                     | A exibição no painel depende de boa estrutura modular e interface intuitiva e validada com usuários. |
+| RF06                | RNF14                            | Os filtros por conformidade devem seguir boas práticas de usabilidade para facilitar a navegação. |
+| RF07                | RNF06                            | O filtro por segmento depende de arquitetura modular que permita fácil evolução do sistema. |
+| RF08                | RNF10, RNF12                     | O histórico de sugestões envolve armazenamento seguro de dados sensíveis e alta disponibilidade do sistema. |
+| RF09                | RNF14                            | A visualização gráfica deve seguir heurísticas de usabilidade para facilitar a interpretação da carteira por usuários não técnicos. |
+
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
 
 ## 3.4 Casos de Uso
 _conteúdo_
