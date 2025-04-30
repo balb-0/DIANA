@@ -289,6 +289,25 @@ _conteúdo_
 <sup>Material produzido pelos autores (2025)</sup>
 </div><br>
 
+### Requisitos Funcionais Definidos como User Stories
+
+<div align="center">
+<sub>Tabela X - User Stories dos Requisitos Não Funcionais</sub><br>
+
+| ID    | User Story |
+|-------|------------|
+| RF01  | Como Fábio, quero importar automaticamente os dados das carteiras de meus clientes, para ganhar tempo no atendimento. |
+| RF02  | Como Fábio, quero que o sistema calcule o perfil do cliente com base na carteira, para identificar facilmente desalinhamentos. |
+| RF03  | Como Fábio, quero verificar se a carteira está aderente ao perfil cadastrado, para evitar riscos regulatórios. |
+| RF04  | Como Fábio, quero sugestões automáticas de readequação de perfil, para apresentar ao cliente opções seguras rapidamente. |
+| RF05  | Como Fábio, quero visualizar todas as carteiras em um painel com seus status, para identificar rapidamente onde intervir. |
+| RF06  | Como Fábio, quero filtrar apenas carteiras fora do perfil, para focar nas situações que exigem ação imediata. |
+| RF07  | Como Fábio, quero filtrar meus clientes por segmento, para priorizar atendimentos estratégicos. |
+| RF08  | Como Fábio, quero visualizar o histórico de readequações sugeridas, para acompanhar decisões anteriores e justificar recomendações. |
+| RF09  | Como Mariana, quero ver a distribuição da minha carteira por tipo de ativo de forma clara, para entender rapidamente onde estou investindo. |
+
+<sup>Material produzido pelos autores (2025)</sup>
+</div><br>
 
 ## 3.2 Requisitos Não Funcionais (RNFs)
 
