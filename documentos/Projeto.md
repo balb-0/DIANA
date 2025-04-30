@@ -90,7 +90,21 @@
 _conteúdo_
 
 ## 1.1 Termos e Abreviações
-_conteúdo_
+
+&emsp;Nesta subseção reúnem-se as abreviações de palavras, termos comuns a serem discutidos na documentação e, por fim, siglas.
+
+- **API (Application Programming Interface)** – Interface de Programação de Aplicações  
+- **BPM (Business Process Management)** – Gerenciamento de Processos de Negócio  
+- **BTG** – BTG Pactual  
+- **CT** – Caso de Teste  
+- **CVM** – Comissão de Valores Mobiliários  
+- **HTTPS (HyperText Transfer Protocol Secure)** – Protocolo de Transferência de Hipertexto Seguro  
+- **ISO (International Organization for Standardization)** – Organização Internacional de Normalização  
+- **ML (Machine Learning)** – Aprendizado de Máquina (utilizado em sistema de recomendação)  
+- **RESTful** – Estilo de arquitetura de API baseado em REST (Representational State Transfer)  
+- **RFs** – Requisitos Funcionais  
+- **RNFs** – Requisitos Não Funcionais  
+- **TLS (Transport Layer Security)** – Segurança da Camada de Transporte
 
 ## 1.2 Objetivo do Documento
 _conteúdo_
