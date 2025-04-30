@@ -150,14 +150,15 @@ _conteúdo_
 &emsp;A seguir são detalhados os valores estimados para o desenvolvimento e manutenção do projeto durante 12 meses, considerando as categorias da Pessoas, Software e Infraestrutura.
 
 ### Pessoas
-| Cargo                  | Salário Mensal (R$) | Quantidade | Custo em 12 meses (R$) |
+| Cargo                   | Salário Mensal (R$) | Quantidade | Custo em 12 meses (R$) |
 |-------------------------|---------------------|------------|------------------------|
-| Desenvolvedor Backend   | 8.000                | 1          | 96.000                 |
-| Desenvolvedor Frontend  | 7.000                | 1          | 84.000                 |
-| UX/UI Designer          | 6.000                | 0,5        | 36.000                 |
-| Product Owner (PO)      | 10.000               | 0,5        | 60.000                 |
-| Analista de QA          | 6.500                | 0,5        | 39.000                 |
-| **Total Pessoas**       |                     |            | **315.000**             |
+| Gestor do Projeto       | 10.000              | 1          | 120.000                |
+| Desenvolvedor Backend   | 8.000               | 3          | 192.000                |
+| Desenvolvedor Frontend  | 7.000               | 2          | 168.000                |
+| UX/UI Designer          | 6.000               | 1          | 36.000                 |
+| Product Owner (PO)      | 10.000              | 1          | 60.000                 |
+| Analista de QA          | 6.500               | 1          | 39.000                 |
+| **Total Pessoas**       |                     |            | **615.000**            |
 
 ### Software
 | Item                               | Custo Mensal (R$) | Custo em 12 meses (R$) |
@@ -169,24 +170,27 @@ _conteúdo_
 | **Total Software**                 |                   | **4.080**              |
 
 ### Infraestrutura
-| Item                                  | Custo Mensal (R$) | Custo em 12 meses (R$) |
-|---------------------------------------|-------------------|------------------------|
-| AWS EC2 (Servidor Médio)              | 400               | 4.800                  |
-| AWS RDS (Banco de Dados Gerenciado)   | 300               | 3.600                  |
-| AWS S3 (Storage Básico)               | 100               | 1.200                  |
-| Domínio + Hospedagem Simples          | 50                | 600                    |
-| Ferramenta de Monitoramento (ex: UptimeRobot) | 100         | 1.200                  |
-| **Total Infraestrutura**              |                   | **11.400**             |
+| Item                                               | Custo Mensal (R$) | Custo em 12 meses (R$) |
+|----------------------------------------------------|-------------------|------------------------|
+| AWS EC2 (2 Instâncias Médias com Auto Scaling)     | 1.200             | 14.400                 |
+| AWS RDS (Banco de Dados Alta Disponibilidade)      | 800               | 9.600                  |
+| AWS S3 (Storage com Redundância)                   | 200               | 2.400                  |
+| Load Balancer + CloudFront (Distribuição global)   | 300               | 3.600                  |
+| Certificado SSL + Domínio + DNS Gerenciado         | 100               | 1.200                  |
+| Monitoramento e Alertas (Datadog, UptimeRobot Pro) | 300               | 3.600                  |
+| Backup Automático e Logs Centralizados (CloudWatch)| 200               | 2.400                  |
+| **Total Infraestrutura**                           |                   | **37.200**             |
+
 
 ### Custo Total Estimado
 | Categoria        | Total (R$) |
 |------------------|------------|
-| Pessoas          | 315.000    |
+| Pessoas          | 615.000    |
 | Software         | 4.080      |
-| Infraestrutura   | 11.400     |
-| **Total Geral**  | **330.480** |
+| Infraestrutura   | 37.200     |
+| **Total Geral**  | **656.280** |
 
-&emsp;A estimativa de investimento apresentada acima foi construída com base em valores de mercado atualizados até o mês de abril de 2025, considerando a realidade brasileira para o setor de tecnologia e desenvolvimento de software.
+&emsp;A estimativa de investimento apresentada acima foi construída com base em valores de mercado atualizados até o mês de abril de 2025, considerando a realidade brasileira para o setor de tecnologia e desenvolvimento de software. Os profissionais de UX/UI Designer, Product Owner e Analista de QA estão alocados em meio período no projeto, o que justifica o salário proporcional.
 
 # 3. Requisitos do Projeto
 _conteúdo_
