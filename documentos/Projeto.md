@@ -13,14 +13,14 @@
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/anacdejesus/">Ana Carolina Pacheco</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>
+- <a href="https://www.linkedin.com/in/gabriel-nascimento-563382243/">Gabriel Nascimento</a>
+- <a href="https://www.linkedin.com/in/joao-souza-campos/">João Victor de Souza Campos</a>
+- <a href="https://www.linkedin.com/in/lucas-tort/">Lucas Cozzolino Tort</a>
+- <a href="https://www.linkedin.com/in/natalycunha/">Nataly Cunha</a>
+- <a href="https://www.linkedin.com/in/thiagovolcati/">Thiago Volcati</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Balbo</a>
 
 # Sumário
 
@@ -254,7 +254,17 @@ _conteúdo_
 &emsp;Dessa forma, a ideação de features foi um passo importante para discussão e concretização de ideias iniciais a serem concretizadas como decisões da equipe. Além disso, a ideação orientará a elaboração dos Requisitos Funcionais e Não Funcionais, base do desenvolvimento do projeto.
 
 ## 2.8 Canvas do Projeto
-_conteúdo_
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;O Canvas MVP é uma ferramenta visual utilizada para estruturar, de forma rápida e simples, os principais elementos de um MVP (Mínimo Produto Viável). O seu objetivo é alinhar a equipe quanto à proposta da solução, as funcionalidades prioritárias, os públicos-alvo atendidos, jornadas de usuário, expectativas e métricas que validarão as hipóteses do negócio.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Segue abaixo, o canvas MVP da aplicação web desenvolvido a partir das atividades realizadas durante o workshop com o parceiro.
+
+<div align="center">
+<sub>Figura x - Canvas MVP do projeto</sub><br>
+<img src="img/canvas-mvp.jpg"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 # 3. Requisitos do Projeto
 _conteúdo_
