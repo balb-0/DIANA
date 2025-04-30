@@ -271,6 +271,24 @@ _conteúdo_
 
 ## 3.1 Requisitos Funcionais (RFs)
 
+<div align="center">
+<sub>Tabela X - Requisitos não funcionais</sub><br>
+
+| RF#   | Descrição                                                                                                                                      | Prioridade |
+|-------|------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| RF01  | O sistema deve importar e processar automaticamente os dados de carteira de clientes via CSV ou XLSX.                                         | Alta       |
+| RF02  | O sistema deve calcular automaticamente o perfil de risco com base nos ativos da carteira.                                                    | Alta       |
+| RF03  | O sistema deve verificar a conformidade entre o perfil calculado e o perfil cadastrado do cliente.                                            | Alta       |
+| RF04  | O sistema deve exibir recomendações de readequação do perfil quando for identificado um desalinhamento.                                       | Alta       |
+| RF05  | O sistema deve apresentar, de forma visual, o status de conformidade de todas as carteiras em um painel.                                      | Alta       |
+| RF06  | O sistema deve oferecer filtros por status de conformidade (adequado/não adequado).                                                           | Média      |
+| RF07  | O sistema deve permitir filtro de clientes por segmento (Prata, Ouro, Platinum).                                                              | Média      |
+| RF08  | O sistema deve manter o histórico das sugestões de readequação de perfil por cliente.                                                         | Média      |
+| RF09  | O sistema deve exibir graficamente a composição da carteira por tipo de ativo.                                                                | Baixa      |
+
+<sup>Material produzido pelos autores (2025)</sup>
+</div><br>
+
 
 ## 3.2 Requisitos Não Funcionais (RNFs)
 
