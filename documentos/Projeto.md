@@ -149,7 +149,83 @@ _conteúdo_
 _conteúdo_
 
 ## 2.5.1 Cadeia de Valor
-_conteúdo_
+
+&nbsp;&nbsp; Esta seção detalha a cadeia de valor do aplicativo de verificação de perfil de investidor desenvolvido para o BTG Pactual. O objetivo é mapear e compreender as principais atividades envolvidas na geração de valor para o cliente, desde a entrada de dados até a entrega de uma análise precisa de conformidade regulatória. A estrutura apresentada considera os processos principais, de suporte e de gestão, bem como os indicadores de desempenho e o alinhamento com o ciclo de BPM (Business Process Management).
+
+### Cadeia de Valor – App de Verificação de Perfil de Investidor (BTG Pactual)
+
+&nbsp;&nbsp; O processo principal inicia com a importação dos dados de clientes e suas carteiras de ativos. Esses dados alimentam o classificador automático do aplicativo, que calcula o perfil do investidor com base na regulamentação da CVM (Resolução 175). A seguir, o sistema compara esse perfil calculado com o perfil cadastrado, apontando divergências e sugerindo readequações. Todo esse fluxo é apresentado de forma visual em um painel interativo, facilitando a análise e a tomada de decisão. O objetivo final é garantir a aderência entre o portfólio do cliente e seu perfil, promovendo transparência, governança e segurança regulatória.
+
+---
+
+#### Principais etapas do processo:
+- Importação de dados via CSV, XLSX ou API  
+- Classificação automática do perfil de investidor conforme a CVM 175  
+- Verificação de conformidade entre o perfil cadastrado e o calculado  
+- Geração de recomendações de ajuste por cliente  
+- Exibição em painel visual com filtros por risco, categoria e status  
+
+---
+
+#### Processos de suporte:
+- Infraestrutura de TI segura e escalável para garantir confidencialidade e desempenho  
+- Interpretação jurídica das normas regulatórias para assegurar aderência normativa  
+- Gestão dos dados com controle de acesso, backup e integridade  
+
+---
+
+#### Processos de gestão:
+- Coordenação estratégica do projeto com definição de escopo, entregáveis e cronograma  
+- Matriz RACI com papéis bem definidos entre stakeholders  
+- Monitoramento da performance do sistema, análise de conformidade e coleta de feedback  
+
+---
+
+#### Indicadores de valor (KPI's sugeridos):
+- Redução no número de descasamentos de perfil por cliente  
+- Tempo médio de verificação de conformidade antes e depois do uso do app  
+- Taxa de conformidade regulatória das carteiras monitoradas  
+- Nível de confiança percebido pelo cliente (em pesquisas internas)  
+
+---
+
+#### Valor para o cliente/investidor:
+- Mais segurança e transparência no alinhamento entre seu perfil e seus investimentos  
+- Acesso facilitado às informações sobre adequação da carteira  
+- Redução do risco de investir em produtos incompatíveis com seu perfil  
+- Fortalecimento da relação com o BTG por meio de uma experiência digital confiável  
+
+---
+
+#### Relação com o ciclo de BPM:
+- **Descoberta do processo**: mapeamento da jornada de verificação de perfil  
+- **Análise**: identificação de falhas nos processos manuais ou desatualizados  
+- **Redesenho**: automação com base nas regras da CVM  
+- **Implementação**: desenvolvimento e testes do app com dados simulados  
+- **Monitoramento**: uso de painéis com indicadores de conformidade por cliente  
+
+---
+
+#### Potencial de expansão e integração futura:
+- Integração com sistemas internos do BTG, como CRM e plataformas de alocação  
+- Criação de APIs para validação externa por entidades ou auditores  
+- Escalabilidade para avaliação de outros produtos financeiros ou perfis avançados  
+
+---
+
+<br>
+<div align="center">
+<sub>Figura x - Cadeia de valor</sub>
+<br>
+<br>
+<img src="../documentos/img/cadeiadevalor.png" alt='Imagem com a cadeia de valor' width="100%">
+<br>
+<br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+<br>
+
+&nbsp;&nbsp; A análise da cadeia de valor demonstra como o aplicativo entrega benefícios tangíveis tanto para o cliente quanto para o BTG Pactual, promovendo conformidade regulatória, eficiência operacional e uma experiência digital confiável. Ao automatizar e visualizar o processo de verificação do perfil de investidor, a solução contribui para decisões mais seguras e alinhadas, além de abrir caminho para integrações e expansões futuras que aumentam ainda mais seu impacto estratégico.
 
 ## 2.5.2 Fluxo de Negócio Proposto (AS-IS e TO-BE)
 _conteúdo_
