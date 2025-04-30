@@ -257,10 +257,20 @@ _conteúdo_
 _conteúdo_
 
 # 3. Requisitos do Projeto
-_conteúdo_
+&emsp;Esta seção tem como objetivo identificar, organizar e descrever os requisitos do sistema proposto, com base na análise do problema, nas necessidades do parceiro BTG Pactual e nas expectativas dos principais usuários do sistema (personas Fábio e Mariana).
+
+&emsp;Os requisitos aqui definidos norteiam o desenvolvimento do aplicativo e garantem que o produto final atenda às funcionalidades esperadas, bem como aos atributos de qualidade exigidos em um contexto sensível, que envolve dados financeiros e adequação regulatória.
+
+&emsp;O conjunto de requisitos foi dividido em:
+
+&emsp;Requisitos Funcionais (RFs): descrevem as funcionalidades específicas que o sistema deve executar para atingir seus objetivos, representadas por user stories vinculadas às personas.
+
+&emsp;Requisitos Não Funcionais (RNFs): especificam as restrições, qualidades e condições que o sistema deve atender, com base nos atributos do modelo ISO/IEC 25010, tais como desempenho, segurança, manutenibilidade e usabilidade.
+
+&emsp;Além disso, apresenta-se uma correlação entre os RFs e os RNFs, visando garantir a rastreabilidade entre as funcionalidades e os critérios de qualidade, assegurando 
 
 ## 3.1 Requisitos Funcionais (RFs)
-_conteúdo_ 
+
 
 ## 3.2 Requisitos Não Funcionais (RNFs)
 
