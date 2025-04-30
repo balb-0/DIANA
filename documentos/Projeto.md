@@ -228,7 +228,41 @@ _conteúdo_
 &nbsp;&nbsp; A análise da cadeia de valor demonstra como o aplicativo entrega benefícios tangíveis tanto para o cliente quanto para o BTG Pactual, promovendo conformidade regulatória, eficiência operacional e uma experiência digital confiável. Ao automatizar e visualizar o processo de verificação do perfil de investidor, a solução contribui para decisões mais seguras e alinhadas, além de abrir caminho para integrações e expansões futuras que aumentam ainda mais seu impacto estratégico.
 
 ## 2.5.2 Fluxo de Negócio Proposto (AS-IS e TO-BE)
-_conteúdo_
+
+
+A modelagem dos fluxos de negócio AS-IS e TO-BE, apresentada a seguir via BPMN, é fundamental para visualizar as limitações do processo atual e o valor agregado pela solução proposta.
+
+[Link de acesso aos fluxos no Miro](https://miro.com/app/board/uXjVIGy2aYQ=/?share_link_id=918758245621)
+
+**Fluxo AS-IS (Processo Atual):**
+<div align="center">
+<sup>Figura X - Fluxo de Negócios Atual</sup>
+<img src="./img/fluxo_atual.jpg">
+<sub>Fonte: Material produzido pelos autores (2025).</sub>
+</div>
+<br>
+O fluxo atual de recomendação e adequação de investimentos depende significativamente da análise manual do assessor. Este processo apresenta desafios como:
+
+* **Contexto Limitado:** O assessor muitas vezes opera com informações de perfil do investidor que podem não refletir completamente a adequação da carteira atual do cliente às normativas vigentes da CVM (como a Resolução 175).
+* **Análise Manual Intensiva:** A verificação da adequação e a filtragem de produtos compatíveis são realizadas manualmente, consumindo tempo e tornando difícil garantir consistência e personalização em escala.
+* **Risco de Desalinhamento:** Há um risco inerente de desalinhamento entre o perfil formal do cliente e sua carteira real, o que pode levar a problemas de conformidade regulatória e suitability.
+<br>
+---
+
+**Fluxo TO-BE (Processo Proposto com a Solução):**
+<div align="center">
+<sup>Figura X - Fluxo de Negócios Atual</sup>
+<img src="./img/fluxo_proposto.jpg">
+<sub>Fonte: Material produzido pelos autores (2025).</sub>
+</div>
+<br>
+A introdução do aplicativo móvel redesenha o fluxo de negócio para superar as limitações atuais. Os principais ganhos incluem:
+
+
+* **Recomendações Contextualizadas:** A solução considera o histórico do cliente e utiliza filtros para sugerir ajustes ou novas recomendações de investimento que sejam verdadeiramente personalizadas e aderentes ao perfil de risco e objetivos do investidor.
+* **Proatividade e Eficiência:** O assessor ganha eficiência com a automação da análise e pode atuar de forma mais proativa na gestão da carteira dos clientes, apoiado por informações e sugestões geradas pelo sistema.
+* **Adequação com Interesse REAL do cliente:** Facilita no processo de retorno ao perfil de investidor do cliente. Caso um cliente tenha feitos investimentos fora do seu feitio de maneira pontual, o sistema entrega produtos que vão de encontro com seu perfil original, caso seja de interesse do cliente.
+
 
 ## 2.6 Matriz de Risco do Projeto
 _conteúdo_
