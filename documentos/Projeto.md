@@ -278,7 +278,7 @@ _conteúdo_
 
 | RF#   | Descrição                                                                                                                                      | Prioridade |
 |-------|------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| RF01  | O sistema deve importar e processar automaticamente os dados de carteira de clientes via CSV ou XLSX.                                         | Alta       |
+| RF01  | O sistema deve importar e processar automaticamente os dados de carteira de clientes por meio de integração via API.                                         | Alta       |
 | RF02  | O sistema deve calcular automaticamente o perfil de risco com base nos ativos da carteira.                                                    | Alta       |
 | RF03  | O sistema deve verificar a conformidade entre o perfil calculado e o perfil cadastrado do cliente.                                            | Alta       |
 | RF04  | O sistema deve exibir recomendações de readequação do perfil quando for identificado um desalinhamento.                                       | Alta       |
@@ -298,7 +298,7 @@ _conteúdo_
 
 | ID    | User Story |
 |-------|------------|
-| RF01  | Como Fábio, quero importar automaticamente os dados das carteiras de meus clientes, para ganhar tempo no atendimento. |
+| RF01  | Como Fábio, quero importar automaticamente os dados das carteiras de meus clientes via API, para garantir rapidez e integração contínua com os sistemas internos. |
 | RF02  | Como Fábio, quero que o sistema calcule o perfil do cliente com base na carteira, para identificar facilmente desalinhamentos. |
 | RF03  | Como Fábio, quero verificar se a carteira está aderente ao perfil cadastrado, para evitar riscos regulatórios. |
 | RF04  | Como Fábio, quero sugestões automáticas de readequação de perfil, para apresentar ao cliente opções seguras rapidamente. |
@@ -318,7 +318,7 @@ _conteúdo_
 
 | Caso de Teste | RF#   | Descrição do Teste                                                                                      | Pré-condição                                                                 | Caso de Aceite                                                                                   | Caso de Recusa                                                                                   |
 |---------------|-------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| CT-RF01       | RF01  | Testar importação automática de um arquivo de carteira em CSV e XLSX.                                   | Arquivo válido em formato CSV/XLSX presente no sistema.                      | Dados são processados corretamente e exibidos no sistema.                                        | Erro ao processar arquivo ou ausência de resposta do sistema.                                   |
+| CT-RF01       | RF01  | Testar importação automática de uma carteira via integração de API.                                   | Arquivo válido em formato CSV/XLSX presente no sistema.                      | Dados são processados corretamente e exibidos no sistema.                                        | Erro ao processar arquivo ou ausência de resposta do sistema.                                   |
 | CT-RF02       | RF02  | Testar cálculo do perfil com base na composição da carteira de um cliente.                              | Carteira do cliente carregada com ativos e pesos.                            | Sistema calcula e exibe o perfil de risco com base nos ativos.                                  | Perfil não calculado ou resultado inconsistente com os dados.                                   |
 | CT-RF03       | RF03  | Verificar conformidade entre o perfil calculado e o perfil cadastrado.                                  | Perfil cadastrado e carteira disponíveis no sistema.                         | Sistema exibe mensagem indicando se o cliente está ou não conforme.                             | Sistema não exibe resultado ou mostra status incorreto.                                          |
 | CT-RF04       | RF04  | Testar geração de recomendações para perfis não conformes.                                               | Cliente fora do perfil e perfil calculado já disponível.                     | Sistema exibe sugestão de readequação de perfil.                                                 | Nenhuma sugestão é apresentada ou mensagem incorreta.                                            |
