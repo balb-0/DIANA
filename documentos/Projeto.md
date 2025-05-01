@@ -38,6 +38,7 @@
   - [2.6 Matriz de Risco do Projeto](#26-matriz-de-risco-do-projeto)
   - [2.7 Ideação](#27-ideação)
   - [2.8 Canvas do Projeto](#28-canvas-do-projeto)
+  - [2.9 Estimativa de Investimento](#29-estimativa-de-investimento)
 - [3. Requisitos do Projeto](#3-requisitos-do-projeto)
   - [3.1 Requisitos Funcionais (RFs)](#31-requisitos-funcionais-rfs)
   - [3.2 Requisitos Não Funcionais (RNFs)](#32-requisitos-não-funcionais-rnfs)
@@ -299,6 +300,57 @@ _conteúdo_
 <img src="img/canvas-mvp.jpg"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
+
+## 2.9 Estimativa de Investimento
+
+&emsp;O texto à seguir, apresenta uma estimativa de investimento para o desenvolvimento e manutenção, pelo período de 1 ano, de um aplicativo de suporte à análise de carteiras de investimento, destinado aos assessores do banco de investimento BTG Pactual.
+
+&emsp;O foco da estimativa considera um perfil de custo padrão, utilizando informações atualizadas do mercado (abril de 2025), levando em conta salários médios da área de tecnologia, custos de software e preços de infraestrutura em nuvem.
+
+&emsp;A seguir são detalhados os valores estimados para o desenvolvimento e manutenção do projeto durante 12 meses, considerando as categorias da Pessoas, Software e Infraestrutura.
+
+### Pessoas
+| Cargo                   | Salário Mensal (R$) | Quantidade | Custo em 12 meses (R$) |
+|-------------------------|---------------------|------------|------------------------|
+| Gestor do Projeto       | 10.000              | 1          | 120.000                |
+| Desenvolvedor Backend   | 8.000               | 3          | 192.000                |
+| Desenvolvedor Frontend  | 7.000               | 2          | 168.000                |
+| UX/UI Designer          | 6.000               | 1          | 36.000                 |
+| Product Owner (PO)      | 10.000              | 1          | 60.000                 |
+| Analista de QA          | 6.500               | 1          | 39.000                 |
+| **Total Pessoas**       |                     |            | **615.000**            |
+
+### Software
+| Item                               | Custo Mensal (R$) | Custo em 12 meses (R$) |
+|------------------------------------|-------------------|------------------------|
+| Licença Figma Professional (UX/UI) | 80                | 960                    |
+| IDE JetBrains (ex: WebStorm)       | 40                | 480                    |
+| API Externa (se necessário)        | 200               | 2.400                  |
+| Plataforma GitHub Teams            | 20                | 240                    |
+| **Total Software**                 |                   | **4.080**              |
+
+### Infraestrutura
+| Item                                               | Custo Mensal (R$) | Custo em 12 meses (R$) |
+|----------------------------------------------------|-------------------|------------------------|
+| AWS EC2 (2 Instâncias Médias com Auto Scaling)     | 1.200             | 14.400                 |
+| AWS RDS (Banco de Dados Alta Disponibilidade)      | 800               | 9.600                  |
+| AWS S3 (Storage com Redundância)                   | 200               | 2.400                  |
+| Load Balancer + CloudFront (Distribuição global)   | 300               | 3.600                  |
+| Certificado SSL + Domínio + DNS Gerenciado         | 100               | 1.200                  |
+| Monitoramento e Alertas (Datadog, UptimeRobot Pro) | 300               | 3.600                  |
+| Backup Automático e Logs Centralizados (CloudWatch)| 200               | 2.400                  |
+| **Total Infraestrutura**                           |                   | **37.200**             |
+
+
+### Custo Total Estimado
+| Categoria        | Total (R$) |
+|------------------|------------|
+| Pessoas          | 615.000    |
+| Software         | 4.080      |
+| Infraestrutura   | 37.200     |
+| **Total Geral**  | **656.280** |
+
+&emsp;A estimativa de investimento apresentada acima foi construída com base em valores de mercado atualizados até o mês de abril de 2025, considerando a realidade brasileira para o setor de tecnologia e desenvolvimento de software. Os profissionais de UX/UI Designer, Product Owner e Analista de QA estão alocados em meio período no projeto, o que justifica o salário proporcional.
 
 # 3. Requisitos do Projeto
 &emsp;Esta seção tem como objetivo identificar, organizar e descrever os requisitos do sistema proposto, com base na análise do problema, nas necessidades do parceiro BTG Pactual e nas expectativas dos principais usuários do sistema (personas Fábio e Mariana).
