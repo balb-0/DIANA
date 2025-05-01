@@ -314,7 +314,22 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 
 
 ## 2.6 Matriz de Risco do Projeto
-_conteúdo_
+
+&emsp;Durante o planejamento inicial do projeto, foi realizada uma análise dos principais riscos que poderiam comprometer a entrega da solução, considerando tanto a probabilidade de ocorrência, quanto o impacto de cada situação sobre o andamento e a efetividade do aplicativo.
+
+<div align="center">
+<sub>Figura x - Matriz de riscos</sub><br>
+<img src="img/matrizRiscos.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Entre os riscos com maior criticidade está a possibilidade de erros nas regras de lógica do sistema de recomendação, o que comprometeria diretamente a confiabilidade da ferramenta perante os assessores. Como possíveis ações para mitigar esse risco, planejam-se ser implementados testes automatizados e revisões constantes da lógica com apoio técnico especializado e dados simulados quando necessário.
+
+&emsp;Outro ponto relevante é o risco de não alcançar todos os requisitos inicialmente definidos, dado o escopo amplo e o tempo restrito de desenvolvimento. Essa preocupação será enfrentada por meio de uma abordagem incremental, com foco nas funcionalidades prioritárias validadas junto ao parceiro. Ainda em termos de cronograma, o risco de atraso na entrega das funcionalidades principais foi mapeado como relevante, podendo ser mitigado por meio do mantimento da organização ágil do time durante as Sprints.
+
+&emsp;No que diz respeito à experiência do usuário, foi identificada a possibilidade de uma interface pouco intuitiva dificultar o uso contínuo da ferramenta. Para reduzir esse risco, serão conduzidos testes de usabilidade e sessões de co-criação com stakeholders ao longo do desenvolvimento. Já o risco de baixa adesão por falta de tempo do assessor foi considerado de baixo impacto, mas ainda assim será endereçado com uma interface enxuta, rápida e com curva de aprendizado reduzida.
+
+&emsp;Essa análise de riscos contribui para uma gestão de projeto mais iterativa, estratégica e preventiva, permitindo que as decisões técnicas e de design estejam alinhadas aos desafios reais da operação e às expectativas dos usuários finais.
 
 ## 2.7 Ideação
 
