@@ -141,7 +141,8 @@ _conteúdo_
 _conteúdo_
 
 # 2. Entendimento do Projeto e do Negócio
-_conteúdo_
+
+&emsp;Para garantir que o aplicativo desenvolvido atenda com precisão às necessidades do BTG Pactual, esta seção apresenta uma análise aprofundada do setor de atuação, do problema compreendido pela equipe, da proposta de solução e dos perfis dos usuários envolvidos. O objetivo é alinhar o entendimento técnico com a realidade e os processos de negócio, bem como fornecer uma base sólida para o desenvolvimento orientado à geração de valor.
 
 ## 2.1 Contexto da Indústria do Parceiro
 
