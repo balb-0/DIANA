@@ -91,13 +91,60 @@
 _conteúdo_
 
 ## 1.1 Termos e Abreviações
-_conteúdo_
+
+&emsp;Nesta subseção reúnem-se as abreviações de palavras, termos comuns a serem discutidos na documentação e, por fim, siglas.
+
+### Siglas e abreviações
+| Sigla/Abreviação | Significado |
+|------------------|-------------|
+| **API**          | *Application Programming Interface* (Interface de Programação de Aplicações) |
+| **BPM**          | *Business Process Management* (Gerenciamento de Processos de Negócio) |
+| **BTG**          | BTG Pactual |
+| **CSV**          | *Comma-Separated Values* (Formato de arquivo separado por vírgulas) |
+| **CVM**          | Comissão de Valores Mobiliários |
+| **IDE**          | *Integrated Development Environment* (Ambiente de Desenvolvimento Integrado) |
+| **ISO/IEC 25010**| Norma internacional de requisitos de qualidade de software |
+| **KPI**          | *Key Performance Indicator* (Indicador-chave de desempenho) |
+| **ML**           | *Machine Learning* (Aprendizado de Máquina) |
+| **MFA**          | *Multi-Factor Authentication* (Autenticação Multifator) |
+| **PO**           | *Product Owner* |
+| **QA**           | *Quality Assurance* (Garantia de Qualidade) |
+| **RF** / **RFs** | Requisito(s) Funcional(is) |
+| **RNF** / **RNFs**| Requisito(s) Não Funcional(is) |
+| **SSL**          | *Secure Sockets Layer* |
+| **Swagger**      | Ferramenta para documentação de APIs |
+| **TLS**          | *Transport Layer Security* |
+| **UML**          | *Unified Modeling Language* |
+| **UX/UI**        | *User Experience* / *User Interface* |
+
+### Termos Técnicos e de Projeto
+
+| Termo                        | Significado |
+|-----------------------------|-------------|
+| **Adequação Regulátoria**   | Conformidade com normas e regras de órgãos reguladores como a CVM |
+| **AS-IS / TO-BE**           | Estado atual / Estado proposto de um processo |
+| **Cloud / Nuvem**           | Infraestrutura de computação remota |
+| **Compliance**              | Conformidade com políticas, leis e regulamentos |
+| **Dashboard**               | Painel de visualização interativa de dados |
+| **Feature**                 | Funcionalidade de um sistema |
+| **Heurísticas de Nielsen**  | Princípios de usabilidade para interfaces |
+| **Mockup**                  | Protótipo visual com detalhes de design |
+| **Modularidade**            | Organização em partes independentes |
+| **Painel Interativo**       | Visualização dinâmica de dados com filtros e status |
+| **Personas**                | Perfis fictícios de usuários representativos |
+| **Sprint**                  | Iteração de desenvolvimento em metodologia ágil |
+| **Suitability**             | Adequação entre produto e perfil do investidor |
+| **User Story**              | Descrição de funcionalidade sob o ponto de vista do usuário |
+| **White Label**             | Produto que pode ser personalizado e utilizado por terceiros |
+| **Wireframe**               | Esboço inicial da estrutura da interface |
 
 ## 1.2 Objetivo do Documento
-_conteúdo_
+
+&emsp;Este documento visa consolidar o entendimento do parceiro e do projeto, orientando seu desenvolvimento técnico com base nas necessidades do parceiro e dos usuários finais, bem como detalhar os planejamentos e execuções do desenvolvimento do *aplicativo mobile* e testes associados.
 
 # 2. Entendimento do Projeto e do Negócio
-_conteúdo_
+
+&emsp;Para garantir que o aplicativo desenvolvido atenda com precisão às necessidades do BTG Pactual, esta seção apresenta uma análise aprofundada do setor de atuação, do problema compreendido pela equipe, da proposta de solução e dos perfis dos usuários envolvidos. O objetivo é alinhar o entendimento técnico com a realidade e os processos de negócio, bem como fornecer uma base sólida para o desenvolvimento orientado à geração de valor.
 
 ## 2.1 Contexto da Indústria do Parceiro
 
@@ -147,7 +194,8 @@ _conteúdo_
 _conteúdo_
 
 ## 2.5 Modelagem do Fluxo de Negócio
-_conteúdo_
+
+&emsp;Realizar a modelagem dos fluxos de negócio permite compreender como as atividades se organizam atualmente e como podem ser otimizadas com a solução proposta. Nesta seção, são apresentados o mapeamento da cadeia de valor, o fluxo atual (AS-IS) e o fluxo futuro desejado (TO-BE), evidenciando ganhos operacionais, pontos críticos e oportunidades de automação que sustentam o valor da proposta para o parceiro.
 
 ## 2.5.1 Cadeia de Valor
 
