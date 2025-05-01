@@ -73,20 +73,14 @@
 
 #### 1. Baixa adesão às dailys
 
-##### Ações de melhoria:
-
 - Estabelecer regras participação, com horários fixos e presença obrigatória.
 - Registrar ausências recorrentes para discutir em retrospectiva e buscar soluções conjuntas.
 
 #### 2. Falta de comprometimento com os rituais ágeis
 
-##### Ações de melhoria:
-
 - Criar lembretes automáticos no canal de comunicação do time para reforçar a rotina.
 
 #### 3. Redução do tempo produtivo por feriado
-
-##### Ações de melhoria:
 
 - Antecipar o planejamento considerando o calendário.
 - Focar na entrega das tarefas mais críticas antes das datas com menor disponibilidade.
