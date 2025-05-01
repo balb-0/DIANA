@@ -13,14 +13,14 @@
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/anacdejesus/">Ana Carolina Pacheco</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>
+- <a href="https://www.linkedin.com/in/gabriel-nascimento-563382243/">Gabriel Nascimento</a>
+- <a href="https://www.linkedin.com/in/joao-souza-campos/">João Victor de Souza Campos</a>
+- <a href="https://www.linkedin.com/in/lucas-tort/">Lucas Cozzolino Tort</a>
+- <a href="https://www.linkedin.com/in/natalycunha/">Nataly Cunha</a>
+- <a href="https://www.linkedin.com/in/thiagovolcati/">Thiago Volcati</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Balbo</a>
 
 
 # Sumário
@@ -36,7 +36,7 @@
 - [5. Infraestrutura como Código](#5-infraestrutura-como-código)
 - [6. Gestão de Arquivos Sensíveis](#6-gestao-de-arquivos-sensiveis)
 - [7. Política de Rollback](#7-política-de-rollback)
-- [8. Registro de Variáveis de Ambiente][#8-registro-de-variaveis-de-ambiente]
+- [8. Registro de Variáveis de Ambiente](#8-registro-de-variaveis-de-ambiente)
 - [Referências](#referências)
 
 # 1. Introdução
@@ -49,7 +49,15 @@ Este documento estabelece diretrizes claras para a utilização de boas prática
 _conteúdo_
 
 ## 2.1 Visão Geral do Gitflow
-Nota: Fornecer uma breve explicação sobre o Gitflow e a importância para o gerenciamento mais eficiente do código do projeto.
+
+O Gitflow é uma estratégia de versionamento pensada para um controle mais eficiente do versionamento de código em em desenvolvimento de projetos. O modelo propõe uma estruturação de _branches_ com papéis bem definidos, ajudando na organização, previsibilidade eficiência no desenvolvimento de um produto.
+
+A principal ideia do Gitflow é separar as funcionalidades em desenvolvimento do código que está sendo produzido, por meio do uso de _branches_ como `main`, `develop`, `feature`, `docs` e `fix`. Essa divisão simplifica a colaboração em equipe, a iteratividade do desenvolvimento e o controle de versões, especialmente em projetos que adotam sprints, deploys regulares e diversas entregas simultâneas.
+
+A adoção do Gitflow permite:
+- Rastreamento de mudanças.
+- Simplicidade na criação de versões estáveis.
+- Um fluxo de trabalho que se adapta ao desenvolvimento iterativo e colaborativo.
 
 ## 2.2 Estrutura de Branches
 
@@ -73,60 +81,120 @@ Exemplo: `hotfix/corrige-bug-em-producao`
 Esta estrutura favorece a organização do trabalho em equipe, facilita a automação de deploys e permite o rastreamento de alterações com mais segurança ao longo das sprints.
 
 ## 2.3 Diretrizes de Uso das Branches
-- Cada nova funcionalidade deve ser desenvolvida em uma branch de feature criada a partir da branch develop.
-  - Nomeação das branches de features deve seguir o padrão feature/[nome-da-feature].
-- Todas as novas funcionalidades devem ser desenvolvidas em branches de features e integradas na branch develop através de pull requests.
-- Commits diretos na branch main são proibidos! 
-  - Configurem o Github para proteger de commits direto para a main.
-- Branches de hotfix devem ser criadas a partir da branch main para corrigir problemas críticos em produção.
-  - Nomeação das branches de hotfix deve seguir o padrão hotfix/[nome-do-hotfix].
+
+Este projeto adota uma estratégia de ramificação baseada no Gitflow, com diretrizes claras para garantir organização, rastreabilidade e integração eficiente entre as contribuições do time.
+
+### Criação de Funcionalidades
+
+- Toda nova funcionalidade deve ser desenvolvida em uma branch do tipo `feat`, criada a partir da branch `develop`.
+- O nome da branch deve seguir o padrão:
+
+```
+feat/nome-da-feature
+```
+
+Exemplo:
+
+```
+feat/cadastro-usuario
+```
+
+### Integração e Pull Requests
+
+- Após finalizada, a branch de feature deve ser integrada na `develop` via Pull Request (PR).
+- O PR deve ser revisado por pelo menos um membro da equipe antes do merge.
+
+### Commits Diretos na Main
+
+- **Commits diretos na branch `main` são proibidos.**
+- A proteção da branch `main` está garantida no GitHub para evitar alterações não revisadas e imprevistos perigosos para o projeto.
+
+### Correções Críticas (Hotfixes)
+
+- Em caso de erros críticos em produção, uma branch do tipo `hotfix` é criada diretamente a partir da `main`.
+- O nome da branch deve seguir o padrão:
+
+```
+hotfix/descricao-do-hotfix
+```
+
+Exemplo:
+
+```
+hotfix/corrige-autenticacao
+```
+
+- Após a correção, a branch deve ser mergeada tanto na `main` quanto na `develop`.
+
+Seguindo essas diretrizes, garantimos maior controle sobre o fluxo de desenvolvimento e reduzimos riscos durante deploys e integrações.
 
 # 3. Políticas de Commit
-Integrar "Conventional Commits" nas políticas de commit ajuda a manter um histórico de commits claro e estruturado, facilitando a automação de processos como geração de changelogs e versionamento semântico.
 
-As mensagens de commit devem seguir o padrão de Conventional Commits para garantir clareza e consistência.
+Para manter um histórico de desenvolvimento claro, rastreável e eficiente para desenvolvimento do proejto, este projeto adota o padrão **Conventional Commits**.
 
-Formato: [Tipo][Escopo opcional]: Mensagem clara e descritiva.
+### Formato
 
-Os tipos devem ser:
+As mensagens de commit devem seguir o seguinte formato:
 
-> **feat**: Uma nova funcionalidade para o usuário.
-> **fix**: Correção de bug.
-> **docs**: Mudanças na documentação.
-> **style**: Mudanças que não afetam o significado do código (espaços em branco, formatação, etc.).
-> **refactor**: Uma mudança de código que não corrige um bug nem adiciona uma funcionalidade.
-> **test**: Adição ou correção de testes.
-> **chore**: Atualizações de tarefas de build ou ferramentas auxiliares e bibliotecas, como a geração de documentação.
+```
+<tipo>[escopo opcional]: <mensagem curta e objetiva>
+```
 
-Exemplo de commit: feat(auth): add login feature with JWT
+### Tipos permitidos
 
-Proibido:
-- O uso de emojis nas mensagens de commit, e commits com mensagens vagas como "melhorias" ou "atualizações".
+> **feat**: Adição de uma nova funcionalidade  
+> **fix**: Correção de um bug  
+> **docs**: Alterações na documentação  
+> **style**: Alterações que não afetam a lógica (espaçamento, indentação, ponto e vírgula, etc.)  
+> **config**: Adições que alterem configurações internas ou internas ao projeto (`.gitignore` ou GitHub, por exemplo)  
+> **test**: Criação ou modificação de testes  
+> **chore**: Atualizações de configurações, ferramentas, bibliotecas, etc.
 
-IMPORTANTE!
-- Realizar commits frequentes (diários) para facilitar o rastreamento de mudanças e a colaboração.
+### Exemplo prático
 
-# 4. Política de Push e Pull Requests
+```
+feat(auth): adiciona component de login com JWT
+```
 
-**Políticas de Push**:
-- Não é permitido fazer push diretamente para a main ou dev.
-- Todas as contribuições devem ser feitas via branches e submetidas por meio de pull requests.
+Esse commit representa a adição de uma nova funcionalidade (`feat`) relacionada à autenticação (`auth`), com uma mensagem clara sobre o que foi feito.
 
-**Regras de Push**:
-- Todo código deve passar por revisão de código por pares antes de ser mergeado.
-- A revisão só deve ser aprovada se os testes automatizados forem bem-sucedidos e os critérios de qualidade (cobertura de testes, análise de código) forem atendidos.
+### Recomendações
 
-**Revisão por Pares - Critério de Aprovação**:
-- O pull request deve ser revisado por, no mínimo, uma pessoa.
-- A revisão de código deve considerar: 
-  - Está funcional e resolve o problema proposto.
-  - Passou em todos os testes automatizados.
-  - Cobertura mínima de testes (60% ou mais). 
-  - Verificação de boas práticas de código.
-  - Não introduz duplicidade de código.
-- Após a aprovação, a branch deve ser mergeada na dev e o pull request pode ser fechado. 
-- O Scrum Master da Sprint é responsável por subir os artefatos para a MAIN ao final da Sprint.
+- Escreva a mensagem no imperativo (ex: "adiciona", "corrige", "cria").
+- Evite commits genéricos como "atualização", "ajustes", "coisas".
+- Commits devem ser pequenos e frequentes - de forma a ajudar o acompanhamento de desenvolvimento de features.
+- Commits com múltiplas alterações devem ser evitados — prefira dividir por propósito.
 
+Essa padronização contribui para a manutenção do código, facilita a revisão por pares e melhora a compreensão do histórico por toda a equipe.
+
+### Proibido:
+- O uso de emojis nas mensagens de commits é proibido.
+
+## 4. Política de Push e Pull Requests
+
+### Políticas de Push
+
+- Não é permitido realizar push diretamente na branch `main`.
+- Todas as alterações no projeto devem ser feitas por meio de branches individuais, seguindo a convenção estabelecida (ex: `feat/nome-da-feature`, `fix/corrige-bug`).
+- O push só é permitido em branches auxiliares (feat, fix, etc.), que deverão ser integradas por meio de Pull Requests.
+
+### Regras de Pull Request
+
+- Todo código deve ser submetido via Pull Request e passar por uma revisão obrigatória antes de ser mergeado.
+- O projeto possui um template de PR no GitHub que deve ser preenchido de forma a evidenciar as mudanças propostas naquele _pull request_.
+- A branch só poderá ser mergeada após aprovação por, no mínimo, um revisor.
+
+### Critérios de Aprovação
+
+- O código submetido resolve de forma clara e objetiva o problema ou funcionalidade proposta.
+- Deve seguir os padrões de estilo e boas práticas definidas pelo time.
+- Não deve conter duplicações de código nem funcionalidades inacabadas.
+- O template deve estar preenchido e os checks deve estar marcados para que o PR seja aprovado.
+
+### Integração com a Branch `dev` e `main`
+
+- Após aprovação, o PR será mergeado na branch `dev`.
+- Ao final da sprint, o Scrum e o PO são responsáveis por realizar o merge da `dev` na `main`, junto com os artefatos finais da entrega.
 
 ## 5. Infraestrutura como Código
 - Uso obrigatório de Docker para padronizar ambientes de desenvolvimento e produção.
