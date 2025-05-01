@@ -1,1 +1,86 @@
 node_modules/
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.ipynb_checkpoints/
+.mypy_cache/
+.pytest_cache/
+.pip-wheel-metadata/
+.tox/
+
+# Jupyter Notebook
+*.ipynb
+!*.clean.ipynb  # caso você queira deixar alguma versão limpa
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.vscode-test/
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# Dataset e resultados
+dataset/
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.json
+*.parquet
+*.zip
+*.gz
+
+# Configs locais
+.env
+.env.*
+*.local
+*.secret
+*.credentials
+*.bak
+*.swp
+*.swo
+
+# MacOS / Linux / Windows
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+.idea/
+*.iml
+*.sublime*
+
+# Git
+.git/
+*.orig
+
+# Logs
+logs/
+*.log
+*.out
+
+# Build output
+dist/
+build/
+.cache/
+coverage/
+*.coverage
+*.pyc
+
+# Test files
+coverage.xml
+test-results/
+junit.xml
