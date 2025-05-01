@@ -93,18 +93,49 @@ _conteúdo_
 
 &emsp;Nesta subseção reúnem-se as abreviações de palavras, termos comuns a serem discutidos na documentação e, por fim, siglas.
 
-- **API (Application Programming Interface)** – Interface de Programação de Aplicações  
-- **BPM (Business Process Management)** – Gerenciamento de Processos de Negócio  
-- **BTG** – BTG Pactual  
-- **CT** – Caso de Teste  
-- **CVM** – Comissão de Valores Mobiliários  
-- **HTTPS (HyperText Transfer Protocol Secure)** – Protocolo de Transferência de Hipertexto Seguro  
-- **ISO (International Organization for Standardization)** – Organização Internacional de Normalização  
-- **ML (Machine Learning)** – Aprendizado de Máquina (utilizado em sistema de recomendação)  
-- **RESTful** – Estilo de arquitetura de API baseado em REST (Representational State Transfer)  
-- **RFs** – Requisitos Funcionais  
-- **RNFs** – Requisitos Não Funcionais  
-- **TLS (Transport Layer Security)** – Segurança da Camada de Transporte
+### Siglas e abreviações
+| Sigla/Abreviação | Significado |
+|------------------|-------------|
+| **API**          | *Application Programming Interface* (Interface de Programação de Aplicações) |
+| **BPM**          | *Business Process Management* (Gerenciamento de Processos de Negócio) |
+| **BTG**          | BTG Pactual |
+| **CSV**          | *Comma-Separated Values* (Formato de arquivo separado por vírgulas) |
+| **CVM**          | Comissão de Valores Mobiliários |
+| **IDE**          | *Integrated Development Environment* (Ambiente de Desenvolvimento Integrado) |
+| **ISO/IEC 25010**| Norma internacional de requisitos de qualidade de software |
+| **KPI**          | *Key Performance Indicator* (Indicador-chave de desempenho) |
+| **ML**           | *Machine Learning* (Aprendizado de Máquina) |
+| **MFA**          | *Multi-Factor Authentication* (Autenticação Multifator) |
+| **PO**           | *Product Owner* |
+| **QA**           | *Quality Assurance* (Garantia de Qualidade) |
+| **RF** / **RFs** | Requisito(s) Funcional(is) |
+| **RNF** / **RNFs**| Requisito(s) Não Funcional(is) |
+| **SSL**          | *Secure Sockets Layer* |
+| **Swagger**      | Ferramenta para documentação de APIs |
+| **TLS**          | *Transport Layer Security* |
+| **UML**          | *Unified Modeling Language* |
+| **UX/UI**        | *User Experience* / *User Interface* |
+
+### Termos Técnicos e de Projeto
+
+| Termo                        | Significado |
+|-----------------------------|-------------|
+| **Adequação Regulátoria**   | Conformidade com normas e regras de órgãos reguladores como a CVM |
+| **AS-IS / TO-BE**           | Estado atual / Estado proposto de um processo |
+| **Cloud / Nuvem**           | Infraestrutura de computação remota |
+| **Compliance**              | Conformidade com políticas, leis e regulamentos |
+| **Dashboard**               | Painel de visualização interativa de dados |
+| **Feature**                 | Funcionalidade de um sistema |
+| **Heurísticas de Nielsen**  | Princípios de usabilidade para interfaces |
+| **Mockup**                  | Protótipo visual com detalhes de design |
+| **Modularidade**            | Organização em partes independentes |
+| **Painel Interativo**       | Visualização dinâmica de dados com filtros e status |
+| **Personas**                | Perfis fictícios de usuários representativos |
+| **Sprint**                  | Iteração de desenvolvimento em metodologia ágil |
+| **Suitability**             | Adequação entre produto e perfil do investidor |
+| **User Story**              | Descrição de funcionalidade sob o ponto de vista do usuário |
+| **White Label**             | Produto que pode ser personalizado e utilizado por terceiros |
+| **Wireframe**               | Esboço inicial da estrutura da interface |
 
 ## 1.2 Objetivo do Documento
 _conteúdo_
