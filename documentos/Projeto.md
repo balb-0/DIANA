@@ -192,7 +192,8 @@ _conteúdo_
 _conteúdo_
 
 ## 2.5 Modelagem do Fluxo de Negócio
-_conteúdo_
+
+&emsp;Realizar a modelagem dos fluxos de negócio permite compreender como as atividades se organizam atualmente e como podem ser otimizadas com a solução proposta. Nesta seção, são apresentados o mapeamento da cadeia de valor, o fluxo atual (AS-IS) e o fluxo futuro desejado (TO-BE), evidenciando ganhos operacionais, pontos críticos e oportunidades de automação que sustentam o valor da proposta para o parceiro.
 
 ## 2.5.1 Cadeia de Valor
 
