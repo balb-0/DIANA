@@ -191,7 +191,29 @@ _conteúdo_
 <br>
 
 ## 2.4 Personas e Jornada do Usuário
-_conteúdo_
+
+A definição de personas e a construção das respectivas jornadas de usuário são etapas fundamentais no processo de design centrado no ser humano. Elas ajudam a guiar as decisões de desenvolvimento, garantindo que o produto atenda de forma eficaz às reais necessidades dos usuários finais.
+
+### Persona Assessor
+
+<img src="../documentos/img/persona-assessor.svg" width="100%">
+
+### Persona Cliente
+
+<img src="../documentos/img/persona-cliente.svg" width="100%">
+
+### Jornada de usuário do Assessor
+
+<img src="../documentos/img/antes-01.svg" width="100%">
+<img src="../documentos/img/depois01.svg" width="100%">
+
+
+### Jornada de usuário da Cliente
+
+<img src="../documentos/img/antes02.svg" width="100%">
+<img src="../documentos/img/depois02.svg" width="100%">
+
+
 
 ## 2.5 Modelagem do Fluxo de Negócio
 
