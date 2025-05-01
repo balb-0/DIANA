@@ -138,7 +138,8 @@ _conteúdo_
 | **Wireframe**               | Esboço inicial da estrutura da interface |
 
 ## 1.2 Objetivo do Documento
-_conteúdo_
+
+&emsp;Este documento visa consolidar o entendimento do parceiro e do projeto, orientando seu desenvolvimento técnico com base nas necessidades do parceiro e dos usuários finais, bem como detalhar os planejamentos e execuções do desenvolvimento do *aplicativo mobile* e testes associados.
 
 # 2. Entendimento do Projeto e do Negócio
 
