@@ -649,6 +649,31 @@ _conteúdo_
 ## 5.3 Diagramas de Sequência da UML
 _conteúdo_
 
+## 5.4 Tecnologias e Linguagens
+
+### 5.4.1 Back-end
+
+&emsp;Para o back-end da aplicação, será utilizada a linguagem de programação **C#**, em conjunto com o framework **.NET**. Essa escolha se deve à robustez, segurança e excelente desempenho do .NET, além de sua forte integração com bibliotecas de machine learning através do **ML.NET**, permitindo a incorporação de modelos treinados diretamente no ambiente do servidor.
+
+### 5.4.2 Machine Learning e Tratamento de Dados
+
+&emsp;Para o tratamento de dados e preparação de modelos de aprendizado de máquina, será utilizada a linguagem **Python**. Python é amplamente adotada na área de ciência de dados devido à sua simplicidade, vasta gama de bibliotecas (como Pandas, NumPy, e Scikit-learn) e grande comunidade. O processo de retreinamento dos modelos será gerenciado com o auxílio do **MLflow**, que permite o controle de versões, monitoramento de experimentos e gerenciamento de modelos de forma eficiente.
+
+### 5.4.3 Front-end
+
+&emsp;O front-end da aplicação será desenvolvido com **React Native**, uma tecnologia que permite a criação de aplicações móveis multiplataforma com desempenho próximo ao nativo. No contexto deste projeto, React Native foi escolhido especificamente para o desenvolvimento da versão Android, oferecendo uma interface moderna, responsiva e de fácil manutenção.
+
+### 5.4.4 Banco de Dados
+
+&emsp;O sistema utilizará o **PostgreSQL** como sistema gerenciador de banco de dados relacional. O PostgreSQL foi escolhido por ser uma solução open-source poderosa, altamente escalável, que oferece suporte a consultas complexas, integridade referencial e extensões úteis para aplicações que trabalham com dados estruturados de forma intensiva.
+
+### 5.4.5 Autenticação
+
+&emsp;Para o gerenciamento da autenticação de usuários, será utilizado o **Firebase Authentication**. O Firebase oferece uma solução segura, escalável e de fácil integração com aplicações móveis, reduzindo significativamente o esforço de desenvolvimento e aumentando a segurança da aplicação.
+<br><br>
+
+
+
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 _conteúdo_
 
