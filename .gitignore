@@ -17,7 +17,6 @@ ENV/
 .tox/
 
 # Jupyter Notebook
-*.ipynb
 !*.clean.ipynb  # caso você queira deixar alguma versão limpa
 
 # Node.js
