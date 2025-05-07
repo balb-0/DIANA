@@ -642,23 +642,24 @@ _conteúdo_
 
 ## 5.1 Diagrama de Casos de Uso
 
-### 1. Visão Geral do Sistema
+### 5.1.1 Visão Geral do Sistema
 
 O sistema de gestão de investimentos tem como objetivo principal permitir que assessores de investimentos visualizem e entendam as alocações de investimentos de seus clientes, identifiquem desalinhamentos entre o perfil, assim, podendo sugerir readequações quando necessário.
 
-### 2. Atores
+### 5.1.2 Atores
 
 - **Assessor de Investimento**: Usuário principal do sistema que utiliza as informações para analisar carteiras de clientes e sugerir readequações.
 
-### 3. Casos de Uso
+### 5.1.3 Casos de Uso
 
-#### 3.1 Importar Dados de Carteira via API
+#### 5.1.3.1 Importar Dados de Carteira via API
+
 **Descrição**: O sistema importa e processa automaticamente os dados de carteira de clientes por meio de integração via API.
 
 **História de Usuário**:  
 Como um assessor de investimento, quero que o sistema importe automaticamente os dados das carteiras dos clientes via API para que eu tenha informações atualizadas sem precisar inserir dados manualmente.
 
-#### 3.2 Calcular Perfil de Risco
+#### 5.1.3.2 Calcular Perfil de Risco
 **Descrição**: O sistema calcula automaticamente o perfil de risco com base nos ativos da carteira.
 
 **História de Usuário**:  
@@ -667,7 +668,7 @@ Como um assessor de investimento, quero que o sistema calcule automaticamente o 
 **Relacionamentos**:
 - **<<include>>** Importar Dados de Carteira via API
 
-#### 3.3 Verificar Conformidade de Perfil
+#### 5.1.3.3 Verificar Conformidade de Perfil
 **Descrição**: O sistema verifica a conformidade entre o perfil calculado e o perfil cadastrado do cliente.
 
 **História de Usuário**:  
@@ -676,7 +677,7 @@ Como um assessor de investimento, quero que o sistema verifique a conformidade e
 **Relacionamentos**:
 - **<<include>>** Calcular Perfil de Risco
 
-#### 3.4 Exibir Recomendações de Readequação
+#### 5.1.3.4 Exibir Recomendações de Readequação
 **Descrição**: O sistema exibe recomendações de readequação do perfil quando for identificado um desalinhamento.
 
 **História de Usuário**:  
@@ -685,7 +686,7 @@ Como um assessor de investimento, quero visualizar recomendações de readequaç
 **Relacionamentos**:
 - **<<include>>** Verificar Conformidade de Perfil
 
-#### 3.5 Visualizar Painel de Conformidade
+#### 5.1.3.5 Visualizar Painel de Conformidade
 **Descrição**: O sistema apresenta, de forma visual, o status de conformidade de todas as carteiras em um painel.
 
 **História de Usuário**:  
@@ -694,31 +695,31 @@ Como um assessor de investimento, quero visualizar em um painel o status de conf
 **Relacionamentos**:
 - **<<include>>** Verificar Conformidade de Perfil
 
-#### 3.6 Filtrar Carteiras por Status
+#### 5.1.3.6 Filtrar Carteiras por Status
 **Descrição**: O sistema oferece filtros por status de conformidade (adequado/não adequado).
 
 **História de Usuário**:  
 Como um assessor de investimento, quero filtrar as carteiras por status de conformidade (adequado/não adequado) para que eu possa priorizar os clientes que precisam de atenção imediata.
 
-#### 3.7 Filtrar Clientes por Segmento
+#### 5.1.3.7 Filtrar Clientes por Segmento
 **Descrição**: O sistema permite filtro de clientes por segmento (Prata, Ouro, Platinum).
 
 **História de Usuário**:  
 Como um assessor de investimento, quero filtrar os clientes por segmento (Prata, Ouro, Platinum) para que eu possa direcionar meus esforços de acordo com a importância do cliente.
 
-#### 3.8 Consultar Histórico de Sugestões
+#### 5.1.3.8 Consultar Histórico de Sugestões
 **Descrição**: O sistema mantém o histórico das sugestões de readequação de perfil por cliente.
 
 **História de Usuário**:  
 Como um assessor de investimento, quero consultar o histórico das sugestões de readequação de perfil por cliente para que eu possa acompanhar a evolução e as recomendações anteriores.
 
-#### 3.9 Visualizar Composição da Carteira
+#### 5.1.3.9 Visualizar Composição da Carteira
 **Descrição**: O sistema exibe graficamente a composição da carteira por tipo de ativo.
 
 **História de Usuário**:  
 Como um assessor de investimento, quero visualizar graficamente a composição da carteira por tipo de ativo para que eu possa entender melhor a distribuição dos investimentos dos clientes.
 
-### 4. Tabela de Associação entre Requisitos Funcionais e Casos de Uso
+### 5.1.4 Tabela de Associação entre Requisitos Funcionais e Casos de Uso
 
 | ID | Requisito Funcional | Prioridade | Caso de Uso Associado |
 |----|-------------------|------------|---------------------|
