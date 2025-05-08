@@ -644,7 +644,14 @@ _conteúdo_
 _conteúdo_
 
 ## 5.2 Diagrama de Componentes da UML
-_conteúdo_
+
+O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
+
+<div align="center">
+<sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
+<img src="./img/uml-components.png">  
+<sub>Fonte: Material produzido pelos autores (2025)</sub>  
+</div>
 
 ## 5.3 Diagramas de Sequência da UML
 _conteúdo_
