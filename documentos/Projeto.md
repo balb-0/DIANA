@@ -675,6 +675,29 @@ A Camada de Apresentação é representada pelo aplicativo desenvolvido em React
 
 ---
 
+## 2. Camada de Negócio (Backend)
+
+A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
+
+### Componentes:
+- **API Gateway (.NET):** Orquestra as requisições recebidas do app, redirecionando para os microserviços apropriados.
+- **Serviço de Autenticação:** Responsável pela integração com o Auth0 para validar os tokens de acesso.
+- **Serviço de Análise de Carteira:** Realiza a análise dos ativos do cliente em relação ao perfil de risco.
+- **Serviço de Conformidade:** Verifica se a carteira está em conformidade com o perfil do cliente.
+- **Serviço de Recomendação (Python):** Realiza cálculos e lógica para sugerir ajustes na carteira, utilizando inteligência de negócio e geração de perfis ideais.
+- **Engine de Perfis:** Módulo interno do serviço de recomendação que simula cenários ideais baseados nos dados do usuário.
+
+### Fluxo:
+1. O API Gateway valida o token com o Serviço de Autenticação.
+2. Após autenticação, o Gateway redireciona a requisição para o serviço apropriado:
+   - **Análise de Carteira**: Para processar dados do portfólio.
+   - **Conformidade**: Para verificar o alinhamento com o perfil do cliente.
+   - **Recomendação**: Para gerar sugestões inteligentes de alocação.
+3. O Serviço de Recomendação acessa o Engine de Perfis e o banco de dados para gerar recomendações.
+4. Caso necessário, o Serviço de Análise também consulta arquivos e dados complementares via Supabase.
+
+---
+
 ## 5.3 Diagramas de Sequência da UML
 _conteúdo_
 
