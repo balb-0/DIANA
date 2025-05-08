@@ -740,7 +740,199 @@ Como um assessor de investimento, quero visualizar graficamente a composição d
 </div>
 
 ## 5.2 Diagrama de Classes
-_conteúdo_
+
+### Visão Geral do Diagrama de Classes
+
+O diagrama de classes representa o modelo de domínio do sistema, identificando as principais entidades, seus atributos, métodos e relacionamentos.
+
+As principais classes são:
+
+- `Cliente`
+- `Assessor`
+- `Carteira`
+- `Investimento`
+- `Ativo`
+- `PerfilDeclarado`
+- `PerfilCalculado`
+
+
+<br>
+<div align="center">
+<sub>Figura x - DIagrama de Classes</sub>
+<br>
+<br>
+<img src="../documentos/img/diagrama_de_classes.png" alt='Imagem com o diagrama de classes' width="100%">
+<br>
+<br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+<br>
+
+
+## Descrição das Classes
+
+### Classe `Cliente`
+
+Representa um investidor do sistema.
+
+| Atributo     | Tipo    | Descrição                        |
+|--------------|---------|----------------------------------|
+| id           | int     | Identificador único              |
+| nome         | String  | Primeiro nome do cliente         |
+| sobrenome    | String  | Sobrenome do cliente             |
+| email        | String  | Contato por e-mail               |
+| telefone     | String  | Contato por telefone             |
+| cpf          | String  | CPF do cliente                   |
+| rg           | String  | Documento de identidade          |
+| endereco     | String  | Endereço residencial             |
+| dataNasc     | Date    | Data de nascimento               |
+
+**Métodos:**
+
+- `acessarCarteira()`: retorna a carteira vinculada
+- `visualizarPerfil()`: retorna o perfil declarado
+- `consultarRecomendacoes()`: exibe sugestões do assessor
+
+---
+
+### Classe `Assessor`
+
+Responsável por orientar clientes e validar perfis.
+
+| Atributo     | Tipo    | Descrição                        |
+|--------------|---------|----------------------------------|
+| id           | int     | Identificador único              |
+| nome         | String  | Primeiro nome                    |
+| sobrenome    | String  | Sobrenome                        |
+| email        | String  | Contato                          |
+| telefone     | String  | Contato                          |
+| cpf          | String  | CPF                              |
+| rg           | String  | Documento de identidade          |
+| endereco     | String  | Endereço                         |
+| dataNasc     | Date    | Data de nascimento               |
+| categoria    | String  | Nível do assessor (ex: Gold)     |
+| unidadeBTG   | String  | Local de atuação                 |
+
+**Métodos:**
+
+- `gerarRecomendacao(cliente)`: cria recomendações com base no perfil
+- `visualizarCarteira(cliente)`: acessa os ativos do cliente
+- `aprovarPerfilCalculado(cliente)`: valida o perfil automático
+
+---
+
+### Classe `Carteira`
+
+Representa os ativos de um cliente, administrada por um assessor.
+
+| Atributo    | Tipo   | Descrição                    |
+|-------------|--------|------------------------------|
+| id          | int    | Identificador da carteira    |
+| saldo       | float  | Valor total investido        |
+| idCliente   | int    | Dono da carteira             |
+| idAssessor  | int    | Assessor responsável         |
+
+**Métodos:**
+
+- `listarInvestimentos()`: retorna todos os investimentos
+- `calcularDistribuicao()`: calcula alocação por tipo de ativo
+
+---
+
+### Classe `Investimento`
+
+Representa uma aplicação específica feita por uma carteira em um ativo.
+
+| Atributo       | Tipo     | Descrição                            |
+|----------------|----------|--------------------------------------|
+| id             | int      | Identificador do investimento        |
+| idCarteira     | int      | Chave para a carteira                |
+| idAtivo        | int      | Chave para o ativo                   |
+| valor          | float    | Valor aplicado                       |
+| percentual     | float    | Percentual em relação à carteira     |
+| dataAplicacao  | Date     | Data da aplicação                    |
+
+**Método:**
+
+- `obterRendimento()`: calcula rendimento estimado
+
+---
+
+### Classe `Ativo`
+
+Representa um produto financeiro disponível (ações, fundos, etc.).
+
+| Atributo   | Tipo    | Descrição                            |
+|------------|---------|----------------------------------------|
+| id         | int     | Identificador                          |
+| nome       | String  | Nome do ativo                          |
+| risco      | String  | Nível de risco                         |
+| tipo       | String  | Categoria do ativo (ex: Renda Fixa)    |
+
+**Método:**
+
+- `calcularRiscoAjustado()`: retorna o risco ponderado
+
+---
+
+### Classe `PerfilDeclarado`
+
+Perfil de risco informado pelo cliente (suitability).
+
+| Atributo    | Tipo      | Descrição                            |
+|-------------|-----------|----------------------------------------|
+| id          | int       | Identificador                         |
+| risco       | String    | Nível de risco declarado              |
+| idCliente   | int       | Dono do perfil                        |
+| idCarteira  | int       | Referência da carteira                |
+| timestamp   | DateTime  | Data da declaração                    |
+
+**Método:**
+
+- `atualizarPerfil(tipo)`: atualiza o tipo de perfil informado
+
+---
+
+### Classe `PerfilCalculado`
+
+Resultado da análise automática de risco baseada nos ativos.
+
+| Atributo    | Tipo      | Descrição                            |
+|-------------|-----------|----------------------------------------|
+| id          | int       | Identificador                         |
+| risco       | String    | Perfil calculado                      |
+| idCliente   | int       | Cliente correspondente                |
+| idCarteira  | int       | Carteira avaliada                     |
+| timestamp   | DateTime  | Data da análise                       |
+
+**Métodos:**
+
+- `calcularNovoPerfil()`: executa o cálculo com base na carteira
+- `compararComDeclarado(perfil)`: retorna se há divergência
+
+
+### Relacionamentos
+
+| Origem            | Destino            | Tipo de Relação     | Descrição                                        |
+|-------------------|--------------------|----------------------|--------------------------------------------------|
+| Cliente           | Carteira           | 1:1                  | Um cliente pode ter uma carteira             |
+| Cliente           | PerfilDeclarado    | 1:1                  | Um cliente pode declarar um perfil    |
+| Cliente           | PerfilCalculado    | 1:N                  | Um cliente pode ter um perfil calculado            |
+| Carteira          | Investimento       | 1:N                  | Uma carteira pode conter vários investimentos    |
+| Investimento      | Ativo              | N:1                  | Um investimento é feito em um ativo              |
+| Carteira          | Assessor           | N:1                  | Uma carteira é gerenciada por um assessor        |
+| Assessor          | Cliente            | 1:N                  | Um assessor orienta vários clientes              |
+| PerfilDeclarado   | Carteira           | N:1                  | Cada perfil declarado pertence a uma carteira    |
+| PerfilCalculado   | Carteira           | N:1                  | Cada perfil calculado pertence a uma carteira    |
+
+O diagrama de classes apresentado nesta seção estrutura de forma clara os elementos centrais do sistema de recomendação de investimentos, alinhando-se à lógica de domínio da aplicação e às entidades presentes no banco de dados. A modelagem contempla não apenas os dados dos clientes e assessores, mas também os componentes necessários para analisar a adequação entre o perfil de risco declarado e o perfil de risco calculado com base na alocação de ativos.
+
+Além disso, os relacionamentos entre as classes refletem corretamente a multiplicidade e o fluxo de responsabilidade entre os atores do sistema, permitindo um entendimento sólido sobre como o sistema deve se comportar frente aos dados e regras de negócio da Resolução CVM 175.
+
+### Conclusão
+
+Esse diagrama fornece uma base conceitual robusta para o desenvolvimento do sistema, servindo como referência para a implementação de funcionalidades, a validação de regras e a integração entre módulos.
+
 
 ## 5.3 Diagrama de Componentes da UML
 _conteúdo_
