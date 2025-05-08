@@ -653,6 +653,28 @@ O diagrama de componentes da UML é utilizado para representar a estrutura modul
 <sub>Fonte: Material produzido pelos autores (2025)</sub>  
 </div>
 
+---
+
+### Arquitetura em Camadas da Plataforma BTG
+
+O sistema foi desenvolvido com base em uma arquitetura em camadas, separando responsabilidades entre apresentação, lógica de negócio e persistência de dados. Abaixo descrevemos os componentes de cada camada e o fluxo entre eles:
+
+---
+
+## 1. Camada de Apresentação (Frontend Mobile)
+
+A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
+
+### Componentes:
+- **Usuário (Assessor):** A pessoa que utiliza o aplicativo mobile.
+- **App React Native:** Interface do usuário que envia requisições para o backend.
+
+### Fluxo:
+1. O assessor acessa o sistema por meio do aplicativo.
+2. As ações realizadas no app (como login, filtros, visualização de perfis) são enviadas para o backend por meio do API Gateway.
+
+---
+
 ## 5.3 Diagramas de Sequência da UML
 _conteúdo_
 
