@@ -698,6 +698,21 @@ A Camada de Negócio centraliza a lógica de processamento do sistema, autentica
 
 ---
 
+## 3. Camada de Dados
+
+Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
+
+### Componentes:
+- **PostgreSQL:** Base de dados relacional principal do sistema.
+- **Supabase:** Usado para armazenar arquivos auxiliares, como documentos e imagens.
+
+### Fluxo:
+1. Os microserviços de negócio consultam ou atualizam os dados diretamente no PostgreSQL.
+2. Dados auxiliares, como PDFs, arquivos ou planilhas, são manipulados via Supabase.
+3. As respostas são retornadas ao usuário via o API Gateway e exibidas no app mobile.
+
+---
+
 ## 5.3 Diagramas de Sequência da UML
 _conteúdo_
 
