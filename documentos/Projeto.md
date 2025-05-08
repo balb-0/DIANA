@@ -630,7 +630,26 @@ Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1.
 _conteúdo_
 
 ## 4.3 Modelo Lógico de Dados
-_conteúdo_
+
+&emsp;Como apresentado por Elmasri et. al (2005), um Modelo Lógico-Relacional se assemelha ao Modelo Entidade Relacionamento quanto à composição dos principais agentes de um banco de dados que irão deter de características (atributos) e relacionamentos, embora se trate de um modelo de dados realístico em relação à tipagem, armazenamento, funcionamento e organização das informações.
+
+&emsp;Tem-se o seguinte modelo elaborado para o presente projeto para o BTG Pactual, produzido através da plataforma de design de banco de dados [MySQL Workbench](https://www.mysql.com/products/workbench/):
+
+<div align="center">
+<sub>Figura x - Modelo Lógico-Relacional</sub><br>
+<img src="img/modelologico_v1.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;É importante ressaltar determinadas justificativas para alguns pontos relacionados ao modelo; a entidade clientes representa os investidores do sistema. Esta entidade possui um relacionamento de um-para-um com a entidade carteiras, pois segundo informações fornecidas pela empresa parceira, uma regra de negócio é que um cliente pode possuir apenas uma carteira de investimento. Além disso, toda vez que o teste de perfil de risco (disponibilizado como formulário pelo banco), essa informação é registrada como histórico dentro da entidade perfil_risco_declarado. Um cliente pode possuir apenas um perfil de risco por vez, mas um tipo de perfil de risco pode estar atribuído a vários clientes, por isso o relacionamento de um-para-muitos.
+
+&emsp;A entidade carteiras armazena informações sobre cada carteira de investimentos vinculada a um cliente específico. A ela está atribuída a entidade perfil_risco_calculado, por onde se espera registrar o cálculo de perfil de risco a partir da leitura de ativos que compoem àquela carteira. Da mesma forma, uma carteira pode possuir apenas um perfil de risco por vez, mas um tipo de perfil de risco pode estar atribuído a várias carteiras, por isso o relacionamento de um-para-muitos.
+
+&emsp;A decisão de se manter os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução.
+
+&emsp;Por fim, a tabela ativos_carteiras é uma entidade fraca que resolve o relacionamento N:N (muitos para muitos) entre ativos e carteiras.
+
+&emsp;Em resumo, o modelo foi construído para ser flexível e escalável, fornecendo rastreabilidade temporal e permitindo a expansão futura para auditoria, governança e recomendações automatizadas de alocação.
 
 ## 4.4 Modelo Físico de Dados
 _conteúdo_
@@ -843,5 +862,6 @@ _conteúdo_
 _conteúdo_
 
 # Referências
-_conteúdo_
+
+ELMASRI, R. et al. Sistemas de banco de dados. Pearson Addison Wesley São Paulo, 2005.
 
