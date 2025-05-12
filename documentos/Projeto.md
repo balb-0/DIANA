@@ -628,7 +628,7 @@ Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1.
 
 ## 4.2 Modelo Conceitual de Dados
 
-O modelo conceitual de dados tem como objetivo representar – de forma abstrata e sem preocupação com a implementação física – as entidades principais do sistema, seus atributos e os relacionamentos entre elas. Ele serve como base para o entendimento lógico e estruturado das regras de negócio envolvidas no domínio da aplicação.
+&emsp; O modelo conceitual de dados tem como objetivo representar – de forma abstrata e sem preocupação com a implementação física – as entidades principais do sistema, seus atributos e os relacionamentos entre elas. Ele serve como base para o entendimento lógico e estruturado das regras de negócio envolvidas no domínio da aplicação.
 
 <div align="center">
 <sub>Figura x - Modelagem Conceitual</sub><br>
@@ -636,7 +636,7 @@ O modelo conceitual de dados tem como objetivo representar – de forma abstrata
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
-As entidades representam itens do mundo real, e foram selecionados os seguintes:
+&emsp; As entidades representam itens do mundo real, e foram selecionados os seguintes:
 
 - **Clientes:** representam os usuários finais da plataforma, contendo informações cadastrais como nome, CPF e data de nascimento.
 
@@ -646,7 +646,7 @@ As entidades representam itens do mundo real, e foram selecionados os seguintes:
 
 - **Ativos:** produtos financeiros disponíveis para composição das carteiras dos clientes.
 
-Entre os relacionamentos e suas cardinalidades, ou seja, maneira de descrever em valores quantitativos estes relacionamentos, foram marcados por:
+&emsp; Entre os relacionamentos e suas cardinalidades, ou seja, maneira de descrever em valores quantitativos estes relacionamentos, foram marcados por:
 
 - **Clientes — Possuem — Carteiras (1:N)**
 
@@ -660,18 +660,7 @@ Entre os relacionamentos e suas cardinalidades, ou seja, maneira de descrever em
 
   Um assessor pode monitorar diversas carteiras, mas cada carteira é acompanhada por um único assessor.
 
-- **Clientes — Declaram — Perfil de Risco Declarado (1:1 ou 1:N)**
-
-  Um cliente declara um perfil de risco, e essa declaração pode ser registrada uma ou mais vezes ao longo do tempo (para histórico).
-
-- **Clientes — Possuem — Perfil de Risco Calculado (1:1 ou 1:N)**
-
-  Um cliente pode ter várias análises de perfil de risco calculado, vinculadas a diferentes carteiras ou momentos.
-
-- **Carteiras — Possuem — Perfil de Risco Calculado (1:1)**
-
-  Cada carteira possui exatamente um perfil de risco calculado, resultante da análise da composição de ativos.
-
+&emsp; O modelo conceitual existe para ser acessível a olhares diferentes do técnico. Dessa forma, é implicito neste o uso de tabelas intermediárias para relações N:N e entidades fracas. Essas estarão representadas na seção [4.3](#43-modelo-lógico-de-dados) e [4.4](#44-modelo-físico-de-dados) — modelo físico e lógico de dados respectivamente.
 
 ## 4.3 Modelo Lógico de Dados
 _conteúdo_
