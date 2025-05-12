@@ -645,7 +645,7 @@ _conteúdo_
 
 ## 5.2 Diagrama de Componentes da UML
 
-O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
+&emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
 
 <div align="center">
 <sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
@@ -661,7 +661,7 @@ O sistema foi desenvolvido com base em uma arquitetura em camadas, separando res
 
 ---
 
-## 1. Camada de Apresentação (Frontend Mobile)
+## 5.2.1. Camada de Apresentação (Frontend Mobile)
 
 A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
 
@@ -675,7 +675,7 @@ A Camada de Apresentação é representada pelo aplicativo desenvolvido em React
 
 ---
 
-## 2. Camada de Negócio (Backend)
+## 5.2.2. Camada de Negócio (Backend)
 
 A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
 
@@ -698,7 +698,7 @@ A Camada de Negócio centraliza a lógica de processamento do sistema, autentica
 
 ---
 
-## 3. Camada de Dados
+## 5.2.3. Camada de Dados
 
 Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
 
