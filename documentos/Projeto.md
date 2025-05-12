@@ -645,7 +645,7 @@ _conteúdo_
 
 &emsp;A entidade carteiras armazena informações sobre cada carteira de investimentos vinculada a um cliente específico. A ela está atribuída a entidade perfis_risco_calculado, por onde se espera registrar o cálculo de perfil de risco a partir da leitura de ativos que compoem àquela carteira. Da mesma forma, o risco fica armazenado no campo "risco", obtendo-se um timestamp que indica o instante exato do cálculo. Uma carteira pode possuir apenas um perfil de risco por vez, mas um tipo de perfil de risco pode estar atribuído a várias carteiras, por isso o relacionamento de um-para-muitos.
 
-&emsp;A decisão de se manter os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução.
+&emsp;A decisão de se manter em tabelas separadas os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução. Além disso, através dos campos `risco` como tipo JSON, é possível construir um metadado flexível para maior detalhamento dessas atividades.
 
 &emsp;Por fim, a tabela ativos_carteiras é uma entidade fraca que resolve o relacionamento N:N (muitos para muitos) entre ativos e carteiras.
 
