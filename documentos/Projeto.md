@@ -649,6 +649,60 @@ _conteúdo_
 ## 5.3 Diagramas de Sequência da UML
 _conteúdo_
 
+## 5.4 Diagrama de Filtro da UML
+
+&emsp; Este fluxo descreve o processo de autenticação e análise de perfis com inconsistências no sistema, incluindo o uso de filtros para refinar a consulta. O sistema é acessado por um assessor via aplicativo mobile, e os dados são processados por um serviço de backend que utiliza um banco PostgreSQL.
+
+<div align="center">
+<sub>Figura x - Diagrama de Filtro UML</sub><br>
+<img src="img/uml-filtro.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+### Ator
+- **Assessor**: Usuário que utiliza o aplicativo para consultar perfis com inconsistências.
+
+### Componentes
+- App Mobile (React Native): Interface de entrada usada pelo assessor.
+- API Gateway(.NET): Intermediador de requisições.
+- Auth0: Serviço de autenticação.
+- Serviço de Análise: Responsável por processar e consultar dados relacionados às divergências.
+- PostgreSQL: Banco de dados que armazena os perfis dos usuários.
+- Usuário: Representa os dados dos perfis armazenados.
+
+### Fluxo de Login
+1. O assessor abre o aplicativo.
+2. Insere e envia as credenciais.
+3. A API Gateway valida as credenciais com o Auth0.
+
+#### Credencias válidas:
+- Auth0 retorna um token de acesso.
+- API solicita o acesso à aba de análise (com o token).
+- A requisição com token é enviada ao Serviço de Análise.
+- O serviço consulta os perfis com inconsistências no banco PostgreSQL.
+- Os dados processados retornam à API, que envia a lista de perfis ao app.
+- O aplicativo exibe os perfis filtrados.
+
+#### Credenciais inválidas: 
+- API recebe erro de autenticação.
+- O app exibe mensagem de erro.
+
+### Interação com Filtro
+1. O assessor clica em "Filtrar por divergência".
+2. O app envia a requisição de perfis divergentes com filtro para a API.
+3. A API reenviará a solicitação ao Serviço de Análise, agora com os filtros aplicados.
+4. O serviço consulta novamente o banco de dados com os filtros.
+
+#### Perfis encontrados: 
+- Serviço retorna perfis com divergência.
+- App exibe a lista.
+
+#### Nenhum perfil encontrado:
+- Serviço retorna resposta vazia.
+- App exibe mensagem: "Nenhum perfil encontrado".
+
+&emsp;Este fluxo garante que apenas usuários autenticados tenham acesso aos dados analisados, promovendo segurança e precisão na identificação de perfis com inconsistências.
+
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 _conteúdo_
 
