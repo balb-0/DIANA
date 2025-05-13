@@ -794,8 +794,75 @@ Como um assessor de investimento, quero visualizar graficamente a composição d
 ## 5.2 Diagrama de Classes
 _conteúdo_
 
-## 5.3 Diagrama de Componentes da UML
-_conteúdo_
+## 5.2 Diagrama de Componentes da UML
+
+&emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
+
+<div align="center">
+<sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
+<img src="./img/uml-components.png">  
+<sub>Fonte: Material produzido pelos autores (2025)</sub>  
+</div>
+
+---
+
+### Arquitetura em Camadas da Plataforma BTG
+
+O sistema foi desenvolvido com base em uma arquitetura em camadas, separando responsabilidades entre apresentação, lógica de negócio e persistência de dados. Abaixo descrevemos os componentes de cada camada e o fluxo entre eles:
+
+---
+
+## 5.2.1. Camada de Apresentação (Frontend Mobile)
+
+A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
+
+### Componentes:
+- **Usuário (Assessor):** A pessoa que utiliza o aplicativo mobile.
+- **App React Native:** Interface do usuário que envia requisições para o backend.
+
+### Fluxo:
+1. O assessor acessa o sistema por meio do aplicativo.
+2. As ações realizadas no app (como login, filtros, visualização de perfis) são enviadas para o backend por meio do API Gateway.
+
+---
+
+## 5.2.2. Camada de Negócio (Backend)
+
+A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
+
+### Componentes:
+- **API Gateway (.NET):** Orquestra as requisições recebidas do app, redirecionando para os microserviços apropriados.
+- **Serviço de Autenticação:** Responsável pela integração com o Auth0 para validar os tokens de acesso.
+- **Serviço de Análise de Carteira:** Realiza a análise dos ativos do cliente em relação ao perfil de risco.
+- **Serviço de Conformidade:** Verifica se a carteira está em conformidade com o perfil do cliente.
+- **Serviço de Recomendação (Python):** Realiza cálculos e lógica para sugerir ajustes na carteira, utilizando inteligência de negócio e geração de perfis ideais.
+- **Engine de Perfis:** Módulo interno do serviço de recomendação que simula cenários ideais baseados nos dados do usuário.
+
+### Fluxo:
+1. O API Gateway valida o token com o Serviço de Autenticação.
+2. Após autenticação, o Gateway redireciona a requisição para o serviço apropriado:
+   - **Análise de Carteira**: Para processar dados do portfólio.
+   - **Conformidade**: Para verificar o alinhamento com o perfil do cliente.
+   - **Recomendação**: Para gerar sugestões inteligentes de alocação.
+3. O Serviço de Recomendação acessa o Engine de Perfis e o banco de dados para gerar recomendações.
+4. Caso necessário, o Serviço de Análise também consulta arquivos e dados complementares via Supabase.
+
+---
+
+## 5.2.3. Camada de Dados
+
+Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
+
+### Componentes:
+- **PostgreSQL:** Base de dados relacional principal do sistema.
+- **Supabase:** Usado para armazenar arquivos auxiliares, como documentos e imagens.
+
+### Fluxo:
+1. Os microserviços de negócio consultam ou atualizam os dados diretamente no PostgreSQL.
+2. Dados auxiliares, como PDFs, arquivos ou planilhas, são manipulados via Supabase.
+3. As respostas são retornadas ao usuário via o API Gateway e exibidas no app mobile.
+
+---
 
 ## 5.4 Diagramas de Sequência da UML
 _conteúdo_
