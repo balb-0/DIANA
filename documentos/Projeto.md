@@ -627,7 +627,40 @@ _conteúdo_
 Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1. 
 
 ## 4.2 Modelo Conceitual de Dados
-_conteúdo_
+
+&emsp; O modelo conceitual de dados tem como objetivo representar – de forma abstrata e sem preocupação com a implementação física – as entidades principais do sistema, seus atributos e os relacionamentos entre elas. Ele serve como base para o entendimento lógico e estruturado das regras de negócio envolvidas no domínio da aplicação.
+
+<div align="center">
+<sub>Figura x - Modelagem Conceitual</sub><br>
+<img src="img/modelo-conceitual.jpg"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp; As entidades representam itens do mundo real, e foram selecionados os seguintes:
+
+- **Clientes:** representam os usuários finais da plataforma, contendo informações cadastrais como nome, CPF e data de nascimento.
+
+- **Assessores:** profissionais responsáveis por acompanhar e orientar os clientes por meio de suas carteiras.
+
+- **Carteiras:** representam os investimentos do cliente, sendo monitoradas por assessores.
+
+- **Ativos:** produtos financeiros disponíveis para composição das carteiras dos clientes.
+
+&emsp; Entre os relacionamentos e suas cardinalidades, ou seja, maneira de descrever em valores quantitativos estes relacionamentos, foram marcados por:
+
+- **Clientes — Possuem — Carteiras (1:N)**
+
+  Um cliente pode possuir uma ou várias carteiras. Já cada carteira está associada a um único cliente.
+
+- **Carteiras — Contêm — Ativos (N:N)**
+
+  Uma carteira pode conter vários ativos, e um mesmo ativo pode estar presente em diversas carteiras.
+
+- **Assessores — Monitoram — Carteiras (1:N)**
+
+  Um assessor pode monitorar diversas carteiras, mas cada carteira é acompanhada por um único assessor.
+
+&emsp; O modelo conceitual existe para ser acessível a olhares diferentes do técnico. Dessa forma, é implicito neste o uso de tabelas intermediárias para relações N:N e entidades fracas. Essas estarão representadas na seção [4.3](#43-modelo-lógico-de-dados) e [4.4](#44-modelo-físico-de-dados) — modelo físico e lógico de dados respectivamente.
 
 ## 4.3 Modelo Lógico de Dados
 
