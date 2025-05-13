@@ -670,7 +670,7 @@ Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1.
 
 <div align="center">
 <sub>Figura x - Modelo Lógico-Relacional</sub><br>
-<img src="img/modelologico_v1.png"><br>
+<img src="img/modelo_logicoV2.png"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
@@ -678,9 +678,9 @@ Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1.
 
 &emsp;A entidade carteiras armazena informações sobre cada carteira de investimentos vinculada a um cliente específico. A ela está atribuída a entidade perfis_risco_calculado, por onde se espera registrar o cálculo de perfil de risco a partir da leitura de ativos que compoem àquela carteira. Da mesma forma, o risco fica armazenado no campo "risco", obtendo-se um timestamp que indica o instante exato do cálculo. Uma carteira pode possuir apenas um perfil de risco por vez, mas um tipo de perfil de risco pode estar atribuído a várias carteiras, por isso o relacionamento de um-para-muitos.
 
-&emsp;A decisão de se manter em tabelas separadas os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução. Além disso, através dos campos `risco` como tipo JSON, é possível construir um metadado flexível para maior detalhamento dessas atividades.
+&emsp;A decisão de se manter em tabelas separadas os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução. Além disso, através dos campos `risco` como tipo JSON, é possível construir um metadado flexível para maior detalhamento dessas atividades. 
 
-&emsp;Por fim, a tabela ativos_carteiras é uma entidade fraca que resolve o relacionamento N:N (muitos para muitos) entre ativos e carteiras.
+&emsp;Outro detalhe é o tipo "enum" do campo `categoria` na tabela de assessores, que se trata de um enumerador que pode atribuir 3 características possíveis de categoria de um assessor — Ouro, Prata e Platinum —, informando o caráter patrimonial dos investidores que ele atende.
 
 &emsp;Em resumo, o modelo foi construído para ser flexível e escalável, fornecendo rastreabilidade temporal e permitindo a expansão futura para auditoria, governança e recomendações automatizadas de alocação.
 
