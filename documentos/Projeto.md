@@ -648,7 +648,7 @@ Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1.
 
 - **Clientes — Contêm — Ativos (N:N)**
 
-  Um cliente pode conter um ou vários ativos. Enquanto cada ativo associada a um único cliente.
+  Um cliente pode conter um ou vários ativos ao mesmo tempo que cada ativo pode ser associado a varios clientes.
   
 - **Assessores — Monitoram — Clientes (1:N)**
 
