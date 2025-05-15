@@ -642,25 +642,19 @@ Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1.
 
 - **Assessores:** profissionais responsáveis por acompanhar e orientar os clientes por meio de suas carteiras.
 
-- **Carteiras:** representam os investimentos do cliente, sendo monitoradas por assessores.
-
 - **Ativos:** produtos financeiros disponíveis para composição das carteiras dos clientes.
 
 &emsp; Entre os relacionamentos e suas cardinalidades, ou seja, maneira de descrever em valores quantitativos estes relacionamentos, foram marcados por:
 
-- **Clientes — Possuem — Carteiras (1:N)**
+- **Clientes — Contêm — Ativos (N:N)**
 
-  Um cliente pode possuir uma ou várias carteiras. Já cada carteira está associada a um único cliente.
+  Um cliente pode conter um ou vários ativos. Enquanto cada ativo associada a um único cliente.
+  
+- **Assessores — Monitoram — Clientes (1:N)**
 
-- **Carteiras — Contêm — Ativos (N:N)**
+  Um assessor pode monitorar diversos clientes, e ao mesmo tempo cada cliente é acompanhado por um único assessor.
 
-  Uma carteira pode conter vários ativos, e um mesmo ativo pode estar presente em diversas carteiras.
-
-- **Assessores — Monitoram — Carteiras (1:N)**
-
-  Um assessor pode monitorar diversas carteiras, mas cada carteira é acompanhada por um único assessor.
-
-&emsp; O modelo conceitual existe para ser acessível a olhares diferentes do técnico. Dessa forma, é implicito neste o uso de tabelas intermediárias para relações N:N e entidades fracas. Essas estarão representadas na seção [4.3](#43-modelo-lógico-de-dados) e [4.4](#44-modelo-físico-de-dados) — modelo físico e lógico de dados respectivamente.
+&emsp; O modelo conceitual existe para ser acessível a olhares diferentes do técnico. Dessa forma, é implicito neste o uso de tabelas intermediárias para relações N:N e entidades fracas, como as de log. Essas estarão representadas na seção [4.3](#43-modelo-lógico-de-dados) e [4.4](#44-modelo-físico-de-dados) — modelo físico e lógico de dados respectivamente.
 
 ## 4.3 Modelo Lógico de Dados
 
