@@ -666,21 +666,91 @@ Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1.
 
 &emsp;Como apresentado por Elmasri et. al (2005), um Modelo Lógico-Relacional se assemelha ao Modelo Entidade Relacionamento quanto à composição dos principais agentes de um banco de dados que irão deter de características (atributos) e relacionamentos, embora se trate de um modelo de dados realístico em relação à tipagem, armazenamento, funcionamento e organização das informações.
 
-&emsp;Tem-se o seguinte modelo elaborado para o presente projeto para o BTG Pactual, produzido através da plataforma de design de banco de dados [MySQL Workbench](https://www.mysql.com/products/workbench/):
+&emsp;Tem-se o seguinte modelo elaborado para o presente projeto para o BTG Pactual, produzido através da plataforma de design de banco de dados [dbdiagram.io](https://dbdiagram.io/):
 
 <div align="center">
 <sub>Figura x - Modelo Lógico-Relacional</sub><br>
-<img src="img/modelologico_v1.png"><br>
+<img src="img/modelologicov3.png"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
-&emsp;É importante ressaltar determinadas justificativas para alguns pontos relacionados ao modelo; a entidade clientes representa os investidores do sistema. Esta entidade possui um relacionamento de um-para-um com a entidade carteiras, pois segundo informações fornecidas pela empresa parceira, uma regra de negócio é que um cliente pode possuir apenas uma carteira de investimento. Além disso, toda vez que o teste de perfil de risco (disponibilizado como formulário pelo banco), essa informação é registrada como histórico dentro da entidade perfis_risco_declarado através do campo "risco" e o timestamp que guarda o instante exato do registro. Um cliente pode possuir apenas um perfil de risco por vez, mas um tipo de perfil de risco pode estar atribuído a vários clientes, por isso o relacionamento de um-para-muitos.
+<!--
 
-&emsp;A entidade carteiras armazena informações sobre cada carteira de investimentos vinculada a um cliente específico. A ela está atribuída a entidade perfis_risco_calculado, por onde se espera registrar o cálculo de perfil de risco a partir da leitura de ativos que compoem àquela carteira. Da mesma forma, o risco fica armazenado no campo "risco", obtendo-se um timestamp que indica o instante exato do cálculo. Uma carteira pode possuir apenas um perfil de risco por vez, mas um tipo de perfil de risco pode estar atribuído a várias carteiras, por isso o relacionamento de um-para-muitos.
+Table clientes {
+  id ULID [primary key]
+  email VARCHAR(255)
+  telefone VARCHAR(255)
+  nome VARCHAR(45)
+  sobrenome VARCHAR(70)
+  cpf VARCHAR(45)
+  rg VARCHAR(45)
+  endereco VARCHAR(255)
+  data_nascimento DATE
+  saldo_carteira DOUBLE
+  assessores_id INT
+}
 
-&emsp;A decisão de se manter em tabelas separadas os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução. Além disso, através dos campos `risco` como tipo JSON, é possível construir um metadado flexível para maior detalhamento dessas atividades.
+Table assessores {
+  id ULID [primary key]
+  email VARCHAR(45)
+  telefone VARCHAR(45)
+  nome VARCHAR(45)
+  sobrenome VARCHAR(70)
+  cpf VARCHAR(45)
+  rg VARCHAR(45)
+  endereco VARCHAR(45)
+  data_nascimento DATE
+  categoria ENUM('Gold', 'Prata', 'Platinum')
+  unidade_btg VARCHAR(45)
+}
 
-&emsp;Por fim, a tabela ativos_carteiras é uma entidade fraca que resolve o relacionamento N:N (muitos para muitos) entre ativos e carteiras.
+Table ativos {
+  id ULID [primary key]
+  nome VARCHAR(255)
+  tipo VARCHAR(255)
+  subgrupo VARCHAR(45)
+}
+
+Table investimento {
+  id ULID [primary key]  
+  ativos_id INT [not null]
+  clientes_id INT [not null]
+  quantidade INT
+  valorTotal double
+}
+
+Table historico_risco_declarado {
+  id ULID [primary key]
+  risco JSON
+  created_at DATETIME
+  clientes_id INT [not null]
+}
+
+Table historico_risco_calculado {
+  id ULID [primary key]
+  risco JSON
+  created_at DATETIME
+  clientes_id INT [not null]
+}
+
+// Relações
+
+Ref: clientes.assessores_id > assessores.id
+Ref: investimento.ativos_id > ativos.id
+Ref: investimento.clientes_id > clientes.id
+Ref: historico_risco_declarado.clientes_id > clientes.id
+Ref: historico_risco_calculado.clientes_id > clientes.id
+
+
+-->
+
+&emsp;É importante ressaltar determinadas justificativas para alguns pontos relacionados ao modelo; a entidade clientes representa os investidores do sistema, sendo uma regra de negócio um cliente poder possuir apenas uma carteira de investimento no banco BTG Pactual, e por isso, a tabela também contempla informações financeiras como o `saldo_carteira`. Além disso, toda vez que o teste de perfil de risco, essa informação é registrada como histórico dentro da entidade historico_risco_declarado através do campo "risco" e o created_at que guarda o instante exato do registro. Um cliente pode estar associado apenas com o seu perfil de risco mais atual dentro o histórico, mas um tipo de perfil de risco pode estar atribuído a vários clientes, por isso o relacionamento de um-para-muitos; também há a associação com a entidade historico_risco_calculado, por onde se espera registrar o cálculo de perfil de risco a partir da leitura de ativos que compoem a carteira de investimento. Da mesma forma, o risco fica armazenado no campo "risco", obtendo-se um created_at que indica o instante exato do cálculo. A carteira do cliente pode estar associada com seu perfil de risco mais atual dentre o histórico, mas um tipo de perfil de risco pode estar atribuído à carteira de vários clientes, por isso o relacionamento de um-para-muitos.
+
+&emsp;Ainda nesse contexto, vale ressaltar que anteriormente as informações financeiras de uma carteira eram mantidas em uma tabela separada, entretanto, para fins de facilidade de comunicação e acesso dos futuros serviços a serem implementados para no aplicativo, manteve-se as informações da carteira dentro da tabela de cliente. 
+
+&emsp;Além disso, a decisão de se manter em tabelas separadas os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução. Ademais, através dos campos `risco` como tipo JSON, é possível construir metadados flexíveis para maior detalhamento dessas atividades. 
+
+&emsp;Outro detalhe é o tipo "enum" do campo `categoria` na tabela de assessores, que se trata de um enumerador que pode atribuir 3 características possíveis de categoria de um assessor — Ouro, Prata e Platinum —, baseada no nível patrimonial dos investidores que ele atende.
 
 &emsp;Em resumo, o modelo foi construído para ser flexível e escalável, fornecendo rastreabilidade temporal e permitindo a expansão futura para auditoria, governança e recomendações automatizadas de alocação.
 
