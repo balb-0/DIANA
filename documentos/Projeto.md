@@ -861,7 +861,7 @@ _conteúdo_
 
 ## 5.2 Diagrama de Componentes da UML
 
-&emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
+  &emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
 
 <div align="center">
 <sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
@@ -929,8 +929,59 @@ Esta camada é responsável pelo armazenamento persistente de dados do sistema, 
 
 ---
 
-## 5.4 Diagramas de Sequência da UML
-_conteúdo_
+## 5.3 Diagramas de Sequência da UML
+
+&emsp; Este fluxo descreve o processo de autenticação e análise de perfis com inconsistências no sistema, incluindo o uso de filtros para refinar a consulta. O sistema é acessado por um assessor via aplicativo mobile, e os dados são processados por um serviço de backend que utiliza um banco PostgreSQL.
+
+<div align="center">
+<sub>Figura x - Diagrama de Filtro UML</sub><br>
+<img src="img/Diagrama UML Filtro.jpg"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+### Ator
+- **Assessor**: Usuário que utiliza o aplicativo para consultar perfis com inconsistências.
+
+### Componentes
+- App Mobile (React Native): Interface de entrada usada pelo assessor.
+- API Gateway(.NET): Intermediador de requisições.
+- Firebase: Serviço de autenticação.
+- Serviço de Análise: Responsável por processar e consultar dados relacionados às divergências.
+- PostgreSQL: Banco de dados que armazena os perfis dos usuários.
+- Usuário: Representa os dados dos perfis armazenados.
+
+### Fluxo de Login
+1. O assessor abre o aplicativo.
+2. Insere e envia as credenciais.
+3. A API Gateway valida as credenciais com o Firebase.
+
+#### Credencias válidas:
+- Firebase retorna um token de acesso.
+- API solicita o acesso à aba de análise (com o token).
+- A requisição com token é enviada ao Serviço de Análise.
+- O serviço consulta os perfis com inconsistências no banco PostgreSQL.
+- Os dados processados retornam à API, que envia a lista de perfis ao app.
+- O aplicativo exibe os perfis filtrados.
+
+#### Credenciais inválidas: 
+- API recebe erro de autenticação.
+- O app exibe mensagem de erro.
+
+### Interação com Filtro
+1. O assessor clica em "Filtrar por divergência".
+2. O app envia a requisição de perfis divergentes com filtro para a API.
+3. A API reenviará a solicitação ao Serviço de Análise, agora com os filtros aplicados.
+4. O serviço consulta novamente o banco de dados com os filtros.
+
+#### Perfis encontrados: 
+- Serviço retorna perfis com divergência.
+- App exibe a lista.
+
+#### Nenhum perfil encontrado:
+- Serviço retorna resposta vazia.
+- App exibe mensagem: "Nenhum perfil encontrado".
+
+&emsp;Este fluxo garante que apenas usuários autenticados tenham acesso aos dados analisados, promovendo segurança e precisão na identificação de perfis com inconsistências.
 
 ## 5.4 Tecnologias e Linguagens
 
