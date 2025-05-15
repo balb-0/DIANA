@@ -655,7 +655,7 @@ _conteúdo_
 
 <div align="center">
 <sub>Figura x - Diagrama de Filtro UML</sub><br>
-<img src="img/uml-filtro.png"><br>
+<img src="img/Diagrama UML Filtro.jpg"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
