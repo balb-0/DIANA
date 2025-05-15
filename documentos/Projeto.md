@@ -662,7 +662,7 @@ _conteúdo_
 
 ### 5.4.3 Front-end
 
-&emsp;O front-end da aplicação será desenvolvido com **React Native**, uma tecnologia que permite a criação de aplicações móveis multiplataforma com desempenho próximo ao nativo. No contexto deste projeto, React Native foi escolhido especificamente para o desenvolvimento da versão Android, oferecendo uma interface moderna, responsiva e de fácil manutenção.
+&emsp;O front-end da aplicação será desenvolvido com **React Native**, uma tecnologia que permite a criação de aplicações móveis multiplataforma com desempenho próximo ao nativo. Apesar de o projeto estar sendo desenvolvido inicialmente para Android, a escolha pelo React Native se dá justamente por sua natureza multiplataforma, o que facilitará a adaptação futura para outros sistemas operacionais, como o iOS, além de proporcionar uma interface moderna, responsiva e de fácil manutenção.
 
 ### 5.4.4 Banco de Dados
 
@@ -670,7 +670,7 @@ _conteúdo_
 
 ### 5.4.5 Autenticação
 
-&emsp;Para o gerenciamento da autenticação de usuários, será utilizado o **Firebase Authentication**. O Firebase oferece uma solução segura, escalável e de fácil integração com aplicações móveis, reduzindo significativamente o esforço de desenvolvimento e aumentando a segurança da aplicação.
+&emsp;Para o gerenciamento da autenticação de usuários, será utilizado o Firebase Authentication. O Firebase oferece uma solução segura, escalável e de fácil integração com aplicações móveis, reduzindo significativamente o esforço de desenvolvimento e aumentando a segurança da aplicação. Além disso, a plataforma disponibiliza uma cota gratuita com capacidade de armazenamento razoavelmente grande, o que contribui para tornar o desenvolvimento menos custoso, especialmente nas fases iniciais do projeto.
 <br><br>
 
 
