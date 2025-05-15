@@ -647,9 +647,6 @@ _conteúdo_
 _conteúdo_
 
 ## 5.3 Diagramas de Sequência da UML
-_conteúdo_
-
-## 5.4 Diagrama de Filtro da UML
 
 &emsp; Este fluxo descreve o processo de autenticação e análise de perfis com inconsistências no sistema, incluindo o uso de filtros para refinar a consulta. O sistema é acessado por um assessor via aplicativo mobile, e os dados são processados por um serviço de backend que utiliza um banco PostgreSQL.
 
@@ -665,7 +662,7 @@ _conteúdo_
 ### Componentes
 - App Mobile (React Native): Interface de entrada usada pelo assessor.
 - API Gateway(.NET): Intermediador de requisições.
-- Auth0: Serviço de autenticação.
+- Firebase: Serviço de autenticação.
 - Serviço de Análise: Responsável por processar e consultar dados relacionados às divergências.
 - PostgreSQL: Banco de dados que armazena os perfis dos usuários.
 - Usuário: Representa os dados dos perfis armazenados.
@@ -673,10 +670,10 @@ _conteúdo_
 ### Fluxo de Login
 1. O assessor abre o aplicativo.
 2. Insere e envia as credenciais.
-3. A API Gateway valida as credenciais com o Auth0.
+3. A API Gateway valida as credenciais com o Firebase.
 
 #### Credencias válidas:
-- Auth0 retorna um token de acesso.
+- Firebase retorna um token de acesso.
 - API solicita o acesso à aba de análise (com o token).
 - A requisição com token é enviada ao Serviço de Análise.
 - O serviço consulta os perfis com inconsistências no banco PostgreSQL.
