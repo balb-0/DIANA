@@ -87,8 +87,45 @@
 - Dividir entregas grandes em partes menores para facilitar a distribuição ao longo da sprint.
 
 ## 2.2 Sprint 2
-_conteúdo_
- **Nota:** Insira informações sobre mudanças realizadas.
+
+### Análise da Sprint Review
+
+#### **Pontos Fortes**
+
+- O time demonstrou maior comprometimento com os rituais ágeis, participando ativamente de dailys, plannings e retrospectivas.
+- Houve boa produtividade, com a entrega completa das tarefas antes da data de apresentação.
+- A comunicação entre os membros evoluiu, permitindo validações coletivas eficientes e alinhamentos rápidos.
+
+#### **Pontos Fracos**
+
+- Faltaram momentos mais estruturados de planejamento em grupo, especialmente devido à alta interdependência entre os componentes e diagramas.
+- O planejamento inicial da sprint poderia ter sido mais detalhado, o que teria ajudado na divisão e organização das tarefas.
+- Houve uma gestão deficiente do quadro no Trello, dificultando a visualização do progresso real das tarefas.
+
+---
+
+### Mudanças Realizadas
+
+- Em relação à baixa adesão às dailys observada na Sprint 1, a equipe passou a realizar encontros mais frequentes, com maior pontualidade e comprometimento.
+- A participação nos rituais ágeis melhorou consideravelmente, com todos os membros envolvidos nas cerimônias e decisões do time.
+- O time também antecipou a entrega de tarefas importantes, mitigando o impacto de eventos como feriados — um problema identificado na sprint anterior.
+
+---
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Planejamento colaborativo mais estruturado
+
+- Reservar um tempo no início da sprint exclusivamente para revisar em grupo as dependências entre tarefas, componentes e fluxos.
+
+#### 2. Refinar o uso do Trello
+
+- Definir responsáveis pela manutenção do board.
+- Revisar o uso do quadro em cada daily para garantir que esteja atualizado e reflita o status real das tarefas.
+
+#### 3. Adoção de checkpoints de alinhamento técnico
+
+- Marcar reuniões rápidas ao longo da sprint para garantir que decisões de implementação não estejam desalinhadas entre os membros.
 
 ## 2.3 Sprint 3
 _conteúdo_

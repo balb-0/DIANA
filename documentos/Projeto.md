@@ -54,6 +54,7 @@
   - [5.1 Diagrama de Classes](#51-diagrama-de-classes)
   - [5.2 Diagrama de Componentes da UML](#52-diagrama-de-componentes-da-uml)
   - [5.3 Diagramas de Sequência da UML](#53-diagramas-de-sequência-da-uml)
+  - [5.4 Tecnologias e Linguagens](#54-tecnologias-e-linguagens)
 - [6. Mapeamento Técnico de Infraestrutura e Implantação](#6-mapeamento-técnico-de-infraestrutura-e-implantação)
   - [6.1 Diagrama de Implantação da UML](#61-diagrama-de-implantação-da-uml)
   - [6.2 Justificativa das Escolhas de Implantação](#62-justificativa-das-escolhas-de-implantação)
@@ -627,10 +628,126 @@ _conteúdo_
 Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1. 
 
 ## 4.2 Modelo Conceitual de Dados
-_conteúdo_
+
+&emsp; O modelo conceitual de dados tem como objetivo representar – de forma abstrata e sem preocupação com a implementação física – as entidades principais do sistema, seus atributos e os relacionamentos entre elas. Ele serve como base para o entendimento lógico e estruturado das regras de negócio envolvidas no domínio da aplicação.
+
+<div align="center">
+<sub>Figura x - Modelagem Conceitual</sub><br>
+<img src="img/modelo-conceitual.jpg"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp; As entidades representam itens do mundo real, e foram selecionados os seguintes:
+
+- **Clientes:** representam os usuários finais da plataforma, contendo informações cadastrais como nome, CPF e data de nascimento.
+
+- **Assessores:** profissionais responsáveis por acompanhar e orientar os clientes por meio de suas carteiras.
+
+- **Ativos:** produtos financeiros disponíveis para composição das carteiras dos clientes.
+
+&emsp; Entre os relacionamentos e suas cardinalidades, ou seja, maneira de descrever em valores quantitativos estes relacionamentos, foram marcados por:
+
+- **Clientes — Contêm — Ativos (N:N)**
+
+  Um cliente pode conter um ou vários ativos ao mesmo tempo que cada ativo pode ser associado a varios clientes.
+  
+- **Assessores — Monitoram — Clientes (1:N)**
+
+  Um assessor pode monitorar diversos clientes, e ao mesmo tempo cada cliente é acompanhado por um único assessor.
+
+&emsp; O modelo conceitual existe para ser acessível a olhares diferentes do técnico. Dessa forma, é implicito neste o uso de tabelas intermediárias para relações N:N e entidades fracas, como as de log. Essas estarão representadas na seção [4.3](#43-modelo-lógico-de-dados) e [4.4](#44-modelo-físico-de-dados) — modelo físico e lógico de dados respectivamente.
 
 ## 4.3 Modelo Lógico de Dados
-_conteúdo_
+
+&emsp;Como apresentado por Elmasri et. al (2005), um Modelo Lógico-Relacional se assemelha ao Modelo Entidade Relacionamento quanto à composição dos principais agentes de um banco de dados que irão deter de características (atributos) e relacionamentos, embora se trate de um modelo de dados realístico em relação à tipagem, armazenamento, funcionamento e organização das informações.
+
+&emsp;Tem-se o seguinte modelo elaborado para o presente projeto para o BTG Pactual, produzido através da plataforma de design de banco de dados [dbdiagram.io](https://dbdiagram.io/):
+
+<div align="center">
+<sub>Figura x - Modelo Lógico-Relacional</sub><br>
+<img src="img/modelologicov3.png"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+<!--
+
+Table clientes {
+  id ULID [primary key]
+  email VARCHAR(255)
+  telefone VARCHAR(255)
+  nome VARCHAR(45)
+  sobrenome VARCHAR(70)
+  cpf VARCHAR(45)
+  rg VARCHAR(45)
+  endereco VARCHAR(255)
+  data_nascimento DATE
+  saldo_carteira DOUBLE
+  assessores_id INT
+}
+
+Table assessores {
+  id ULID [primary key]
+  email VARCHAR(45)
+  telefone VARCHAR(45)
+  nome VARCHAR(45)
+  sobrenome VARCHAR(70)
+  cpf VARCHAR(45)
+  rg VARCHAR(45)
+  endereco VARCHAR(45)
+  data_nascimento DATE
+  categoria ENUM('Gold', 'Prata', 'Platinum')
+  unidade_btg VARCHAR(45)
+}
+
+Table ativos {
+  id ULID [primary key]
+  nome VARCHAR(255)
+  tipo VARCHAR(255)
+  subgrupo VARCHAR(45)
+}
+
+Table investimento {
+  id ULID [primary key]  
+  ativos_id INT [not null]
+  clientes_id INT [not null]
+  quantidade INT
+  valorTotal double
+}
+
+Table historico_risco_declarado {
+  id ULID [primary key]
+  risco JSON
+  created_at DATETIME
+  clientes_id INT [not null]
+}
+
+Table historico_risco_calculado {
+  id ULID [primary key]
+  risco JSON
+  created_at DATETIME
+  clientes_id INT [not null]
+}
+
+// Relações
+
+Ref: clientes.assessores_id > assessores.id
+Ref: investimento.ativos_id > ativos.id
+Ref: investimento.clientes_id > clientes.id
+Ref: historico_risco_declarado.clientes_id > clientes.id
+Ref: historico_risco_calculado.clientes_id > clientes.id
+
+
+-->
+
+&emsp;É importante ressaltar determinadas justificativas para alguns pontos relacionados ao modelo; a entidade clientes representa os investidores do sistema, sendo uma regra de negócio um cliente poder possuir apenas uma carteira de investimento no banco BTG Pactual, e por isso, a tabela também contempla informações financeiras como o `saldo_carteira`. Além disso, toda vez que o teste de perfil de risco, essa informação é registrada como histórico dentro da entidade historico_risco_declarado através do campo "risco" e o created_at que guarda o instante exato do registro. Um cliente pode estar associado apenas com o seu perfil de risco mais atual dentro o histórico, mas um tipo de perfil de risco pode estar atribuído a vários clientes, por isso o relacionamento de um-para-muitos; também há a associação com a entidade historico_risco_calculado, por onde se espera registrar o cálculo de perfil de risco a partir da leitura de ativos que compoem a carteira de investimento. Da mesma forma, o risco fica armazenado no campo "risco", obtendo-se um created_at que indica o instante exato do cálculo. A carteira do cliente pode estar associada com seu perfil de risco mais atual dentre o histórico, mas um tipo de perfil de risco pode estar atribuído à carteira de vários clientes, por isso o relacionamento de um-para-muitos.
+
+&emsp;Ainda nesse contexto, vale ressaltar que anteriormente as informações financeiras de uma carteira eram mantidas em uma tabela separada, entretanto, para fins de facilidade de comunicação e acesso dos futuros serviços a serem implementados para no aplicativo, manteve-se as informações da carteira dentro da tabela de cliente. 
+
+&emsp;Além disso, a decisão de se manter em tabelas separadas os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução. Ademais, através dos campos `risco` como tipo JSON, é possível construir metadados flexíveis para maior detalhamento dessas atividades. 
+
+&emsp;Outro detalhe é o tipo "enum" do campo `categoria` na tabela de assessores, que se trata de um enumerador que pode atribuir 3 características possíveis de categoria de um assessor — Ouro, Prata e Platinum —, baseada no nível patrimonial dos investidores que ele atende.
+
+&emsp;Em resumo, o modelo foi construído para ser flexível e escalável, fornecendo rastreabilidade temporal e permitindo a expansão futura para auditoria, governança e recomendações automatizadas de alocação.
 
 ## 4.4 Modelo Físico de Dados
 _conteúdo_
@@ -640,11 +757,177 @@ _conteúdo_
 # 5. Solução Técnica (Design)
 _conteúdo_
 
-## 5.1 Diagrama de Classes
+## 5.1 Diagrama de Casos de Uso
+
+### 5.1.1 Visão Geral do Sistema
+
+O sistema de gestão de investimentos tem como objetivo principal permitir que assessores de investimentos visualizem e entendam as alocações de investimentos de seus clientes, identifiquem desalinhamentos entre o perfil, assim, podendo sugerir readequações quando necessário.
+
+### 5.1.2 Atores
+
+- **Assessor de Investimento**: Usuário principal do sistema que utiliza as informações para analisar carteiras de clientes e sugerir readequações.
+
+### 5.1.3 Casos de Uso
+
+#### 5.1.3.1 Importar Dados de Carteira via API
+
+**Descrição**: O sistema importa e processa automaticamente os dados de carteira de clientes por meio de integração via API.
+
+**História de Usuário**:  
+Como um assessor de investimento, quero que o sistema importe automaticamente os dados das carteiras dos clientes via API para que eu tenha informações atualizadas sem precisar inserir dados manualmente.
+
+#### 5.1.3.2 Calcular Perfil de Risco
+**Descrição**: O sistema calcula automaticamente o perfil de risco com base nos ativos da carteira.
+
+**História de Usuário**:  
+Como um assessor de investimento, quero que o sistema calcule automaticamente o perfil de risco com base nos ativos da carteira para que eu possa entender rapidamente o nível de exposição a risco de cada cliente.
+
+**Relacionamentos**:
+- **<<include>>** Importar Dados de Carteira via API
+
+#### 5.1.3.3 Verificar Conformidade de Perfil
+**Descrição**: O sistema verifica a conformidade entre o perfil calculado e o perfil cadastrado do cliente.
+
+**História de Usuário**:  
+Como um assessor de investimento, quero que o sistema verifique a conformidade entre o perfil calculado e o perfil cadastrado do cliente para que eu possa identificar possíveis desalinhamentos.
+
+**Relacionamentos**:
+- **<<include>>** Calcular Perfil de Risco
+
+#### 5.1.3.4 Exibir Recomendações de Readequação
+**Descrição**: O sistema exibe recomendações de readequação do perfil quando for identificado um desalinhamento.
+
+**História de Usuário**:  
+Como um assessor de investimento, quero visualizar recomendações de readequação quando um desalinhamento de perfil for identificado para que eu possa sugerir ajustes apropriados aos meus clientes.
+
+**Relacionamentos**:
+- **<<include>>** Verificar Conformidade de Perfil
+
+#### 5.1.3.5 Visualizar Painel de Conformidade
+**Descrição**: O sistema apresenta, de forma visual, o status de conformidade de todas as carteiras em um painel.
+
+**História de Usuário**:  
+Como um assessor de investimento, quero visualizar em um painel o status de conformidade de todas as carteiras para que eu possa ter uma visão geral da situação dos meus clientes.
+
+**Relacionamentos**:
+- **<<include>>** Verificar Conformidade de Perfil
+
+#### 5.1.3.6 Filtrar Carteiras por Status
+**Descrição**: O sistema oferece filtros por status de conformidade (adequado/não adequado).
+
+**História de Usuário**:  
+Como um assessor de investimento, quero filtrar as carteiras por status de conformidade (adequado/não adequado) para que eu possa priorizar os clientes que precisam de atenção imediata.
+
+#### 5.1.3.7 Filtrar Clientes por Segmento
+**Descrição**: O sistema permite filtro de clientes por segmento (Prata, Ouro, Platinum).
+
+**História de Usuário**:  
+Como um assessor de investimento, quero filtrar os clientes por segmento (Prata, Ouro, Platinum) para que eu possa direcionar meus esforços de acordo com a importância do cliente.
+
+#### 5.1.3.8 Consultar Histórico de Sugestões
+**Descrição**: O sistema mantém o histórico das sugestões de readequação de perfil por cliente.
+
+**História de Usuário**:  
+Como um assessor de investimento, quero consultar o histórico das sugestões de readequação de perfil por cliente para que eu possa acompanhar a evolução e as recomendações anteriores.
+
+#### 5.1.3.9 Visualizar Composição da Carteira
+**Descrição**: O sistema exibe graficamente a composição da carteira por tipo de ativo.
+
+**História de Usuário**:  
+Como um assessor de investimento, quero visualizar graficamente a composição da carteira por tipo de ativo para que eu possa entender melhor a distribuição dos investimentos dos clientes.
+
+### 5.1.4 Tabela de Associação entre Requisitos Funcionais e Casos de Uso
+
+| ID | Requisito Funcional | Prioridade | Caso de Uso Associado |
+|----|-------------------|------------|---------------------|
+| RF01 | O sistema deve importar e processar automaticamente os dados de carteira de clientes por meio de integração via API. | Alta | Importar Dados de Carteira via API |
+| RF02 | O sistema deve calcular automaticamente o perfil de risco com base nos ativos da carteira. | Alta | Calcular Perfil de Risco |
+| RF03 | O sistema deve verificar a conformidade entre o perfil calculado e o perfil cadastrado do cliente. | Alta | Verificar Conformidade de Perfil |
+| RF04 | O sistema deve exibir recomendações de readequação do perfil quando for identificado um desalinhamento. | Alta | Exibir Recomendações de Readequação |
+| RF05 | O sistema deve apresentar, de forma visual, o status de conformidade de todas as carteiras em um painel. | Alta | Visualizar Painel de Conformidade |
+| RF06 | O sistema deve oferecer filtros por status de conformidade (adequado/não adequado). | Média | Filtrar Carteiras por Status |
+| RF07 | O sistema deve permitir filtro de clientes por segmento (Prata, Ouro, Platinum). | Média | Filtrar Clientes por Segmento |
+| RF08 | O sistema deve manter o histórico das sugestões de readequação de perfil por cliente. | Média | Consultar Histórico de Sugestões |
+| RF09 | O sistema deve exibir graficamente a composição da carteira por tipo de ativo. | Baixa | Visualizar Composição da Carteira |
+
+<div align="center">
+<sub>Figura x - Diagrama de Casos de Uso</sub><br>
+<img src="img/assessor.jpg"><br>
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+## 5.2 Diagrama de Classes
 _conteúdo_
 
 ## 5.2 Diagrama de Componentes da UML
-_conteúdo_
+
+  &emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
+
+<div align="center">
+<sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
+<img src="./img/uml-components.png">  
+<sub>Fonte: Material produzido pelos autores (2025)</sub>  
+</div>
+
+---
+
+### Arquitetura em Camadas da Plataforma BTG
+
+O sistema foi desenvolvido com base em uma arquitetura em camadas, separando responsabilidades entre apresentação, lógica de negócio e persistência de dados. Abaixo descrevemos os componentes de cada camada e o fluxo entre eles:
+
+---
+
+## 5.2.1. Camada de Apresentação (Frontend Mobile)
+
+A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
+
+### Componentes:
+- **Usuário (Assessor):** A pessoa que utiliza o aplicativo mobile.
+- **App React Native:** Interface do usuário que envia requisições para o backend.
+
+### Fluxo:
+1. O assessor acessa o sistema por meio do aplicativo.
+2. As ações realizadas no app (como login, filtros, visualização de perfis) são enviadas para o backend por meio do API Gateway.
+
+---
+
+## 5.2.2. Camada de Negócio (Backend)
+
+A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
+
+### Componentes:
+- **API Gateway (.NET):** Orquestra as requisições recebidas do app, redirecionando para os microserviços apropriados.
+- **Serviço de Autenticação:** Responsável pela integração com o Auth0 para validar os tokens de acesso.
+- **Serviço de Análise de Carteira:** Realiza a análise dos ativos do cliente em relação ao perfil de risco.
+- **Serviço de Conformidade:** Verifica se a carteira está em conformidade com o perfil do cliente.
+- **Serviço de Recomendação (Python):** Realiza cálculos e lógica para sugerir ajustes na carteira, utilizando inteligência de negócio e geração de perfis ideais.
+- **Engine de Perfis:** Módulo interno do serviço de recomendação que simula cenários ideais baseados nos dados do usuário.
+
+### Fluxo:
+1. O API Gateway valida o token com o Serviço de Autenticação.
+2. Após autenticação, o Gateway redireciona a requisição para o serviço apropriado:
+   - **Análise de Carteira**: Para processar dados do portfólio.
+   - **Conformidade**: Para verificar o alinhamento com o perfil do cliente.
+   - **Recomendação**: Para gerar sugestões inteligentes de alocação.
+3. O Serviço de Recomendação acessa o Engine de Perfis e o banco de dados para gerar recomendações.
+4. Caso necessário, o Serviço de Análise também consulta arquivos e dados complementares via Supabase.
+
+---
+
+## 5.2.3. Camada de Dados
+
+Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
+
+### Componentes:
+- **PostgreSQL:** Base de dados relacional principal do sistema.
+- **Supabase:** Usado para armazenar arquivos auxiliares, como documentos e imagens.
+
+### Fluxo:
+1. Os microserviços de negócio consultam ou atualizam os dados diretamente no PostgreSQL.
+2. Dados auxiliares, como PDFs, arquivos ou planilhas, são manipulados via Supabase.
+3. As respostas são retornadas ao usuário via o API Gateway e exibidas no app mobile.
+
+---
 
 ## 5.3 Diagramas de Sequência da UML
 
@@ -699,6 +982,31 @@ _conteúdo_
 - App exibe mensagem: "Nenhum perfil encontrado".
 
 &emsp;Este fluxo garante que apenas usuários autenticados tenham acesso aos dados analisados, promovendo segurança e precisão na identificação de perfis com inconsistências.
+
+## 5.4 Tecnologias e Linguagens
+
+### 5.4.1 Back-end
+
+&emsp;Para o back-end da aplicação, será utilizada a linguagem de programação **C#**, em conjunto com o framework **.NET**. Essa escolha se deve à robustez, segurança e excelente desempenho do .NET, além de sua forte integração com bibliotecas de machine learning através do **ML.NET**, permitindo a incorporação de modelos treinados diretamente no ambiente do servidor.
+
+### 5.4.2 Machine Learning e Tratamento de Dados
+
+&emsp;Para o tratamento de dados e preparação de modelos de aprendizado de máquina, será utilizada a linguagem **Python**. Python é amplamente adotada na área de ciência de dados devido à sua simplicidade, vasta gama de bibliotecas (como Pandas, NumPy, e Scikit-learn) e grande comunidade. O processo de retreinamento dos modelos será gerenciado com o auxílio do **MLflow**, que permite o controle de versões, monitoramento de experimentos e gerenciamento de modelos de forma eficiente.
+
+### 5.4.3 Front-end
+
+&emsp;O front-end da aplicação será desenvolvido com **React Native**, uma tecnologia que permite a criação de aplicações móveis multiplataforma com desempenho próximo ao nativo. Apesar de o projeto estar sendo desenvolvido inicialmente para Android, a escolha pelo React Native se dá justamente por sua natureza multiplataforma, o que facilitará a adaptação futura para outros sistemas operacionais, como o iOS, além de proporcionar uma interface moderna, responsiva e de fácil manutenção.
+
+### 5.4.4 Banco de Dados
+
+&emsp;O sistema utilizará o **PostgreSQL** como sistema gerenciador de banco de dados relacional. O PostgreSQL foi escolhido por ser uma solução open-source poderosa, altamente escalável, que oferece suporte a consultas complexas, integridade referencial e extensões úteis para aplicações que trabalham com dados estruturados de forma intensiva.
+
+### 5.4.5 Autenticação
+
+&emsp;Para o gerenciamento da autenticação de usuários, será utilizado o Firebase Authentication. O Firebase oferece uma solução segura, escalável e de fácil integração com aplicações móveis, reduzindo significativamente o esforço de desenvolvimento e aumentando a segurança da aplicação. Além disso, a plataforma disponibiliza uma cota gratuita com capacidade de armazenamento razoavelmente grande, o que contribui para tornar o desenvolvimento menos custoso, especialmente nas fases iniciais do projeto.
+<br><br>
+
+
 
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 _conteúdo_
@@ -795,5 +1103,6 @@ _conteúdo_
 _conteúdo_
 
 # Referências
-_conteúdo_
+
+ELMASRI, R. et al. Sistemas de banco de dados. Pearson Addison Wesley São Paulo, 2005.
 
