@@ -1003,6 +1003,13 @@ Esse guia foi fundamental para manter a uniformidade e a eficiência ao longo do
 - Tamanho mínimo de fonte: 14px
 - Ícones: Phosphor Icons – Regular
 
+
+<div align="center">
+<sub>Figura X - Guia Visual</sub><br> 
+<img src="img/guiaVisual.png" width="70%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
 ### Componentes Reutilizáveis
 
 - **Card de Cliente**: Com foto, nome, perfil, conformidade, banco, CPF e e-mail.
