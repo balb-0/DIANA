@@ -1,0 +1,82 @@
+Ativo,Classificacao,Subgrupo
+TITULOS RF PUBLICOS BRASIL,Renda Fixa,RF - Títulos Públicos Nacionais
+CDI DE UM DIA - FUTURO,Renda Fixa,RF - Derivativos de Renda Fixa
+TIME DEPOSIT,Renda Fixa,RF - Derivativos de Renda Fixa
+TITULOS RF PRIVADOS BRASIL,Renda Fixa,RF - Títulos Privados Nacionais
+DEBENTURES BRASIL,Renda Fixa,RF - Títulos Privados Nacionais
+TITULOS RF INTERNACIONAL,Renda Fixa,RF - Títulos Internacionais
+EUROBONDS,Renda Fixa,RF - Títulos Internacionais
+ADRS,Renda Variável,RV - Ações Internacionais e ADRs
+ACOES INTERNACIONAIS,Renda Variável,RV - Ações Internacionais e ADRs
+OURO 10 GRAMAS,Renda Variável,RV - Commodities (Spot)
+OURO 0.225GR,Renda Variável,RV - Commodities (Spot)
+DISPONIVEL DE OURO 250 GRAMAS,Renda Variável,RV - Commodities (Spot)
+ACOES BRASIL,Renda Variável,RV - Ações Nacionais
+OPCOES S/ ACOES BRASIL,Renda Variável,RV - Derivativos - Opções
+OPCOES S/ ACOES INTERNACIONAIS,Renda Variável,RV - Derivativos - Opções
+OPCAO FLEXIVEL ACAO BR,Renda Variável,RV - Derivativos - Opções
+OPCAO FLEXIVEL INDINT,Renda Variável,RV - Derivativos - Opções
+OPCAO FLEXIVEL INDICE,Renda Variável,RV - Derivativos - Opções
+OPCAO FLEXIVEL COM,Renda Variável,RV - Derivativos - Opções
+OPCAO S/ DISPONIVEL DE CPM,Renda Variável,RV - Derivativos - Opções
+OPCAO S/ DISPONIVEL DE IDI,Renda Variável,RV - Derivativos - Opções
+OPCAO S/ DISPONIVEL DE DOL,Renda Variável,RV - Derivativos - Opções
+OPCAO S/ FUTURO DE BGI,Renda Variável,RV - Derivativos - Opções
+OPCAO S/ FUTURO DE ISP,Renda Variável,RV - Derivativos - Opções
+OPCAO S/ FUTURO DE D14,Renda Variável,RV - Derivativos - Opções
+OPCAO S/ FUTURO DE D13,Renda Variável,RV - Derivativos - Opções
+CUPOM DE IPCA FUTURO,Renda Fixa,RF - Derivativos de Renda Fixa
+CUPOM CAMBIAL FUTURO,Renda Fixa,RF - Derivativos de Renda Fixa
+DOLAR FUTURO,Renda Variável,RV - Derivativos - Futuros de Moedas
+WDOF,Renda Variável,RV - Derivativos - Futuros de Moedas
+Microcontrato de Índice S&P500,Renda Variável,RV - Derivativos - Futuros de Índice
+MINI INDICE BOVESPA FUTURO,Renda Variável,RV - Derivativos - Futuros de Índice
+INDICE BOVESPA FUTURO,Renda Variável,RV - Derivativos - Futuros de Índice
+FUTURO DE SUZB3 FUTURO,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE RENT3 FUTURO,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE PETR4 FUTURO jan2019,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+Futuro de Bitcoin FUTURO mai20,Renda Variável,RV - Derivativos - Futuros de Commodities
+FUTURO SMALL FUTURO dez2024,Renda Variável,RV - Derivativos - Futuros de Índice
+FUTURO DE ITSA4 FUTURO,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+Futuro de EQTL3 FUTURO mar2025,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE PRIO3 FUTURO mar2025,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+Indice Euro Stoxx 50 FUTURO,Renda Variável,RV - Derivativos - Futuros de Índice
+FUTURO DE VALE3 FUTURO fev2019,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE ITUB4 FUTURO nov2022,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE BBAS3 FUTURO,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE ABEV3 FUTURO nov2022,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE BBDC4 FUTURO,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE MGLU3 FUTURO,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+Contrato Futuro de RADL3 FUTUR,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE HYPE3 FUTURO fev2019,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+FUTURO DE PSSA3 FUTURO fev2019,Renda Variável,RV - Derivativos - Futuros de Ações Individuais
+WEUF,Renda Variável,RV - Derivativos - Futuros de Índice
+ISPF,Renda Variável,RV - Derivativos - Futuros de Índice
+T10F,Renda Variável,RV - Derivativos - Futuros de Taxas de Juros
+CCMF,Renda Variável,RV - Derivativos - Futuros de Taxas de Juros
+Dólar dos Estados Unidos da Am,Renda Variável,RV - Moedas (Spot)
+Coroa Sueca por Dólar dos Esta,Renda Variável,RV - Moedas (Spot)
+Coroa Norueguesa por Dólar dos,Renda Variável,RV - Moedas (Spot)
+Franco Suíço por Dólar dos Est,Renda Variável,RV - Moedas (Spot)
+Peso Mexicano por Dólar dos Es,Renda Variável,RV - Moedas (Spot)
+Iene Japonês por Dólar dos Est,Renda Variável,RV - Moedas (Spot)
+Iuan Chinês por Dólar dos Esta,Renda Variável,RV - Moedas (Spot)
+Peso Chileno por Dólar dos Est,Renda Variável,RV - Moedas (Spot)
+Dólar Canadense por Dólar dos,Renda Variável,RV - Moedas (Spot)
+Rande da África do Sul por Dól,Renda Variável,RV - Moedas (Spot)
+OPÇÃO FLEXÍVEL DOLAR,Renda Variável,RV - Derivativos - Opções
+OPÇÃO S/ DISPONÍVEL DE CPM,Renda Variável,RV - Derivativos - Opções
+CAFE ARABICA FUTURO,Renda Variável,RV - Derivativos - Futuros de Commodities
+BOI GORDO FUTURO,Renda Variável,RV - Derivativos - Futuros de Commodities
+OPÇÃO FLEXÍVEL ÍNDICE,Renda Variável,RV - Derivativos - Opções
+OPÇÃO FLEXÍVEL COM,Renda Variável,RV - Derivativos - Opções
+OPÇÃO S/ FUTURO DE BGI,Renda Variável,RV - Derivativos - Opções
+AÇÕES INTERNACIONAIS,Renda Variável,RV - Ações Internacionais e ADRs
+OPÇÃO S/ DISPONÍVEL DE DOL,Renda Variável,RV - Derivativos - Opções
+OPÇÃO FLEXÍVEL AÇÃO BR,Renda Variável,RV - Derivativos - Opções
+OPÇÕES S/ AÇÕES INTERNACIONAIS,Renda Variável,RV - Derivativos - Opções
+OPÇÃO S/ FUTURO DE D14,Renda Variável,RV - Derivativos - Opções
+OPÇÃO S/ FUTURO DE ISP,Renda Variável,RV - Derivativos - Opções
+OPÇÃO S/ FUTURO DE D13,Renda Variável,RV - Derivativos - Opções
+OPÇÃO S/ DISPONÍVEL DE IDI,Renda Variável,RV - Derivativos - Opções
+OPÇÃO FLEXÍVEL AÇÃO INDINT,Renda Variável,RV - Derivativos - Opções
