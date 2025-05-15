@@ -925,11 +925,11 @@ Os wireframes foram elaborados no Figma utilizando boas práticas de design resp
 
 <div align="center">
 <sub>Figura 1 - Wireframe</sub><br> 
-<img src="img/wireframe.pdf"><br> 
+<img src="img/wireframe.svg"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
-[🔗 Acesse o Wireframe Navegável no Figma](#LINK-WIREFRAME)
+[🔗 Para uma melhor visualização, acesse o mockup navegável no Figma](https://www.figma.com/design/RK6GBR1YMOYdaURL9BT2EA/Wireframe-Luan-Melancia?node-id=0-1&t=ZYm11fcshftQCr0X-1)
 
 ---
 
@@ -965,11 +965,11 @@ Todos os elementos de estrutura e navegação definidos nos wireframes foram man
 
 <div align="center">
 <sub>Figura 2 - Mockup</sub><br> 
-<img src="img/mockup.pdf"><br> 
+<img src="img/mockup.svg"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
-[🔗 Acesse o Mockup Navegável no Figma](#LINK-MOCKUP)
+[🔗 Para uma melhor visualização, acesse o mockup navegável no Figma](https://www.figma.com/design/RK6GBR1YMOYdaURL9BT2EA/Wireframe-Luan-Melancia?node-id=1-50&t=ZYm11fcshftQCr0X-1)
 
 ---
 
