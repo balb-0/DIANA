@@ -880,16 +880,135 @@ _conteúdo_
 _conteúdo_
 
 # 7. Projeto Visual da Solução
-_conteúdo_
+
+Antes da implementação de qualquer solução digital, é fundamental estruturar visualmente as funcionalidades e a experiência do usuário. Por isso, o desenvolvimento do **wireframe** e do **mockup** representa uma etapa estratégica no processo de design de interfaces.
+
+O **wireframe** atua como o esqueleto do aplicativo, permitindo mapear e testar a **estrutura, hierarquia da informação e fluxos de navegação**, sem distrações com elementos visuais. No nosso caso, o foco *Mobile First* orientou todas as decisões para garantir usabilidade, clareza e agilidade na experiência do assessor em dispositivos móveis — onde o espaço é limitado e a interação depende de toques e gestos.
+
+Já o **mockup** transforma essa estrutura bruta em uma representação visual mais refinada e próxima do produto final. Ele incorpora **cores, ícones, fontes, espaçamentos e feedbacks visuais**, além de simular interações e transições, ajudando a validar a estética e a identidade visual com todos os stakeholders do projeto.
+
+Essa jornada do wireframe ao mockup possibilita:
+- Detectar e corrigir problemas de usabilidade antes da codificação;
+- Alinhar expectativas com o parceiro (BTG Pactual);
+- Comunicar com clareza a proposta da solução para desenvolvedores, designers e usuários finais.
+
+
+
+O projeto visual da solução foi desenvolvido com foco na abordagem *Mobile First*, garantindo acessibilidade e usabilidade otimizadas para dispositivos móveis. O aplicativo tem como objetivo auxiliar assessores do BTG Pactual na verificação da conformidade entre o perfil de investidor e a alocação de ativos dos clientes, conforme a Resolução CVM 175.
+
+---
 
 ## 7.1 Desenvolvimento de Wireframes
-_conteúdo_
+
+Os wireframes foram elaborados no Figma utilizando boas práticas de design responsivo, como:
+
+- **Auto Layout**, **Componentes reutilizáveis** e **Propriedades** para escalabilidade.
+- **Espaçamentos múltiplos de 4px** e **grid de 8 colunas com 8px de *gutter*** para organização visual.
+- Pensamento **Mobile First**, priorizando a navegação fluida e rápida para o assessor.
+- Sumário identificando os componentes principais de cada tela, conforme o anexo.
+
+### Justificativa das Escolhas de Design
+
+- **Login/Cadastro**: Organização simples e direta, com foco em agilidade no acesso.
+- **Página Home**: Exibe dados principais em destaque (carteiras conformes e não conformes) com **navegação rápida por categoria**, minimizando toques.
+- **Menus** e **botões** otimizados para uso com o polegar e legibilidade em telas pequenas.
+- **Cards informativos** com dados essenciais visíveis antes do clique, antecipando ações do usuário.
+- **Gestos e transições** foram considerados para navegação entre as telas, como `swipe` lateral para voltar.
+
+### Técnicas Mobile Avançadas
+
+- Utilização de **microinterações** visuais nas ações de navegação e feedbacks (simulados via *prototype*).
+- Design baseado em **tamanho de toque ideal** (mínimo 48x48px).
+- Layout adaptável para diferentes resoluções, mantendo consistência entre dispositivos.
+
+### Visualização
+
+<div align="center">
+<sub>Figura 1 - Wireframe</sub><br> 
+<img src="img/wireframe.pdf"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+[🔗 Acesse o Wireframe Navegável no Figma](#LINK-WIREFRAME)
+
+---
 
 ## 7.2 Desenvolvimento de Mockups
-_conteúdo_
+
+Os mockups foram desenvolvidos com base no wireframe aprovado, refletindo a identidade visual do parceiro BTG Pactual. Utilizamos:
+
+- **Cores institucionais**:  
+  - Azul escuro `#001E62` (primária);  
+  - Azul claro `#AEC3F5` (secundária);  
+  - Azul muito claro `#C2D5FF` (background);  
+  - Vermelho rosado `#FF7CA1` (destaques, em alusão ao nome do grupo: *Watermelon*).
+
+- **Ícones Phosphor (peso regular)**: Uniformes e leves, garantindo consistência visual.
+- Tipografia legível e hierarquia clara de informações.
+- Proporções respeitadas segundo os grids e espaçamentos definidos no wireframe.
+
+### Navegabilidade
+
+O mockup possui fluxo interativo completo com transições suaves e simulação realista da navegação no app, permitindo que o usuário explore:
+
+- Login, cadastro e recuperação de senha;
+- Home com KPIs principais;
+- Visualização por categoria de perfil de investidor;
+- Detalhamento das carteiras e dos clientes;
+- Perfil do assessor.
+
+### Consistência com o Wireframe
+
+Todos os elementos de estrutura e navegação definidos nos wireframes foram mantidos. A navegação é fluida e intuitiva, com feedback visual em todas as ações simuladas.
+
+### Visualização
+
+<div align="center">
+<sub>Figura 2 - Mockup</sub><br> 
+<img src="img/mockup.pdf"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+[🔗 Acesse o Mockup Navegável no Figma](#LINK-MOCKUP)
+
+---
 
 ## 7.3 Guia Visual
-_conteúdo_
+
+#
+O Guia Visual foi elaborado de forma colaborativa durante o processo de desenvolvimento dos mockups. A intenção foi garantir **consistência visual, identidade clara e fácil manutenção do design** ao longo das iterações.
+
+Nosso ponto de partida foi a paleta de cores institucional do parceiro BTG Pactual, o que nos permitiu alinhar o aplicativo à identidade da marca. Com isso, definimos um esquema de cores que equilibra seriedade e leveza visual. Adicionamos também uma cor de destaque — o vermelho rosado — como uma homenagem à identidade do nosso grupo "Watermelon", trazendo um toque único ao layout.
+
+Além disso, definimos um sistema de componentes reutilizáveis no Figma, adotando padrões como:
+- **Espaçamento múltiplo de 4px** e **grid de 8 colunas**;
+- **Ícones com peso regular do Phosphor Icons**, garantindo harmonia visual;
+- Tipografia clara e responsiva, assegurando legibilidade em telas pequenas.
+
+Esse guia foi fundamental para manter a uniformidade e a eficiência ao longo do projeto, facilitando tanto o design quanto a futura implementação técnica.
+
+
+### Paleta de Cores
+
+| Cor               | Código Hex   | Aplicação                         |
+|------------------|--------------|-----------------------------------|
+| Azul escuro      | `#001E62`    | Cor primária (destaques, header) |
+| Azul claro       | `#AEC3F5`    | Secundária (botões, cards)       |
+| Azul muito claro | `#C2D5FF`    | Fundo geral                      |
+| Vermelho rosado  | `#FF7CA1`    | Destaques e homenagens visuais   |
+
+### Tipografia e Ícones
+
+- Fonte: Inter (padrão do Figma)
+- Tamanho mínimo de fonte: 14px
+- Ícones: Phosphor Icons – Regular
+
+### Componentes Reutilizáveis
+
+- **Card de Cliente**: Com foto, nome, perfil, conformidade, banco, CPF e e-mail.
+- **Bloco de Ativos**: Listagem detalhada com tipo de ativo, valor e classificação.
+- **Componentes de Navegação**: Menu inferior e botões principais otimizados para polegar.
+
 
 # 8. Desenvolvimento do Projeto
 _conteúdo_
