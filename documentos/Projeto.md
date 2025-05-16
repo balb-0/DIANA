@@ -148,15 +148,15 @@ _conteúdo_
 
 ## 2.1 Contexto da Indústria do Parceiro
 
-&nbsp;&nbsp; O setor de bancos de investimento e gestão de ativos no Brasil é uma das áreas mais dinâmicas e estratégicas do sistema financeiro, movimentando diariamente centenas de bilhões de reais em operações de subscrição de títulos, fusões e aquisições, ofertas públicas e gestão de carteiras. Atualmente, mais de 2,5 milhões de investidores pessoa física mantêm carteiras ativas em plataformas de investimento no país, somados a grandes investidores institucionais, como fundos de pensão e family offices, que canalizam recursos para o mercado de capitais e private equity. A indústria conta com cerca de 8 mil fundos registrados na Comissão de Valores Mobiliários (CVM), cujo patrimônio líquido ultrapassa os R$ 3 trilhões, sendo que fundos de ações e multimercados representam mais de 40% desse total, refletindo a busca constante por diversificação e por retornos superiores aos da renda fixa, especialmente em um cenário de juros ainda elevados.
+&emsp;O setor de bancos de investimento e gestão de ativos no Brasil é uma das áreas mais dinâmicas e estratégicas do sistema financeiro, movimentando diariamente centenas de bilhões de reais em operações de subscrição de títulos, fusões e aquisições, ofertas públicas e gestão de carteiras. Atualmente, mais de 2,5 milhões de investidores pessoa física mantêm carteiras ativas em plataformas de investimento no país, somados a grandes investidores institucionais, como fundos de pensão e family offices, que canalizam recursos para o mercado de capitais e private equity. A indústria conta com cerca de 8 mil fundos registrados na Comissão de Valores Mobiliários (CVM), cujo patrimônio líquido ultrapassa os R$ 3 trilhões, sendo que fundos de ações e multimercados representam mais de 40% desse total, refletindo a busca constante por diversificação e por retornos superiores aos da renda fixa, especialmente em um cenário de juros ainda elevados.
 
-&nbsp;&nbsp; O ambiente competitivo e regulatório em que esses bancos operam é complexo e desafiador. A regulação da CVM, com normativas recentes como a Resolução 175, enfatiza a necessidade de transparência, rigor e adequação dos produtos financeiros aos perfis de risco dos investidores, reforçando a importância da governança e do compliance. Paralelamente, a crescente digitalização do setor vem transformando a forma como os produtos são recomendados e distribuídos, com fintechs e plataformas digitais, como a XP, ganhando espaço ao oferecer soluções baseadas em inteligência artificial e machine learning para recomendações personalizadas e ajuste dinâmico das carteiras. Essa inovação tecnológica, por sua vez, pressiona os bancos tradicionais a investirem em sistemas de recomendação cada vez mais sofisticados, capazes de analisar em tempo real o comportamento e o perfil dos investidores, evitando desalinhamentos que podem levar à perda de clientes e a riscos regulatórios.
+&emsp;O ambiente competitivo e regulatório em que esses bancos operam é complexo e desafiador. A regulação da CVM, com normativas recentes como a Resolução 175, enfatiza a necessidade de transparência, rigor e adequação dos produtos financeiros aos perfis de risco dos investidores, reforçando a importância da governança e do compliance. Paralelamente, a crescente digitalização do setor vem transformando a forma como os produtos são recomendados e distribuídos, com fintechs e plataformas digitais, como a XP, ganhando espaço ao oferecer soluções baseadas em inteligência artificial e machine learning para recomendações personalizadas e ajuste dinâmico das carteiras. Essa inovação tecnológica, por sua vez, pressiona os bancos tradicionais a investirem em sistemas de recomendação cada vez mais sofisticados, capazes de analisar em tempo real o comportamento e o perfil dos investidores, evitando desalinhamentos que podem levar à perda de clientes e a riscos regulatórios.
 
-&nbsp;&nbsp; Nesse cenário, o BTG Pactual se destaca como o maior banco de investimentos independente da América Latina, consolidando sua posição por meio de uma atuação focada em operações complexas, como subscrição de dívidas corporativas, fusões e aquisições e gestão de recursos de alta renda. Embora concorra diretamente com grandes bancos como Itaú BBA, Bradesco BBI e Santander, além da crescente concorrência de fintechs, o BTG diferencia-se pelo acesso a mercados globais e pela capacidade de estruturar produtos exclusivos e sofisticados, alinhados com o perfil dos investidores mais exigentes. Sua posição reforça a importância de modelos de recomendação eficientes, que integrem dados robustos e permitam ajustar carteiras conforme mudanças de mercado e do comportamento dos clientes, mantendo-os alinhados ao seu perfil de risco.
+&emsp;Nesse cenário, o BTG Pactual se destaca como o maior banco de investimentos independente da América Latina, consolidando sua posição por meio de uma atuação focada em operações complexas, como subscrição de dívidas corporativas, fusões e aquisições e gestão de recursos de alta renda. Embora concorra diretamente com grandes bancos como Itaú BBA, Bradesco BBI e Santander, além da crescente concorrência de fintechs, o BTG diferencia-se pelo acesso a mercados globais e pela capacidade de estruturar produtos exclusivos e sofisticados, alinhados com o perfil dos investidores mais exigentes. Sua posição reforça a importância de modelos de recomendação eficientes, que integrem dados robustos e permitam ajustar carteiras conforme mudanças de mercado e do comportamento dos clientes, mantendo-os alinhados ao seu perfil de risco.
 
-&nbsp;&nbsp; O setor enfrenta desafios relevantes, como o aumento dos ataques cibernéticos, que cresceram cerca de 30% entre 2022 e 2023, o que demanda investimentos contínuos em segurança da informação para proteger dados sensíveis e garantir a integridade dos sistemas de recomendação. Além disso, a educação financeira dos investidores ainda é uma lacuna importante, considerando que um grande número de investidores iniciantes não compreende completamente os riscos envolvidos em produtos mais complexos, o que reforça a necessidade de processos de recomendação transparentes e responsáveis. Juntas, essas exigências moldam um mercado que precisa equilibrar inovação tecnológica, cumprimento regulatório e atendimento personalizado, onde o papel dos assessores financeiros continua sendo essencial para guiar o investidor em sua jornada.
+&emsp; O setor enfrenta desafios relevantes, como o aumento dos ataques cibernéticos, que cresceram cerca de 30% entre 2022 e 2023, o que demanda investimentos contínuos em segurança da informação para proteger dados sensíveis e garantir a integridade dos sistemas de recomendação. Além disso, a educação financeira dos investidores ainda é uma lacuna importante, considerando que um grande número de investidores iniciantes não compreende completamente os riscos envolvidos em produtos mais complexos, o que reforça a necessidade de processos de recomendação transparentes e responsáveis. Juntas, essas exigências moldam um mercado que precisa equilibrar inovação tecnológica, cumprimento regulatório e atendimento personalizado, onde o papel dos assessores financeiros continua sendo essencial para guiar o investidor em sua jornada.
 
-&nbsp;&nbsp; Assim, o sucesso na indústria brasileira de bancos de investimento e gestão de ativos depende da capacidade dos players em combinar tecnologia avançada, profundo conhecimento do perfil do investidor brasileiro e sólida governança. Essa combinação é fundamental para garantir a recomendação precisa de produtos, a fidelização dos clientes e a mitigação de riscos no ambiente regulatório e competitivo. É nesse contexto que o BTG Pactual demonstra sua força, ao integrar inovação tecnológica com experiência de mercado para manter sua liderança em um segmento que evolui rapidamente e exige constante adaptação.
+&emsp;Assim, o sucesso na indústria brasileira de bancos de investimento e gestão de ativos depende da capacidade dos players em combinar tecnologia avançada, profundo conhecimento do perfil do investidor brasileiro e sólida governança. Essa combinação é fundamental para garantir a recomendação precisa de produtos, a fidelização dos clientes e a mitigação de riscos no ambiente regulatório e competitivo. É nesse contexto que o BTG Pactual demonstra sua força, ao integrar inovação tecnológica com experiência de mercado para manter sua liderança em um segmento que evolui rapidamente e exige constante adaptação.
 
 ## 2.2 Problema
 
@@ -172,11 +172,11 @@ _conteúdo_
 
 ## 2.3 Visão do Projeto e do Produto
 
-&nbsp;&nbsp;&nbsp;&nbsp;O projeto desenvolvido para o time do BTG Pactual consiste em um aplicativo direcionado para gestores e assessores que será capaz de analisar os perfis dos clientes e compará-los com suas carteiras de investimento atuais. Com isso, será possível identificar eventuais inconsistências entre o perfil do investidor e os ativos que ele possui, permitindo uma sugestão de adequação quando necessário. Em decorrência disso, esse projeto gera valor tanto para os assessores, que terão um controle mais preciso sobre a carteira de seus clientes e poderão orientá-los de forma mais eficiente, quanto para o investidor final, que terá uma carteira mais alinhada ao seu perfil, promovendo uma melhor gestão de risco e maior potencial de retorno de acordo com suas preferências e tolerâncias.
+&emsp;O projeto desenvolvido para o time do BTG Pactual consiste em um aplicativo direcionado para gestores e assessores que será capaz de analisar os perfis dos clientes e compará-los com suas carteiras de investimento atuais. Com isso, será possível identificar eventuais inconsistências entre o perfil do investidor e os ativos que ele possui, permitindo uma sugestão de adequação quando necessário. Em decorrência disso, esse projeto gera valor tanto para os assessores, que terão um controle mais preciso sobre a carteira de seus clientes e poderão orientá-los de forma mais eficiente, quanto para o investidor final, que terá uma carteira mais alinhada ao seu perfil, promovendo uma melhor gestão de risco e maior potencial de retorno de acordo com suas preferências e tolerâncias.
 
-&nbsp;&nbsp;&nbsp;&nbsp;O produto tem como principal objetivo analisar o perfil e a carteira de investimentos dos clientes. Caso sejam encontradas incompatibilidades, o sistema irá sugerir ajustes para garantir que os ativos estejam coerentes com o perfil do investidor.
+&emsp;O produto tem como principal objetivo analisar o perfil e a carteira de investimentos dos clientes. Caso sejam encontradas incompatibilidades, o sistema irá sugerir ajustes para garantir que os ativos estejam coerentes com o perfil do investidor.
 
-&nbsp;&nbsp;&nbsp;&nbsp;A seguir, um template com informações sobre o que o nosso sistema é, o que não é, o que faz e o que não faz.
+&emsp;A seguir, um template com informações sobre o que o nosso sistema é, o que não é, o que faz e o que não faz.
 
 <br>
 <div align="center">
@@ -192,28 +192,102 @@ _conteúdo_
 
 ## 2.4 Personas e Jornada do Usuário
 
-A definição de personas e a construção das respectivas jornadas de usuário são etapas fundamentais no processo de design centrado no ser humano. Elas ajudam a guiar as decisões de desenvolvimento, garantindo que o produto atenda de forma eficaz às reais necessidades dos usuários finais.
+&emsp;A definição de personas e a construção das respectivas jornadas de usuário são etapas fundamentais no processo de design centrado no ser humano. Elas ajudam a guiar as decisões de desenvolvimento, garantindo que o produto atenda de forma eficaz às reais necessidades dos usuários finais.
+
+&emsp;Por outro lado, a jornada é  uma ferramenta  para visualizar, de forma estruturada, o caminho percorrido por uma persona durante sua rotina com (ou sem) a aplicação em desenvolvimento. Ela tem como objetivo revelar pontos críticos de interação do usuário com o sistema. 
+
+&emsp;Para garantir a compreensão completa da jornada aplicada, uma breve descrição das seções pode se fazer importante.
+
+<div align="center">
+<sub>Figura x - Jornada do usuário - Guia</sub>
+  <img src="../documentos/img/jornada-guia.svg" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+**Fases + Ações:** representam o fluxo da rotina do usuário, indicando o que ele faz, como age e com que frequência. São ações reais que ajudam a localizar o papel da aplicação no cotidiano do usuário.
+
+**Cenário:** descreve o contexto vivido pela persona em determinado momento da sua jornada. Ele fornece o pano de fundo que influencia suas decisões.
+
+**Pensamentos:** expressam o que passa pela mente da persona em cada etapa: dúvidas, receios, certezas e prioridades.
+
+**Expectativas:** indicam o impacto desejado da solução digital na rotina da persona, ou seja, quais mudanças pretendemos gerar com o sistema e como esperamos melhorar sua experiência de vida ou trabalho.
+
+**Responsabilidades:** são pontos que destacam aquilo que nós, enquanto equipe de desenvolvimento, devemos garantir para entregar uma solução funcional e relevante.
+
+**Oportunidades:** sintetizam as chances reais de melhorar a vida do usuário com base no cenário apresentado. Estão diretamente ligadas às ações e fases mapeadas e nos ajudam a entender onde e como podemos intervir para gerar valor.
 
 ### Persona Assessor
 
+&emsp;Para representar o papel do assessor de investimentos neste projeto, foi desenvolvida a persona Fábio Betège, que assume o papel central na experiência com o sistema. Essa persona foi definida com base em padrões comportamentais reais e necessidades observadas no cotidiano desses profissionais.
+
+&emsp;O assessor é considerado o usuário principal da aplicação, visto que será diretamente impactado pelas funcionalidades, fluxos e pela usabilidade da plataforma. O objetivo ao mapear essa persona é garantir que o sistema entregue valor real e mensurável para o assessor, otimizando sua rotina profissiona.
+
+<div align="center">
+<sub>Figura x - Jornada do usuário - Guia</sub>
 <img src="../documentos/img/persona-assessor.svg" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+&emsp;A análise da persona, realizada em conjunto com o parceiro de negócios, revelou comportamentos recorrentes — como a realização de reuniões bimestrais com os clientes. Esse tipo de informação orientou também a discussão sobre funcionalidades que facilitem o planejamento e execução dessas interações, considerando inclusive a adaptação da comunicação conforme a faixa etária dos investidores atendidos.
 
 ### Persona Cliente
 
+&emsp;Foi desenvolvida a persona secundária Mariana Rocha, que representa o cliente final atendido pelo assessor Fábio. Embora não utilize diretamente a aplicação, Mariana permite analisar os impactos indiretos da plataforma sobre a experiência do cliente, o que contribui para refinar ainda mais as funcionalidades voltadas ao trabalho do assessor.
+
+<div align="center">
+<sub>Figura x - Jornada do usuário - Guia</sub>
 <img src="../documentos/img/persona-cliente.svg" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
 
-### Jornada de usuário do Assessor
+&emsp;Ao estudar essa persona, foi possível ampliar a compreensão sobre o relacionamento entre cliente e assessor, percebendo que ele ocorre de forma contínua por meio de canais informais como WhatsApp e ligações telefônicas. 
 
-<img src="../documentos/img/antes-01.svg" width="100%">
-<img src="../documentos/img/depois01.svg" width="100%">
+&emsp;Durante o processo de construção da Mariana, também ficou evidente a dificuldade de representar um perfil único de cliente. O público atendido por assessores é extremamente diverso em aspectos como idade, grau de instrução, familiaridade com finanças e objetivos de investimento. Assim, Mariana foi concebida como um recorte representativo entre muitos possíveis, e suas características — como sua formação acadêmica ou nível de conhecimento em economia — não devem ser tomadas como generalizáveis a todos os clientes.
 
+### Jornada de Usuário do Assessor
 
-### Jornada de usuário da Cliente
+&emsp;Antes da existência da aplicação, Fábio enfrenta um processo majoritariamente manual e descentralizado no relacionamento com seus clientes, dificultando o acompanhamento do perfil de seus clientes.
 
-<img src="../documentos/img/antes02.svg" width="100%">
-<img src="../documentos/img/depois02.svg" width="100%">
+<div align="center">
+<sub>Figura x - Jornada do Assessor - Antes da Solução</sub>
+<img src="../documentos/img/jornada-antes-assessor.svg" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
 
+&emsp;Com a implementação da plataforma, o acompanhamento do assessor em relação aos seus clientes é significativamente agilizada, por meio de ferramentas inteligentes que emitem alertas sempre que o perfil de investimento do cliente se desvia do esperado.
 
+<div align="center">
+<sub>Figura x - Jornada do Assessor - Depois da Solução</sub>
+<img src="../documentos/img/jornada-depois-assessor.svg" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+&emsp;Com isso, entendemos que a missão do nosso software não é reinventar a rotina do assessor, mas torná-la mais ágil, eficiente e inteligente. O objetivo da solução é reduzir o tempo gasto em tarefas operacionais, como o monitoramento de carteira e o preparo de reuniões, e aumentar o foco em interações estratégicas com os clientes.
+
+### Jornada de Usuário do Cliente
+
+&emsp;Antes da implementação da plataforma, Mariana contava com um acompanhamento de qualidade por parte de seu assessor. No entanto, a grande quantidade de clientes sob responsabilidade do profissional fazia com que houvesse um intervalo considerável entre a percepção de uma mudança no comportamento de Mariana e a tomada de ação para corrigi-la.
+
+&emsp;Mesmo com boas intenções e processos funcionais, esse _gap_ de tempo abria margem para que Mariana, sem perceber, se desviasse do seu perfil de investidora original, o que poderia comprometer sua estratégia financeira de longo prazo. 
+
+<div align="center">
+<sub>Figura x - Jornada do Cliente - Depois da Solução</sub>
+<img src="../documentos/img/jornada-antes-cliente.svg" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+&emsp;Com a aplicação em funcionamento, Mariana passa a contar com um acompanhamento mais proativo e inteligente. A plataforma oferece recursos que alertam o assessor quando há mudanças no comportamento ou perfil da cliente, permitindo que ele intervenha com agilidade.
+
+&emsp;Isso fortalece o vínculo entre assessor e cliente e garante que decisões mais críticas possam ser tomadas rapidamente — reduzindo os riscos e reforçando a sensação de segurança da Mariana diante de variações no mercado.
+
+<div align="center">
+<sub>Figura x - Jornada do Cliente - Depois da Solução</sub>
+<img src="../documentos/img/jornada-depois-cliente.svg" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+&emsp;A principal mudança está na redução do tempo de resposta entre o assessor e sua cliente. A plataforma atua como uma ponte que fecha esse _gap_, tornando a assessoria mais eficiente e personalizada.
+Para o parceiro de negócios, o valor gerado está na capacidade de escalar um atendimento ágil e de qualidade, mesmo com uma grande carteira de clientes. Para o cliente final, como Mariana, isso se traduz em mais segurança, confiança e aderência ao planejamento financeiro traçado.
 
 ## 2.5 Modelagem do Fluxo de Negócio
 
@@ -853,7 +927,7 @@ Como um assessor de investimento, quero que o sistema calcule automaticamente o 
 
 <div align="center">
 <sub>Figura x - Diagrama de Casos de Uso</sub><br>
-<img src="img/assessor.jpg"><br>
+<img src="img/Assessor.jpg"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
