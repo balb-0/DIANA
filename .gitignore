@@ -1,3 +1,4 @@
+
 node_modules/
 # Python
 __pycache__/
@@ -17,7 +18,6 @@ ENV/
 .tox/
 
 # Jupyter Notebook
-*.ipynb
 !*.clean.ipynb  # caso você queira deixar alguma versão limpa
 
 # Node.js
@@ -32,10 +32,10 @@ pnpm-debug.log*
 .vscode/
 .history/
 *.code-workspace
+.vs/
 
 # Dataset e resultados
 dataset/
-*.csv
 *.tsv
 *.xls
 *.xlsx
