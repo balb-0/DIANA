@@ -616,7 +616,7 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 # 4. Modelagem de Dados
 
 ## 4.1 Especificação da Base de Dados para Modelo de Recomendação
-&emsp;A construção da base de dados para o modelo de recomendação exigiu um processo limpeza, padronização e enriquecimento dos dados originais recebidos. O arquivo CSV inicial chegou sem títulos nas colunas, o que demandou a adição manual dos nomes para possibilitar a correta leitura e manipulação.
+&emsp;A construção da base de dados para o modelo de recomendação exigiu um processo de limpeza, padronização e enriquecimento dos dados originais recebidos. O arquivo CSV inicial chegou sem títulos nas colunas, o que demandou a adição manual dos nomes para possibilitar a correta leitura e manipulação.
 
 &emsp;Durante a análise, foram identificados alguns registros duplicados (embora não em grande quantidade), que precisaram ser removidos para garantir a integridade da base. Também foi necessário corrigir nomes de ativos que continham vírgulas (em dois casos), pois isso causava erros na separação dos campos durante a importação. Esses nomes foram ajustados manualmente para garantir que cada ativo ocupasse apenas uma coluna.
 
