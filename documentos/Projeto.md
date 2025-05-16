@@ -51,10 +51,11 @@
   - [4.3 Modelo Lógico de Dados](#43-modelo-lógico-de-dados)
   - [4.4 Modelo Físico de Dados](#44-modelo-físico-de-dados)
 - [5. Solução Técnica (Design)](#5-solução-técnica-design)
-  - [5.1 Diagrama de Classes](#51-diagrama-de-classes)
-  - [5.2 Diagrama de Componentes da UML](#52-diagrama-de-componentes-da-uml)
-  - [5.3 Diagramas de Sequência da UML](#53-diagramas-de-sequência-da-uml)
-  - [5.4 Tecnologias e Linguagens](#54-tecnologias-e-linguagens)
+  - [5.1 Diagrama de Classes](#51-diagrama-de-casos-de-uso)
+  - [5.2 Diagrama de Componentes da UML](#52-diagrama-de-classes)
+  - [5.3 Diagrama de Componentes da UML](#53)
+  - [5.4 Diagramas de Sequência da UML](#54-diagramas-de-sequência-da-uml)
+  - [5.5 Tecnologias e Linguagens](#55-tecnologias-e-linguagens)
 - [6. Mapeamento Técnico de Infraestrutura e Implantação](#6-mapeamento-técnico-de-infraestrutura-e-implantação)
   - [6.1 Diagrama de Implantação da UML](#61-diagrama-de-implantação-da-uml)
   - [6.2 Justificativa das Escolhas de Implantação](#62-justificativa-das-escolhas-de-implantação)
@@ -755,7 +756,6 @@ _conteúdo_
 **Nota:** Insira uma explicação e direcionamento para o readme.md da pasta database.
 
 # 5. Solução Técnica (Design)
-_conteúdo_
 
 ## 5.1 Diagrama de Casos de Uso
 
@@ -1047,7 +1047,7 @@ Além disso, os relacionamentos entre as classes refletem corretamente a multipl
 Esse diagrama fornece uma base conceitual robusta para o desenvolvimento do sistema, servindo como referência para a implementação de funcionalidades, a definição das regras de negócio e a integração entre os módulos do projeto.
 
 
-## 5.2 Diagrama de Componentes da UML
+## 5.3 Diagrama de Componentes da UML
 
   &emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
 
@@ -1065,7 +1065,7 @@ O sistema foi desenvolvido com base em uma arquitetura em camadas, separando res
 
 ---
 
-## 5.2.1. Camada de Apresentação (Frontend Mobile)
+## 5.3.1. Camada de Apresentação (Frontend Mobile)
 
 A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
 
@@ -1079,7 +1079,7 @@ A Camada de Apresentação é representada pelo aplicativo desenvolvido em React
 
 ---
 
-## 5.2.2. Camada de Negócio (Backend)
+## 5.3.2. Camada de Negócio (Backend)
 
 A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
 
@@ -1102,7 +1102,7 @@ A Camada de Negócio centraliza a lógica de processamento do sistema, autentica
 
 ---
 
-## 5.2.3. Camada de Dados
+## 5.3.3. Camada de Dados
 
 Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
 
@@ -1117,7 +1117,7 @@ Esta camada é responsável pelo armazenamento persistente de dados do sistema, 
 
 ---
 
-## 5.3 Diagramas de Sequência da UML
+## 5.4 Diagramas de Sequência da UML
 
 &emsp; Este fluxo descreve o processo de autenticação e análise de perfis com inconsistências no sistema, incluindo o uso de filtros para refinar a consulta. O sistema é acessado por um assessor via aplicativo mobile, e os dados são processados por um serviço de backend que utiliza um banco PostgreSQL.
 
@@ -1171,25 +1171,25 @@ Esta camada é responsável pelo armazenamento persistente de dados do sistema, 
 
 &emsp;Este fluxo garante que apenas usuários autenticados tenham acesso aos dados analisados, promovendo segurança e precisão na identificação de perfis com inconsistências.
 
-## 5.4 Tecnologias e Linguagens
+## 5.5 Tecnologias e Linguagens
 
-### 5.4.1 Back-end
+### 5.5.1 Back-end
 
 &emsp;Para o back-end da aplicação, será utilizada a linguagem de programação **C#**, em conjunto com o framework **.NET**. Essa escolha se deve à robustez, segurança e excelente desempenho do .NET, além de sua forte integração com bibliotecas de machine learning através do **ML.NET**, permitindo a incorporação de modelos treinados diretamente no ambiente do servidor.
 
-### 5.4.2 Machine Learning e Tratamento de Dados
+### 5.5.2 Machine Learning e Tratamento de Dados
 
 &emsp;Para o tratamento de dados e preparação de modelos de aprendizado de máquina, será utilizada a linguagem **Python**. Python é amplamente adotada na área de ciência de dados devido à sua simplicidade, vasta gama de bibliotecas (como Pandas, NumPy, e Scikit-learn) e grande comunidade. O processo de retreinamento dos modelos será gerenciado com o auxílio do **MLflow**, que permite o controle de versões, monitoramento de experimentos e gerenciamento de modelos de forma eficiente.
 
-### 5.4.3 Front-end
+### 5.5.3 Front-end
 
 &emsp;O front-end da aplicação será desenvolvido com **React Native**, uma tecnologia que permite a criação de aplicações móveis multiplataforma com desempenho próximo ao nativo. Apesar de o projeto estar sendo desenvolvido inicialmente para Android, a escolha pelo React Native se dá justamente por sua natureza multiplataforma, o que facilitará a adaptação futura para outros sistemas operacionais, como o iOS, além de proporcionar uma interface moderna, responsiva e de fácil manutenção.
 
-### 5.4.4 Banco de Dados
+### 5.5.4 Banco de Dados
 
 &emsp;O sistema utilizará o **PostgreSQL** como sistema gerenciador de banco de dados relacional. O PostgreSQL foi escolhido por ser uma solução open-source poderosa, altamente escalável, que oferece suporte a consultas complexas, integridade referencial e extensões úteis para aplicações que trabalham com dados estruturados de forma intensiva.
 
-### 5.4.5 Autenticação
+### 5.5.5 Autenticação
 
 &emsp;Para o gerenciamento da autenticação de usuários, será utilizado o Firebase Authentication. O Firebase oferece uma solução segura, escalável e de fácil integração com aplicações móveis, reduzindo significativamente o esforço de desenvolvimento e aumentando a segurança da aplicação. Além disso, a plataforma disponibiliza uma cota gratuita com capacidade de armazenamento razoavelmente grande, o que contribui para tornar o desenvolvimento menos custoso, especialmente nas fases iniciais do projeto.
 <br><br>
