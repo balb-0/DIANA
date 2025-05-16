@@ -616,8 +616,17 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 # 4. Modelagem de Dados
 
 ## 4.1 Especificação da Base de Dados para Modelo de Recomendação
-_conteúdo_
-Obs.: Insira aqui informações sobre a construção do artefato da Sprint 1. 
+&emsp;A construção da base de dados para o modelo de recomendação exigiu um processo de limpeza, padronização e enriquecimento dos dados originais recebidos. O arquivo CSV inicial chegou sem títulos nas colunas, o que demandou a adição manual dos nomes para possibilitar a correta leitura e manipulação.
+
+&emsp;Durante a análise, foram identificados alguns registros duplicados (embora não em grande quantidade), que precisaram ser removidos para garantir a integridade da base. Também foi necessário corrigir nomes de ativos que continham vírgulas (em dois casos), pois isso causava erros na separação dos campos durante a importação. Esses nomes foram ajustados manualmente para garantir que cada ativo ocupasse apenas uma coluna.
+
+&emsp;Além disso, tanto os nomes dos ativos quanto as classificações apresentavam excesso de espaços em branco, dificultando o agrupamento e a análise. Por isso, foi aplicado o método `strip()` para padronizar esses campos, removendo espaços extras no início e fim das strings.
+
+&emsp;Outro ponto importante foi a classificação dos ativos, que se mostrou pouco representativa e, em alguns casos, inconclusiva. Foi necessário agrupar manualmente os ativos em 15 subgrupos distintos, tornando a base mais útil para o modelo de recomendação. A separação entre ativos de renda fixa e renda variável também foi feita de forma dedutiva, com base no conhecimento prévio e análise dos nomes, já que a informação não estava explicitamente disponível.
+
+&emsp;Apesar dessas limitações e da necessidade de ajustes, a base resultante apresentou volume e diversidade suficientes para o desenvolvimento e treinamento de um modelo de recomendação funcional, capaz de apoiar o sistema proposto.
+
+&emsp;Obs.: Para detalhes sobre os scripts de preparação, consulte os notebooks e arquivos CSV na pasta `src/datasets/`.
 
 ## 4.2 Modelo Conceitual de Dados
 
