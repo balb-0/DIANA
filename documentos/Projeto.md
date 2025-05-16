@@ -927,7 +927,7 @@ Como um assessor de investimento, quero que o sistema calcule automaticamente o 
 
 <div align="center">
 <sub>Figura x - Diagrama de Casos de Uso</sub><br>
-<img src="img/assessor.jpg"><br>
+<img src="img/Assessor.jpg"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
