@@ -43,18 +43,17 @@
   - [3.1 Requisitos Funcionais (RFs)](#31-requisitos-funcionais-rfs)
   - [3.2 Requisitos Não Funcionais (RNFs)](#32-requisitos-não-funcionais-rnfs)
   - [3.3 Correlação RFs e RNFs](#33-correlação-rfs-e-rnfs)
-  - [3.4 Casos de Uso](#34-casos-de-uso)
-  - [3.5 Casos de Uso x Requisitos Funcionais](#35-casos-de-uso-x-requisitos-funcionais)
 - [4. Modelagem de Dados](#4-modelagem-de-dados)
   - [4.1 Especificação da Base de Dados para Modelo de Recomendação](#41-especificação-da-base-de-dados-para-modelo-de-recomendação)
   - [4.2 Modelo Conceitual de Dados](#42-modelo-conceitual-de-dados)
   - [4.3 Modelo Lógico de Dados](#43-modelo-lógico-de-dados)
   - [4.4 Modelo Físico de Dados](#44-modelo-físico-de-dados)
 - [5. Solução Técnica (Design)](#5-solução-técnica-design)
-  - [5.1 Diagrama de Classes](#51-diagrama-de-classes)
-  - [5.2 Diagrama de Componentes da UML](#52-diagrama-de-componentes-da-uml)
-  - [5.3 Diagramas de Sequência da UML](#53-diagramas-de-sequência-da-uml)
-  - [5.4 Tecnologias e Linguagens](#54-tecnologias-e-linguagens)
+  - [5.1 Diagrama de Casos de Uso](#51-diagrama-de-casos-de-uso)
+  - [5.2 Diagrama de Classes](#52-diagrama-de-classes)
+  - [5.3 Diagrama de Componentes da UML](#53-diagrama-de-componentes-da-uml)
+  - [5.4 Diagramas de Sequência da UML](#54-diagramas-de-sequência-da-uml)
+  - [5.5 Tecnologias e Linguagens](#55-tecnologias-e-linguagens)
 - [6. Mapeamento Técnico de Infraestrutura e Implantação](#6-mapeamento-técnico-de-infraestrutura-e-implantação)
   - [6.1 Diagrama de Implantação da UML](#61-diagrama-de-implantação-da-uml)
   - [6.2 Justificativa das Escolhas de Implantação](#62-justificativa-das-escolhas-de-implantação)
@@ -614,14 +613,7 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
 
-## 3.4 Casos de Uso
-_conteúdo_
-
-## 3.5 Casos de Uso x Requisitos Funcionais
-_conteúdo_
-
 # 4. Modelagem de Dados
-_conteúdo_
 
 ## 4.1 Especificação da Base de Dados para Modelo de Recomendação
 _conteúdo_
@@ -755,13 +747,12 @@ _conteúdo_
 **Nota:** Insira uma explicação e direcionamento para o readme.md da pasta database.
 
 # 5. Solução Técnica (Design)
-_conteúdo_
 
 ## 5.1 Diagrama de Casos de Uso
 
 ### 5.1.1 Visão Geral do Sistema
 
-O sistema de gestão de investimentos tem como objetivo principal permitir que assessores de investimentos visualizem e entendam as alocações de investimentos de seus clientes, identifiquem desalinhamentos entre o perfil, assim, podendo sugerir readequações quando necessário.
+&emsp;O sistema de gestão de investimentos tem como objetivo principal permitir que assessores de investimentos visualizem e entendam as alocações de investimentos de seus clientes, identifiquem desalinhamentos entre o perfil, assim, podendo sugerir readequações quando necessário.
 
 ### 5.1.2 Atores
 
@@ -777,6 +768,7 @@ O sistema de gestão de investimentos tem como objetivo principal permitir que a
 Como um assessor de investimento, quero que o sistema importe automaticamente os dados das carteiras dos clientes via API para que eu tenha informações atualizadas sem precisar inserir dados manualmente.
 
 #### 5.1.3.2 Calcular Perfil de Risco
+
 **Descrição**: O sistema calcula automaticamente o perfil de risco com base nos ativos da carteira.
 
 **História de Usuário**:  
@@ -789,7 +781,7 @@ Como um assessor de investimento, quero que o sistema calcule automaticamente o 
 **Descrição**: O sistema verifica a conformidade entre o perfil calculado e o perfil cadastrado do cliente.
 
 **História de Usuário**:  
-Como um assessor de investimento, quero que o sistema verifique a conformidade entre o perfil calculado e o perfil cadastrado do cliente para que eu possa identificar possíveis desalinhamentos.
+&emsp;Como um assessor de investimento, quero que o sistema verifique a conformidade entre o perfil calculado e o perfil cadastrado do cliente para que eu possa identificar possíveis desalinhamentos.
 
 **Relacionamentos**:
 - **<<include>>** Calcular Perfil de Risco
@@ -798,7 +790,7 @@ Como um assessor de investimento, quero que o sistema verifique a conformidade e
 **Descrição**: O sistema exibe recomendações de readequação do perfil quando for identificado um desalinhamento.
 
 **História de Usuário**:  
-Como um assessor de investimento, quero visualizar recomendações de readequação quando um desalinhamento de perfil for identificado para que eu possa sugerir ajustes apropriados aos meus clientes.
+&emsp;Como um assessor de investimento, quero visualizar recomendações de readequação quando um desalinhamento de perfil for identificado para que eu possa sugerir ajustes apropriados aos meus clientes.
 
 **Relacionamentos**:
 - **<<include>>** Verificar Conformidade de Perfil
@@ -807,7 +799,7 @@ Como um assessor de investimento, quero visualizar recomendações de readequaç
 **Descrição**: O sistema apresenta, de forma visual, o status de conformidade de todas as carteiras em um painel.
 
 **História de Usuário**:  
-Como um assessor de investimento, quero visualizar em um painel o status de conformidade de todas as carteiras para que eu possa ter uma visão geral da situação dos meus clientes.
+&emsp;Como um assessor de investimento, quero visualizar em um painel o status de conformidade de todas as carteiras para que eu possa ter uma visão geral da situação dos meus clientes.
 
 **Relacionamentos**:
 - **<<include>>** Verificar Conformidade de Perfil
@@ -816,25 +808,25 @@ Como um assessor de investimento, quero visualizar em um painel o status de conf
 **Descrição**: O sistema oferece filtros por status de conformidade (adequado/não adequado).
 
 **História de Usuário**:  
-Como um assessor de investimento, quero filtrar as carteiras por status de conformidade (adequado/não adequado) para que eu possa priorizar os clientes que precisam de atenção imediata.
+&emsp;Como um assessor de investimento, quero filtrar as carteiras por status de conformidade (adequado/não adequado) para que eu possa priorizar os clientes que precisam de atenção imediata.
 
 #### 5.1.3.7 Filtrar Clientes por Segmento
 **Descrição**: O sistema permite filtro de clientes por segmento (Prata, Ouro, Platinum).
 
 **História de Usuário**:  
-Como um assessor de investimento, quero filtrar os clientes por segmento (Prata, Ouro, Platinum) para que eu possa direcionar meus esforços de acordo com a importância do cliente.
+&emsp;Como um assessor de investimento, quero filtrar os clientes por segmento (Prata, Ouro, Platinum) para que eu possa direcionar meus esforços de acordo com a importância do cliente.
 
 #### 5.1.3.8 Consultar Histórico de Sugestões
 **Descrição**: O sistema mantém o histórico das sugestões de readequação de perfil por cliente.
 
 **História de Usuário**:  
-Como um assessor de investimento, quero consultar o histórico das sugestões de readequação de perfil por cliente para que eu possa acompanhar a evolução e as recomendações anteriores.
+&emsp;Como um assessor de investimento, quero consultar o histórico das sugestões de readequação de perfil por cliente para que eu possa acompanhar a evolução e as recomendações anteriores.
 
 #### 5.1.3.9 Visualizar Composição da Carteira
 **Descrição**: O sistema exibe graficamente a composição da carteira por tipo de ativo.
 
 **História de Usuário**:  
-Como um assessor de investimento, quero visualizar graficamente a composição da carteira por tipo de ativo para que eu possa entender melhor a distribuição dos investimentos dos clientes.
+&emsp;Como um assessor de investimento, quero visualizar graficamente a composição da carteira por tipo de ativo para que eu possa entender melhor a distribuição dos investimentos dos clientes.
 
 ### 5.1.4 Tabela de Associação entre Requisitos Funcionais e Casos de Uso
 
@@ -860,7 +852,7 @@ Como um assessor de investimento, quero visualizar graficamente a composição d
 
 ### Visão Geral do Diagrama de Classes
 
-O diagrama de classes representa o modelo de domínio do sistema, identificando as principais entidades, seus atributos, métodos e relacionamentos. Ele foi desenvolvido com base na estrutura lógica do banco de dados e nos requisitos do sistema de recomendação de investimentos.
+&emsp;O diagrama de classes representa o modelo de domínio do sistema, identificando as principais entidades, seus atributos, métodos e relacionamentos. Ele foi desenvolvido com base na estrutura lógica do banco de dados e nos requisitos do sistema de recomendação de investimentos.
 
 As principais classes são:
 
@@ -888,7 +880,7 @@ As principais classes são:
 
 ### Classe `Cliente`
 
-Representa um investidor do sistema. Anteriormente separada da `Carteira`, agora incorpora também os atributos da carteira e se relaciona diretamente com o `Assessor`.
+&emsp;Representa um investidor do sistema. Anteriormente separada da `Carteira`, agora incorpora também os atributos da carteira e se relaciona diretamente com o `Assessor`.
 
 | Atributo     | Tipo    | Descrição                        |
 |--------------|---------|----------------------------------|
@@ -990,7 +982,7 @@ Representa o perfil de risco informado pelo cliente.
 
 ### Classe `HistoricoRiscoCalculado`
 
-Representa o resultado calculado automaticamente do perfil de risco do cliente com base nos seus ativos.
+&emsp;Representa o resultado calculado automaticamente do perfil de risco do cliente com base nos seus ativos.
 
 | Atributo    | Tipo      | Descrição                            |
 |-------------|-----------|----------------------------------------|
@@ -1007,7 +999,7 @@ Representa o resultado calculado automaticamente do perfil de risco do cliente c
 
 ### Classe `Recomendacao`
 
-Classe que representa uma recomendação de alocação ou ação gerada automaticamente pelo sistema para o cliente.
+&emsp;Classe que representa uma recomendação de alocação ou ação gerada automaticamente pelo sistema para o cliente.
 
 | Atributo    | Tipo    | Descrição                                 |
 |-------------|---------|--------------------------------------------|
@@ -1040,14 +1032,14 @@ Define os níveis de assessores possíveis no sistema:
 
 ### Conclusão
 
-O diagrama de classes apresentado estrutura de forma clara os elementos centrais do sistema de recomendação de investimentos, alinhando-se à lógica de domínio da aplicação e às entidades presentes no banco de dados. A modelagem contempla os dados dos clientes, assessores, investimentos e perfis de risco, permitindo a geração automatizada de recomendações e sua posterior validação.
+&emsp;O diagrama de classes apresentado estrutura de forma clara os elementos centrais do sistema de recomendação de investimentos, alinhando-se à lógica de domínio da aplicação e às entidades presentes no banco de dados. A modelagem contempla os dados dos clientes, assessores, investimentos e perfis de risco, permitindo a geração automatizada de recomendações e sua posterior validação.
 
-Além disso, os relacionamentos entre as classes refletem corretamente a multiplicidade e o fluxo de responsabilidade entre os agentes do sistema, proporcionando uma base sólida para o desenvolvimento e validação das funcionalidades previstas.
+&emsp;Além disso, os relacionamentos entre as classes refletem corretamente a multiplicidade e o fluxo de responsabilidade entre os agentes do sistema, proporcionando uma base sólida para o desenvolvimento e validação das funcionalidades previstas.
 
-Esse diagrama fornece uma base conceitual robusta para o desenvolvimento do sistema, servindo como referência para a implementação de funcionalidades, a definição das regras de negócio e a integração entre os módulos do projeto.
+&emsp;Esse diagrama fornece uma base conceitual robusta para o desenvolvimento do sistema, servindo como referência para a implementação de funcionalidades, a definição das regras de negócio e a integração entre os módulos do projeto.
 
 
-## 5.2 Diagrama de Componentes da UML
+## 5.3 Diagrama de Componentes da UML
 
   &emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
 
@@ -1061,13 +1053,13 @@ Esse diagrama fornece uma base conceitual robusta para o desenvolvimento do sist
 
 ### Arquitetura em Camadas da Plataforma BTG
 
-O sistema foi desenvolvido com base em uma arquitetura em camadas, separando responsabilidades entre apresentação, lógica de negócio e persistência de dados. Abaixo descrevemos os componentes de cada camada e o fluxo entre eles:
+&emsp;O sistema foi desenvolvido com base em uma arquitetura em camadas, separando responsabilidades entre apresentação, lógica de negócio e persistência de dados. Abaixo descrevemos os componentes de cada camada e o fluxo entre eles:
 
 ---
 
-## 5.2.1. Camada de Apresentação (Frontend Mobile)
+## 5.3.1. Camada de Apresentação (Frontend Mobile)
 
-A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
+&emsp;A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
 
 ### Componentes:
 - **Usuário (Assessor):** A pessoa que utiliza o aplicativo mobile.
@@ -1079,9 +1071,9 @@ A Camada de Apresentação é representada pelo aplicativo desenvolvido em React
 
 ---
 
-## 5.2.2. Camada de Negócio (Backend)
+## 5.3.2. Camada de Negócio (Backend)
 
-A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
+&emsp;A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
 
 ### Componentes:
 - **API Gateway (.NET):** Orquestra as requisições recebidas do app, redirecionando para os microserviços apropriados.
@@ -1102,9 +1094,9 @@ A Camada de Negócio centraliza a lógica de processamento do sistema, autentica
 
 ---
 
-## 5.2.3. Camada de Dados
+## 5.3.3. Camada de Dados
 
-Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
+&emsp;Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
 
 ### Componentes:
 - **PostgreSQL:** Base de dados relacional principal do sistema.
@@ -1117,7 +1109,7 @@ Esta camada é responsável pelo armazenamento persistente de dados do sistema, 
 
 ---
 
-## 5.3 Diagramas de Sequência da UML
+## 5.4 Diagramas de Sequência da UML
 
 &emsp; Este fluxo descreve o processo de autenticação e análise de perfis com inconsistências no sistema, incluindo o uso de filtros para refinar a consulta. O sistema é acessado por um assessor via aplicativo mobile, e os dados são processados por um serviço de backend que utiliza um banco PostgreSQL.
 
@@ -1171,25 +1163,25 @@ Esta camada é responsável pelo armazenamento persistente de dados do sistema, 
 
 &emsp;Este fluxo garante que apenas usuários autenticados tenham acesso aos dados analisados, promovendo segurança e precisão na identificação de perfis com inconsistências.
 
-## 5.4 Tecnologias e Linguagens
+## 5.5 Tecnologias e Linguagens
 
-### 5.4.1 Back-end
+### 5.5.1 Back-end
 
 &emsp;Para o back-end da aplicação, será utilizada a linguagem de programação **C#**, em conjunto com o framework **.NET**. Essa escolha se deve à robustez, segurança e excelente desempenho do .NET, além de sua forte integração com bibliotecas de machine learning através do **ML.NET**, permitindo a incorporação de modelos treinados diretamente no ambiente do servidor.
 
-### 5.4.2 Machine Learning e Tratamento de Dados
+### 5.5.2 Machine Learning e Tratamento de Dados
 
 &emsp;Para o tratamento de dados e preparação de modelos de aprendizado de máquina, será utilizada a linguagem **Python**. Python é amplamente adotada na área de ciência de dados devido à sua simplicidade, vasta gama de bibliotecas (como Pandas, NumPy, e Scikit-learn) e grande comunidade. O processo de retreinamento dos modelos será gerenciado com o auxílio do **MLflow**, que permite o controle de versões, monitoramento de experimentos e gerenciamento de modelos de forma eficiente.
 
-### 5.4.3 Front-end
+### 5.5.3 Front-end
 
 &emsp;O front-end da aplicação será desenvolvido com **React Native**, uma tecnologia que permite a criação de aplicações móveis multiplataforma com desempenho próximo ao nativo. Apesar de o projeto estar sendo desenvolvido inicialmente para Android, a escolha pelo React Native se dá justamente por sua natureza multiplataforma, o que facilitará a adaptação futura para outros sistemas operacionais, como o iOS, além de proporcionar uma interface moderna, responsiva e de fácil manutenção.
 
-### 5.4.4 Banco de Dados
+### 5.5.4 Banco de Dados
 
 &emsp;O sistema utilizará o **PostgreSQL** como sistema gerenciador de banco de dados relacional. O PostgreSQL foi escolhido por ser uma solução open-source poderosa, altamente escalável, que oferece suporte a consultas complexas, integridade referencial e extensões úteis para aplicações que trabalham com dados estruturados de forma intensiva.
 
-### 5.4.5 Autenticação
+### 5.5.5 Autenticação
 
 &emsp;Para o gerenciamento da autenticação de usuários, será utilizado o Firebase Authentication. O Firebase oferece uma solução segura, escalável e de fácil integração com aplicações móveis, reduzindo significativamente o esforço de desenvolvimento e aumentando a segurança da aplicação. Além disso, a plataforma disponibiliza uma cota gratuita com capacidade de armazenamento razoavelmente grande, o que contribui para tornar o desenvolvimento menos custoso, especialmente nas fases iniciais do projeto.
 <br><br>
