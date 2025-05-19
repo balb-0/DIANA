@@ -1456,13 +1456,120 @@ Obs.: Insira informações sobre quais frameworks foram usados e como acessar.
 _conteúdo_
 
 ## 9.1 Testes Funcionais
-_conteúdo_
+
+&emsp;Neste tópico, será apresentado os planejamentos dos testes dos requisitos funcionais do nosso projeto, incluindo o cenário, propósito, pré-condições, instruções de execução,resultado esperado, pós-condições e tipo de teste (positivo/ negativo).
 
 ## 9.1.1 Planejamento
-_conteúdo_
+
+### RF01 - Importação automática de dados via API
+| Cenário          | Propósito                                                                 | Pré-condições                | Instruções de Execução                        |
+| ---------------- | ------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------- |
+| 01 - Dados válidos    | Verificar se o sistema importa corretamente os dados de carteira via API. | API ativa com dados válidos. | Acionar funcionalidade de importação via API. |
+| 02 - API indisponível | Verificar comportamento diante de falha na integração.                    | API offline ou com erro 500. | Acionar importação com API fora do ar.        || Exibição de mensagem de erro sem travar o sistema. | Nenhuma modificação. | Negativo      |
+
+### RF02 - Cálculo do perfil de risco
+| Cenário             | Propósito                                    | Pré-condições                   | Instruções de Execução                |
+| ------------------- | -------------------------------------------- | ------------------------------- | ------------------------------------- |
+| 01 - Carteira com ativos | Validar cálculo correto do perfil.           | Cliente com ativos na carteira. | Acessar perfil e verificar o cálculo. |
+| 02 - Carteira vazia      | Verificar tratamento de carteira sem ativos. | Cliente sem ativos.             | Acessar cliente com carteira vazia.   |
+
+### RF03 - Verificação de conformidade entre perfis
+| Cenário           | Propósito                                    | Pré-condições                         | Instruções de Execução               |
+| ----------------- | -------------------------------------------- | ------------------------------------- | ------------------------------------ |
+| 01 - Perfis iguais     | Verificar se sistema reconhece conformidade. | Perfil calculado igual ao cadastrado. | Acessar carteira e verificar status. |
+| 02 - Perfis diferentes | Verificar detecção de não conformidade.      | Perfis divergentes.                   | Acessar carteira desalinhada.        |
+
+### RF04 - Recomendações de readequação
+| Cenário                 | Propósito                                       | Pré-condições          | Instruções de Execução                |
+| ----------------------- | ----------------------------------------------- | ---------------------- | ------------------------------------- |
+| 01 - Cliente fora do perfil  | Verificar exibição das sugestões.               | Perfil “Não adequado”. | Acessar cliente e observar sugestões. |
+| 02 - Cliente em conformidade | Verificar ausência de sugestões desnecessárias. | Perfil “Adequado”.     | Acessar cliente.                      |
+
+### RF05 - Painel visual de conformidade
+| Cenário               | Propósito                                    | Pré-condições                        | Instruções de Execução                |
+| --------------------- | -------------------------------------------- | ------------------------------------ | ------------------------------------- |
+| 01 - Exibição correta      | Validar exibição das carteiras com status.   | Vários clientes com dados completos. | Acessar painel principal.             |
+| 02 - Falha de renderização | Verificar sistema em caso de erro nos dados. | Dados inconsistentes ou incompletos. | Forçar erro e observar comportamento. |
+
+### RF06 - Filtros por status de conformidade
+| Cenário                    | Propósito                                                 | Pré-condições                                  | Instruções de Execução                     |
+| -------------------------- | --------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
+| 01 - Filtrar "adequado"         | Validar filtro de carteiras conformes.                    | Existência de carteiras com status “adequado”. | Aplicar filtro “adequado” no painel.       |
+| 02 - Filtrar status inexistente | Verificar comportamento ao aplicar filtro sem resultados. | Nenhuma carteira com o status filtrado.        | Aplicar filtro “não adequado” (sem dados). |
+
+### RF07 - Filtros por segmento (Prata, Ouro, Platinum)
+| Cenário              | Propósito                                                        | Pré-condições                           | Instruções de Execução        |
+| -------------------- | ---------------------------------------------------------------- | --------------------------------------- | ----------------------------- |
+| 01 - Filtrar "Platinum"   | Validar exibição correta de clientes por segmento.               | Existência de clientes Platinum.        | Selecionar filtro “Platinum”. |
+| 02 - Segmento inexistente | Verificar se sistema responde adequadamente a ausência de dados. | Nenhum cliente do segmento selecionado. | Filtrar “Ouro” sem clientes.  |
+
+### RF08 - Histórico de sugestões de readequação
+| Cenário               | Propósito                               | Pré-condições                     | Instruções de Execução        |
+| --------------------- | --------------------------------------- | --------------------------------- | ----------------------------- |
+| 01 - Cliente com histórico | Validar exibição de histórico completo. | Cliente com sugestões anteriores. | Acessar área de histórico.    |
+| 02 - Cliente sem histórico | Verificar exibição para novos clientes. | Cliente sem readequações.         | Acessar histórico do cliente. |
+
+### RF09 - Exibição gráfica da carteira por tipo de ativo
+| Cenário                | Propósito                                              | Pré-condições                | Instruções de Execução                 |
+| ---------------------- | ------------------------------------------------------ | ---------------------------- | -------------------------------------- |
+| 01 - Carteira diversificada | Validar gráfico com diferentes tipos de ativos.        | Cliente com ativos variados. | Acessar aba de composição da carteira. |
+| 02 - Carteira sem ativos    | Verificar comportamento do sistema com carteira vazia. | Cliente sem ativos.          | Acessar visualização gráfica.          |
 
 ## 9.1.2 Resultados
-_conteúdo_
+
+### RF01 - Importação automática de dados via API
+| Resultado Esperado                                 | Pós-condições        | Tipo de Teste |
+| -------------------------------------------------- | -------------------- | ------------- |
+| Dados importados corretamente e exibidos.          | Carteira atualizada. | Positivo      |
+| Exibição de mensagem de erro sem travar o sistema. | Nenhuma modificação. | Negativo      |
+
+### RF02 - Cálculo do perfil de risco
+| Resultado Esperado                                  | Pós-condições                | Tipo de Teste |
+| --------------------------------------------------- | ---------------------------- | ------------- |
+| Perfil coerente com a carteira.                     | Perfil calculado armazenado. | Positivo      |
+| Sistema informa que não é possível calcular perfil. | Nenhuma alteração.           | Negativo      |
+
+### RF03 - Verificação de conformidade entre perfis
+| Resultado Esperado      | Pós-condições                      | Tipo de Teste |
+| ----------------------- | ---------------------------------- | ------------- |
+| Status: "Adequado".     | Sistema pronto para outros testes. | Positivo      |
+| Status: "Não adequado". | Gatilho para recomendações.        | Negativo      |
+
+### RF04 - Recomendações de readequação
+| Resultado Esperado                        | Pós-condições                      | Tipo de Teste |
+| ----------------------------------------- | ---------------------------------- | ------------- |
+| Sistema exibe opções de readequação.      | Recomendações salvas no histórico. | Positivo      |
+| Sistema informa que não há recomendações. | Nenhuma modificação.               | Negativo      |
+
+### RF05 - Painel visual de conformidade
+| Resultado Esperado                                          | Pós-condições               | Tipo de Teste |
+| ----------------------------------------------------------- | --------------------------- | ------------- |
+| Exibição de todas as carteiras com status.                  | Visualização atualizada.    | Positivo      |
+| Mensagem de erro amigável ou exclusão de itens corrompidos. | Sistema continua funcional. | Negativo      |
+
+### RF06 - Filtros por status de conformidade
+| Resultado Esperado                       | Pós-condições                 | Tipo de Teste |
+| ---------------------------------------- | ----------------------------- | ------------- |
+| Apenas carteiras adequadas são exibidas. | Filtro aplicado corretamente. | Positivo      |
+| Mensagem “Nenhum resultado encontrado”.  | Tela limpa.                   | Negativo      |
+
+### RF07 - Filtros por segmento (Prata, Ouro, Platinum)
+| Resultado Esperado                       | Pós-condições     | Tipo de Teste |
+| ---------------------------------------- | ----------------- | ------------- |
+| Apenas clientes desse segmento aparecem. | Lista segmentada. | Positivo      |
+| Exibir mensagem de ausência.             | Nenhuma exibição. | Negativo      |
+
+### RF08 - Histórico de sugestões de readequação
+| Resultado Esperado                       | Pós-condições      | Tipo de Teste |
+| ---------------------------------------- | ------------------ | ------------- |
+| Histórico detalhado com data e sugestão. | Histórico visível. | Positivo      |
+| Mensagem “Nenhum dado registrado”.       | Tela limpa.        | Negativo      |
+
+### RF09 - Exibição gráfica da carteira por tipo de ativo
+| Resultado Esperado                         | Pós-condições            | Tipo de Teste |
+| ------------------------------------------ | ------------------------ | ------------- |
+| Gráfico exibido corretamente com legendas. | Visualização interativa. | Positivo      |
+| Mensagem “Sem dados para exibir”.          | Nenhuma modificação.     | Negativo      |
 
 ## 9.2 Testes de RNFs
 _conteúdo_
