@@ -95,3 +95,5 @@
 | risco         | Perfil Calculado      | JSON             | Estrutura JSON com a classificação baseada na carteira | Ex: `{"perfil": "Arrojado"}` | não           | Pode conter pesos, notas, justificativas         |
 | created_at    | Data de Criação       | data/hora        | Data e hora do cálculo do perfil                      | ISO 8601               | não                   | Histórico versionado                              |
 | clientes_id   | ID do Cliente         | numérica         | Referência ao cliente cuja carteira foi analisada                      | 1,2,3…                 | não                   | FK para `clientes.id`                             |
+
+&emsp;A partir deste dicionário, é possível entender as características e regras de negócio consideradas para a modelagem do banco de dados.
