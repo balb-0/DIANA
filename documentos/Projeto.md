@@ -1465,13 +1465,178 @@ _conteúdo_
 _conteúdo_
 
 ## 9.2 Testes de RNFs
-_conteúdo_
+
+&emsp;Abaixo está o planejamento dos testes para os Requisitos Não Funcionais (RNFs) do aplicativo mobile da assessoria de investimentos. Cada teste contém cenários positivos e negativos, com descrição detalhada do propósito, pré e pós-condições, instruções de execução e resultados esperados.
 
 ## 9.2.1 Planejamento
-_conteúdo_
+
+### RNF01 - Requisições de recomendação baseadas em machine learning
+|Cenário                                       |Propósito |Pré-condição |Instruções de execução |
+| -------------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Usuário solicita recomendação de perfil | Verificar tempo de resposta da recomendação baseada em ML | App e backend rodando em ambiente normal | Medir tempo de resposta médio de 20 requisições consecutivas |
+| 02 - Requisições lentas ou falha no modelo   | Verificar falha de desempenho acima do esperado | App em funcionamento normal | Forçar carga alta no sistema de ML e medir resposta |
+
+### RNF02 - Acessos simultâneos
+|Cenário                                         |Propósito |Pré-condição |Instruções de execução |
+| ---------------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Simulação de 3.000 acessos simultâneos    | Verificar estabilidade e desempenho sob alta carga | Servidor de testes preparado para alta concorrência | Utilizar ferramenta como JMeter para simular acessos simultâneos|
+| 02 - Carga excedente (acima de 3.000 usuários) | Validar comportamento acima da capacidade prevista | Ambiente de stress test configurado | Simular 4.000+ usuários simultâneos|
+
+### RNF03 - Containerização e projetado para rodar em nuvem
+|Cenário                                        |Propósito |Pré-condição |Instruções de execução |
+| --------------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Execução em ambiente de nuvem com Docker | Validar portabilidade e escalabilidade | Dockerfile e pipeline configurados | Subir o app em múltiplos ambientes cloud |
+| 02 - Execução em ambiente local sem Docker    | Verificar limitação do sistema fora do ambiente esperado | Docker não instalado, execução local | Tentar rodar o app fora do ambiente containerizado |
+
+### RNF04 - Desenvolvido para Android
+|Cenário                          |Propósito |Pré-condição |Instruções de execução |
+| ------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Instalação em Android 10+  | Garantir compatibilidade com Android 10 ou superior | APK pronto | Instalar app em dispositivos Android 10, 11, 12... |
+| 02 - Instalação em Android < 10 | Validar que o app não funciona em versões antigas | APK pronto | Instalar app em Android 9 ou inferior |
+
+### RNF05 - APIs RESTful
+|Cenário                                                    |Propósito |Pré-condição |Instruções de execução |
+| --------------------------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Consumo de APIs com Swagger e autenticação 3rd party | Validar integridade da API e autenticação | API documentada no Swagger e provedor Auth0 ou Firebase ativo | Executar requisições com e sem autenticação |
+| 02 - Uso de API sem documentação atualizada               | Verificar impacto de documentação defasada | Swagger desatualizado | Tentar integrar com base na documentação antiga |
+
+### RNF06 - Estrutura organizada de forma modular
+|Cenário                                |Propósito |Pré-condição |Instruções de execução |
+| ------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Organização modular do código    | Verificar manutenibilidade do sistema | Repositório com módulos separados | Avaliar impacto de alteração em módulo isolado |
+| 02 - Alteração em módulo mal acoplado | Verificar risco em arquitetura não modular | Códigos acoplados propositalmente | Alterar função interna de um módulo |
+
+### RNF07 - Sistema de recomendação rodando em infraestrutura separada
+|Cenário                                         |Propósito |Pré-condição |Instruções de execução |
+| ---------------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Chamadas ao sistema de ML via API externa | Validar independência entre backend e ML | Backend e sistema de ML rodando separadamente | Desligar sistema de ML e observar comportamento do backend |
+| 02 - Backend tenta acessar ML diretamente      | Validar quebra da separação de responsabilidades | Código com acesso direto ao ML | Rodar backend sem API intermediária |
+
+### RNF08 - Comunicação via HTTPS com TLS 1.2
+|Cenário                                          |Propósito |Pré-condição |Instruções de execução |
+| ----------------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Comunicação segura entre app, backend e ML | Garantir segurança da transmissão de dados | Certificados TLS 1.2+ válidos | Monitorar rede via proxy/sniffer |
+| 02 - Comunicação via HTTP não segura            | Verificar falha de segurança em configuração incorreta | Certificado TLS desabilitado | Fazer requisições HTTP simples |
+
+### RNF09 - Autenticação de acesso por multifator
+|Cenário                    |Propósito |Pré-condição |Instruções de execução |
+| ------------------------- | -------- | ----------- | --------------------- |
+| 01 - Autenticação com MFA | Validar segurança adicional de login | Conta com MFA configurada | Tentar login sem segundo fator e depois com |
+
+### RNF10 - Dados sensíveis criptografados
+|Cenário                                     |Propósito |Pré-condição |Instruções de execução |
+| ------------------------------------------ | -------- | ----------- | --------------------- |
+| 01 - Criptografia local de dados sensíveis | Garantir proteção de dados armazenados | Dados locais presentes | Dados locais presentes | Acessar dados via root ou app externo |
+| 02 - Dados acessados por app de terceiros  | Verificar falha na proteção de dados | Dados armazenados sem criptografia | Instalar app de leitura de arquivos |
+
+### RNF11 - Falha do sistema de recomendação deve mostrar mensagem
+|Cenário                                     |Propósito |Pré-condição |Instruções de execução |
+| ------------------------------------------ | -------- | ----------- | --------------------- |
+| 01 - Falha no sistema de recomendação      | Validar resposta amigável ao erro | Sistema de ML fora do ar | Acessar recomendações |
+| 02 - Sistema de ML fora do ar sem fallback | Verificar ausência de resposta ao erro | Backend sem fallback implementado | Acessar recomendações |
+
+### RNF12 - Sistema com disponibilidade de 99,5% mensal
+|Cenário                                       |Propósito |Pré-condição |Instruções de execução |
+| -------------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Medição de disponibilidade mensal | Verificar SLA de 99,5% | Sistema operando continuamente | Monitorar uptime com ferramenta externa por 30 dias |
+| 02 - Queda recorrente do sistema | Verificar violação do SLA | Sistema instável | Monitoramento contínuo |
+
+### RNF13 - Modelo de Machine Learning deve ser re-treinado automaticamente
+|Cenário                                         |Propósito |Pré-condição |Instruções de execução |
+| ---------------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Re-treinamento automático do modelo de ML | Garantir atualização eficiente com base em métricas | Pipeline de ML ativo | Simular alteração de padrão nos dados |
+| 02 - Alteração de padrão sem re-treinamento    | Verificar falha na automação do modelo | Pipeline com falha de gatilho | Simular mudança nos dados |
+
+### RNF14 - Exibição das recomendações com boas práticas de usabilidade
+|Cenário                                        |Propósito |Pré-condição |Instruções de execução |
+| --------------------------------------------- | -------- | ----------- | --------------------- |
+| 01 - Validação de usabilidade com heurísticas | Verificar aderência à boas práticas | Tela de recomendação desenvolvida | Realizar checklist de heurísticas + testes com usuários |
+| 02 - Interface viola heurísticas básicas      | Verificar impacto de baixa usabilidade | Tela sem revisão de UX | Executar teste de usabilidade |
 
 ## 9.2.2 Resultados
-_conteúdo_
+
+### RNF01 - Requisições de recomendação baseadas em machine learning
+| Resultado Esperado                  | Pós-condições             | Tipo de Teste |
+| ----------------------------------- | ------------------------- | ------------- |
+| Tempo ≤ 2 segundos em 95% dos casos | Logs salvos               | Positivo      |
+| Tempo > 2s ou timeout registrado    | Logs com erro de latência | Negativo      |
+
+### RNF02 - Acessos simultâneos
+| Resultado Esperado                                     | Pós-condições                   | Tipo de Teste |
+| ------------------------------------------------------ | ------------------------------- | ------------- |
+| Respostas ≤ 1s em ≥ 90% dos acessos                    | Sistema mantém estabilidade     | Positivo      |
+| Sistema responde mais lentamente ou falha parcialmente | Relatório de erro de sobrecarga | Negativo      |
+
+### RNF03 - Containerização e projetado para rodar em nuvem
+| Resultado Esperado                                     | Pós-condições              | Tipo de Teste |
+| ------------------------------------------------------ | -------------------------- | ------------- |
+| Aplicativo funciona corretamente em todos os ambientes | Logs operacionais estáveis | Positivo      |
+| App não funciona corretamente ou falha ao iniciar      | Registro de erro           | Negativo      |
+
+### RNF04 - Desenvolvido para Android
+| Resultado Esperado                               | Pós-condições            | Tipo de Teste |
+| ------------------------------------------------ | ------------------------ | ------------- |
+| App instala e funciona corretamente              | App ativo no dispositivo | Positivo      |
+| App não instala ou exibe erro de compatibilidade | Sem instalação concluída | Negativo      |
+
+### RNF05 - APIs RESTful
+| Resultado Esperado                                                     | Pós-condições                       | Tipo de Teste       |
+| ---------------------------------------------------------------------- | ----------------------------------- | ------------------- |
+| Requisições autenticadas funcionam, não autenticadas retornam erro 401 | Sessão criada apenas se autenticado | Positivo e Negativo |
+| Integração falha ou ocorre erro de compatibilidade                     | Log de erro ou falha de integração  | Negativo            |
+
+### RNF06 - Estrutura organizada de forma modular
+| Resultado Esperado                 | Pós-condições              | Tipo de Teste |
+| ---------------------------------- | -------------------------- | ------------- |
+| Alteração não afeta outros módulos | Build e testes passam      | Positivo      |
+| Outros módulos quebram ou falham   | Testes falham em sequência | Negativo      |
+
+### RNF07 - Sistema de recomendação rodando em infraestrutura separada
+| Resultado Esperado                        | Pós-condições                   | Tipo de Teste |
+| ----------------------------------------- | ------------------------------- | ------------- |
+| Backend responde corretamente sem travar  | Logs com falha controlada no ML | Positivo      |
+| Backend falha ou comportamento inesperado | Erro de arquitetura registrado  | Negativo      |
+
+### RNF08 - Comunicação via HTTPS com TLS 1.2
+| Resultado Esperado                       | Pós-condições              | Tipo de Teste |
+| ---------------------------------------- | -------------------------- | ------------- |
+| Todo tráfego é HTTPS, sem dados expostos | Comunicação criptografada  | Positivo      |
+| Dados visíveis ou interceptáveis         | Alerta de risco na análise | Negativo      |
+
+### RNF09 - Autenticação de acesso por multifator
+| Resultado Esperado                                | Pós-condições           | Tipo de Teste       |
+| --------------------------------------------------| ----------------------- | ------------------- |
+| Sem MFA: acesso negado; com MFA: acesso concedido | Sessão iniciada com MFA | Positivo e Negativo |
+
+### RNF10 - Dados sensíveis criptografados
+| Resultado Esperado                    | Pós-condições                | Tipo de Teste |
+| ------------------------------------- | ---------------------------- | ------------- |
+| Dados não legíveis sem decriptografia | Dados permanecem protegidos  | Positivo      |
+| Dados visíveis em texto claro         | Vulnerabilidade identificada | Negativo      |
+
+### RNF11 - Falha do sistema de recomendação deve mostrar mensagem
+| Resultado Esperado                         | Pós-condições        | Tipo de Teste |
+| ------------------------------------------ | -------------------- | ------------- |
+| Mensagem de erro e sugestão padrão exibida | App segue funcional  | Positivo      |
+| App trava ou exibe erro genérico           | Falha crítica no app | Negativo      |
+
+### RNF12 - Sistema com disponibilidade de 99,5% mensal
+| Resultado Esperado | Pós-condições    | Tipo de Teste |
+| ------------------ | ---------------- | ------------- |
+| Uptime ≥ 99,5%     | Logs confirmam   | Positivo      |
+| Uptime < 99,5%     | SLA não cumprido | Negativo      |
+
+### RNF13 - Modelo de Machine Learning deve ser re-treinado automaticamente
+| Resultado Esperado                   | Pós-condições             | Tipo de Teste |
+| ------------------------------------ | ------------------------- | ------------- |
+| Modelo é re-treinado automaticamente | Novo modelo em produção   | Positivo      |
+| Modelo antigo permanece              | Desatualização do sistema | Negativo      |
+
+### RNF14 - Exibição das recomendações com boas práticas de usabilidade
+| Resultado Esperado                        | Pós-condições                  | Tipo de Teste |
+| ----------------------------------------- | ------------------------------ | ------------- |
+| Interface compreensível, sem erros graves | Feedback positivo dos usuários | Positivo      |
+| Usuários demonstram confusão ou erro      | Feedback negativo recorrente   | Negativo      |
 
 ## 9.3 Testes de Usabilidade
 _conteúdo_
