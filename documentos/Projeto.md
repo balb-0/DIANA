@@ -1462,114 +1462,87 @@ _conteúdo_
 ## 9.1.1 Planejamento
 
 ### RF01 - Importação automática de dados via API
-| Cenário          | Propósito                                                                 | Pré-condições                | Instruções de Execução                        |
-| ---------------- | ------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------- |
-| 01 - Dados válidos    | Verificar se o sistema importa corretamente os dados de carteira via API. | API ativa com dados válidos. | Acionar funcionalidade de importação via API. |
-| 02 - API indisponível | Verificar comportamento diante de falha na integração.                    | API offline ou com erro 500. | Acionar importação com API fora do ar.        || Exibição de mensagem de erro sem travar o sistema. | Nenhuma modificação. | Negativo      |
+| Cenário          | Propósito                                                                 | Pré-condições                | Instruções de Execução                        | Resultado Esperado                                 | Pós-condições        | Tipo de Teste |
+| ---------------- | ------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------- | -------------------------------------------------- | -------------------- | ------------- |
+| Dados válidos    | Verificar se o sistema importa corretamente os dados de carteira via API. | API ativa com dados válidos. | Abrir o aplicativo, navegar até a seção de 'Carteiras', clicar em 'Importar via API', inserir a URL da API de origem com dados válidos no campo solicitado, confirmar a operação e aguardar a conclusão da importação. | Dados importados corretamente e exibidos.          | Carteira atualizada. | Positivo      |
+| API indisponível | Verificar comportamento diante de falha na integração.                    | API offline ou com erro 500. | Abrir o aplicativo, acessar a seção de 'Carteiras', clicar em 'Importar via API', inserir a URL de uma API offline ou com erro 500, confirmar a operação e observar o comportamento do sistema.        | Exibição de mensagem de erro sem travar o sistema. | Nenhuma modificação. | Negativo      |
 
 ### RF02 - Cálculo do perfil de risco
-| Cenário             | Propósito                                    | Pré-condições                   | Instruções de Execução                |
-| ------------------- | -------------------------------------------- | ------------------------------- | ------------------------------------- |
-| 01 - Carteira com ativos | Validar cálculo correto do perfil.           | Cliente com ativos na carteira. | Acessar perfil e verificar o cálculo. |
-| 02 - Carteira vazia      | Verificar tratamento de carteira sem ativos. | Cliente sem ativos.             | Acessar cliente com carteira vazia.   |
+| Cenário             | Propósito                                    | Pré-condições                   | Instruções de Execução                | Resultado Esperado                                  | Pós-condições                | Tipo de Teste |
+| ------------------- | -------------------------------------------- | ------------------------------- | ------------------------------------- | --------------------------------------------------- | ---------------------------- | ------------- |
+| Carteira com ativos | Validar cálculo correto do perfil.           | Cliente com ativos na carteira. | Abrir o aplicativo, acessar o perfil de um cliente com ativos registrados na carteira, clicar na opção 'Calcular perfil de risco' e verificar o resultado exibido com base na composição da carteira. | Perfil coerente com a carteira.                     | Perfil calculado armazenado. | Positivo      |
+| Carteira vazia      | Verificar tratamento de carteira sem ativos. | Cliente sem ativos.             | Abrir o aplicativo, acessar o perfil de um cliente sem nenhum ativo registrado na carteira, clicar na opção 'Calcular perfil de risco' e observar a resposta do sistema.   | Sistema informa que não é possível calcular perfil. | Nenhuma alteração.           | Negativo      |
 
 ### RF03 - Verificação de conformidade entre perfis
-| Cenário           | Propósito                                    | Pré-condições                         | Instruções de Execução               |
-| ----------------- | -------------------------------------------- | ------------------------------------- | ------------------------------------ |
-| 01 - Perfis iguais     | Verificar se sistema reconhece conformidade. | Perfil calculado igual ao cadastrado. | Acessar carteira e verificar status. |
-| 02 - Perfis diferentes | Verificar detecção de não conformidade.      | Perfis divergentes.                   | Acessar carteira desalinhada.        |
+| Cenário           | Propósito                                    | Pré-condições                         | Instruções de Execução               | Resultado Esperado      | Pós-condições                      | Tipo de Teste |
+| ----------------- | -------------------------------------------- | ------------------------------------- | ------------------------------------ | ----------------------- | ---------------------------------- | ------------- |
+| Perfis iguais     | Verificar se sistema reconhece conformidade. | Perfil calculado igual ao cadastrado. | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado é igual ao perfil cadastrado, abrir a seção da carteira e localizar o status de conformidade exibido pelo sistema. | Status: "Adequado".     | Sistema pronto para outros testes. | Positivo      |
+| Perfis diferentes | Verificar detecção de não conformidade.      | Perfis divergentes.                   | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado difere do perfil cadastrado, abrir a seção da carteira e verificar o status de conformidade informado.        | Status: "Não adequado". | Gatilho para recomendações.        | Negativo      |
+
 
 ### RF04 - Recomendações de readequação
-| Cenário                 | Propósito                                       | Pré-condições          | Instruções de Execução                |
-| ----------------------- | ----------------------------------------------- | ---------------------- | ------------------------------------- |
-| 01 - Cliente fora do perfil  | Verificar exibição das sugestões.               | Perfil “Não adequado”. | Acessar cliente e observar sugestões. |
-| 02 - Cliente em conformidade | Verificar ausência de sugestões desnecessárias. | Perfil “Adequado”.     | Acessar cliente.                      |
+| Cenário                 | Propósito                                       | Pré-condições          | Instruções de Execução                | Resultado Esperado                        | Pós-condições                      | Tipo de Teste |
+| ----------------------- | ----------------------------------------------- | ---------------------- | ------------------------------------- | ----------------------------------------- | ---------------------------------- | ------------- |
+| Cliente fora do perfil  | Verificar exibição das sugestões.               | Perfil “Não adequado”. | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Não adequado', navegar até a seção de recomendações e verificar se o sistema apresenta opções de readequação da carteira. | Sistema exibe opções de readequação.      | Recomendações salvas no histórico. | Positivo      |
+| Cliente em conformidade | Verificar ausência de sugestões desnecessárias. | Perfil “Adequado”.     | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Adequado' e verificar se a seção de recomendações está oculta ou informa que não há sugestões disponíveis. | Sistema informa que não há recomendações. | Nenhuma modificação.               | Negativo      |
 
 ### RF05 - Painel visual de conformidade
-| Cenário               | Propósito                                    | Pré-condições                        | Instruções de Execução                |
-| --------------------- | -------------------------------------------- | ------------------------------------ | ------------------------------------- |
-| 01 - Exibição correta      | Validar exibição das carteiras com status.   | Vários clientes com dados completos. | Acessar painel principal.             |
-| 02 - Falha de renderização | Verificar sistema em caso de erro nos dados. | Dados inconsistentes ou incompletos. | Forçar erro e observar comportamento. |
+| Cenário               | Propósito                                    | Pré-condições                        | Instruções de Execução                | Resultado Esperado                                          | Pós-condições               | Tipo de Teste |
+| --------------------- | -------------------------------------------- | ------------------------------------ | ------------------------------------- | ----------------------------------------------------------- | --------------------------- | ------------- |
+| Exibição correta      | Validar exibição das carteiras com status.   | Vários clientes com dados completos. | Abrir o aplicativo, fazer login como usuário administrador ou gestor, navegar até o painel principal de visualização de carteiras e verificar se todas as carteiras cadastradas são exibidas corretamente com seus respectivos status de conformidade.             | Exibição de todas as carteiras com status.                  | Visualização atualizada.    | Positivo      |
+| Falha de renderização | Verificar sistema em caso de erro nos dados. | Dados inconsistentes ou incompletos. | Injetar manualmente dados corrompidos ou incompletos na base de dados de carteiras, acessar o painel principal e observar se o sistema exibe mensagens de erro amigáveis ou remove os itens problemáticos sem travar a aplicação. | Mensagem de erro amigável ou exclusão de itens corrompidos. | Sistema continua funcional. | Negativo      |
 
 ### RF06 - Filtros por status de conformidade
-| Cenário                    | Propósito                                                 | Pré-condições                                  | Instruções de Execução                     |
-| -------------------------- | --------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
-| 01 - Filtrar "adequado"         | Validar filtro de carteiras conformes.                    | Existência de carteiras com status “adequado”. | Aplicar filtro “adequado” no painel.       |
-| 02 - Filtrar status inexistente | Verificar comportamento ao aplicar filtro sem resultados. | Nenhuma carteira com o status filtrado.        | Aplicar filtro “não adequado” (sem dados). |
+| Cenário                    | Propósito                                                 | Pré-condições                                  | Instruções de Execução                     | Resultado Esperado                       | Pós-condições                 | Tipo de Teste |
+| -------------------------- | --------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------ | ---------------------------------------- | ----------------------------- | ------------- |
+| Filtrar "adequado"         | Validar filtro de carteiras conformes.                    | Existência de carteiras com status “adequado”. | Acessar o painel principal, localizar o componente de filtros, selecionar o filtro de status ‘adequado’ e aplicar a filtragem. Observar se a lista de carteiras exibida contém somente aquelas com status ‘adequado’. | Apenas carteiras adequadas são exibidas. | Filtro aplicado corretamente. | Positivo      |
+| Filtrar status inexistente | Verificar comportamento ao aplicar filtro sem resultados. | Nenhuma carteira com o status filtrado.        | No painel principal, abrir a opção de filtros, selecionar o filtro ‘não adequado’ quando não houver carteiras com esse status cadastrado, aplicar o filtro e verificar se é exibida a mensagem ‘Nenhum resultado encontrado’ e a lista fica vazia. | Mensagem “Nenhum resultado encontrado”.  | Tela limpa.                   | Negativo      |
 
 ### RF07 - Filtros por segmento (Prata, Ouro, Platinum)
-| Cenário              | Propósito                                                        | Pré-condições                           | Instruções de Execução        |
-| -------------------- | ---------------------------------------------------------------- | --------------------------------------- | ----------------------------- |
-| 01 - Filtrar "Platinum"   | Validar exibição correta de clientes por segmento.               | Existência de clientes Platinum.        | Selecionar filtro “Platinum”. |
-| 02 - Segmento inexistente | Verificar se sistema responde adequadamente a ausência de dados. | Nenhum cliente do segmento selecionado. | Filtrar “Ouro” sem clientes.  |
+| Cenário              | Propósito                                                        | Pré-condições                           | Instruções de Execução        | Resultado Esperado                       | Pós-condições     | Tipo de Teste |
+| -------------------- | ---------------------------------------------------------------- | --------------------------------------- | ----------------------------- | ---------------------------------------- | ----------------- | ------------- |
+| Filtrar "Platinum" | Validar exibição correta de clientes por segmento. | Existência de clientes Platinum. | Acessar a tela de clientes no painel principal, localizar o filtro de segmento, selecionar a opção ‘Platinum’, aplicar o filtro e verificar se a lista exibida contém somente clientes classificados como ‘Platinum’. | Apenas clientes desse segmento aparecem. | Lista segmentada. | Positivo      |
+| Segmento inexistente | Verificar se sistema responde adequadamente a ausência de dados. | Nenhum cliente do segmento selecionado. | No painel de clientes, abrir o menu de filtros, escolher o segmento ‘Ouro’ quando não houver clientes cadastrados neste segmento, aplicar o filtro e confirmar que é exibida a mensagem ‘Nenhum cliente encontrado’ e que a lista fica vazia.  | Exibir mensagem de ausência.             | Nenhuma exibição. | Negativo      |
 
 ### RF08 - Histórico de sugestões de readequação
-| Cenário               | Propósito                               | Pré-condições                     | Instruções de Execução        |
-| --------------------- | --------------------------------------- | --------------------------------- | ----------------------------- |
-| 01 - Cliente com histórico | Validar exibição de histórico completo. | Cliente com sugestões anteriores. | Acessar área de histórico.    |
-| 02 - Cliente sem histórico | Verificar exibição para novos clientes. | Cliente sem readequações.         | Acessar histórico do cliente. |
+| Cenário               | Propósito                               | Pré-condições                     | Instruções de Execução        | Resultado Esperado                       | Pós-condições      | Tipo de Teste |
+| --------------------- | --------------------------------------- | --------------------------------- | ----------------------------- | ---------------------------------------- | ------------------ | ------------- |
+| Cliente com histórico | Validar exibição de histórico completo. | Cliente com sugestões anteriores. | Navegar até o perfil do cliente, acessar a aba ou seção ‘Histórico de sugestões de readequação’, rolar a lista para verificar todas as entradas, conferindo datas e descrições das recomendações exibidas.    | Histórico detalhado com data e sugestão. | Histórico visível. | Positivo      |
+| Cliente sem histórico | Verificar exibição para novos clientes. | Cliente sem readequações.         | No perfil de um cliente novo, acessar a seção ‘Histórico de sugestões de readequação’ e confirmar que é exibida a mensagem ‘Nenhum dado registrado’ indicando ausência de registros. | Mensagem “Nenhum dado registrado”.       | Tela limpa.        | Negativo      |
 
 ### RF09 - Exibição gráfica da carteira por tipo de ativo
-| Cenário                | Propósito                                              | Pré-condições                | Instruções de Execução                 |
-| ---------------------- | ------------------------------------------------------ | ---------------------------- | -------------------------------------- |
-| 01 - Carteira diversificada | Validar gráfico com diferentes tipos de ativos.        | Cliente com ativos variados. | Acessar aba de composição da carteira. |
-| 02 - Carteira sem ativos    | Verificar comportamento do sistema com carteira vazia. | Cliente sem ativos.          | Acessar visualização gráfica.          |
+| Cenário                | Propósito                                              | Pré-condições                | Instruções de Execução                 | Resultado Esperado                         | Pós-condições            | Tipo de Teste |
+| ---------------------- | ------------------------------------------------------ | ---------------------------- | -------------------------------------- | ------------------------------------------ | ------------------------ | ------------- |
+| Carteira diversificada | Validar gráfico com diferentes tipos de ativos.        | Cliente com ativos variados. | No perfil do cliente, acessar a aba ou seção chamada ‘Composição da carteira’ ou ‘Gráfico de ativos’. Observar se o gráfico de pizza ou barras exibe corretamente cada tipo de ativo com legendas e valores proporcionais, verificando a interatividade (ex: hover mostrando detalhes). | Gráfico exibido corretamente com legendas. | Visualização interativa. | Positivo      |
+| Carteira sem ativos    | Verificar comportamento do sistema com carteira vazia. | Cliente sem ativos.          | No perfil do cliente com carteira vazia, acessar a mesma aba de ‘Composição da carteira’ e confirmar que aparece a mensagem clara ‘Sem dados para exibir’, sem apresentar gráfico ou erro no sistema.          | Mensagem “Sem dados para exibir”.          | Nenhuma modificação.     | Negativo      |
 
 ## 9.1.2 Resultados
 
 ### RF01 - Importação automática de dados via API
-| Resultado Esperado                                 | Pós-condições        | Tipo de Teste |
-| -------------------------------------------------- | -------------------- | ------------- |
-| Dados importados corretamente e exibidos.          | Carteira atualizada. | Positivo      |
-| Exibição de mensagem de erro sem travar o sistema. | Nenhuma modificação. | Negativo      |
+
 
 ### RF02 - Cálculo do perfil de risco
-| Resultado Esperado                                  | Pós-condições                | Tipo de Teste |
-| --------------------------------------------------- | ---------------------------- | ------------- |
-| Perfil coerente com a carteira.                     | Perfil calculado armazenado. | Positivo      |
-| Sistema informa que não é possível calcular perfil. | Nenhuma alteração.           | Negativo      |
+
 
 ### RF03 - Verificação de conformidade entre perfis
-| Resultado Esperado      | Pós-condições                      | Tipo de Teste |
-| ----------------------- | ---------------------------------- | ------------- |
-| Status: "Adequado".     | Sistema pronto para outros testes. | Positivo      |
-| Status: "Não adequado". | Gatilho para recomendações.        | Negativo      |
+
 
 ### RF04 - Recomendações de readequação
-| Resultado Esperado                        | Pós-condições                      | Tipo de Teste |
-| ----------------------------------------- | ---------------------------------- | ------------- |
-| Sistema exibe opções de readequação.      | Recomendações salvas no histórico. | Positivo      |
-| Sistema informa que não há recomendações. | Nenhuma modificação.               | Negativo      |
+
 
 ### RF05 - Painel visual de conformidade
-| Resultado Esperado                                          | Pós-condições               | Tipo de Teste |
-| ----------------------------------------------------------- | --------------------------- | ------------- |
-| Exibição de todas as carteiras com status.                  | Visualização atualizada.    | Positivo      |
-| Mensagem de erro amigável ou exclusão de itens corrompidos. | Sistema continua funcional. | Negativo      |
+
 
 ### RF06 - Filtros por status de conformidade
-| Resultado Esperado                       | Pós-condições                 | Tipo de Teste |
-| ---------------------------------------- | ----------------------------- | ------------- |
-| Apenas carteiras adequadas são exibidas. | Filtro aplicado corretamente. | Positivo      |
-| Mensagem “Nenhum resultado encontrado”.  | Tela limpa.                   | Negativo      |
+
 
 ### RF07 - Filtros por segmento (Prata, Ouro, Platinum)
-| Resultado Esperado                       | Pós-condições     | Tipo de Teste |
-| ---------------------------------------- | ----------------- | ------------- |
-| Apenas clientes desse segmento aparecem. | Lista segmentada. | Positivo      |
-| Exibir mensagem de ausência.             | Nenhuma exibição. | Negativo      |
 
 ### RF08 - Histórico de sugestões de readequação
-| Resultado Esperado                       | Pós-condições      | Tipo de Teste |
-| ---------------------------------------- | ------------------ | ------------- |
-| Histórico detalhado com data e sugestão. | Histórico visível. | Positivo      |
-| Mensagem “Nenhum dado registrado”.       | Tela limpa.        | Negativo      |
+
 
 ### RF09 - Exibição gráfica da carteira por tipo de ativo
-| Resultado Esperado                         | Pós-condições            | Tipo de Teste |
-| ------------------------------------------ | ------------------------ | ------------- |
-| Gráfico exibido corretamente com legendas. | Visualização interativa. | Positivo      |
-| Mensagem “Sem dados para exibir”.          | Nenhuma modificação.     | Negativo      |
+
 
 ## 9.2 Testes de RNFs
 _conteúdo_
