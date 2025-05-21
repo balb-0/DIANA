@@ -455,19 +455,15 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 &emsp;Os Requisitos Funcionais (RFs) representam as funcionalidades que o sistema deve obrigatoriamente oferecer para atender às necessidades dos usuários e alcançar os objetivos de negócio. Eles descrevem o comportamento esperado do sistema diante de diferentes interações e contextos de uso, definindo claramente "o que" o sistema deve fazer. Neste projeto, os RFs foram derivados das features propostas, refinados por meio das personas e descritos tanto tecnicamente quanto na forma de user stories.
 
 <div align="center">
-<sub>Tabela X - Requisitos funcionais</sub><br>
+<sub>Tabela X - Requisitos Funcionais</sub><br>
 
-| RF#   | Descrição                                                                                                                                      | Prioridade |
-|-------|------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| RF01  | O sistema deve importar e processar automaticamente os dados de carteira de clientes por meio de integração via API.                                         | Alta       |
-| RF02  | O sistema deve calcular automaticamente o perfil de risco com base nos ativos da carteira.                                                    | Alta       |
-| RF03  | O sistema deve verificar a conformidade entre o perfil calculado e o perfil cadastrado do cliente.                                            | Alta       |
-| RF04  | O sistema deve exibir recomendações de readequação do perfil quando for identificado um desalinhamento.                                       | Alta       |
-| RF05  | O sistema deve apresentar, de forma visual, o status de conformidade de todas as carteiras em um painel.                                      | Alta       |
-| RF06  | O sistema deve oferecer filtros por status de conformidade (adequado/não adequado).                                                           | Média      |
-| RF07  | O sistema deve permitir filtro de clientes por segmento (Prata, Ouro, Platinum).                                                              | Média      |
-| RF08  | O sistema deve manter o histórico das sugestões de readequação de perfil por cliente.                                                         | Média      |
-| RF09  | O sistema deve exibir graficamente a composição da carteira por tipo de ativo.                                                                | Baixa      |
+| ID     | Título                                           | Descrição Breve                                                                                                                                                    | Prioridade |
+|--------|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| RF01   | Importação de Carteiras de Clientes              | Permitir o carregamento de dados das carteiras via upload de arquivos (.CSV ou .XLSX) ou via uma API simples.                                                      | Alta       |
+| RF02   | Cálculo do Perfil Atual da Carteira              | Calcular automaticamente o perfil de risco **atual da carteira**, com base na composição atual dos ativos                | Alta       |
+| RF03   | Verificação de Conformidade com Perfil Cadastrado| Verificar se o perfil da carteira atual está alinhado com o perfil cadastrado do cliente (suitability).                                                            | Alta       |
+| RF04   | Geração de Recomendações de Readequação          | Gerar recomendações informativas quando houver desalinhamento, indicando ajustes possíveis na carteira, **sem induzir ações ou sugerir erros a serem corrigidos**.| Alta      |
+| RF05   | Direcionamento de Atendimento por Conformidade   | A interface deve **priorizar e destacar clientes cujas carteiras estejam fora de conformidade**, auxiliando o assessor na priorização dos atendimentos.           | Média      |
 
 <sup>Material produzido pelos autores (2025)</sup>
 </div><br>
@@ -475,19 +471,14 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 ### Requisitos Funcionais Definidos como User Stories
 
 <div align="center">
-<sub>Tabela X - User Stories dos Requisitos Não Funcionais</sub><br>
+<sub>Tabela X - User Stories dos Requisitos Funcionais</sub><br>
 
-| ID    | User Story |
-|-------|------------|
-| RF01  | Como Fábio, quero importar automaticamente os dados das carteiras de meus clientes via API, para garantir rapidez e integração contínua com os sistemas internos. |
-| RF02  | Como Fábio, quero que o sistema calcule o perfil do cliente com base na carteira, para identificar facilmente desalinhamentos. |
-| RF03  | Como Fábio, quero verificar se a carteira está aderente ao perfil cadastrado, para evitar riscos regulatórios. |
-| RF04  | Como Fábio, quero sugestões automáticas de readequação de perfil, para apresentar ao cliente opções seguras rapidamente. |
-| RF05  | Como Fábio, quero visualizar todas as carteiras em um painel com seus status, para identificar rapidamente onde intervir. |
-| RF06  | Como Fábio, quero filtrar apenas carteiras fora do perfil, para focar nas situações que exigem ação imediata. |
-| RF07  | Como Fábio, quero filtrar meus clientes por segmento, para priorizar atendimentos estratégicos. |
-| RF08  | Como Fábio, quero visualizar o histórico de readequações sugeridas, para acompanhar decisões anteriores e justificar recomendações. |
-| RF09  | Como Mariana, quero ver a distribuição da minha carteira por tipo de ativo de forma clara, para entender rapidamente onde estou investindo. |
+| ID           | User Story                                                                                                                                                       |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| RF01          | Como assessor, quero **acessar as carteiras dos meus clientes** diretamente no sistema, para visualizar e iniciar análises sem depender de uploads ou integrações manuais. |
+| RF02 e RF03   | Como assessor, quero que o sistema **verifique se a carteira do cliente está aderente ao perfil cadastrado**, considerando automaticamente a composição atual dos ativos, para garantir conformidade e reduzir riscos. |
+| RF04          | Como assessor, quero receber **recomendações informativas** de ajuste quando houver desalinhamento, para orientar meus clientes de forma responsável, sem induzir mudanças. |
+| RF05          | Como assessor, quero que a interface **destaque automaticamente os clientes** com carteiras fora de conformidade, para priorizar meu atendimento nos casos críticos.           |
 
 <sup>Material produzido pelos autores (2025)</sup>
 </div><br>
@@ -497,17 +488,13 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 <div align="center">
 <sub>Tabela X - Testes associados aos Requisitos Funcionais</sub><br>
 
-| Caso de Teste | RF#   | Descrição do Teste                                                                                      | Pré-condição                                                                 | Caso de Aceite                                                                                   | Caso de Recusa                                                                                   |
-|---------------|-------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| CT-RF01       | RF01  | Testar importação automática de uma carteira via integração de API.                                   | Arquivo válido em formato CSV/XLSX presente no sistema.                      | Dados são processados corretamente e exibidos no sistema.                                        | Erro ao processar arquivo ou ausência de resposta do sistema.                                   |
-| CT-RF02       | RF02  | Testar cálculo do perfil com base na composição da carteira de um cliente.                              | Carteira do cliente carregada com ativos e pesos.                            | Sistema calcula e exibe o perfil de risco com base nos ativos.                                  | Perfil não calculado ou resultado inconsistente com os dados.                                   |
-| CT-RF03       | RF03  | Verificar conformidade entre o perfil calculado e o perfil cadastrado.                                  | Perfil cadastrado e carteira disponíveis no sistema.                         | Sistema exibe mensagem indicando se o cliente está ou não conforme.                             | Sistema não exibe resultado ou mostra status incorreto.                                          |
-| CT-RF04       | RF04  | Testar geração de recomendações para perfis não conformes.                                               | Cliente fora do perfil e perfil calculado já disponível.                     | Sistema exibe sugestão de readequação de perfil.                                                 | Nenhuma sugestão é apresentada ou mensagem incorreta.                                            |
-| CT-RF05       | RF05  | Visualizar painel com status de conformidade das carteiras dos clientes.                                | Base de clientes carregada e analisada.                                      | Painel exibe lista de clientes e status visual de conformidade.                                 | Painel vazio, incompleto ou com dados incorretos.                                                |
-| CT-RF06       | RF06  | Aplicar filtro para exibir apenas carteiras fora do perfil.                                             | Base de dados com clientes em diferentes estados de conformidade.            | Lista é filtrada corretamente para mostrar apenas os casos não conformes.                       | Filtro não funciona ou exibe resultados incorretos.                                              |
-| CT-RF07       | RF07  | Aplicar filtro por segmento (Prata, Ouro, Platinum).                                                    | Clientes cadastrados com segmentação definida.                              | Sistema filtra e exibe clientes corretamente por segmento.                                       | Lista incorreta ou ausência de filtragem.                                                        |
-| CT-RF08       | RF08  | Verificar exibição do histórico de sugestões de readequação por cliente.                                | Cliente com histórico de sugestões anteriores no sistema.                    | Sistema exibe linha do tempo ou registros anteriores com clareza.                               | Histórico ausente ou incompleto.                                                                 |
-| CT-RF09       | RF09  | Testar visualização gráfica da composição da carteira por tipo de ativo.                                | Carteira importada com ativos e classificações definidas.                   | Gráfico (pizza, barras) é exibido corretamente com dados proporcionais.                         | Gráfico ausente, distorcido ou com dados incorretos.                                             |
+| Caso de Teste | RF   | Descrição do Teste                                                                                           | Pré-condição                                                                                         | Critério de Aceite                                                                                                                                                     | Critério de Falha                                                                                                          |
+|----------------|------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| CT-RF01        | RF01 | Verificar a importação bem-sucedida de carteiras por upload (.CSV ou .XLSX) ou API simples.                  | Usuário autenticado, arquivo válido disponível para upload ou endpoint de API funcional.            | O sistema processa corretamente o arquivo ou os dados da API, carrega os dados da carteira e os exibe na interface sem erros.                                        | Arquivo não é processado, dados incorretos, erro no carregamento ou falha na integração da API.                           |
+| CT-RF02        | RF02 | Validar o cálculo correto do perfil atual da carteira, com base nos ativos presentes.                       | Carteira de cliente carregada com ativos classificados.                                             | O sistema calcula automaticamente o perfil da carteira com base nas regras definidas e apresenta o resultado na interface.                                           | Perfil não calculado, cálculo incorreto, inconsistência nos resultados ou ausência do resultado.                          |
+| CT-RF03        | RF03 | Verificar se o sistema avalia corretamente a conformidade da carteira com o perfil cadastrado do cliente.   | Perfil cadastrado no sistema e carteira importada.                                                  | O sistema compara o perfil cadastrado com o perfil calculado da carteira e exibe claramente se está aderente ou não (status de conformidade visível).                 | Sistema não apresenta o status de conformidade, apresenta status incorreto ou não realiza a comparação.                    |
+| CT-RF04        | RF04 | Verificar a geração de recomendações quando a carteira está fora do perfil cadastrado.                      | Carteira importada, perfil calculado e identificado como não aderente.                              | O sistema exibe recomendações claras e informativas sobre possíveis ajustes na carteira (ex.: alterar alocação entre classes de ativos), sem executar ações diretas. | Ausência de recomendações, recomendações incorretas, pouco claras ou que induzem erro de interpretação.                   |
+| CT-RF05        | RF05 | Verificar se os clientes fora de conformidade são destacados na interface de atendimento.                   | Base de clientes carregada, alguns clientes fora do perfil.                                         | O sistema destaca visualmente (cor, ícones, etiquetas, posição na lista, etc.) os clientes fora de conformidade, priorizando sua visualização pelo assessor.          | Sistema não faz nenhum tipo de destaque, priorização incorreta ou ausência de sinalização visual dos casos críticos.       |
 
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
