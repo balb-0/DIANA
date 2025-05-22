@@ -1128,69 +1128,58 @@ Define os níveis de assessores possíveis no sistema:
 
 <div align="center">
 <sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
-<img src="./img/uml-components.png">  
+<img src="./img/diagrama_componentes.jpg">  
 <sub>Fonte: Material produzido pelos autores (2025)</sub>  
 </div>
 
----
+## Arquitetura em Camadas do Aplicativo
 
-### Arquitetura em Camadas da Plataforma BTG
+O sistema segue uma arquitetura em camadas, organizada em: **Camada de Apresentação**, **Camada de Negócio** e **Camada de Dados**, fragmentadas nos componentes conforme o diagrama. Abaixo descrevemos os blocos responsáveis por cada funcionalidade:
 
-&emsp;O sistema foi desenvolvido com base em uma arquitetura em camadas, separando responsabilidades entre apresentação, lógica de negócio e persistência de dados. Abaixo descrevemos os componentes de cada camada e o fluxo entre eles:
+### Camada de Apresentação (Frontend Mobile)
 
----
+A interface principal para os assessores do BTG é o **Aplicativo Mobile**, responsável por coletar dados do usuário, exibir informações de perfil, recomendações e alertas de conformidade.
 
-## 5.3.1. Camada de Apresentação (Frontend Mobile)
+#### Componentes:
+- **Aplicativo Mobile (React Native):** Permite a interação do usuário com o sistema.
+- **Firebase:** Suporte a autenticação, notificações e sincronização em tempo real com o app.
 
-&emsp;A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
-
-### Componentes:
-- **Usuário (Assessor):** A pessoa que utiliza o aplicativo mobile.
-- **App React Native:** Interface do usuário que envia requisições para o backend.
-
-### Fluxo:
-1. O assessor acessa o sistema por meio do aplicativo.
-2. As ações realizadas no app (como login, filtros, visualização de perfis) são enviadas para o backend por meio do API Gateway.
+#### Fluxo:
+1. O usuário acessa o sistema pelo aplicativo mobile.
+2. O app se comunica com o **Firebase** para autenticação e sincronização.
+3. Requisições relacionadas a dados e recomendações são enviadas ao módulo **Service**, que coordena a lógica de negócio.
 
 ---
 
-## 5.3.2. Camada de Negócio (Backend)
+### Camada de Negócio (Backend / Orquestração)
 
-&emsp;A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
+Responsável por orquestrar o processamento, validações e geração de recomendações com base nas informações fornecidas pelos usuários e dados do BTG.
 
-### Componentes:
-- **API Gateway (.NET):** Orquestra as requisições recebidas do app, redirecionando para os microserviços apropriados.
-- **Serviço de Autenticação:** Responsável pela integração com o Auth0 para validar os tokens de acesso.
-- **Serviço de Análise de Carteira:** Realiza a análise dos ativos do cliente em relação ao perfil de risco.
-- **Serviço de Conformidade:** Verifica se a carteira está em conformidade com o perfil do cliente.
-- **Serviço de Recomendação (Python):** Realiza cálculos e lógica para sugerir ajustes na carteira, utilizando inteligência de negócio e geração de perfis ideais.
-- **Engine de Perfis:** Módulo interno do serviço de recomendação que simula cenários ideais baseados nos dados do usuário.
+#### Componentes:
+- **Service:** Intermediário entre o app, o Firebase e os módulos internos do backend. Gerencia lógica de fluxo e chamadas de API.
+- **API de Recomendação:** Executa as regras de negócio, reclassificação de perfis e sugestão de alocação conforme regulamentação da CVM.
+- **Repositories:** Responsável por interagir com o banco de dados relacional para consultas e atualizações.
 
-### Fluxo:
-1. O API Gateway valida o token com o Serviço de Autenticação.
-2. Após autenticação, o Gateway redireciona a requisição para o serviço apropriado:
-   - **Análise de Carteira**: Para processar dados do portfólio.
-   - **Conformidade**: Para verificar o alinhamento com o perfil do cliente.
-   - **Recomendação**: Para gerar sugestões inteligentes de alocação.
-3. O Serviço de Recomendação acessa o Engine de Perfis e o banco de dados para gerar recomendações.
-4. Caso necessário, o Serviço de Análise também consulta arquivos e dados complementares via Supabase.
+#### Fluxo:
+1. O **Service** recebe requisições do app, autentica via Firebase e direciona as chamadas para a **API de Recomendação**.
+2. A API de Recomendação processa os dados recebidos e envia instruções de leitura/escrita para os **Repositories**.
+3. Os **Repositories** acessam o banco **PostgreSQL** para persistência ou leitura das informações.
 
 ---
 
-## 5.3.3. Camada de Dados
+### Camada de Dados
 
-&emsp;Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
+Abriga os dados estruturados e operacionais do sistema.
 
-### Componentes:
-- **PostgreSQL:** Base de dados relacional principal do sistema.
-- **Supabase:** Usado para armazenar arquivos auxiliares, como documentos e imagens.
+#### Componentes:
+- **PostgreSQL:** Banco relacional para armazenamento de perfis de investidores, carteiras, registros de recomendação e histórico.
+- **Dados BTG:** Fonte externa integrada ao sistema que fornece informações essenciais para análise e recomendação.
 
-### Fluxo:
-1. Os microserviços de negócio consultam ou atualizam os dados diretamente no PostgreSQL.
-2. Dados auxiliares, como PDFs, arquivos ou planilhas, são manipulados via Supabase.
-3. As respostas são retornadas ao usuário via o API Gateway e exibidas no app mobile.
+#### Fluxo:
+1. A **API de Recomendação** consome os **Dados BTG** para análise inicial.
+2. **Repositories** acessam o **PostgreSQL** para registrar, atualizar ou recuperar dados do sistema.
+3. Resultados são retornados à **Camada de Negócio** e exibidos ao usuário via o app mobile.
 
----
 
 ## 5.4 Diagramas de Sequência da UML
 
