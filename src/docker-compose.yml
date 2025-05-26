@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  db:
+    build: ./database
+    container_name: btg_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: btg_db
+      POSTGRES_USER: btg_user
+      POSTGRES_PASSWORD: btg_pass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
