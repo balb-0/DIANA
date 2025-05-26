@@ -113,18 +113,14 @@ Dicioniários dos dados aqui.
 
 5. **Comandos úteis dentro do PostgreSQL**:
    ```sql
-   -- Listar todas as tabelas
    \dt
    
-   -- Visualizar estrutura de uma tabela específica
    \d nome_da_tabela
    
-   -- Consultar dados de exemplo
    SELECT * FROM clientes;
    SELECT * FROM assessores;
    SELECT * FROM ativos LIMIT 5;
    
-   -- Verificar os perfis de risco calculados para cada cliente
    SELECT c.nome, hrc.risco, hrc.RV_percentual, hrc.RF_percentual, hrc.valorTotal, hrc.created_at
    FROM historico_risco_calculado hrc
    JOIN clientes c ON hrc.clientes_id = c.id
@@ -134,38 +130,35 @@ Dicioniários dos dados aqui.
    )
    ORDER BY c.nome;
    
-   -- Testar o trigger de recálculo de perfil (Exemplo para cliente conservador)
-   -- 1. Adicionar investimento em renda variável para alterar o perfil
    INSERT INTO investimento (id, ativos_id, clientes_id, quantidade, valorTotal, data)
    VALUES ('99TESTEINVEST1', '01HFAKEATIVO09', '01HXQK6Q1YXKH2QKSR89NR9A2W', 100, 50000.00, NOW());
    
-   -- 2. Verificar se o perfil mudou de Conservador para Moderado
    SELECT c.nome, hrc.risco, hrc.RV_percentual, hrc.RF_percentual, hrc.valorTotal
    FROM historico_risco_calculado hrc
    JOIN clientes c ON hrc.clientes_id = c.id
    WHERE c.id = '01HXQK6Q1YXKH2QKSR89NR9A2W'
    ORDER BY hrc.created_at DESC LIMIT 2;
-   
-   -- Testar o trigger com alteração de investimento
+
    UPDATE investimento SET valorTotal = 100000.00 
    WHERE id = '99TESTEINVEST1';
    
-   -- Verificar a atualização do perfil
    SELECT c.nome, hrc.risco, hrc.RV_percentual, hrc.RF_percentual, hrc.valorTotal
    FROM historico_risco_calculado hrc
    JOIN clientes c ON hrc.clientes_id = c.id
    WHERE c.id = '01HXQK6Q1YXKH2QKSR89NR9A2W'
    ORDER BY hrc.created_at DESC LIMIT 1;
    
-   -- Testar o trigger com exclusão de investimento
    DELETE FROM investimento WHERE id = '99TESTEINVEST1';
    
-   -- Verificar o retorno ao perfil original
    SELECT c.nome, hrc.risco, hrc.RV_percentual, hrc.RF_percentual, hrc.valorTotal
    FROM historico_risco_calculado hrc
    JOIN clientes c ON hrc.clientes_id = c.id
    WHERE c.id = '01HXQK6Q1YXKH2QKSR89NR9A2W'
    ORDER BY hrc.created_at DESC LIMIT 1;
+   
+   SELECT obter_perfil_cliente('01HXQK6Q1YXKH2QKSR89NR9A1W');
+   
+   SELECT * FROM obter_perfil_risco_cliente('01HXQK6Q1YXKH2QKSR89NR9A1W');
    ```
 
 ### Configuração Manual (sem Docker)
