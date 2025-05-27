@@ -1471,6 +1471,65 @@ _conteúdo_
 ## 9.3.2 Resultados
 _conteúdo_
 
+## 9.4 Teste das APIs Externas
+
+Esta seção apresenta o planejamento de testes voltados para as APIs externas utilizadas no sistema de recomendação da plataforma BTG. O objetivo é garantir que os componentes que dependem de serviços de terceiros — como autenticação, processamento de recomendações e fornecimento de dados — funcionem corretamente, mesmo em situações adversas. 
+
+---
+
+## 9.4.1 Planejamento
+
+### Propósito dos Testes
+
+Os testes têm como objetivo:
+
+- Validar a conectividade, autenticidade e confiabilidade das APIs externas integradas ao sistema.
+- Garantir o funcionamento adequado em cenários de uso normais (positivos) e situações de erro (negativos).
+- Avaliar respostas, tempos de resposta e códigos HTTP retornados por cada API.
+- Confirmar que as mensagens de erro sejam claras e padronizadas, facilitando o diagnóstico de falhas.
+
+As APIs testadas são:
+
+- Firebase Authentication: Responsável pelo login e autenticação de usuários do aplicativo mobile.
+- API de Recomendação: Exposta pelo backend da plataforma para processar perfis e gerar sugestões de alocação.
+- API de Dados BTG: Fonte externa com dados de ativos e carteiras utilizados na análise.
+
+---
+
+### Cenários Positivos
+
+| API                      | Cenário                              | Objetivo                                                    | Instrução para Execução                                                |
+|--------------------------|--------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
+| Firebase Authentication  | Login com credenciais válidas        | Verificar autenticação bem-sucedida                         | Enviar requisição POST com e-mail/senha válidos via Postman            |
+| API de Recomendação      | Envio de perfil válido               | Confirmar resposta com recomendações coerentes              | Enviar JSON com dados completos (idade, renda, perfil declarado etc.)  |
+| API de Dados BTG         | Consulta por ativo existente         | Verificar retorno correto de dados de ativo                 | Executar GET em `/ativos/B3SA3` e validar conteúdo da resposta         |
+
+---
+
+### Cenários Negativos
+
+| API                      | Cenário                              | Objetivo                                                    | Instrução para Execução                                                |
+|--------------------------|--------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
+| Firebase Authentication  | Token expirado ou inválido           | Garantir bloqueio de acesso e erro apropriado               | Usar token expirado e simular requisição autenticada                   |
+| API de Recomendação      | JSON malformado                      | Verificar tratamento de erro e retorno de código 400        | Remover campo obrigatório do corpo da requisição                       |
+| API de Recomendação      | Perfil com dados inconsistentes      | Confirmar que regras de negócio lidam com dados anômalos    | Enviar idade negativa ou perfil inexistente                            |
+| API de Dados BTG         | Consulta de ativo inexistente        | Validar resposta 404 ou equivalente                         | Fazer GET em `/ativos/XXXX` com código inexistente                     |
+| API de Dados BTG         | API indisponível (timeout simulado)  | Testar resposta do sistema em falhas externas               | Desabilitar endpoint no ambiente de testes e monitorar resposta        |
+
+---
+
+### Abrangência dos Testes
+
+Este conjunto de testes abrange os principais fluxos de comunicação com APIs externas, considerando:
+
+- Sucesso na autenticação e autorização de usuários.
+- Correto funcionamento do processo de recomendação com entradas válidas.
+- Respostas adequadas a erros de entrada e indisponibilidade de serviços.
+- Cobertura de cenários realistas de uso e falha, contemplando tolerância a falhas.
+
+As instruções de execução são aplicáveis via ferramentas como **Postman**, **Insomnia** ou testes automatizados com bibliotecas como `pytest` + `requests`.
+
+
 # 10. Procedimentos de Implantação
 _conteúdo_
 
