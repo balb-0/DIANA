@@ -39,7 +39,6 @@ dataset/
 *.tsv
 *.xls
 *.xlsx
-*.json
 *.parquet
 *.zip
 *.gz
@@ -53,6 +52,7 @@ dataset/
 *.bak
 *.swp
 *.swo
+diana-446a1-firebase-adminsdk-fbsvc-cfd405b774.json
 
 # MacOS / Linux / Windows
 .DS_Store
