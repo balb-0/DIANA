@@ -1,6 +1,4 @@
-﻿// Middleware/FirebaseAuthMiddleware.cs
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
+﻿using backend.Services;
 
 namespace backend.Middleware
 {
@@ -8,7 +6,6 @@ namespace backend.Middleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<FirebaseAuthMiddleware> _logger;
-        private const string FirebaseProjectId = "diana-446a1";
 
         public FirebaseAuthMiddleware(RequestDelegate next, ILogger<FirebaseAuthMiddleware> logger)
         {
@@ -16,56 +13,43 @@ namespace backend.Middleware
             _logger = logger;
         }
 
-        public async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, IAuthService authService)
         {
-            var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+            // Verificar se a rota requer autenticação
+            var endpoint = context.GetEndpoint();
+            var requiresAuth = endpoint?.Metadata?.GetMetadata<Microsoft.AspNetCore.Authorization.AuthorizeAttribute>() != null;
 
-            if (authHeader != null && authHeader.StartsWith("Bearer "))
+            if (requiresAuth)
             {
-                var token = authHeader.Substring("Bearer ".Length).Trim();
+                var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
 
-                try
+                if (authHeader != null && authHeader.StartsWith("Bearer "))
                 {
-                    var handler = new JwtSecurityTokenHandler();
-                    var jsonToken = handler.ReadJwtToken(token);
+                    var token = authHeader.Substring("Bearer ".Length).Trim();
+                    var result = await authService.VerifyTokenAsync(token);
 
-                    // Validações básicas
-                    if (jsonToken.Issuer == $"https://securetoken.google.com/{FirebaseProjectId}" &&
-                        jsonToken.Audiences.Contains(FirebaseProjectId) &&
-                        jsonToken.ValidTo > DateTime.UtcNow)
+                    if (result.Success && result.User != null)
                     {
-                        var claims = new List<Claim>
-                        {
-                            new Claim(ClaimTypes.NameIdentifier, GetClaimValue(jsonToken, "user_id") ?? GetClaimValue(jsonToken, "sub") ?? ""),
-                            new Claim(ClaimTypes.Email, GetClaimValue(jsonToken, "email") ?? ""),
-                            new Claim("firebase_uid", GetClaimValue(jsonToken, "user_id") ?? GetClaimValue(jsonToken, "sub") ?? "")
-                        };
-
-                        var identity = new ClaimsIdentity(claims, "Firebase");
-                        context.User = new ClaimsPrincipal(identity);
+                        // Adicionar informações do usuário ao contexto
+                        context.Items["User"] = result.User;
+                        context.Items["UserId"] = result.User.Uid;
+                    }
+                    else
+                    {
+                        context.Response.StatusCode = 401;
+                        await context.Response.WriteAsync("Token inválido ou expirado");
+                        return;
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    _logger.LogWarning(ex, "Erro ao processar token Firebase");
-                    // Token inválido - continua sem autenticação
+                    context.Response.StatusCode = 401;
+                    await context.Response.WriteAsync("Token de autorização necessário");
+                    return;
                 }
             }
 
             await _next(context);
-        }
-
-        private string? GetClaimValue(JwtSecurityToken token, string claimType)
-        {
-            return token.Claims.FirstOrDefault(c => c.Type == claimType)?.Value;
-        }
-    }
-
-    public static class FirebaseAuthMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseFirebaseAuth(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<FirebaseAuthMiddleware>();
         }
     }
 }

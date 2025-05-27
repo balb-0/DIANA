@@ -49,3 +49,4 @@ C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\obj\Debug\net8.
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\obj\Debug\net8.0\backend.pdb
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\obj\Debug\net8.0\ref\backend.dll
+C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\diana-446a1-firebase-adminsdk-fbsvc-cfd405b774.json

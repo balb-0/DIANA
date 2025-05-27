@@ -1,8 +1,7 @@
-﻿// Controllers/AuthController.cs
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
+﻿using backend.Models;
 using backend.Services;
-using backend.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
@@ -11,16 +10,68 @@ namespace backend.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
+            _logger = logger;
         }
 
-        [HttpPost("verify")]
-        public async Task<ActionResult<AuthResponse>> VerifyToken([FromBody] AuthRequest request)
+        /// <summary>
+        /// Registra um novo usuário no Firebase
+        /// </summary>
+        [HttpPost("register")]
+        public async Task<ActionResult<AuthResponse>> Register([FromBody] RegisterRequest request)
         {
-            if (string.IsNullOrEmpty(request.Token))
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new AuthResponse
+                {
+                    Success = false,
+                    Message = "Dados inválidos"
+                });
+            }
+
+            var result = await _authService.RegisterUserAsync(request);
+
+            if (result.Success)
+                return Ok(result);
+
+            return BadRequest(result);
+        }
+
+        /// <summary>
+        /// Verifica o ID Token do Firebase (usado como "login")
+        /// O cliente deve autenticar no Firebase e enviar o ID Token
+        /// </summary>
+        [HttpPost("login")]
+        public async Task<ActionResult<AuthResponse>> Login([FromBody] LoginRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new AuthResponse
+                {
+                    Success = false,
+                    Message = "Credenciais inválidas"
+                });
+            }
+
+            var result = await _authService.LoginUserAsync(request);
+
+            if (result.Success)
+                return Ok(result);
+
+            return Unauthorized(result);
+        }
+
+        /// <summary>
+        /// Verifica se um token é válido
+        /// </summary>
+        [HttpPost("verify")]
+        public async Task<ActionResult<AuthResponse>> VerifyToken([FromBody] VerifyTokenRequest request)
+        {
+            if (!ModelState.IsValid)
             {
                 return BadRequest(new AuthResponse
                 {
@@ -29,56 +80,29 @@ namespace backend.Controllers
                 });
             }
 
-            var userRecord = await _authService.VerifyTokenAsync(request.Token);
+            var result = await _authService.VerifyTokenAsync(request.Token);
 
-            if (userRecord == null)
-            {
-                return Unauthorized(new AuthResponse
-                {
-                    Success = false,
-                    Message = "Token inválido"
-                });
-            }
+            if (result.Success)
+                return Ok(result);
 
-            var userInfo = new UserInfo
-            {
-                Uid = userRecord.Uid,
-                Email = userRecord.Email
-            };
-
-            return Ok(new AuthResponse
-            {
-                Success = true,
-                Message = "Token válido",
-                User = userInfo
-            });
+            return Unauthorized(result);
         }
 
-        [HttpGet("me")]
+        /// <summary>
+        /// Retorna o perfil do usuário autenticado
+        /// </summary>
+        [HttpGet("profile")]
         [Authorize]
-        public async Task<ActionResult<UserInfo>> GetCurrentUser()
+        public ActionResult<UserInfo> GetProfile()
         {
-            var authHeader = Request.Headers["Authorization"].FirstOrDefault();
-            if (authHeader == null || !authHeader.StartsWith("Bearer "))
+            var user = HttpContext.Items["User"] as UserInfo;
+
+            if (user == null)
             {
-                return Unauthorized();
+                return Unauthorized("Usuário não autenticado");
             }
 
-            var token = authHeader.Substring("Bearer ".Length).Trim();
-            var uid = await _authService.GetUserIdFromTokenAsync(token);
-
-            if (uid == null)
-            {
-                return Unauthorized();
-            }
-
-            var userInfo = await _authService.GetUserInfoAsync(uid);
-            if (userInfo == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(userInfo);
+            return Ok(user);
         }
     }
 }
