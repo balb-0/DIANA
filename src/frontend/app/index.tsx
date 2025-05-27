@@ -10,6 +10,7 @@ export default function Index() {
         inconformes: { quantidade: 8, total: 20 }
     });
 
+    // Mock das quantidades de carteiras por perfil
     const [carteirasPorPerfil, setCarteirasPorPerfil] = useState({
     Moderado: { quantidade: 0, total: 0 },
     Conservador: { quantidade: 0, total: 0 },
@@ -74,6 +75,7 @@ export default function Index() {
                 />
             </View>
 
+            {/* Cards de quantidade de carteira por perfil */}
             <View className="flex-row justify-around mt-4">
                 <CardCarteirasPerfil
                     perfil="Conservador"
