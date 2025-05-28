@@ -1437,7 +1437,58 @@ _conteúdo_
 
 ### Planejamento de testes unitários
 
-_conteúdo_
+&emsp;O desenvolvimento do aplicativo pretende seguir TDD (Test-Driven-Development), garantindo a qualidade, confiabilidade e evolução segura do sistema por meio de testes unitários. Dessa forma, essa seção detalha as estratégias para a construção de testes unitários que orientarão o desenvolvimento do aplicativo para o BTG Pactual. 
+
+---
+
+#### Procedimento esperado para o desenvolvimento
+
+- **Para cada nova funcionalidade:**
+1. Escreve-se primeiro um teste unitário que representa o comportamento esperado.
+2. Implementa-se o código mínimo necessário para fazer o teste passar.
+3. Refatora-se o código garantindo que os testes permaneçam passando.
+
+---
+
+#### Estratégias para Testes no Backend
+
+**Ferramentas Utilizadas**
+- `xUnit` – Framework de teste unitário.
+- `Moq` – Mock de dependências (serviços, repositórios, VHS, API externa).
+
+**Cobertura de Testes**
+- **Controladores:** Validação de status codes e chamadas aos serviços.
+- **Serviços:** Regras de negócio, integração com cache VHS, manipulação de dados.
+- **Utilitários:** Funções auxiliares de formatação, cálculo, etc.
+- **VHS (Cache):** Verificação se o dado está sendo buscado, armazenado e invalidado corretamente.
+
+**Exemplo de Estrutura**
+- Testes seguem a estrutura AAA (Arrange, Act, Assert).
+- Cada método público deve ter ao menos 1 cenário positivo e 1 negativo testado.
+
+---
+
+#### Estratégias para Testes no Frontend
+
+**Ferramentas Utilizadas**
+- `Jest` – Teste de funções, hooks e lógicas internas.
+- `React Native Testing Library (RNTL)` – Testes de componentes e interações.
+
+**Cobertura de Testes**
+- **Componentes Visuais:** Renderização com diferentes props e estados.
+- **Hooks Customizados:** Validação de lógica reativa (ex: uso de contexto, chamadas de API).
+- **Funções Isoladas:** Manipulação de dados, máscaras, validações de formulário.
+
+**Boas Práticas**
+- Testar estados iniciais, interações (ex: cliques, inputs), e efeitos visuais esperados.
+- Usar mocks de APIs quando necessário.
+
+---
+
+#### Validação dos Resultados
+
+- Os testes devem rodar automaticamente no pipeline CI/CD.
+- Ferramentas de cobertura como `Coverlet` (.NET) e `Jest --coverage` devem ser usadas para acompanhar a cobertura mínima (recomenda-se 80%).
 
 ### Planejamento de testes de integração
 
