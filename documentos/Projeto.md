@@ -1434,8 +1434,138 @@ _conteúdo_
 _conteúdo_
 
 ## 8.4 Testes Unitários e de Integração
-_conteúdo_
-Obs.: Insira informações sobre estratégias para realização dos testes
+
+### Planejamento de testes unitários
+
+&emsp;O desenvolvimento do aplicativo pretende seguir TDD (Test-Driven-Development), garantindo a qualidade, confiabilidade e evolução segura do sistema por meio de testes unitários. Dessa forma, essa seção detalha as estratégias para a construção de testes unitários que orientarão o desenvolvimento do aplicativo para o BTG Pactual. 
+
+---
+
+#### Procedimento esperado para o desenvolvimento
+
+- **Para cada nova funcionalidade:**
+1. Escreve-se primeiro um teste unitário que representa o comportamento esperado.
+2. Implementa-se o código mínimo necessário para fazer o teste passar.
+3. Refatora-se o código garantindo que os testes permaneçam passando.
+
+---
+
+#### Estratégias para Testes no Backend
+
+**Ferramentas Utilizadas**
+- `xUnit` – Framework de teste unitário.
+- `Moq` – Mock de dependências (serviços, repositórios, VHS, API externa).
+
+**Cobertura de Testes**
+- **Controladores:** Validação de status codes e chamadas aos serviços.
+- **Serviços:** Regras de negócio, integração com cache VHS, manipulação de dados.
+- **Utilitários:** Funções auxiliares de formatação, cálculo, etc.
+- **VHS (Cache):** Verificação se o dado está sendo buscado, armazenado e invalidado corretamente.
+
+**Exemplo de Estrutura**
+- Testes seguem a estrutura AAA (Arrange, Act, Assert).
+- Cada método público deve ter ao menos 1 cenário positivo e 1 negativo testado.
+
+---
+
+#### Estratégias para Testes no Frontend
+
+**Ferramentas Utilizadas**
+- `Jest` – Teste de funções, hooks e lógicas internas.
+- `React Native Testing Library (RNTL)` – Testes de componentes e interações.
+
+**Cobertura de Testes**
+- **Componentes Visuais:** Renderização com diferentes props e estados.
+- **Hooks Customizados:** Validação de lógica reativa (ex: uso de contexto, chamadas de API).
+- **Funções Isoladas:** Manipulação de dados, máscaras, validações de formulário.
+
+**Boas Práticas**
+- Testar estados iniciais, interações (ex: cliques, inputs), e efeitos visuais esperados.
+- Usar mocks de APIs quando necessário.
+
+---
+
+#### Validação dos Resultados
+
+- Os testes devem rodar automaticamente no pipeline CI/CD.
+- Ferramentas de cobertura como `Coverlet` (.NET) e `Jest --coverage` devem ser usadas para acompanhar a cobertura mínima (recomenda-se 80%).
+
+### Planejamento de testes de integração
+
+&emsp;Esta subseção planeja os testes para a integração entre os módulos internos do sistema (como o .NET para o back-end React Native integrado ao Expo no front-end), assim como entre o backend e as APIs externas, utilizando caching (VHS). Os testes pretendem verificar tanto o comportamento esperado quanto a resposta a erros, validando possíveis interações críticas.
+
+---
+
+#### Pontos de Integração Identificados
+
+- **Frontend (React Native/Expo) → Backend (.NET API)**
+- **Backend → Camadas Internas (controladores, serviços, repositórios)**
+- **Backend → Cache (VHS)**
+- **Backend → Banco de Dados**
+- **Backend → API Externa (com cache VHS obrigatoriamente)**
+
+---
+
+#### Integração: Frontend ↔ Backend
+
+- **Objetivo:** Validar o consumo correto de dados pela aplicação e o tratamento de erros.
+- **Pré-condição:** Backend rodando localmente ou em formato Docker, dentro do respectivo servidor disponibilizado pela faculdade.
+- **Cenário Positivo:** Requisições com parâmetros válidos retornam dados esperados.
+- **Cenário Negativo:** Requisições com parâmetros inválidos ou tokens expirados retornam mensagens de erro apropriadas.
+  - Exemplos: campos obrigatórios não preenchidos, dados enviados para a requisição não atendendo às regras de negócio implementadas no banco de dados, valores inválidos, erros de conexão, etc. 
+- **Pós-condição:** Tela renderiza corretamente os dados ou mensagens de erro.
+
+#### Integração: Backend ↔ Banco de Dados
+
+- **Objetivo:** Verificar persistência e recuperação de dados.
+- **Pré-condição:** Banco de dados com dados controlados para teste.
+- **Cenário Positivo:** POST cria entidade e GET a retorna corretamente.
+- **Cenário Negativo:** DELETE de entidade inexistente retorna erro 404.
+- **Pós-condição:** Estado do banco reflete a operação ou retorna erro esperado.
+
+#### Integração: Backend ↔ Cache (VHS)
+
+&emsp;Nota: O VHS (Volatile Hash Storage) é um mecanismo de caching temporário usado para armazenar respostas de APIs externas e evitar chamadas repetidas desnecessárias. Ele guarda os dados por um tempo limitado (o que é chamado de TTL – Time To Live) e entrega esses dados diretamente do cache enquanto forem válidos, melhorando o desempenho e reduzindo a latência do aplicativo. Quando o cache expira ou é invalidado, uma nova chamada à API é feita e o conteúdo é atualizado no cache.
+
+- **Objetivo:** Reduzir latência e evitar chamadas repetidas à API externa.
+- **Pré-condição:** VHS ativado e configurado.
+- **Cenário Positivo:** Primeira chamada armazena no cache; próximas chamadas retornam do cache.
+- **Cenário Negativo:** Cache expira ou é invalidado e nova chamada é feita.
+- **Pós-condição:** Cache atualizado e resposta válida.
+
+#### Integração: Backend ↔ API Externa (utilizando VHS)
+
+- **Objetivo:** Validar consumo seguro e otimizado de uma API externa.
+- **Pré-condição:** API externa acessível e VHS operacional.
+- **Cenário Positivo:** Resposta da API é armazenada no cache e usada em chamadas seguintes.
+- **Cenário Negativo:** API externa retorna erro (ex: 500); mensagem de erro tratada corretamente.
+- **Pós-condição:** Resposta do cache usada, ou erro tratado no backend e propagado ao frontend.
+
+---
+
+#### Ferramentas e Abordagens Possíveis
+
+- **Swagger (OpenAPI):** Validação de contratos de API e documentação.
+- **Postman:** Testes manuais, com exportação para coleções automatizadas (utilizando Newman), de forma a realizar  vários testes de integração ao mesmo tempo, ainda que manualmente.
+- **xUnit (.NET):** Testes de integração backend com dependências reais e mockadas.
+- **React Native Testing Library (RTL):** Validação de componentes que dependem de dados da API.
+
+---
+
+#### Validação dos Resultados
+
+- **Logs e métricas:** A validação será feita observando os status das respostas (ex: 200, 404, 500), mensagens de erro, tempo de resposta e se os dados vieram diretamente da API externa ou do cache (VHS).
+- **Cobertura de testes:** Todos os principais endpoints do sistema devem ter testes cobrindo casos de sucesso e falha.
+- **Ambiente de testes (Staging):** Os testes serão executados em um ambiente isolado que simula o ambiente de produção, garantindo segurança e realismo.
+
+---
+
+#### Cobertura de Interações Críticas
+
+- **Chamadas essenciais do frontend:** Como telas que exibem dados dinâmicos do usuário ou carregam listas a partir da API.
+- **Operações com impacto no banco de dados:** Criação, edição ou exclusão de registros que alteram o estado do sistema.
+- **Uso do cache (VHS) como proteção contra falhas externas:** O sistema deve continuar funcionando mesmo que a API externa esteja lenta ou fora do ar, usando os dados armazenados em cache.
+- **Tratamento de erros visível ao usuário:** Mensagens claras e apropriadas devem ser exibidas quando houver falhas (ex: falha na API externa ou erro no envio de dados).
 
 ## 8.5 Documentações automáticas
 _conteúdo_
