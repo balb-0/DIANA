@@ -1,7 +1,8 @@
 version: '3.9'
+
 services:
   db:
-    build: ./database
+    build: ./database  
     container_name: btg_postgres
     ports:
       - "5432:5432"
@@ -11,6 +12,17 @@ services:
       POSTGRES_PASSWORD: btg_pass
     volumes:
       - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  api_recomendacao:
+    build: 
+      context: ./recomendationAPI
+      dockerfile: Dockerfile
+    container_name: btg_api_recomendacao
+    ports:
+      - "8000:8000" 
+    volumes:
+      - ./recomendationAPI/data:/app/data 
     restart: unless-stopped
 
 volumes:
