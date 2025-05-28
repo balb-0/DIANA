@@ -1,6 +1,8 @@
 import { View } from "react-native";
 import StatusConformidade from "@/components/quantidadeConformidade";
 import { useEffect, useState } from "react";
+import BarraPesquisa from "@/components/barraPesquisa"; 
+import BotaoFiltro from "@/components/botaoFiltro";
 
 export default function Index() {
     // ✅ Mock direto no useState
@@ -37,10 +39,25 @@ export default function Index() {
         onPress: () => console.log('Abriu inconformes'),
     };
 
-    return (
-        <View className="flex-row justify-around mt-4">
-            <StatusConformidade {...statusRegulares} />
-            <StatusConformidade {...statusInconformes} />
-        </View>
-    );
+return (
+    <View className="flex-1 bg-white"> 
+      {/* Conteúdo principal */}
+      <View className="flex-row justify-around mt-4">
+        <StatusConformidade {...statusRegulares} />
+        <StatusConformidade {...statusInconformes} />
+      </View>
+
+      {/* Barra de Pesquisa*/}
+      <View className="absolute bottom-0 w-full flex-row justify-center gap-2 px-4 py-2">
+        <BarraPesquisa />
+        <BotaoFiltro />
+      </View>
+    
+
+      {/* Botão de Filtro */}
+      <View className="absolute bottom-4 right-4">
+        
+      </View>
+    </View>
+  );
 }
