@@ -1463,10 +1463,78 @@ _conteúdo_
 _conteúdo_
 
 ## 9.3 Testes de Usabilidade
-_conteúdo_
+
+&emsp;Neste tópico, será apresentado os planejamentos dos testes de usabilidade do nosso projeto, incluindo o perfil, idade, experiência com tecnologia, familiaridade com mercado financeiro e a justificativa do perfil.
 
 ## 9.3.1 Planejamento
-_conteúdo_
+
+### Objetivos dos Testes de Usabilidade
+&emsp;O principal objetivo dos testes de usabilidade é avaliar a facilidade de uso, clareza de informações e fluidez de navegação do aplicativo DIANA por meio da interação de usuários externos com diferentes níveis de familiaridade com tecnologia e com o mercado financeiro. Com os testes de usabilidade, buscamos identificar: 
+- Barreiras de uso em funcionalidades principais como visualização de carteiras, filtros por conformidade e acesso ao histórico.
+- clareza das instruções e termos apresentados no app.
+- Satisfação geral do usuário com a experiência de navegação.
+- Pontos de melhoria na arquitetura da informação e feedbacks visuais.
+
+### Perfis dos Usuários e Contexto
+&emsp;Serão selecionados 5 usuários externos com perfis variados, conforme abaixo:
+
+| Perfil | Idade | Experiência com tecnologia | Familiaridade com mercado financeiro | Justificativa                                             |
+| ------ | ----- | -------------------------- | ------------------------------------ | --------------------------------------------------------- |
+| 1      | 20–25 | Alta                       | Baixa                                | Usuário jovem e tecnológico, mas sem conhecimento no tema |
+| 2      | 26–35 | Média                      | Média                                | Potencial assessor ou analista em formação                |
+| 3      | 35–50 | Baixa                      | Alta                                 | Profissional sênior que representa nosso público-alvo     |
+| 4      | 18–22 | Média                      | Baixa                                | Estudante de economia ou engenharia                       |
+| 5      | 30–40 | Alta                       | Alta                                 | Usuário experiente tanto em apps quanto no mercado        |
+
+&emsp;Contexto de aplicação: O teste será aplicado de forma presencial, utilizando dispositivos com o protótipo instalado. Haverá mediação pro um membro do grupo, que conduzirá a aplicação e tomará notas de observações comportamentais.
+
+### Método
+&emsp;Utilizaremos o SUS - System Usability Scale, complementado por observação direta e tarefas práticas. O SUS será aplicado ao final do teste para obter uma avaliação quantitativa padronizada da usabilidade do aplicativo. O formulário conterá:
+- 10 afirmações avaliadas em escala Likert (1 = Discordo totalmente, 5 = Concordo totalmente).
+- Campos adicionais para comentários livres.
+- Explicação introdutória sobre o objetivo do formulário e o que cada número representa.
+
+### Roteiro (Passo a Passo)
+1. Boas Vindas e Apresentação
+- cumprimentar o usuário e agradecer a participação.
+- Explicar brevemente o objetivo do teste: “Estamos testando a usabilidade de um aplicativo que auxilia na visualização de carteiras de clientes e sugestões de readequação. Você não está sendo testado, é o app que está.”
+- Solicitar autorização para coleta anônima de feedback.
+
+2. Coleta de dados iniciais
+- Idade, ocupação, familiaridade com apps mobile e com o merado financeiro.
+- solicitar e-mail e telefone (opicional).
+
+3. Tarefas a serem realizadas
+- Cenário 1: Verificar conformidade de carteiras
+  - Tarefa: Acesse a aba de conformidade e aplique o filtro “adequado” para visualizar carteiras conformes.
+
+- Cenário 2: Consultar cliente Platinum
+  - Tarefa: Acesse os clientes e filtre pelo segmento “Platinum”. Diga em voz alta o que você vê.
+
+- Cenário 3: Acessar histórico de sugestões
+  - Tarefa: Abra o perfil de um cliente e localize o histórico de sugestões de readequação.
+
+- Cenário 4: Ver gráfico de ativos
+  - Tarefa: Acesse a composição da carteira e analise o gráfico apresentado. Você entende os dados?
+
+- Cenário 5: Explorar sem ajuda
+  - Tarefa: Navegue livremente pelo aplicativo por 2 minutos. O que mais te chamou atenção? Teve algo confuso?
+
+4. Aplicação do SUS
+- entregar formulário SUS ao usuário com as 10 perguntas.
+- Destacar a escala e explicar que não há respostas certas ou erradas.
+
+5. Feedback aberto
+- Perguntar: "Teve algo que te encomodou? Algo que você mudaria?".
+- Anotar sugestões espontâneas do usuário.
+
+6. Encerramento
+- Agradecer novamente a participação.
+
+### Ferramentas e Ambiente
+- Dispositivo: Dispositivo com o protótipo funcional do DIANA.
+- Registro: Anotações manuais, captura de tela e gravação.
+- Software: Figma(protótipo), Google Forms(SUS), Excel(análise).
 
 ## 9.3.2 Resultados
 _conteúdo_
