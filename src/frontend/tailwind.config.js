@@ -12,7 +12,10 @@ module.exports = {
         "rosa-secundario": "#FF7CA1",
         "vermelho-secundario": "#E9A5A5",
         "vermelho-principal": "#5A1A1A"
-      }
+      },
+      boxShadow: {
+        'clicaveis': '0 4px 8px rgba(0, 30, 98, 0.3)',
+      },      
     },
   },
   plugins: [],
