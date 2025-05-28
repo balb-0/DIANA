@@ -1,4 +1,4 @@
--- Dados iniciais para a tabela assessores (primeiro!)
+-- Dados iniciais para a tabela assessores
 INSERT INTO assessores (
   id, nome, unidade_btg
 ) VALUES 
