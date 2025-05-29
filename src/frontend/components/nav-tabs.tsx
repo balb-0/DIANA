@@ -1,33 +1,30 @@
-import { useState, useRef, useMemo } from "react";
+import { usePathname, useRouter, RelativePathString } from "expo-router";
 import { View, TouchableOpacity, Animated } from "react-native";
+import { useMemo, useRef } from "react";
 import { House, Wallet, User } from "phosphor-react-native";
 
-interface BottomNavigationProps {
-  onTabChange?: (tab: string) => void;
-  initialTab?: string;
-}
+type TabId = "home" | "wallet" | "profile";
 
-export const BottomNavigation: React.FC<BottomNavigationProps> = ({
-  onTabChange,
-  initialTab = "home",
-}) => {
-  const [activeTab, setActiveTab] = useState<string>(initialTab);
+export const BottomNavigation = () => {
+  const pathname = usePathname();
+  const router = useRouter();
   const scaleAnimation = useRef(new Animated.Value(1)).current;
 
   const tabs = useMemo(
     () => [
       { id: "home", icon: House },
-      { id: "folder", icon: Wallet },
+      { id: "wallet", icon: Wallet },
       { id: "profile", icon: User },
-    ],
+    ] as const,
     []
   );
 
-  // Navigation calculations
   const navWidth = 380;
   const tabSize = 56;
 
-  const handleTabPress = (tabId: string) => {
+  const activeTab: TabId = (pathname.replace("/", "") || "home") as TabId;
+
+  const handleTabPress = (tabId: TabId) => {
     if (tabId !== activeTab) {
       Animated.sequence([
         Animated.timing(scaleAnimation, {
@@ -42,23 +39,18 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
         }),
       ]).start();
 
-      setActiveTab(tabId);
-      onTabChange?.(tabId);
+      // Cast para RelativePathString para compatibilidade com o router
+      router.push(`/${tabId}` as RelativePathString);
     }
   };
 
   return (
-    <View className="fixed bottom-0 w-full items-center rounded-none">
+    <View className="fixed bottom-0 w-full items-center">
       <View className="relative" style={{ width: navWidth }}>
-        {/* Icons row - positioned above the navigation bar */}
         <View
-          className="flex-row absolute w-full"
-          style={{
-            top: -24,
-            zIndex: 1000,
-            justifyContent: "space-between",
-            paddingHorizontal: 60,
-          }}
+          className={`flex-row absolute w-full z-50 justify-between px-16 ${
+            activeTab ? "top-[-14px]" : "top-2"
+          }`}
         >
           {tabs.map((tab) => {
             const IconComponent = tab.icon;
@@ -77,14 +69,14 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
                     transform: [{ scale: isActive ? scaleAnimation : 1 }],
                   }}
                 >
-                  <View className="bg-[#001E62] rounded-full p-[4.5px]">
+                  <View className="bg-[#001E62] rounded-full p-2">
                     <View
-                      className={`rounded-full p-4 ${
+                      className={`rounded-full p-2 ${
                         isActive ? "bg-[#AEC3F5]" : "bg-[#001E62]"
                       }`}
                     >
                       <IconComponent
-                        size={24}
+                        size={isActive ? 24 : 20}
                         color={isActive ? "#001E62" : "#AEC3F5"}
                       />
                     </View>
@@ -94,15 +86,13 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
             );
           })}
         </View>
-
-        {/* Navigation bar background */}
         <View
-          className="bg-[#001E62] overflow-hidden relative"
+          className="bg-azul-escuro-principal overflow-hidden relative"
           style={{
             width: navWidth,
             height: 60,
-            borderTopLeftRadius: 40,
-            borderTopRightRadius: 40,
+            borderTopLeftRadius: 46,
+            borderTopRightRadius: 46,
           }}
         />
       </View>

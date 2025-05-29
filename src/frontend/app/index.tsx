@@ -1,5 +1,6 @@
 import { View } from "react-native";
 import { useEffect, useState } from "react";
+import Welcome from "@/components/welcome"
 import StatusConformidade from "@/components/quantidadeConformidade";
 import CardCarteirasPerfil from "@/components/cardCarteirasPorPerfil";
 import { BottomNavigation } from "@/components/nav-tabs";
@@ -55,12 +56,15 @@ export default function Index() {
 
     return (
         <View className="h-full w-full justify-between bg-azul-claro-secundario">
-            <View className="items-center justify-center flex-1">
-                <View className="flex-row justify-center gap-8 pb-9`">
+            <Welcome
+                user="João"
+            />
+            <View className="items-center flex-1">
+                <View className="flex-row justify-center gap-8 pb-9 h-fit`">
                     <StatusConformidade {...statusRegulares} />
                     <StatusConformidade {...statusInconformes} />
                 </View>
-                <View className="flex-row justify-center gap-8">
+                <View className="flex-row justify-center gap-8 h-fit">
                     <CardCarteirasPerfil
                         perfil="Moderado"
                         quantidade={carteirasPorPerfil.Moderado.quantidade}

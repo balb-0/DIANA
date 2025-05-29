@@ -59,7 +59,7 @@ export default function StatusConformidade({
         >
             <View className="flex-row items-start justify-between w-full">
                 <View className=''>
-                    <Text className={`${config.corTexto} text-sm font-light mb-[-6px]`}>Carteiras {isConforme ? "em" : ""}</Text>
+                    <Text className={`${config.corTexto} text-sm font-light mb-[-4px]`}>Carteiras {isConforme ? "em" : ""}</Text>
                     <Text className={`font-bold text-lg ${config.corTexto}`}>{tipo}</Text>
                 </View>
                 <ArrowSquareOut size={14} color={`${config.corQuadrado}`} weight="bold" />
