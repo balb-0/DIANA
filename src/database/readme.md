@@ -20,15 +20,13 @@
 | Variável           | Nome Variável        | Tipo de Variável | Descrição                                              | Valores Permitidos | Possui Valores nulos? | Anotações                                           |
 |--------------------|----------------------|------------------|--------------------------------------------------------|--------------------|-----------------------|-----------------------------------------------------|
 | id                 | ID do Cliente        | ULID             | Identificador único do cliente                         | -                  | não                   | Chave primária, auto-increment (PK)                                 |
-| email              | E-mail               | categórica       | Endereço de e-mail do cliente                          | -                  | não                   | Deve ser único                                      |
-| telefone           | Telefone             | categórica       | Telefone de contato                                    | -                  | sim                   | -                                                   |
 | nome               | Nome                 | categórica       | Primeiro nome do cliente                              | -                  | não                   | -                                                   |
-| sobrenome          | Sobrenome            | categórica       | Sobrenome completo                                     | -                  | não                   | -                                                   |
-| cpf                | CPF                  | categórica       | Cadastro de Pessoa Física                             | -                  | não                   | Deve ser único                                      |
-| rg                 | RG                   | categórica       | Registro Geral                                         | -                  | sim                   | Deve ser único                                                   |
+| cpf                | CPF                  | categórica       | Cadastro de Pessoa Física                             | -                  | não                   | -                  |
+| rg                 | RG                   | categórica       | Registro Geral                                         | -                  | sim                   | -                               |
 | endereco           | Endereço             | categórica       | Endereço completo do cliente                          | -                  | sim                   | -                                                   |
 | data_nascimento    | Data de Nascimento   | data             | Data de nascimento do cliente                         | -                  | não                   | -                                                   |
-| saldo_carteira     | Saldo da Carteira    | numérica         | Valor total (R$) da carteira de investimentos         | -                | sim                   | Pode ser calculado com base nos investimentos       |
+| categoria        | Categoria            | enum       | Categoria do cliente                   | - | não                   | Definido pela organização                   |
+| isActive        | Status de atividade do cliente            | booleana       | Status se o cliente está ativo ou inativo no sistema       | true, false| não                   | Definido pela organização                   |
 | assessores_id      | ID do Assessor       | numérica         | Referência ao assessor responsável pelo cliente       | 1,2,3…             | sim                   | Chave estrangeira para `assessores.id`              |
 
 ---
@@ -38,15 +36,7 @@
 | Variável         | Nome Variável       | Tipo de Variável | Descrição                                               | Valores Permitidos         | Possui Valores nulos? | Anotações                                        |
 |------------------|---------------------|------------------|---------------------------------------------------------|----------------------------|-----------------------|--------------------------------------------------|
 | id               | ID do Assessor      | ULID             | Identificador único do assessor                         | -                          | não                   | Chave primária, auto-increment (PK)                              |
-| email            | E-mail              | categórica       | Endereço de e-mail do assessor                          | -                          | não                   | Deve ser único                                   |
-| telefone         | Telefone            | categórica       | Telefone de contato                                     | -                          | sim                   | -                                                |
 | nome             | Nome                | categórica       | Primeiro nome do assessor                              | -                          | não                   | -                                                |
-| sobrenome        | Sobrenome           | categórica       | Sobrenome completo do assessor                          | -                          | não                   | -                                                |
-| cpf              | CPF                 | categórica       | Cadastro de Pessoa Física                               | -                          | não                   | Deve ser único                                   |
-| rg               | RG                  | categórica       | Registro Geral                                          | -                          | sim                   | Deve ser único                                                |
-| endereco         | Endereço            | categórica       | Endereço completo                                       | -                          | sim                   | -                                                |
-| data_nascimento  | Data de Nascimento  | data             | Data de nascimento                                      | -                          | sim                   | -                                                |
-| categoria        | Categoria            | categórica       | Nível do assessor dentro da empresa                     | 'Gold', 'Prata', 'Platinum'| não                   | Enum definido pela organização                   |
 | unidade_btg      | Unidade BTG         | categórica       | Unidade ou time de alocação                            | -                          | sim                   | Texto livre ou, futuramente, uma associação com unidades do BTG        |
 
 ---
@@ -56,7 +46,7 @@
 | Variável      | Nome Variável        | Tipo de Variável | Descrição                                      | Valores Permitidos             | Possui Valores nulos? | Anotações                        |
 |---------------|----------------------|------------------|------------------------------------------------|-------------------------------|-----------------------|----------------------------------|
 | id            | ID do Ativo          | ULID             | Identificador único do ativo                   | -                             | não                   | Chave primária, auto-increment (PK)             |
-| nome          | Nome do Ativo        | categórica       | Código do ativo             | -                             | não                   | Ex: 'PEJA11 IPCA', 'CRI CDIE'...    |
+| nome          | Código do Ativo        | categórica       | Código do ativo             | -                             | não                   | Ex: 'PEJA11 IPCA', 'CRI CDIE'...    |
 | tipo          | Tipo de Ativo        | categórica       | Categoria geral do ativo                       | - | não                   | Alinhado com classificação da CVM, ex: 'TITULOS RF PRIVADOS BRASIL', 'DEBENTURES BRASIL'... |
 | subgrupo      | Subgrupo do Ativo    | categórica       | Subtipo de ativos com base em regra de negócio interna para perfis de risco   | -                             | sim                   | Ex: 'RF - Títulos Públicos Nacionais', 'RV - Ações Brasil'     |
 
@@ -73,6 +63,7 @@
 | clientes_id   | ID do Cliente       | numérica         | Referência ao cliente que fez o investimento         | 1,2,3…             | não                   | Chave estrangeira para `clientes.id`                |
 | quantidade    | Quantidade          | numérica         | Quantidade de cotas ou títulos adquiridos            | ≥ 0                | não                   | Inteiro                                              |
 | valorTotal    | Valor Total (R$)    | numérica         | Valor total investido na carteira (em R$)               | ≥ 0                | não                   | Pode ser usado para cálculo de carteira ponderada    |
+| data   | Data de Criação      | data/hora        | Data e hora do investimento                   | -              | não                   | -                             |
 
 ---
 
@@ -81,10 +72,9 @@
 | Variável      | Nome Variável        | Tipo de Variável | Descrição                                             | Valores Permitidos     | Possui Valores nulos? | Anotações                                        |
 |---------------|----------------------|------------------|-------------------------------------------------------|------------------------|-----------------------|--------------------------------------------------|
 | id            | ID do Registro       | ULID             | Identificador único do registro                      | -                      | não                   | Chave primária, auto-increment (PK)                             |
-| risco         | Perfil Declarado     | JSON             | Estrutura JSON com a classificação declarada         | Ex: `{"perfil": "Moderado"}` | não         | Volátil. Pode conter atributos adicionais                |
+| risco         | Perfil Calculado      | enum             | Classificação baseada na carteira | 'Conservador', 'Moderado', 'Sofisticado' | não           | -     |
 | created_at    | Data de Criação      | data/hora        | Data e hora da declaração de risco                   | ISO 8601               | não                   | Histórico versionado                             |
 | clientes_id   | ID do Cliente        | numérica         | Referência ao cliente que declarou o risco           | 1,2,3…                 | não                   | FK para `clientes.id`                            |
-
 ---
 
 ### Tabela: `historico_risco_calculado`
@@ -92,8 +82,12 @@
 | Variável      | Nome Variável         | Tipo de Variável | Descrição                                             | Valores Permitidos     | Possui Valores nulos? | Anotações                                         |
 |---------------|-----------------------|------------------|-------------------------------------------------------|------------------------|-----------------------|---------------------------------------------------|
 | id            | ID do Registro        | ULID             | Identificador único do cálculo de risco              | -                      | não                   | Chave primária, auto-increment (PK)                              |
-| risco         | Perfil Calculado      | JSON             | Estrutura JSON com a classificação baseada na carteira | Ex: `{"perfil": "Arrojado"}` | não           | Pode conter pesos, notas, justificativas         |
+| risco         | Perfil Calculado      | enum             | Classificação baseada na carteira | 'Conservador', 'Moderado', 'Sofisticado' | não           | -     |
 | created_at    | Data de Criação       | data/hora        | Data e hora do cálculo do perfil                      | ISO 8601               | não                   | Histórico versionado                              |
 | clientes_id   | ID do Cliente         | numérica         | Referência ao cliente cuja carteira foi analisada                      | 1,2,3…                 | não                   | FK para `clientes.id`                             |
+| RF_percentual  | Percentual de Renda Fixa        | numérica         | Percentual de investimentos Renda Fixa na carteira | 0 ≥ x ≤ 100 | não               | Deve ser decimal                            |
+| RV_percentual  | Percentual de Renda Variável        | numérica         | Percentual de investimentos Renda Variável na carteira | 0 ≥ x ≤ 100 | não               | Deve ser decimal                            |
+| valorTotal    | Valor Total (R$)    | numérica         | -    | -    | não                   | -   |
+
 
 &emsp;A partir deste dicionário, é possível entender as características e regras de negócio consideradas para a modelagem do banco de dados.
