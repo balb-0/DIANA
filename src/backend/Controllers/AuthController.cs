@@ -87,22 +87,5 @@ namespace backend.Controllers
 
             return Unauthorized(result);
         }
-
-        /// <summary>
-        /// Retorna o perfil do usuário autenticado
-        /// </summary>
-        [HttpGet("profile")]
-        [Authorize]
-        public ActionResult<UserInfo> GetProfile()
-        {
-            var user = HttpContext.Items["User"] as UserInfo;
-
-            if (user == null)
-            {
-                return Unauthorized("Usuário não autenticado");
-            }
-
-            return Ok(user);
-        }
     }
 }

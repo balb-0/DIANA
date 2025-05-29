@@ -19,9 +19,7 @@ C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Google.Apis.Auth.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Google.Apis.Core.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
-C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -41,7 +39,6 @@ C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.Extensions.WebEncoders.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
@@ -65,7 +62,6 @@ C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\System.CodeDom.dll
-C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\System.Management.dll
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
@@ -159,3 +155,4 @@ C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\obj\Debug\net8.
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\obj\Debug\net8.0\backend.pdb
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\obj\Debug\net8.0\ref\backend.dll
+C:\Users\fzill\Documents\GitHub\2025-1B-T13-ES06-G03\src\backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
