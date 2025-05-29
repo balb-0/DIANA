@@ -1128,69 +1128,58 @@ Define os níveis de assessores possíveis no sistema:
 
 <div align="center">
 <sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
-<img src="./img/uml-components.png">  
+<img src="./img/diagrama_componentes.jpg">  
 <sub>Fonte: Material produzido pelos autores (2025)</sub>  
 </div>
 
----
+## Arquitetura em Camadas do Aplicativo
 
-### Arquitetura em Camadas da Plataforma BTG
+O sistema segue uma arquitetura em camadas, organizada em: **Camada de Apresentação**, **Camada de Negócio** e **Camada de Dados**, fragmentadas nos componentes conforme o diagrama. Abaixo descrevemos os blocos responsáveis por cada funcionalidade:
 
-&emsp;O sistema foi desenvolvido com base em uma arquitetura em camadas, separando responsabilidades entre apresentação, lógica de negócio e persistência de dados. Abaixo descrevemos os componentes de cada camada e o fluxo entre eles:
+### Camada de Apresentação (Frontend Mobile)
 
----
+A interface principal para os assessores do BTG é o **Aplicativo Mobile**, responsável por coletar dados do usuário, exibir informações de perfil, recomendações e alertas de conformidade.
 
-## 5.3.1. Camada de Apresentação (Frontend Mobile)
+#### Componentes:
+- **Aplicativo Mobile (React Native):** Permite a interação do usuário com o sistema.
+- **Firebase:** Suporte a autenticação, notificações e sincronização em tempo real com o app.
 
-&emsp;A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
-
-### Componentes:
-- **Usuário (Assessor):** A pessoa que utiliza o aplicativo mobile.
-- **App React Native:** Interface do usuário que envia requisições para o backend.
-
-### Fluxo:
-1. O assessor acessa o sistema por meio do aplicativo.
-2. As ações realizadas no app (como login, filtros, visualização de perfis) são enviadas para o backend por meio do API Gateway.
+#### Fluxo:
+1. O usuário acessa o sistema pelo aplicativo mobile.
+2. O app se comunica com o **Firebase** para autenticação e sincronização.
+3. Requisições relacionadas a dados e recomendações são enviadas ao módulo **Service**, que coordena a lógica de negócio.
 
 ---
 
-## 5.3.2. Camada de Negócio (Backend)
+### Camada de Negócio (Backend / Orquestração)
 
-&emsp;A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
+Responsável por orquestrar o processamento, validações e geração de recomendações com base nas informações fornecidas pelos usuários e dados do BTG.
 
-### Componentes:
-- **API Gateway (.NET):** Orquestra as requisições recebidas do app, redirecionando para os microserviços apropriados.
-- **Serviço de Autenticação:** Responsável pela integração com o Auth0 para validar os tokens de acesso.
-- **Serviço de Análise de Carteira:** Realiza a análise dos ativos do cliente em relação ao perfil de risco.
-- **Serviço de Conformidade:** Verifica se a carteira está em conformidade com o perfil do cliente.
-- **Serviço de Recomendação (Python):** Realiza cálculos e lógica para sugerir ajustes na carteira, utilizando inteligência de negócio e geração de perfis ideais.
-- **Engine de Perfis:** Módulo interno do serviço de recomendação que simula cenários ideais baseados nos dados do usuário.
+#### Componentes:
+- **Service:** Intermediário entre o app, o Firebase e os módulos internos do backend. Gerencia lógica de fluxo e chamadas de API.
+- **API de Recomendação:** Executa as regras de negócio, reclassificação de perfis e sugestão de alocação conforme regulamentação da CVM.
+- **Repositories:** Responsável por interagir com o banco de dados relacional para consultas e atualizações.
 
-### Fluxo:
-1. O API Gateway valida o token com o Serviço de Autenticação.
-2. Após autenticação, o Gateway redireciona a requisição para o serviço apropriado:
-   - **Análise de Carteira**: Para processar dados do portfólio.
-   - **Conformidade**: Para verificar o alinhamento com o perfil do cliente.
-   - **Recomendação**: Para gerar sugestões inteligentes de alocação.
-3. O Serviço de Recomendação acessa o Engine de Perfis e o banco de dados para gerar recomendações.
-4. Caso necessário, o Serviço de Análise também consulta arquivos e dados complementares via Supabase.
+#### Fluxo:
+1. O **Service** recebe requisições do app, autentica via Firebase e direciona as chamadas para a **API de Recomendação**.
+2. A API de Recomendação processa os dados recebidos e envia instruções de leitura/escrita para os **Repositories**.
+3. Os **Repositories** acessam o banco **PostgreSQL** para persistência ou leitura das informações.
 
 ---
 
-## 5.3.3. Camada de Dados
+### Camada de Dados
 
-&emsp;Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
+Abriga os dados estruturados e operacionais do sistema.
 
-### Componentes:
-- **PostgreSQL:** Base de dados relacional principal do sistema.
-- **Supabase:** Usado para armazenar arquivos auxiliares, como documentos e imagens.
+#### Componentes:
+- **PostgreSQL:** Banco relacional para armazenamento de perfis de investidores, carteiras, registros de recomendação e histórico.
+- **Dados BTG:** Fonte externa integrada ao sistema que fornece informações essenciais para análise e recomendação.
 
-### Fluxo:
-1. Os microserviços de negócio consultam ou atualizam os dados diretamente no PostgreSQL.
-2. Dados auxiliares, como PDFs, arquivos ou planilhas, são manipulados via Supabase.
-3. As respostas são retornadas ao usuário via o API Gateway e exibidas no app mobile.
+#### Fluxo:
+1. A **API de Recomendação** consome os **Dados BTG** para análise inicial.
+2. **Repositories** acessam o **PostgreSQL** para registrar, atualizar ou recuperar dados do sistema.
+3. Resultados são retornados à **Camada de Negócio** e exibidos ao usuário via o app mobile.
 
----
 
 ## 5.4 Diagramas de Sequência da UML
 
@@ -1445,8 +1434,138 @@ _conteúdo_
 _conteúdo_
 
 ## 8.4 Testes Unitários e de Integração
-_conteúdo_
-Obs.: Insira informações sobre estratégias para realização dos testes
+
+### Planejamento de testes unitários
+
+&emsp;O desenvolvimento do aplicativo pretende seguir TDD (Test-Driven-Development), garantindo a qualidade, confiabilidade e evolução segura do sistema por meio de testes unitários. Dessa forma, essa seção detalha as estratégias para a construção de testes unitários que orientarão o desenvolvimento do aplicativo para o BTG Pactual. 
+
+---
+
+#### Procedimento esperado para o desenvolvimento
+
+- **Para cada nova funcionalidade:**
+1. Escreve-se primeiro um teste unitário que representa o comportamento esperado.
+2. Implementa-se o código mínimo necessário para fazer o teste passar.
+3. Refatora-se o código garantindo que os testes permaneçam passando.
+
+---
+
+#### Estratégias para Testes no Backend
+
+**Ferramentas Utilizadas**
+- `xUnit` – Framework de teste unitário.
+- `Moq` – Mock de dependências (serviços, repositórios, VHS, API externa).
+
+**Cobertura de Testes**
+- **Controladores:** Validação de status codes e chamadas aos serviços.
+- **Serviços:** Regras de negócio, integração com cache VHS, manipulação de dados.
+- **Utilitários:** Funções auxiliares de formatação, cálculo, etc.
+- **VHS (Cache):** Verificação se o dado está sendo buscado, armazenado e invalidado corretamente.
+
+**Exemplo de Estrutura**
+- Testes seguem a estrutura AAA (Arrange, Act, Assert).
+- Cada método público deve ter ao menos 1 cenário positivo e 1 negativo testado.
+
+---
+
+#### Estratégias para Testes no Frontend
+
+**Ferramentas Utilizadas**
+- `Jest` – Teste de funções, hooks e lógicas internas.
+- `React Native Testing Library (RNTL)` – Testes de componentes e interações.
+
+**Cobertura de Testes**
+- **Componentes Visuais:** Renderização com diferentes props e estados.
+- **Hooks Customizados:** Validação de lógica reativa (ex: uso de contexto, chamadas de API).
+- **Funções Isoladas:** Manipulação de dados, máscaras, validações de formulário.
+
+**Boas Práticas**
+- Testar estados iniciais, interações (ex: cliques, inputs), e efeitos visuais esperados.
+- Usar mocks de APIs quando necessário.
+
+---
+
+#### Validação dos Resultados
+
+- Os testes devem rodar automaticamente no pipeline CI/CD.
+- Ferramentas de cobertura como `Coverlet` (.NET) e `Jest --coverage` devem ser usadas para acompanhar a cobertura mínima (recomenda-se 80%).
+
+### Planejamento de testes de integração
+
+&emsp;Esta subseção planeja os testes para a integração entre os módulos internos do sistema (como o .NET para o back-end React Native integrado ao Expo no front-end), assim como entre o backend e as APIs externas, utilizando caching (VHS). Os testes pretendem verificar tanto o comportamento esperado quanto a resposta a erros, validando possíveis interações críticas.
+
+---
+
+#### Pontos de Integração Identificados
+
+- **Frontend (React Native/Expo) → Backend (.NET API)**
+- **Backend → Camadas Internas (controladores, serviços, repositórios)**
+- **Backend → Cache (VHS)**
+- **Backend → Banco de Dados**
+- **Backend → API Externa (com cache VHS obrigatoriamente)**
+
+---
+
+#### Integração: Frontend ↔ Backend
+
+- **Objetivo:** Validar o consumo correto de dados pela aplicação e o tratamento de erros.
+- **Pré-condição:** Backend rodando localmente ou em formato Docker, dentro do respectivo servidor disponibilizado pela faculdade.
+- **Cenário Positivo:** Requisições com parâmetros válidos retornam dados esperados.
+- **Cenário Negativo:** Requisições com parâmetros inválidos ou tokens expirados retornam mensagens de erro apropriadas.
+  - Exemplos: campos obrigatórios não preenchidos, dados enviados para a requisição não atendendo às regras de negócio implementadas no banco de dados, valores inválidos, erros de conexão, etc. 
+- **Pós-condição:** Tela renderiza corretamente os dados ou mensagens de erro.
+
+#### Integração: Backend ↔ Banco de Dados
+
+- **Objetivo:** Verificar persistência e recuperação de dados.
+- **Pré-condição:** Banco de dados com dados controlados para teste.
+- **Cenário Positivo:** POST cria entidade e GET a retorna corretamente.
+- **Cenário Negativo:** DELETE de entidade inexistente retorna erro 404.
+- **Pós-condição:** Estado do banco reflete a operação ou retorna erro esperado.
+
+#### Integração: Backend ↔ Cache (VHS)
+
+&emsp;Nota: O VHS (Volatile Hash Storage) é um mecanismo de caching temporário usado para armazenar respostas de APIs externas e evitar chamadas repetidas desnecessárias. Ele guarda os dados por um tempo limitado (o que é chamado de TTL – Time To Live) e entrega esses dados diretamente do cache enquanto forem válidos, melhorando o desempenho e reduzindo a latência do aplicativo. Quando o cache expira ou é invalidado, uma nova chamada à API é feita e o conteúdo é atualizado no cache.
+
+- **Objetivo:** Reduzir latência e evitar chamadas repetidas à API externa.
+- **Pré-condição:** VHS ativado e configurado.
+- **Cenário Positivo:** Primeira chamada armazena no cache; próximas chamadas retornam do cache.
+- **Cenário Negativo:** Cache expira ou é invalidado e nova chamada é feita.
+- **Pós-condição:** Cache atualizado e resposta válida.
+
+#### Integração: Backend ↔ API Externa (utilizando VHS)
+
+- **Objetivo:** Validar consumo seguro e otimizado de uma API externa.
+- **Pré-condição:** API externa acessível e VHS operacional.
+- **Cenário Positivo:** Resposta da API é armazenada no cache e usada em chamadas seguintes.
+- **Cenário Negativo:** API externa retorna erro (ex: 500); mensagem de erro tratada corretamente.
+- **Pós-condição:** Resposta do cache usada, ou erro tratado no backend e propagado ao frontend.
+
+---
+
+#### Ferramentas e Abordagens Possíveis
+
+- **Swagger (OpenAPI):** Validação de contratos de API e documentação.
+- **Postman:** Testes manuais, com exportação para coleções automatizadas (utilizando Newman), de forma a realizar  vários testes de integração ao mesmo tempo, ainda que manualmente.
+- **xUnit (.NET):** Testes de integração backend com dependências reais e mockadas.
+- **React Native Testing Library (RTL):** Validação de componentes que dependem de dados da API.
+
+---
+
+#### Validação dos Resultados
+
+- **Logs e métricas:** A validação será feita observando os status das respostas (ex: 200, 404, 500), mensagens de erro, tempo de resposta e se os dados vieram diretamente da API externa ou do cache (VHS).
+- **Cobertura de testes:** Todos os principais endpoints do sistema devem ter testes cobrindo casos de sucesso e falha.
+- **Ambiente de testes (Staging):** Os testes serão executados em um ambiente isolado que simula o ambiente de produção, garantindo segurança e realismo.
+
+---
+
+#### Cobertura de Interações Críticas
+
+- **Chamadas essenciais do frontend:** Como telas que exibem dados dinâmicos do usuário ou carregam listas a partir da API.
+- **Operações com impacto no banco de dados:** Criação, edição ou exclusão de registros que alteram o estado do sistema.
+- **Uso do cache (VHS) como proteção contra falhas externas:** O sistema deve continuar funcionando mesmo que a API externa esteja lenta ou fora do ar, usando os dados armazenados em cache.
+- **Tratamento de erros visível ao usuário:** Mensagens claras e apropriadas devem ser exibidas quando houver falhas (ex: falha na API externa ou erro no envio de dados).
 
 ## 8.5 Documentações automáticas
 _conteúdo_
@@ -1481,6 +1600,65 @@ _conteúdo_
 
 ## 9.3.2 Resultados
 _conteúdo_
+
+## 9.4 Teste das APIs Externas
+
+Esta seção apresenta o planejamento de testes voltados para as APIs externas utilizadas no sistema de recomendação da plataforma BTG. O objetivo é garantir que os componentes que dependem de serviços de terceiros — como autenticação, processamento de recomendações e fornecimento de dados — funcionem corretamente, mesmo em situações adversas. 
+
+---
+
+## 9.4.1 Planejamento
+
+### Propósito dos Testes
+
+Os testes têm como objetivo:
+
+- Validar a conectividade, autenticidade e confiabilidade das APIs externas integradas ao sistema.
+- Garantir o funcionamento adequado em cenários de uso normais (positivos) e situações de erro (negativos).
+- Avaliar respostas, tempos de resposta e códigos HTTP retornados por cada API.
+- Confirmar que as mensagens de erro sejam claras e padronizadas, facilitando o diagnóstico de falhas.
+
+As APIs testadas são:
+
+- Firebase Authentication: Responsável pelo login e autenticação de usuários do aplicativo mobile.
+- API de Recomendação: Exposta pelo backend da plataforma para processar perfis e gerar sugestões de alocação.
+- API de Dados BTG: Fonte externa com dados de ativos e carteiras utilizados na análise.
+
+---
+
+### Cenários Positivos
+
+| API                      | Cenário                              | Objetivo                                                    | Instrução para Execução                                                |
+|--------------------------|--------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
+| Firebase Authentication  | Login com credenciais válidas        | Verificar autenticação bem-sucedida                         | Enviar requisição POST com e-mail/senha válidos via Postman            |
+| API de Recomendação      | Envio de perfil válido               | Confirmar resposta com recomendações coerentes              | Enviar JSON com dados completos (idade, renda, perfil declarado etc.)  |
+| API de Dados BTG         | Consulta por ativo existente         | Verificar retorno correto de dados de ativo                 | Executar GET em `/ativos/B3SA3` e validar conteúdo da resposta         |
+
+---
+
+### Cenários Negativos
+
+| API                      | Cenário                              | Objetivo                                                    | Instrução para Execução                                                |
+|--------------------------|--------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
+| Firebase Authentication  | Token expirado ou inválido           | Garantir bloqueio de acesso e erro apropriado               | Usar token expirado e simular requisição autenticada                   |
+| API de Recomendação      | JSON malformado                      | Verificar tratamento de erro e retorno de código 400        | Remover campo obrigatório do corpo da requisição                       |
+| API de Recomendação      | Perfil com dados inconsistentes      | Confirmar que regras de negócio lidam com dados anômalos    | Enviar idade negativa ou perfil inexistente                            |
+| API de Dados BTG         | Consulta de ativo inexistente        | Validar resposta 404 ou equivalente                         | Fazer GET em `/ativos/XXXX` com código inexistente                     |
+| API de Dados BTG         | API indisponível (timeout simulado)  | Testar resposta do sistema em falhas externas               | Desabilitar endpoint no ambiente de testes e monitorar resposta        |
+
+---
+
+### Abrangência dos Testes
+
+Este conjunto de testes abrange os principais fluxos de comunicação com APIs externas, considerando:
+
+- Sucesso na autenticação e autorização de usuários.
+- Correto funcionamento do processo de recomendação com entradas válidas.
+- Respostas adequadas a erros de entrada e indisponibilidade de serviços.
+- Cobertura de cenários realistas de uso e falha, contemplando tolerância a falhas.
+
+As instruções de execução são aplicáveis via ferramentas como **Postman**, **Insomnia** ou testes automatizados com bibliotecas como `pytest` + `requests`.
+
 
 # 10. Procedimentos de Implantação
 _conteúdo_
