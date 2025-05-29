@@ -1,14 +1,14 @@
--- Dados iniciais para a tabela clientes
-INSERT INTO clientes (
-  id, nome, cpf, rg, endereco, data_nascimento, categoria, perfil_risco_declarado, perfil_risco_calculado, assessores_id, is_active, inactive_datetime
-) VALUES 
-  ('01HXQK6Q1YXKH2QKSR89NR9A1W', 'João da Silva', '12345678900', 'MG1234567', 'Rua Exemplo, 123', '1985-10-10', 'Gold', 'Moderado', 'Moderado', '01HXQK6T7F9D78XK9F0WJ79PZ5', true, NULL);
-
 -- Dados iniciais para a tabela assessores
 INSERT INTO assessores (
   id, nome, unidade_btg
 ) VALUES 
   ('01HXQK6T7F9D78XK9F0WJ79PZ5', 'Maria Souza', 'BTG São Paulo');
+
+-- Dados iniciais para a tabela clientes
+INSERT INTO clientes (
+  id, nome, cpf, rg, endereco, data_nascimento, categoria, assessores_id, is_active, inactive_datetime
+) VALUES 
+  ('01HXQK6Q1YXKH2QKSR89NR9A1W', 'João da Silva', '12345678900', 'MG1234567', 'Rua Exemplo, 123', '1985-10-10', 'Gold', '01HXQK6T7F9D78XK9F0WJ79PZ5', true, NULL);
 
 -- Dados iniciais para a tabela ativos
 INSERT INTO ativos (
@@ -25,7 +25,7 @@ INSERT INTO ativos (
 
 -- Dados iniciais para a tabela investimento
 INSERT INTO investimento (
-  id, ativos_id, clientes_id, quantidade, valorTotal, data_investimento
+  id, ativos_id, clientes_id, quantidade, valorTotal, data
 ) VALUES 
   ('01HFAKEINVEST00', '01HFAKEATIVO00', '01HXQK6Q1YXKH2QKSR89NR9A1W', 25, 25081.62, '2025-05-23 16:45:54'),
   ('01HFAKEINVEST01', '01HFAKEATIVO01', '01HXQK6Q1YXKH2QKSR89NR9A1W', 49, 47046.25, '2025-05-23 16:45:54'),
