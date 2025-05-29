@@ -26,7 +26,7 @@ export default function CardCarteirasPerfil({
   total,
 }: CardCarteirasPerfilProps) {
   return (
-    <View className="rounded-lg w-[174px] h-[220px] p-4 bg-azul-claro-principal shadow-clicaveis justify-between">
+    <View className="rounded-lg w-[45%] aspect-[174/220] p-4 bg-azul-claro-principal shadow-clicaveis justify-between">
       <View className="flex-row justify-between items-center">
         <Text className="bg-azul-escuro-principal text-azul-claro-principal px-3 py-1 text-sm font-bold rounded-full">
           {perfil}
@@ -42,7 +42,7 @@ export default function CardCarteirasPerfil({
           <Text className="text-[10px] font-light"> de </Text>
           <Text className="font-bold text-xl">{total}</Text>
         </Text>
-        <Text className="text-[10px] text-azul-escuro-principal font-light pt-1">
+        <Text className="text-[10px] text-azul-escuro-principal font-light pt-1 text-center">
           carteiras em
           <Text className="font-bold"> conformidade.</Text>
         </Text>

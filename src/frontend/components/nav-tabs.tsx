@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Animated } from "react-native";
 import { useMemo, useRef } from "react";
 import { House, Wallet, User } from "phosphor-react-native";
 
-type TabId = "home" | "wallet" | "profile";
+type TabId = "" | "wallet" | "profile";
 
 export const BottomNavigation = () => {
   const pathname = usePathname();
@@ -12,7 +12,7 @@ export const BottomNavigation = () => {
 
   const tabs = useMemo(
     () => [
-      { id: "home", icon: House },
+      { id: "", icon: House },
       { id: "wallet", icon: Wallet },
       { id: "profile", icon: User },
     ] as const,
@@ -22,7 +22,7 @@ export const BottomNavigation = () => {
   const navWidth = 380;
   const tabSize = 56;
 
-  const activeTab: TabId = (pathname.replace("/", "") || "home") as TabId;
+  const activeTab: TabId = (pathname.replace("/", "") || "") as TabId;
 
   const handleTabPress = (tabId: TabId) => {
     if (tabId !== activeTab) {
@@ -45,12 +45,10 @@ export const BottomNavigation = () => {
   };
 
   return (
-    <View className="fixed bottom-0 w-full items-center">
+    <View className="absolute bottom-0 w-full items-center">
       <View className="relative" style={{ width: navWidth }}>
         <View
-          className={`flex-row absolute w-full z-50 justify-between px-16 ${
-            activeTab ? "top-[-14px]" : "top-2"
-          }`}
+          className="flex-row absolute w-full z-50 justify-between px-16 top-[-10px]"
         >
           {tabs.map((tab) => {
             const IconComponent = tab.icon;
@@ -76,8 +74,9 @@ export const BottomNavigation = () => {
                       }`}
                     >
                       <IconComponent
-                        size={isActive ? 24 : 20}
+                        size={isActive ? 32 : 22}
                         color={isActive ? "#001E62" : "#AEC3F5"}
+                        weight={isActive ? "fill" : "regular"}
                       />
                     </View>
                   </View>

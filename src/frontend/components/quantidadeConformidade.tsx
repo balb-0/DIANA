@@ -55,7 +55,7 @@ export default function StatusConformidade({
     return (
         <TouchableOpacity
             onPress={onPress}
-            className={`p-3 pb-1.5 rounded-xl ${config.bgColor} justify-center items-center w-[174px] h-fit shadow-clicaveis`}
+            className={`p-3 pb-1.5 rounded-xl ${config.bgColor} justify-center items-center w-[45%] aspect-[174/101] shadow-clicaveis`}
         >
             <View className="flex-row items-start justify-between w-full">
                 <View className=''>
