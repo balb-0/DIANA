@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import {
   Handshake,
   PiggyBank,
@@ -11,6 +11,7 @@ interface CardCarteirasPerfilProps {
   perfil: "Moderado" | "Conservador" | "Sofisticado" | "Todas";
   quantidade: number;
   total: number;
+  onPress?: () => void;
 }
 
 const iconMap = {
@@ -24,9 +25,10 @@ export default function CardCarteirasPerfil({
   perfil,
   quantidade,
   total,
+  onPress,
 }: CardCarteirasPerfilProps) {
   return (
-    <View className="rounded-lg w-[45%] aspect-[174/220] p-4 bg-azul-claro-principal shadow-clicaveis justify-between">
+    <TouchableOpacity onPress={onPress} className="rounded-lg w-[45%] aspect-[174/220] p-4 bg-azul-claro-principal shadow-clicaveis justify-between">
       <View className="flex-row justify-between items-center">
         <Text className="bg-azul-escuro-principal text-azul-claro-principal px-3 py-1 text-sm font-bold rounded-full">
           {perfil}
@@ -47,6 +49,6 @@ export default function CardCarteirasPerfil({
           <Text className="font-bold"> conformidade.</Text>
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }

@@ -38,8 +38,6 @@ export const BottomNavigation = () => {
           useNativeDriver: true,
         }),
       ]).start();
-
-      // Cast para RelativePathString para compatibilidade com o router
       router.push(`/${tabId}` as RelativePathString);
     }
   };
@@ -48,7 +46,7 @@ export const BottomNavigation = () => {
     <View className="absolute bottom-0 w-full items-center">
       <View className="relative" style={{ width: navWidth }}>
         <View
-          className="flex-row absolute w-full z-50 justify-between px-16 top-[-10px]"
+          className="flex-row absolute w-full z-50 justify-between px-20 top-[-10px]"
         >
           {tabs.map((tab) => {
             const IconComponent = tab.icon;

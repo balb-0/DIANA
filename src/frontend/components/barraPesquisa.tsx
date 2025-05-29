@@ -10,7 +10,7 @@ interface BarraPesquisaProps {
 }
 
 export default function BarraPesquisa({
-  placeholder = "Pesquisar por cli",
+  placeholder = "Pesquisar por cliente",
   onSearch,
   value,
   onChangeText,
@@ -27,17 +27,14 @@ export default function BarraPesquisa({
   };
 
   return (
-    <View className="flex-row items-center bg-white rounded-2xl px-4 py-3 flex-1 shadow-sm">
-      {/* Ícone de pesquisa */}
+    <View className="flex-row items-center bg-azul-claro-principal shadow-clicaveis rounded-2xl px-4 flex-1 h-fit">
       <TouchableOpacity onPress={handleSearch} className="mr-3">
-        <MagnifyingGlass size={20} color="#9CA3AF" weight="regular" />
+        <MagnifyingGlass size={20} color="#001E62" weight="regular" />
       </TouchableOpacity>
-
-      {/* Input de texto */}
       <TextInput
         className="flex-1 text-gray-700 text-base"
         placeholder={placeholder}
-        placeholderTextColor="#9CA3AF"
+        placeholderTextColor="#001E62"
         value={value !== undefined ? value : searchText}
         onChangeText={handleTextChange}
         onSubmitEditing={handleSearch}

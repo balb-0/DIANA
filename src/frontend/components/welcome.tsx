@@ -6,7 +6,7 @@ interface WelcomeProps {
 
 export default function Welcome({user}:WelcomeProps) {
     return (
-        <View className="h-fit fixed">
+        <View className="top-0 absolute w-full z-10">
             <View className="relative">
                 <Image
                     source={require("../assets/head.png")}

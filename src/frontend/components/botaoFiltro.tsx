@@ -11,12 +11,12 @@ interface BotaoFiltroProps {
 export default function BotaoFiltro({ 
   onPress,
   iconSize = 20,
-  iconColor = "#9CA3AF"
+  iconColor = "#001E62"
 }: BotaoFiltroProps) {
   return (
     <TouchableOpacity 
       onPress={onPress}
-      className="bg-white rounded-2xl p-3 shadow-sm"
+      className="bg-azul-claro-principal rounded-2xl p-3 shadow-sm"
     >
       <Sliders size={iconSize} color={iconColor} weight="regular" />
     </TouchableOpacity>

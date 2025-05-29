@@ -14,7 +14,7 @@ module.exports = {
         "vermelho-principal": "#5A1A1A"
       },
       boxShadow: {
-        'clicaveis': '0 4px 8px rgba(0, 30, 98, 0.3)',
+        'clicaveis': '0 4px 8px rgba(0, 0, 0, 0.3)',
       },      
     },
   },
