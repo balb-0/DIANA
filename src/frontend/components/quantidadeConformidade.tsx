@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import { ReactNode } from 'react';
 import {
-  Check,
-  ExclamationMark,
-  ArrowSquareOut,
+    Check,
+    ExclamationMark,
+    ArrowSquareOut,
 } from "phosphor-react-native";
 
 type StatusConformidadeTipo = 'azul' | 'vermelho';
@@ -49,29 +49,28 @@ export default function StatusConformidade({
     onPress,
 }: StatusConformidadeProps) {
     const isConforme = tipo === "Conformidade";
-    
+
     const config = statusConfig[corFundo];
 
     return (
         <TouchableOpacity
             onPress={onPress}
-            className={`p-4 pb-1 rounded-xl ${config.bgColor} justify-center items-center w-44 h-fit`}
+            className={`p-3 pb-1.5 rounded-xl ${config.bgColor} justify-center items-center w-[45%] aspect-[174/101] shadow-clicaveis`}
         >
             <View className="flex-row items-start justify-between w-full">
                 <View className=''>
-                    <Text className={`${config.corTexto} text-sm font-light mb-[-6px]`}>Carteiras {isConforme ? "em" : ""}</Text>
+                    <Text className={`${config.corTexto} text-sm font-light mb-[-4px]`}>Carteiras {isConforme ? "em" : ""}</Text>
                     <Text className={`font-bold text-lg ${config.corTexto}`}>{tipo}</Text>
                 </View>
-                <ArrowSquareOut size={14} color={`${config.corQuadrado}`} weight="bold"/>
+                <ArrowSquareOut size={14} color={`${config.corQuadrado}`} weight="bold" />
             </View>
-
             <View className='flex-row items-center justify-between w-full h-fit'>
                 <Text className={`${config.corTexto}`}>
                     <Text className="text-xl font-bold">{quantidade}</Text>
                     <Text className="text-[10px] font-light"> de </Text>
                     <Text className="text-sm font-bold">{total}</Text>
                 </Text>
-                <View className="mb-2">{config.icone}</View>
+                <View className="">{config.icone}</View>
             </View>
         </TouchableOpacity>
     );
