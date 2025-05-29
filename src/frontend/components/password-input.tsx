@@ -20,14 +20,14 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   return (
     <View className="mb-5">
       <Text
-        className="text-base font-semibold mb-2 ml-4"
+        className="text-base font-semibold mb-1 ml-4"
         style={{ color: "#001E62" }}
       >
         {label}
       </Text>
       <View className="flex-row items-center bg-[#AEC3F5] rounded-xl px-4 py-4 w-[348px] h-[49px]">
         <View className="mr-3">
-          <Lock size={18} color="#001E62" />
+          <Lock size={18} color="#001E6280" />
         </View>
         <TextInput
           className="flex-1 text-base p-0"
@@ -35,7 +35,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
-          placeholderTextColor="#001E62"
+          placeholderTextColor="#001E6280"
           secureTextEntry={isSecure}
           autoCapitalize="none"
           autoCorrect={false}

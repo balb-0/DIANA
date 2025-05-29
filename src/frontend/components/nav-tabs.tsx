@@ -48,7 +48,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
   };
 
   return (
-    <View className="fixed bottom-0 w-full items-center">
+    <View className="fixed bottom-0 w-full items-center rounded-none">
       <View className="relative" style={{ width: navWidth }}>
         {/* Icons row - positioned above the navigation bar */}
         <View

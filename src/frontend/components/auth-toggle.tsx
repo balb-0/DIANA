@@ -10,15 +10,10 @@ export const AuthToggle: React.FC<AuthToggleProps> = ({
   onToggle,
   initialMode = "login",
 }) => {
-  const [activeMode, setActiveMode] = useState<"login" | "register">(
-    initialMode
-  );
-  const slideAnimation = useRef(
-    new Animated.Value(initialMode === "login" ? 4 : 132)
-  ).current;
+  const [activeMode, setActiveMode] = useState<"login" | "register">(initialMode);
+  const slideAnimation = useRef(new Animated.Value(initialMode === "login" ? 4 : 132)).current;
   const scaleAnimation = useRef(new Animated.Value(1)).current;
 
-  // Toggle width - adjust based on your design needs
   const toggleWidth = 256;
   const padding = 4;
   const buttonWidth = (toggleWidth - padding * 2) / 2;
@@ -27,44 +22,55 @@ export const AuthToggle: React.FC<AuthToggleProps> = ({
     setActiveMode(initialMode);
     const toValue = initialMode === "login" ? padding : buttonWidth + padding;
 
-    Animated.parallel([
-      Animated.timing(slideAnimation, {
-        toValue,
-        duration: 200,
-        useNativeDriver: true,
-      }),
-      Animated.sequence([
-        Animated.timing(scaleAnimation, {
-          toValue: 0.98,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(scaleAnimation, {
-          toValue: 1,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-      ]),
-    ]).start();
+    Animated.timing(slideAnimation, {
+      toValue,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+    // eslint-disable-next-line
   }, [initialMode]);
 
   const handleToggle = (mode: "login" | "register") => {
     if (mode !== activeMode) {
       setActiveMode(mode);
       onToggle?.(mode);
+
+      const toValue = mode === "login" ? padding : buttonWidth + padding;
+
+      Animated.parallel([
+        Animated.timing(slideAnimation, {
+          toValue,
+          duration: 200,
+          useNativeDriver: true,
+        }),
+        Animated.sequence([
+          Animated.timing(scaleAnimation, {
+            toValue: 0.95,
+            duration: 100,
+            useNativeDriver: true,
+          }),
+          Animated.timing(scaleAnimation, {
+            toValue: 1,
+            duration: 100,
+            useNativeDriver: true,
+          }),
+        ]),
+      ]).start();
     }
   };
 
   return (
     <View className="items-center">
       <View
-        className="bg-[#001E62] overflow-hidden rounded-full justify-center"
-        style={{ width: toggleWidth, height: 48 }}
+        className="overflow-hidden rounded-full justify-center"
+        style={{ width: toggleWidth, height: 48, backgroundColor: "#001E62" }}
       >
-        {/* Animated sliding background */}
+        {/* Bolha animada */}
         <Animated.View
-          className="absolute bg-[#AEC3F5] rounded-full"
           style={{
+            position: "absolute",
+            backgroundColor: "#AEC3F5",
+            borderRadius: 9999,
             width: buttonWidth,
             height: 40,
             transform: [
@@ -74,7 +80,7 @@ export const AuthToggle: React.FC<AuthToggleProps> = ({
           }}
         />
 
-        {/* Toggle buttons */}
+        {/* Botões */}
         <View className="flex-row h-full">
           <TouchableOpacity
             className="flex-1 justify-center items-center"
@@ -82,10 +88,10 @@ export const AuthToggle: React.FC<AuthToggleProps> = ({
             activeOpacity={0.8}
           >
             <Animated.Text
-              className={`text-lg font-semibold ${
-                activeMode === "login" ? "text-[#001E62]" : "text-[#AEC3F5]"
-              }`}
               style={{
+                fontSize: 18,
+                fontWeight: "600",
+                color: activeMode === "login" ? "#001E62" : "#AEC3F580",
                 transform: [{ scale: scaleAnimation }],
               }}
             >
@@ -99,10 +105,10 @@ export const AuthToggle: React.FC<AuthToggleProps> = ({
             activeOpacity={0.8}
           >
             <Animated.Text
-              className={`text-lg font-semibold ${
-                activeMode === "register" ? "text-[#001E62]" : "text-[#AEC3F5]"
-              }`}
               style={{
+                fontSize: 18,
+                fontWeight: "600",
+                color: activeMode === "register" ? "#001E62" : "#AEC3F580",
                 transform: [{ scale: scaleAnimation }],
               }}
             >
