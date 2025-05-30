@@ -1425,7 +1425,95 @@ _conteúdo_
 **Nota:** Insira uma explicação de entregas em cada Sprint.
 
 ## 8.3.1 Sprint 3
-_conteúdo_
+
+&emsp;Durante a Sprint 3, foi realizado o desenvolvimento de telas funcionais e componentes visuais reutilizáveis, utilizando **React Native** com estilização baseada em classes utilitárias do **NativeWind**, dentro do ambiente **Expo**. Os dados estão atualmente mockados, mas toda a lógica de estado (`useState`) e efeitos (`useEffect`) foi estruturada para permitir integração fluida com o backend nas próximas sprints.
+
+---
+
+## 🛠️ Tecnologias e Bibliotecas Utilizadas
+- **React Native com Expo**: para desenvolvimento mobile multiplataforma.
+- **NativeWind**: integração do estilo utilitário do Tailwind para React Native.
+- **Phosphor Icons**: biblioteca de ícones leve e versátil.
+- **Hooks (`useState`, `useEffect`)**: para controle de estado e ciclos de vida nas telas.
+
+---
+
+## Padrão Visual e Design System
+
+&emsp;Toda a interface foi construída respeitando o design system definido no Figma, com cores customizadas aplicadas via `tailwind.config.ts`. As principais cores utilizadas foram:
+
+```js
+"azul-escuro-principal": "#001E62",
+"azul-claro-principal": "#AEC3F5",
+"azul-claro-secundario": "#C2D5FF",
+"rosa-secundario": "#FF7CA1",
+"vermelho-secundario": "#E9A5A5",
+"vermelho-principal": "#5A1A1A"
+```
+
+&emsp;Também foram aplicadas sombras customizadas (`shadow-clicaveis`) para destacar componentes interativos e bordas arredondadas (`rounded-2xl`) para promover suavidade visual e acessibilidade.
+
+---
+
+## Componentes Desenvolvidos
+
+<div align="center">
+<sub>Figura X - Componentes</sub><br> 
+<img src="img/componentes.png" width="70%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Todos os componentes foram projetados com foco em **modularidade, reuso e clareza visual**, e seguem as boas práticas de composição de interfaces.
+
+- **Componente de alternância (Switch)**: permite ao usuário alternar entre a tela de login e cadastro de forma intuitiva.
+- **Inputs personalizados**: campos estilizados para e-mail, senha e dados cadastrais, com foco em usabilidade.
+- **Botões de ação**: utilizados nas telas de login e cadastro, adaptáveis por props para diferentes ações.
+- **Card de Quantitativo Geral**: exibe total de carteiras regulares ou irregulares. Sua aparência (cor, ícone e textos) se ajusta conforme o tipo.
+- **Card por Perfil de Risco**: dinâmico, identifica o perfil de risco (Conservador, Moderado, Sofisticado) e exibe dados correspondentes com ícones e cores adequadas.
+- **Componente de Pesquisa por Cliente**: input com placeholder contextual, reutilizável em diferentes telas.
+- **Filtro de carteiras**: botão com função de abrir modal para aplicação de filtros por tipo de carteira.
+- **Card de Carteira de Investimento**: mostra banco, CPF, valor total, status e outros dados relevantes de uma carteira.
+- **Card de Ativo**: exibe os ativos individuais de uma carteira, com valor e nome.
+- **Componente de Recomendação**: sugere investimentos alternativos com base na regularidade da carteira versus perfil de risco.
+- **Menu Inferior (Bottom Navigation)**: fixo e funcional, com rotas para Home, Carteiras e Perfil.
+- **Histórico de carteiras acessadas**: presente na tela de perfil do assessor, apresenta navegação por carteiras previamente consultadas.
+
+---
+
+## Telas Desenvolvidas
+
+&emsp;As telas desenvolvidas seguiram exatamente o previsto no Mockup construído no Figma, com mínimas alterações para refletir os feedbacks coletados durante as Sprint Reviews.
+
+### 1. Tela de Login/Cadastro  
+&emsp;Alternância via switch entre os fluxos de autenticação. Campos de entrada e botões estilizados com feedback visual.
+
+### 2. Tela Home  
+Exibe:
+- Mensagem de boas-vindas com nome do assessor.
+- Campo de busca por cliente.
+- Cards de resumo da quantidade de carteiras regulares/irregulares.
+- Cards por perfil de risco.
+- Menu inferior para navegação.
+
+### 3. Tela de Carteiras por Perfil  
+A partir do clique em um dos cards da Home, exibe:
+- Campo de busca e botão de filtro.
+- Quantidade de carteiras em conformidade no respectivo perfil.
+- Cards de carteiras com informações resumidas.
+OBS: em relação ao Mockup anterior, tags "Regular" e "Irregular" foram alteradas para a cor vermelho ou azul escuro.
+
+### 4. Tela de Carteira Individual  
+Mostra dados detalhados da carteira selecionada:
+- Cabeçalho com informações do cliente.
+- Situação de regularidade.
+- Cards com ativos.
+- Hiperlink para recomendações de readequação (em caso de irregularidade) ou mais investimentos (em caso de regularidade).
+OBS: em relação ao Mockup anterior, tags "Regular" e "Irregular" foram alteradas para a cor vermelho ou azul escuro.
+
+### 5. Tela de Perfil do Assessor  
+Apresenta:
+- Dados cadastrais do assessor.
+- Container com histórico de carteiras acessadas.
 
 ## 8.3.2 Sprint 4
 _conteúdo_
