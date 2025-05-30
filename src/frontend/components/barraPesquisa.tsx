@@ -27,12 +27,12 @@ export default function BarraPesquisa({
   };
 
   return (
-    <View className="flex-row items-center bg-azul-claro-principal shadow-clicaveis rounded-2xl px-4 flex-1 h-fit">
+    <View className="flex-row items-center bg-azul-claro-principal shadow-clicaveis rounded-2xl px-4 flex-1 min-h-10">
       <TouchableOpacity onPress={handleSearch} className="mr-3">
         <MagnifyingGlass size={20} color="#001E62" weight="regular" />
       </TouchableOpacity>
       <TextInput
-        className="flex-1 text-gray-700 text-base"
+        className="flex-1 text-gray-700 text-base items-center justify-center"
         placeholder={placeholder}
         placeholderTextColor="#001E62"
         value={value !== undefined ? value : searchText}

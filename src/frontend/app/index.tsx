@@ -1,42 +1,13 @@
-import { View } from "react-native";
-import { useEffect, useState } from "react";
-import { useRouter, RelativePathString } from "expo-router";
 import BarraPesquisa from "@/components/barraPesquisa";
-import StatusConformidade from "@/components/quantidadeConformidade";
 import CardCarteirasPerfil from "@/components/cardCarteirasPorPerfil";
+import StatusConformidade from "@/components/quantidadeConformidade";
+import { RelativePathString, useRouter } from "expo-router";
+import { View } from "react-native";
+import { useCarteiras } from "./contexts/CarteirasProvider";
 
 export default function Index() {
     const router = useRouter();
-
-    const [carteiras, setCarteiras] = useState({
-        regulares: { quantidade: 0, total: 0 },
-        inconformes: { quantidade: 0, total: 0 },
-    });
-
-    const [carteirasPorPerfil, setCarteirasPorPerfil] = useState({
-        Moderado: { quantidade: 0, total: 0 },
-        Conservador: { quantidade: 0, total: 0 },
-        Sofisticado: { quantidade: 0, total: 0 },
-        Todas: { quantidade: 0, total: 0 },
-    });
-
-    useEffect(() => {
-        setTimeout(() => {
-            setCarteiras({
-                regulares: { quantidade: 124, total: 198 },
-                inconformes: { quantidade: 74, total: 198 },
-            });
-        }, 1000);
-
-        setTimeout(() => {
-            setCarteirasPorPerfil({
-                Conservador: { quantidade: 19, total: 30 },
-                Moderado: { quantidade: 69, total: 110 },
-                Sofisticado: { quantidade: 20, total: 58 },
-                Todas: { quantidade: 124, total: 198 },
-            });
-        }, 1000);
-    }, []);
+    const { carteiras, carteirasPorPerfil } = useCarteiras();
 
     const navegarParaCategoria = (nome: string) => {
         router.push(`/categoria/${nome}` as RelativePathString);
@@ -46,22 +17,22 @@ export default function Index() {
         corFundo: "azul" as const,
         corQuadrado: "azul" as const,
         tipo: "Conformidade",
-        quantidade: carteiras.regulares.quantidade,
-        total: carteiras.regulares.total,
-        onPress: () => navegarParaCategoria("regulares"),
+        quantidade: carteiras.Regulares.quantidade,
+        total: carteiras.Regulares.total,
+        onPress: () => navegarParaCategoria("Regulares"),
     };
 
     const statusInconformes = {
         corFundo: "vermelho" as const,
         corQuadrado: "vermelho" as const,
         tipo: "Irregulares",
-        quantidade: carteiras.inconformes.quantidade,
-        total: carteiras.inconformes.total,
-        onPress: () => navegarParaCategoria("inconformes"),
+        quantidade: carteiras.Inconformes.quantidade,
+        total: carteiras.Inconformes.total,
+        onPress: () => navegarParaCategoria("Inconformes"),
     };
 
     return (
-        <View className="flex-1 w-full justify-between bg-azul-claro-secundario pt-[15%]">
+        <View className="flex-1 w-full justify-between bg-azul-claro-secundario pt-[15%] overflow-hidden">
             <View className="items-center justify-center flex-1 px-6">
                 <View className="w-full flex-row justify-center gap-2 h-fit pb-8">
                     <BarraPesquisa />

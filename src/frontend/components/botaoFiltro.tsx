@@ -16,7 +16,7 @@ export default function BotaoFiltro({
   return (
     <TouchableOpacity 
       onPress={onPress}
-      className="bg-azul-claro-principal rounded-2xl p-3 shadow-sm"
+      className="bg-azul-claro-principal rounded-2xl p-3 shadow-clicaveis min-h-10"
     >
       <Sliders size={iconSize} color={iconColor} weight="regular" />
     </TouchableOpacity>
