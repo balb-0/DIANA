@@ -1414,7 +1414,59 @@ Esse guia foi fundamental para manter a uniformidade e a eficiência ao longo do
 _conteúdo_
 
 ## 8.1 Arquitetura de Codificação e Estrutura de Diretórios
-_conteúdo_
+
+&emsp;Durante a Sprint 3, adotamos uma arquitetura modular e escalável, com separação clara de responsabilidades tanto no backend quanto no frontend. A organização visa facilitar a manutenção, testes e integração futura.
+
+---
+
+## Backend
+
+A estrutura do backend foi organizada por camadas funcionais, com base nos princípios de separação de responsabilidades:
+
+```
+/src
+ ├── controllers/     # Recebem requisições HTTP e retornam respostas
+ ├── services/        # Contêm a lógica de negócio central da aplicação
+ ├── models/          # Representam as entidades e interagem com o banco
+ ├── middleware/      # Valida o token JWT com Firebase antes de executar rotas protegidas
+```
+
+- O middleware garante que apenas usuários autenticados acessem rotas privadas, consultando o token Firebase.
+- O uso da camada `services` isola regras de negócio, promovendo legibilidade e testes.
+---
+
+## Frontend
+
+O frontend foi estruturado com uma arquitetura com relativamente baixa separação de responsabilidades e pastas, foco em componentização, reutilização de estilo e integração com o backend:
+
+```
+/src/frontend
+ ├── components/       # Componentes reutilizáveis (cards, botões, inputs, etc.)
+ ├── app/              # Páginas principais da aplicação (Home, Login, Carteira etc.)
+tailwind.config.ts     # Configuração de estilos e design system
+```
+
+- `components/`: abstração de elementos visuais com variação por props.
+- `app/`: páginas compostas por múltiplos componentes reutilizáveis.
+- `tailwind.config.ts`: contém o design system com as cores e sombras personalizadas utilizadas no Figma.
+
+### ▶️ Como executar o frontend (Expo)
+
+**Requisitos:**
+- Node.js instalado
+- Expo CLI (`npm install -g expo-cli`)
+- App **Expo Go** instalado no celular ou uso do emulador Android/iOS
+
+**Passos:**
+```bash
+cd src/frontend/
+npm install
+npm expo start # ou 'npm expo start --tunnel' para gerar um tunel isolado de rede e evitar complicações de conexão.
+```
+
+O comando abrirá o navegador com o Expo DevTools. Você pode:
+- Escanear o QR code com o app **Expo Go** no celular
+- Ou rodar em um emulador local com `i` (iOS), `a` (Android) ou `w` (web)
 
 ## 8.2 Modelo de Recomendação
 _conteúdo_
