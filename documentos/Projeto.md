@@ -1575,13 +1575,71 @@ Obs.: Insira informações sobre quais frameworks foram usados e como acessar.
 _conteúdo_
 
 ## 9.1 Testes Funcionais
-_conteúdo_
+
+&emsp;Neste tópico, será apresentado os planejamentos dos testes dos requisitos funcionais do nosso projeto, incluindo o cenário, propósito, pré-condições, instruções de execução,resultado esperado, pós-condições e tipo de teste (positivo/ negativo).
 
 ## 9.1.1 Planejamento
-_conteúdo_
+
+### RF01 - Importação automática de dados via API
+| Cenário          | Propósito                                                                 | Pré-condições                | Instruções de Execução                        | Resultado Esperado                                 | Pós-condições        | Tipo de Teste |
+| ---------------- | ------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------- | -------------------------------------------------- | -------------------- | ------------- |
+| Dados válidos    | Verificar se o sistema importa corretamente os dados de carteira via API. | API ativa com dados válidos. | Abrir o aplicativo, navegar até a seção de 'Carteiras', verificar apresentação dos dados. | Dados importados corretamente e exibidos.          | Exibição de carteiras atualizadas de acordo com a API. | Positivo      |
+| API indisponível | Verificar comportamento diante de falha na integração.                    | API offline ou com erro 500. | Abrir o aplicativo, acessar a seção de 'Carteiras', observar o comportamento do sistema diante a indisponibilidade dos dados.        | Exibição de mensagem de erro sem travar o sistema. | Nenhuma modificação. | Negativo      |
+
+### RF02 - Cálculo do perfil de risco
+| Cenário             | Propósito                                    | Pré-condições                   | Instruções de Execução                | Resultado Esperado                                  | Pós-condições                | Tipo de Teste |
+| ------------------- | -------------------------------------------- | ------------------------------- | ------------------------------------- | --------------------------------------------------- | ---------------------------- | ------------- |
+| Carteira com ativos | Validar cálculo correto do perfil.           | API de recomendação disponível. | Abrir o aplicativo, acessar o perfil de um cliente com ativos registrados na carteira e verificar o resultado exibido no componente de status da carteira. | Em caso de perfil coerente com a carteira, tag "Irregular" aparece no topo do status da carteira, bem como o quantitativo irregular e restantes estilizações do componente.                    | Perfil calculado armazenado. | Positivo      |
+| Carteira vazia      | Verificar tratamento de carteira sem ativos. | Cliente sem ativos acessado a partir da API de recomendação.             | Abrir o aplicativo, acessar o perfil de um cliente sem nenhum ativo registrado na carteira, e observar a resposta do sistema.   | Sistema informa que não é possível calcular perfil devido à falta de ativos. | Nenhuma alteração.           | Negativo      |
+
+### RF03 - Verificação de conformidade entre perfis
+| Cenário           | Propósito                                    | Pré-condições                         | Instruções de Execução               | Resultado Esperado      | Pós-condições                      | Tipo de Teste |
+| ----------------- | -------------------------------------------- | ------------------------------------- | ------------------------------------ | ----------------------- | ---------------------------------- | ------------- |
+| Perfis iguais     | Verificar se sistema reconhece conformidade. | Perfil calculado igual ao cadastrado. | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado é igual ao perfil cadastrado, abrir a seção da carteira e localizar o status de conformidade exibido pelo sistema. | Status: "Regular".     | Sistema pronto para outros testes. | Positivo      |
+| Perfis diferentes | Verificar detecção de não conformidade.      | Perfis divergentes.                   | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado difere do perfil cadastrado, abrir a seção da carteira e verificar o status de conformidade informado.        | Status: "Irregular". | Gatilho para recomendações.        | Negativo      |
+
+
+### RF04 - Recomendações de readequação
+| Cenário                 | Propósito                                       | Pré-condições          | Instruções de Execução                | Resultado Esperado                        | Pós-condições                      | Tipo de Teste |
+| ----------------------- | ----------------------------------------------- | ---------------------- | ------------------------------------- | ----------------------------------------- | ---------------------------------- | ------------- |
+| Cliente fora do perfil  | Verificar exibição das sugestões.               | Perfil “Irregular”. | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Não adequado', navegar até a seção de recomendações e verificar se o sistema apresenta opções de readequação da carteira. | Sistema exibe opções de readequação conforme recomendação.      | Recomendações salvas no histórico. | Positivo      |
+| Cliente em conformidade | Verificar ausência de sugestões desnecessárias. | Perfil “Regular”.     | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Adequado' e verificar se a seção de recomendações apresenta o hiperlink "Investimentos recomendados". | Ao acessar os investimentos recomendados, eles estão de acordo com o perfil declarado do cliente. | Nenhuma modificação.               | Negativo      |
+
+### RF05 - Painel visual de conformidade
+| Cenário               | Propósito                                    | Pré-condições                        | Instruções de Execução                | Resultado Esperado                                          | Pós-condições               | Tipo de Teste |
+| --------------------- | -------------------------------------------- | ------------------------------------ | ------------------------------------- | ----------------------------------------------------------- | --------------------------- | ------------- |
+| Exibição correta      | Validar exibição das carteiras com status.   | Vários clientes com dados completos. | Abrir o aplicativo, fazer login, navegar até o painel principal de visualização de carteiras e verificar se todas as carteiras cadastradas são exibidas corretamente com seus respectivos status de conformidade.             | Exibição de todas as carteiras com status.                  | Visualização atualizada.    | Positivo      |
+| Falha de renderização | Verificar sistema em caso de erro nos dados. | Dados inconsistentes ou incompletos. | Injetar manualmente dados corrompidos ou incompletos na base de dados de carteiras, acessar o painel principal e observar se o sistema exibe mensagens de erro amigáveis ou remove os itens problemáticos sem travar a aplicação. | Mensagem de erro amigável ou exclusão de itens corrompidos. | Sistema continua funcional. | Negativo      |
+
+### RF06 - Filtros por status de conformidade
+| Cenário                    | Propósito                                                 | Pré-condições                                  | Instruções de Execução                     | Resultado Esperado                       | Pós-condições                 | Tipo de Teste |
+| -------------------------- | --------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------ | ---------------------------------------- | ----------------------------- | ------------- |
+| Filtrar "Regulares"         | Validar filtro de carteiras conformes.                    | Existência de carteiras com status “Regular”. | Acessar a Home, clicar no tipo de perfil, localizar o componente de filtros, selecionar o filtro de status ‘regular’ e aplicar a filtragem. Observar se a lista de carteiras exibida contém somente aquelas com status ‘regular’. | Apenas carteiras adequadas são exibidas. | Filtro aplicado corretamente. | Positivo      |
+| Filtrar status inexistente | Verificar comportamento ao aplicar filtro sem resultados. | Nenhuma carteira com o status filtrado.        | No painel principal, abrir a opção de filtros, selecionar o filtro ‘Irregular’ quando não houver carteiras com esse status cadastrado, aplicar o filtro e verificar se é exibida a mensagem ‘Nenhum resultado encontrado’ e a lista fica vazia. | Mensagem “Nenhum resultado encontrado”.  | Tela limpa.                   | Negativo      |
 
 ## 9.1.2 Resultados
-_conteúdo_
+
+### RF01 - Importação automática de dados via API
+
+
+### RF02 - Cálculo do perfil de risco
+
+
+### RF03 - Verificação de conformidade entre perfis
+
+
+### RF04 - Recomendações de readequação
+
+
+### RF05 - Painel visual de conformidade
+
+
+### RF06 - Filtros por status de conformidade
+
+
+
+### RF09 - Exibição gráfica da carteira por tipo de ativo
+
 
 ## 9.2 Testes de RNFs
 _conteúdo_
