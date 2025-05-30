@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Animated } from "react-native";
 import { useMemo, useRef } from "react";
 import { House, Wallet, User } from "phosphor-react-native";
 
-type TabId = "" | "wallet" | "profile";
+type TabId = "" | "categoria" | "profile";
 
 export const BottomNavigation = () => {
   const pathname = usePathname();
@@ -13,7 +13,7 @@ export const BottomNavigation = () => {
   const tabs = useMemo(
     () => [
       { id: "", icon: House },
-      { id: "wallet", icon: Wallet },
+      { id: "categoria", icon: Wallet },
       { id: "profile", icon: User },
     ] as const,
     []
@@ -22,7 +22,11 @@ export const BottomNavigation = () => {
   const navWidth = 380;
   const tabSize = 56;
 
-  const activeTab: TabId = (pathname.replace("/", "") || "") as TabId;
+  const activeTab: TabId = useMemo(() => {
+    if (pathname.startsWith("/categoria")) return "categoria";
+    if (pathname === "/profile") return "profile";
+    return "" as TabId;
+  }, [pathname]);
 
   const handleTabPress = (tabId: TabId) => {
     if (tabId !== activeTab) {
@@ -38,9 +42,9 @@ export const BottomNavigation = () => {
           useNativeDriver: true,
         }),
       ]).start();
-
-      // Cast para RelativePathString para compatibilidade com o router
-      router.push(`/${tabId}` as RelativePathString);
+      const routeTo =
+        tabId === "categoria" ? "/categoria/Todas" : `/${tabId}`;
+      router.push(routeTo as RelativePathString);
     }
   };
 
@@ -48,7 +52,7 @@ export const BottomNavigation = () => {
     <View className="absolute bottom-0 w-full items-center">
       <View className="relative" style={{ width: navWidth }}>
         <View
-          className="flex-row absolute w-full z-50 justify-between px-16 top-[-10px]"
+          className="flex-row absolute w-full z-50 justify-between px-20 top-[-10px]"
         >
           {tabs.map((tab) => {
             const IconComponent = tab.icon;
@@ -69,9 +73,8 @@ export const BottomNavigation = () => {
                 >
                   <View className="bg-[#001E62] rounded-full p-2">
                     <View
-                      className={`rounded-full p-2 ${
-                        isActive ? "bg-[#AEC3F5]" : "bg-[#001E62]"
-                      }`}
+                      className={`rounded-full p-2 ${isActive ? "bg-[#AEC3F5]" : "bg-[#001E62]"
+                        }`}
                     >
                       <IconComponent
                         size={isActive ? 32 : 22}
