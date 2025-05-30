@@ -1510,6 +1510,16 @@ Mostra dados detalhados da carteira selecionada:
 - Hiperlink para recomendações de readequação (em caso de irregularidade) ou mais investimentos (em caso de regularidade).
 OBS: em relação ao Mockup anterior, tags "Regular" e "Irregular" foram alteradas para a cor vermelho ou azul escuro.
 
+&emsp;Durante a Sprint 3, o foco do backend foi a implementação de autenticação segura com Firebase, comunicação entre o sistema e o modelo de recomendação através de uma API e o desenvolvimento robusto do banco de dados com regras de negócio encapsuladas. Todo o ambiente foi estruturado com Docker, garantindo portabilidade e reprodutibilidade.
+
+&emsp;Como mencionado, criamos uma **API intermediária** para integrar o modelo de recomendação de estatísticas, alocação de ativos e readequação de perfil (desenvolvido em Jupyter Notebook) ao nosso aplicativo. Essa API:
+
+- Recebe dados simulados de carteiras e perfis de risco.
+- Processa as informações via chamada ao modelo.
+- Retorna sugestões de realocação em caso de divergência com o perfil.
+
+&emsp; sistema de persistência de dados foi estruturado com foco em robustez e lógica de negócio no lado do banco, sendo implementadas **Triggers**: para execução automática de regras durante inserções/atualizações; **Procedures**: para operações complexas encapsuladas; as regras de negócio foram implantadas diretamente no banco, visando integridade e menor dependência da aplicação para consistência dos dados, bem como todo o banco foi dockerizado, garantindo modularidade, segurança e disponibilidade das informações.
+
 ### 5. Tela de Perfil do Assessor  
 Apresenta:
 - Dados cadastrais do assessor.
