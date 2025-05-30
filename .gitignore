@@ -84,3 +84,7 @@ coverage/
 coverage.xml
 test-results/
 junit.xml
+
+# Visual Studio
+**/obj/
+/**/bin/
