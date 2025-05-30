@@ -128,8 +128,33 @@
 - Marcar reuniões rápidas ao longo da sprint para garantir que decisões de implementação não estejam desalinhadas entre os membros.
 
 ## 2.3 Sprint 3
-_conteúdo_
- **Nota:** Insira informações sobre mudanças realizadas.
+
+#### **Pontos Fortes**
+
+- Houve uma produtividade satisfatória do front-end, em quesito de entrega e em quantidade de membros em participação ativa no desenvolvimento da aplicação, bem como uma estruturação e desenvolvimento inicial do back-end e, por fim, testes unitários.
+- A entrega foi feita de forma completa, como planejado para a Sprint.
+
+#### **Pontos Fracos**
+
+- O grupo teve dificuldades de fazer a gestão de conhecimento do back-end e banco de dados entre os integrantes, fazendo com que o conhecimento ficasse de relativamente concentrado em poucos integrantes;
+- O planejamento inicial da sprint poderia ter sido mais direcionado às prioridades da Sprint, como a completude das páginas visuais e integrações, aliviando a carga de trabalho nos dias finais da Sprint.
+- A comunicação não foi satisfatória como na última Sprint, com poucos momentos para discussão em grupo e dessincronia dos membros da equipe.
+
+---
+
+### Mudanças Realizadas
+
+- Procurou-se descentralizar o conhecimento, aumentando a participação dos membros em atividades mais técnicas, auxiliando no aprendizado dos integrantes.
+
+---
+
+### Ações de Melhoria para os Pontos Fracos
+
+- **Fortalecimento da Comunicação Interna:** Serão estabelecidos pontos de alinhamento regulares durante a Sprint, reforçando a presença e clareza na comunicação nas dailies, para garantir que todos os integrantes estejam atualizados quanto ao andamento das tarefas e mudanças de prioridade.
+
+- **Redefinição das Prioridades no Planejamento Inicial:** O planejamento da próxima Sprint será feito com base nos critérios de artefato, priorizando entregas críticas para evitar acúmulo de tarefas nos últimos dias e possibilitar testes mais consistentes, bem como dúvidas sobre os artefatos deverão ser sanadas logo no início da Sprint.
+
+- **Documentação Colaborativa e Contínua:** Durante o desenvolvimento, cada integrante será responsável por registrar breves notas sobre decisões técnicas e aprendizados, reunidas em um repositório acessível (como um Notion, Google Docs ou README). Isso facilitará o onboarding interno e futuras tasks de documentação sobre o processo de desenvolvimento.
 
 ## 2.4 Sprint 4
 _conteúdo_
