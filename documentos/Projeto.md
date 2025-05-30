@@ -1482,7 +1482,7 @@ _conteúdo_
 
 ---
 
-## 🛠️ Tecnologias e Bibliotecas Utilizadas
+## Tecnologias e Bibliotecas Utilizadas
 - **React Native com Expo**: para desenvolvimento mobile multiplataforma.
 - **NativeWind**: integração do estilo utilitário do Tailwind para React Native.
 - **Phosphor Icons**: biblioteca de ícones leve e versátil.
@@ -1525,8 +1525,6 @@ _conteúdo_
 - **Componente de Pesquisa por Cliente**: input com placeholder contextual, reutilizável em diferentes telas.
 - **Filtro de carteiras**: botão com função de abrir modal para aplicação de filtros por tipo de carteira.
 - **Card de Carteira de Investimento**: mostra banco, CPF, valor total, status e outros dados relevantes de uma carteira.
-- **Card de Ativo**: exibe os ativos individuais de uma carteira, com valor e nome.
-- **Componente de Recomendação**: sugere investimentos alternativos com base na regularidade da carteira versus perfil de risco.
 - **Menu Inferior (Bottom Navigation)**: fixo e funcional, com rotas para Home, Carteiras e Perfil.
 - **Histórico de carteiras acessadas**: presente na tela de perfil do assessor, apresenta navegação por carteiras previamente consultadas.
 
@@ -1534,7 +1532,13 @@ _conteúdo_
 
 ## Telas Desenvolvidas
 
-&emsp;As telas desenvolvidas seguiram exatamente o previsto no Mockup construído no Figma, com mínimas alterações para refletir os feedbacks coletados durante as Sprint Reviews.
+&emsp;As telas desenvolvidas seguiram como majoritariamente previsto no Mockup construído no Figma, com mínimas alterações para refletir os feedbacks coletados durante as Sprint Reviews.
+
+<div align="center">
+<sub>Figura X - Telas desenvolvidas na Sprint 3</sub><br> 
+<img src="img/telas_sprint3.svg" width="100%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
 
 ### 1. Tela de Login/Cadastro  
 &emsp;Alternância via switch entre os fluxos de autenticação. Campos de entrada e botões estilizados com feedback visual.
@@ -1551,24 +1555,21 @@ Exibe:
 A partir do clique em um dos cards da Home, exibe:
 - Campo de busca e botão de filtro.
 - Quantidade de carteiras em conformidade no respectivo perfil.
-- Cards de carteiras com informações resumidas.
-OBS: em relação ao Mockup anterior, tags "Regular" e "Irregular" foram alteradas para a cor vermelho ou azul escuro.
+- Apesar do componente de informações de carteiras de investimento estar pronto, não foi totalmente integrado a esta tela.
 
 ### 4. Tela de Carteira Individual  
-Mostra dados detalhados da carteira selecionada:
-- Cabeçalho com informações do cliente.
-- Situação de regularidade.
-- Cards com ativos.
-- Hiperlink para recomendações de readequação (em caso de irregularidade) ou mais investimentos (em caso de regularidade).
-OBS: em relação ao Mockup anterior, tags "Regular" e "Irregular" foram alteradas para a cor vermelho ou azul escuro.
+Apenas integrada, com planejamento de conclusão para a Sprint 4.
+
+### 5. Perfil do assessor
+- Contém informações cadastrais do assessor, o container de histórico de carteiras com componentes completamente integrados.
 
 &emsp;Durante a Sprint 3, o foco do backend foi a implementação de autenticação segura com Firebase, comunicação entre o sistema e o modelo de recomendação através de uma API e o desenvolvimento robusto do banco de dados com regras de negócio encapsuladas. Todo o ambiente foi estruturado com Docker, garantindo portabilidade e reprodutibilidade.
 
-&emsp;Como mencionado, criamos uma **API intermediária** para integrar o modelo de recomendação de estatísticas, alocação de ativos e readequação de perfil (desenvolvido em Jupyter Notebook) ao nosso aplicativo. Essa API:
+&emsp;Como mencionado, iniciamos o desenvolvimento de uma **API intermediária** para integrar o modelo de recomendação de estatísticas, alocação de ativos e readequação de perfil (desenvolvido em Jupyter Notebook) ao nosso aplicativo. Para a Sprint 4, essa API pretende:
 
-- Recebe dados simulados de carteiras e perfis de risco.
-- Processa as informações via chamada ao modelo.
-- Retorna sugestões de realocação em caso de divergência com o perfil.
+- Receber dados simulados de carteiras e perfis de risco.
+- Processar as informações via chamada ao modelo.
+- Retornar sugestões de realocação em caso de divergência com o perfil.
 
 &emsp; sistema de persistência de dados foi estruturado com foco em robustez e lógica de negócio no lado do banco, sendo implementadas **Triggers**: para execução automática de regras durante inserções/atualizações; **Procedures**: para operações complexas encapsuladas; as regras de negócio foram implantadas diretamente no banco, visando integridade e menor dependência da aplicação para consistência dos dados, bem como todo o banco foi dockerizado, garantindo modularidade, segurança e disponibilidade das informações.
 
