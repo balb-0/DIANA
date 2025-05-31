@@ -1370,7 +1370,59 @@ Esse guia foi fundamental para manter a uniformidade e a eficiência ao longo do
 _conteúdo_
 
 ## 8.1 Arquitetura de Codificação e Estrutura de Diretórios
-_conteúdo_
+
+&emsp;Durante a Sprint 3, adotamos uma arquitetura modular e escalável, com separação clara de responsabilidades tanto no backend quanto no frontend. A organização visa facilitar a manutenção, testes e integração futura.
+
+---
+
+## Backend
+
+A estrutura do backend foi organizada por camadas funcionais, com base nos princípios de separação de responsabilidades:
+
+```
+/src
+ ├── controllers/     # Recebem requisições HTTP e retornam respostas
+ ├── services/        # Contêm a lógica de negócio central da aplicação
+ ├── models/          # Representam as entidades e interagem com o banco
+ ├── middleware/      # Valida o token JWT com Firebase antes de executar rotas protegidas
+```
+
+- O middleware garante que apenas usuários autenticados acessem rotas privadas, consultando o token Firebase.
+- O uso da camada `services` isola regras de negócio, promovendo legibilidade e testes.
+---
+
+## Frontend
+
+O frontend foi estruturado com uma arquitetura com relativamente baixa separação de responsabilidades e pastas, foco em componentização, reutilização de estilo e integração com o backend:
+
+```
+/src/frontend
+ ├── components/       # Componentes reutilizáveis (cards, botões, inputs, etc.)
+ ├── app/              # Páginas principais da aplicação (Home, Login, Carteira etc.)
+tailwind.config.ts     # Configuração de estilos e design system
+```
+
+- `components/`: abstração de elementos visuais com variação por props.
+- `app/`: páginas compostas por múltiplos componentes reutilizáveis.
+- `tailwind.config.ts`: contém o design system com as cores e sombras personalizadas utilizadas no Figma.
+
+### ▶️ Como executar o frontend (Expo)
+
+**Requisitos:**
+- Node.js instalado
+- Expo CLI (`npm install -g expo-cli`)
+- App **Expo Go** instalado no celular ou uso do emulador Android/iOS
+
+**Passos:**
+```bash
+cd src/frontend/
+npm install
+npm expo start # ou 'npm expo start --tunnel' para gerar um tunel isolado de rede e evitar complicações de conexão.
+```
+
+O comando abrirá o navegador com o Expo DevTools. Você pode:
+- Escanear o QR code com o app **Expo Go** no celular
+- Ou rodar em um emulador local com `i` (iOS), `a` (Android) ou `w` (web)
 
 ## 8.2 Modelo de Recomendação
 _conteúdo_
@@ -1381,7 +1433,106 @@ _conteúdo_
 **Nota:** Insira uma explicação de entregas em cada Sprint.
 
 ## 8.3.1 Sprint 3
-_conteúdo_
+
+&emsp;Durante a Sprint 3, foi realizado o desenvolvimento de telas funcionais e componentes visuais reutilizáveis, utilizando **React Native** com estilização baseada em classes utilitárias do **NativeWind**, dentro do ambiente **Expo**. Os dados estão atualmente mockados, mas toda a lógica de estado (`useState`) e efeitos (`useEffect`) foi estruturada para permitir integração fluida com o backend nas próximas sprints.
+
+---
+
+## Tecnologias e Bibliotecas Utilizadas
+- **React Native com Expo**: para desenvolvimento mobile multiplataforma.
+- **NativeWind**: integração do estilo utilitário do Tailwind para React Native.
+- **Phosphor Icons**: biblioteca de ícones leve e versátil.
+- **Hooks (`useState`, `useEffect`)**: para controle de estado e ciclos de vida nas telas.
+
+---
+
+## Padrão Visual e Design System
+
+&emsp;Toda a interface foi construída respeitando o design system definido no Figma, com cores customizadas aplicadas via `tailwind.config.ts`. As principais cores utilizadas foram:
+
+```js
+"azul-escuro-principal": "#001E62",
+"azul-claro-principal": "#AEC3F5",
+"azul-claro-secundario": "#C2D5FF",
+"rosa-secundario": "#FF7CA1",
+"vermelho-secundario": "#E9A5A5",
+"vermelho-principal": "#5A1A1A"
+```
+
+&emsp;Também foram aplicadas sombras customizadas (`shadow-clicaveis`) para destacar componentes interativos e bordas arredondadas (`rounded-2xl`) para promover suavidade visual e acessibilidade.
+
+---
+
+## Componentes Desenvolvidos
+
+<div align="center">
+<sub>Figura X - Componentes</sub><br> 
+<img src="img/componentes.png" width="70%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Todos os componentes foram projetados com foco em **modularidade, reuso e clareza visual**, e seguem as boas práticas de composição de interfaces.
+
+- **Componente de alternância (Switch)**: permite ao usuário alternar entre a tela de login e cadastro de forma intuitiva.
+- **Inputs personalizados**: campos estilizados para e-mail, senha e dados cadastrais, com foco em usabilidade.
+- **Botões de ação**: utilizados nas telas de login e cadastro, adaptáveis por props para diferentes ações.
+- **Card de Quantitativo Geral**: exibe total de carteiras regulares ou irregulares. Sua aparência (cor, ícone e textos) se ajusta conforme o tipo.
+- **Card por Perfil de Risco**: dinâmico, identifica o perfil de risco (Conservador, Moderado, Sofisticado) e exibe dados correspondentes com ícones e cores adequadas.
+- **Componente de Pesquisa por Cliente**: input com placeholder contextual, reutilizável em diferentes telas.
+- **Filtro de carteiras**: botão com função de abrir modal para aplicação de filtros por tipo de carteira.
+- **Card de Carteira de Investimento**: mostra banco, CPF, valor total, status e outros dados relevantes de uma carteira.
+- **Menu Inferior (Bottom Navigation)**: fixo e funcional, com rotas para Home, Carteiras e Perfil.
+- **Histórico de carteiras acessadas**: presente na tela de perfil do assessor, apresenta navegação por carteiras previamente consultadas.
+
+---
+
+## Telas Desenvolvidas
+
+&emsp;As telas desenvolvidas seguiram como majoritariamente previsto no Mockup construído no Figma, com mínimas alterações para refletir os feedbacks coletados durante as Sprint Reviews.
+
+<div align="center">
+<sub>Figura X - Telas desenvolvidas na Sprint 3</sub><br> 
+<img src="img/telas_sprint3.svg" width="100%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+### 1. Tela de Login/Cadastro  
+&emsp;Alternância via switch entre os fluxos de autenticação. Campos de entrada e botões estilizados com feedback visual.
+
+### 2. Tela Home  
+Exibe:
+- Mensagem de boas-vindas com nome do assessor.
+- Campo de busca por cliente.
+- Cards de resumo da quantidade de carteiras regulares/irregulares.
+- Cards por perfil de risco.
+- Menu inferior para navegação.
+
+### 3. Tela de Carteiras por Perfil  
+A partir do clique em um dos cards da Home, exibe:
+- Campo de busca e botão de filtro.
+- Quantidade de carteiras em conformidade no respectivo perfil.
+- Apesar do componente de informações de carteiras de investimento estar pronto, não foi totalmente integrado a esta tela.
+
+### 4. Tela de Carteira Individual  
+Apenas integrada, com planejamento de conclusão para a Sprint 4.
+
+### 5. Perfil do assessor
+- Contém informações cadastrais do assessor, o container de histórico de carteiras com componentes completamente integrados.
+
+&emsp;Durante a Sprint 3, o foco do backend foi a implementação de autenticação segura com Firebase, comunicação entre o sistema e o modelo de recomendação através de uma API e o desenvolvimento robusto do banco de dados com regras de negócio encapsuladas. Todo o ambiente foi estruturado com Docker, garantindo portabilidade e reprodutibilidade.
+
+&emsp;Como mencionado, iniciamos o desenvolvimento de uma **API intermediária** para integrar o modelo de recomendação de estatísticas, alocação de ativos e readequação de perfil (desenvolvido em Jupyter Notebook) ao nosso aplicativo. Para a Sprint 4, essa API pretende:
+
+- Receber dados simulados de carteiras e perfis de risco.
+- Processar as informações via chamada ao modelo.
+- Retornar sugestões de realocação em caso de divergência com o perfil.
+
+&emsp; sistema de persistência de dados foi estruturado com foco em robustez e lógica de negócio no lado do banco, sendo implementadas **Triggers**: para execução automática de regras durante inserções/atualizações; **Procedures**: para operações complexas encapsuladas; as regras de negócio foram implantadas diretamente no banco, visando integridade e menor dependência da aplicação para consistência dos dados, bem como todo o banco foi dockerizado, garantindo modularidade, segurança e disponibilidade das informações.
+
+### 5. Tela de Perfil do Assessor  
+Apresenta:
+- Dados cadastrais do assessor.
+- Container com histórico de carteiras acessadas.
 
 ## 8.3.2 Sprint 4
 _conteúdo_
