@@ -54,6 +54,7 @@ export default function StatusConformidade({
 
     return (
         <TouchableOpacity
+            testID="touchable"
             onPress={onPress}
             className={`p-3 pb-1.5 rounded-xl ${config.bgColor} justify-center items-center w-[45%] aspect-[174/101] shadow-clicaveis`}
         >
