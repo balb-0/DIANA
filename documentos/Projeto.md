@@ -529,19 +529,15 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 &emsp;Os Requisitos Funcionais (RFs) representam as funcionalidades que o sistema deve obrigatoriamente oferecer para atender às necessidades dos usuários e alcançar os objetivos de negócio. Eles descrevem o comportamento esperado do sistema diante de diferentes interações e contextos de uso, definindo claramente "o que" o sistema deve fazer. Neste projeto, os RFs foram derivados das features propostas, refinados por meio das personas e descritos tanto tecnicamente quanto na forma de user stories.
 
 <div align="center">
-<sub>Tabela X - Requisitos funcionais</sub><br>
+<sub>Tabela X - Requisitos Funcionais</sub><br>
 
-| RF#   | Descrição                                                                                                                                      | Prioridade |
-|-------|------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| RF01  | O sistema deve importar e processar automaticamente os dados de carteira de clientes por meio de integração via API.                                         | Alta       |
-| RF02  | O sistema deve calcular automaticamente o perfil de risco com base nos ativos da carteira.                                                    | Alta       |
-| RF03  | O sistema deve verificar a conformidade entre o perfil calculado e o perfil cadastrado do cliente.                                            | Alta       |
-| RF04  | O sistema deve exibir recomendações de readequação do perfil quando for identificado um desalinhamento.                                       | Alta       |
-| RF05  | O sistema deve apresentar, de forma visual, o status de conformidade de todas as carteiras em um painel.                                      | Alta       |
-| RF06  | O sistema deve oferecer filtros por status de conformidade (adequado/não adequado).                                                           | Média      |
-| RF07  | O sistema deve permitir filtro de clientes por segmento (Prata, Ouro, Platinum).                                                              | Média      |
-| RF08  | O sistema deve manter o histórico das sugestões de readequação de perfil por cliente.                                                         | Média      |
-| RF09  | O sistema deve exibir graficamente a composição da carteira por tipo de ativo.                                                                | Baixa      |
+| ID     | Título                                           | Descrição Breve                                                                                                                                                    | Prioridade |
+|--------|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| RF01   | Importação de Carteiras de Clientes              | Permitir o carregamento de dados das carteiras via upload de arquivos (.CSV ou .XLSX) ou via uma API simples.                                                      | Alta       |
+| RF02   | Cálculo do Perfil Atual da Carteira              | Calcular automaticamente o perfil de risco **atual da carteira**, com base na composição atual dos ativos                | Alta       |
+| RF03   | Verificação de Conformidade com Perfil Cadastrado| Verificar se o perfil da carteira atual está alinhado com o perfil cadastrado do cliente (suitability).                                                            | Alta       |
+| RF04   | Geração de Recomendações de Readequação          | Gerar recomendações informativas quando houver desalinhamento, indicando ajustes possíveis na carteira, **sem induzir ações ou sugerir erros a serem corrigidos**.| Alta      |
+| RF05   | Direcionamento de Atendimento por Conformidade   | A interface deve **priorizar e destacar clientes cujas carteiras estejam fora de conformidade**, auxiliando o assessor na priorização dos atendimentos.           | Média      |
 
 <sup>Material produzido pelos autores (2025)</sup>
 </div><br>
@@ -549,19 +545,14 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 ### Requisitos Funcionais Definidos como User Stories
 
 <div align="center">
-<sub>Tabela X - User Stories dos Requisitos Não Funcionais</sub><br>
+<sub>Tabela X - User Stories dos Requisitos Funcionais</sub><br>
 
-| ID    | User Story |
-|-------|------------|
-| RF01  | Como Fábio, quero importar automaticamente os dados das carteiras de meus clientes via API, para garantir rapidez e integração contínua com os sistemas internos. |
-| RF02  | Como Fábio, quero que o sistema calcule o perfil do cliente com base na carteira, para identificar facilmente desalinhamentos. |
-| RF03  | Como Fábio, quero verificar se a carteira está aderente ao perfil cadastrado, para evitar riscos regulatórios. |
-| RF04  | Como Fábio, quero sugestões automáticas de readequação de perfil, para apresentar ao cliente opções seguras rapidamente. |
-| RF05  | Como Fábio, quero visualizar todas as carteiras em um painel com seus status, para identificar rapidamente onde intervir. |
-| RF06  | Como Fábio, quero filtrar apenas carteiras fora do perfil, para focar nas situações que exigem ação imediata. |
-| RF07  | Como Fábio, quero filtrar meus clientes por segmento, para priorizar atendimentos estratégicos. |
-| RF08  | Como Fábio, quero visualizar o histórico de readequações sugeridas, para acompanhar decisões anteriores e justificar recomendações. |
-| RF09  | Como Mariana, quero ver a distribuição da minha carteira por tipo de ativo de forma clara, para entender rapidamente onde estou investindo. |
+| ID           | User Story                                                                                                                                                       |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| RF01          | Como assessor, quero **acessar as carteiras dos meus clientes** diretamente no sistema, para visualizar e iniciar análises sem depender de uploads ou integrações manuais. |
+| RF02 e RF03   | Como assessor, quero que o sistema **verifique se a carteira do cliente está aderente ao perfil cadastrado**, considerando automaticamente a composição atual dos ativos, para garantir conformidade e reduzir riscos. |
+| RF04          | Como assessor, quero receber **recomendações informativas** de ajuste quando houver desalinhamento, para orientar meus clientes de forma responsável, sem induzir mudanças. |
+| RF05          | Como assessor, quero que a interface **destaque automaticamente os clientes** com carteiras fora de conformidade, para priorizar meu atendimento nos casos críticos.           |
 
 <sup>Material produzido pelos autores (2025)</sup>
 </div><br>
@@ -571,17 +562,13 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 <div align="center">
 <sub>Tabela X - Testes associados aos Requisitos Funcionais</sub><br>
 
-| Caso de Teste | RF#   | Descrição do Teste                                                                                      | Pré-condição                                                                 | Caso de Aceite                                                                                   | Caso de Recusa                                                                                   |
-|---------------|-------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| CT-RF01       | RF01  | Testar importação automática de uma carteira via integração de API.                                   | Arquivo válido em formato CSV/XLSX presente no sistema.                      | Dados são processados corretamente e exibidos no sistema.                                        | Erro ao processar arquivo ou ausência de resposta do sistema.                                   |
-| CT-RF02       | RF02  | Testar cálculo do perfil com base na composição da carteira de um cliente.                              | Carteira do cliente carregada com ativos e pesos.                            | Sistema calcula e exibe o perfil de risco com base nos ativos.                                  | Perfil não calculado ou resultado inconsistente com os dados.                                   |
-| CT-RF03       | RF03  | Verificar conformidade entre o perfil calculado e o perfil cadastrado.                                  | Perfil cadastrado e carteira disponíveis no sistema.                         | Sistema exibe mensagem indicando se o cliente está ou não conforme.                             | Sistema não exibe resultado ou mostra status incorreto.                                          |
-| CT-RF04       | RF04  | Testar geração de recomendações para perfis não conformes.                                               | Cliente fora do perfil e perfil calculado já disponível.                     | Sistema exibe sugestão de readequação de perfil.                                                 | Nenhuma sugestão é apresentada ou mensagem incorreta.                                            |
-| CT-RF05       | RF05  | Visualizar painel com status de conformidade das carteiras dos clientes.                                | Base de clientes carregada e analisada.                                      | Painel exibe lista de clientes e status visual de conformidade.                                 | Painel vazio, incompleto ou com dados incorretos.                                                |
-| CT-RF06       | RF06  | Aplicar filtro para exibir apenas carteiras fora do perfil.                                             | Base de dados com clientes em diferentes estados de conformidade.            | Lista é filtrada corretamente para mostrar apenas os casos não conformes.                       | Filtro não funciona ou exibe resultados incorretos.                                              |
-| CT-RF07       | RF07  | Aplicar filtro por segmento (Prata, Ouro, Platinum).                                                    | Clientes cadastrados com segmentação definida.                              | Sistema filtra e exibe clientes corretamente por segmento.                                       | Lista incorreta ou ausência de filtragem.                                                        |
-| CT-RF08       | RF08  | Verificar exibição do histórico de sugestões de readequação por cliente.                                | Cliente com histórico de sugestões anteriores no sistema.                    | Sistema exibe linha do tempo ou registros anteriores com clareza.                               | Histórico ausente ou incompleto.                                                                 |
-| CT-RF09       | RF09  | Testar visualização gráfica da composição da carteira por tipo de ativo.                                | Carteira importada com ativos e classificações definidas.                   | Gráfico (pizza, barras) é exibido corretamente com dados proporcionais.                         | Gráfico ausente, distorcido ou com dados incorretos.                                             |
+| Caso de Teste | RF   | Descrição do Teste                                                                                           | Pré-condição                                                                                         | Critério de Aceite                                                                                                                                                     | Critério de Falha                                                                                                          |
+|----------------|------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| CT-RF01        | RF01 | Verificar a importação bem-sucedida de carteiras por upload (.CSV ou .XLSX) ou API simples.                  | Usuário autenticado, arquivo válido disponível para upload ou endpoint de API funcional.            | O sistema processa corretamente o arquivo ou os dados da API, carrega os dados da carteira e os exibe na interface sem erros.                                        | Arquivo não é processado, dados incorretos, erro no carregamento ou falha na integração da API.                           |
+| CT-RF02        | RF02 | Validar o cálculo correto do perfil atual da carteira, com base nos ativos presentes.                       | Carteira de cliente carregada com ativos classificados.                                             | O sistema calcula automaticamente o perfil da carteira com base nas regras definidas e apresenta o resultado na interface.                                           | Perfil não calculado, cálculo incorreto, inconsistência nos resultados ou ausência do resultado.                          |
+| CT-RF03        | RF03 | Verificar se o sistema avalia corretamente a conformidade da carteira com o perfil cadastrado do cliente.   | Perfil cadastrado no sistema e carteira importada.                                                  | O sistema compara o perfil cadastrado com o perfil calculado da carteira e exibe claramente se está aderente ou não (status de conformidade visível).                 | Sistema não apresenta o status de conformidade, apresenta status incorreto ou não realiza a comparação.                    |
+| CT-RF04        | RF04 | Verificar a geração de recomendações quando a carteira está fora do perfil cadastrado.                      | Carteira importada, perfil calculado e identificado como não aderente.                              | O sistema exibe recomendações claras e informativas sobre possíveis ajustes na carteira (ex.: alterar alocação entre classes de ativos), sem executar ações diretas. | Ausência de recomendações, recomendações incorretas, pouco claras ou que induzem erro de interpretação.                   |
+| CT-RF05        | RF05 | Verificar se os clientes fora de conformidade são destacados na interface de atendimento.                   | Base de clientes carregada, alguns clientes fora do perfil.                                         | O sistema destaca visualmente (cor, ícones, etiquetas, posição na lista, etc.) os clientes fora de conformidade, priorizando sua visualização pelo assessor.          | Sistema não faz nenhum tipo de destaque, priorização incorreta ou ausência de sinalização visual dos casos críticos.       |
 
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -593,23 +580,13 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 <div align="center">
 <sub>Tabela X - Requisitos não funcionais</sub><br>
 
-
-| **RNF#** | **Descrição**                                                                                                                   | **Aspecto de Qualidade (ISO 25010)** | **Prioridade** |
-|---------|-----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|----------------|
-| RNF01   | O sistema deve responder às requisições de recomendação baseadas em machine learning em até 2 segundos, mesmo sob condições normais de operação. | Desempenho e Eficiência              | Média          |
-| RNF02   | O sistema deve suportar pelo menos 3.000 acessos simultâneos, mantendo o tempo de resposta médio de requisições padrão (não-ML) abaixo de 1 segundo por requisição. | Desempenho e Eficiência              | Média          |
-| RNF03   | O sistema deve ser containerizado com Docker e projetado para rodar exclusivamente em ambientes de nuvem, garantindo portabilidade e escalabilidade. | Portabilidade                        | Alta           |
-| RNF04   | O app deve ser desenvolvido exclusivamente para Android (versão 10 ou superior).                                                 | Compatibilidade                      | Baixa          |
-| RNF05   | O sistema deve usar APIs RESTful bem documentadas e versionadas através do Swagger, com autenticação via provedor de terceiros (ex: Auth0 ou Firebase), garantindo segurança e compatibilidade entre os componentes. | Compatibilidade                      | Média          |
-| RNF06   | A estrutura do aplicativo deve ser organizada de forma modular, com responsabilidades claras e desacopladas entre os componentes, permitindo a evolução do código com baixo impacto em outras partes do sistema. | Manutenibilidade                     | Alta           |
-| RNF07   | O sistema de recomendação (ML) deve rodar em infraestrutura separada do backend do app, sendo acessado exclusivamente via API. Essa separação deve permitir manutenção independente entre os dois sistemas. | Manutenibilidade                     | Alta           |
-| RNF08   | A comunicação entre o app, o backend e o sistema de recomendação deve ser feita via HTTPS com TLS 1.2 ou superior.               | Segurança                            | Alta           |
-| RNF09   | A autenticação de acesso ao app deve ser feita com uso de autenticação multifator (MFA).                                         | Segurança                            | Baixa          |
-| RNF10   | Dados sensíveis eventualmente armazenados localmente devem estar criptografados utilizando criptografia simétrica forte.         | Segurança                            | Alta           |
-| RNF11   | Em falha do sistema de recomendação, o app deve mostrar mensagem clara e oferecer ao menos 1 sugestão padrão, além de opção para tentar novamente. | Confiabilidade                       | Alta           |
-| RNF12   | O sistema deve ter disponibilidade de no mínimo 99,5% mensal.                                                                    | Confiabilidade                       | Baixa          |
-| RNF13   | O modelo de Machine Learning deve ser re-treinado automaticamente com base em indicadores matemáticos de variação dos dados e/ou de desempenho, de forma a garantir sua atualização eficiente.                    | Funcionalidade Adequada              | Baixa          |
-| RNF14   | A exibição das recomendações deve seguir boas práticas de usabilidade (como as heurísticas de Nielsen) e ser validada com testes de usabilidade com usuários reais. | Usabilidade                          | Média          |
+| **RNF#** | **Descrição**                                                                                                                                          | **Aspecto de Qualidade (ISO 25010)** | **Prioridade** |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|----------------|
+| RNF01   | O sistema deve ser containerizado com Docker e projetado para rodar em ambientes de nuvem, garantindo portabilidade e escalabilidade.                   | Portabilidade                        | Alta           |
+| RNF02   | As APIs devem ser RESTful, com autenticação segura via provedores como Auth0 ou Firebase.                                                               | Compatibilidade                      | Alta           |
+| RNF03   | A arquitetura deve ser modular, com separação clara de responsabilidades, facilitando manutenção e evolução do código sem impacto em outros módulos.    | Manutenibilidade                     | Alta           |
+| RNF04   | Em caso de falha nas verificações ou geração de recomendações, o sistema deve exibir mensagem clara e oferecer opção de tentar novamente.               | Confiabilidade                       | Alta           |
+| RNF05   | A interface deve seguir boas práticas de usabilidade e ser validada com pelo menos uma rodada de testes com usuários reais.                            | Usabilidade                          | Média          |
 
 <sup>Material produzido pelos autores (2025)</sup>
 </div><br>
@@ -619,22 +596,13 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 <div align="center">
 <sub>Tabela X - User Stories dos Requisitos Não Funcionais</sub><br>
 
-| **ID**  | **User Story** |
-|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| RNF01   | Como Fábio, quero que as recomendações baseadas em machine learning sejam respondidas em até 2 segundos, para garantir uma experiência rápida e eficiente durante o uso cotidiano. |
-| RNF02   | Como Fábio, quero que o sistema suporte pelo menos 3.000 acessos simultâneos, mantendo o tempo médio de resposta abaixo de 1 segundo, para garantir estabilidade e rapidez mesmo em horários de pico. |
-| RNF03   | Como administrador do sistema, quero que a aplicação seja containerizada com Docker e executada exclusivamente em ambientes de nuvem, para garantir portabilidade e escalabilidade. |
-| RNF04   | Como Fábio, quero que o app esteja disponível apenas para Android versão 10 ou superior, para garantir compatibilidade com dispositivos modernos. |
-| RNF05   | Como desenvolvedor, quero que o sistema utilize APIs RESTful bem documentadas e versionadas via Swagger, com autenticação de terceiros, para facilitar a integração segura e manter a compatibilidade entre componentes. |
-| RNF06   | Como desenvolvedor, quero que o aplicativo tenha uma estrutura modular e com responsabilidades bem definidas, para facilitar a manutenção e evolução do código com baixo impacto. |
-| RNF07   | Como administrador do sistema, quero que o sistema de recomendação de ML rode em infraestrutura separada e seja acessado apenas via API, para permitir manutenção e atualizações independentes entre os sistemas. |
-| RNF08   | Como Fábio, quero que toda comunicação entre app, backend e sistema de recomendação seja feita através de HTTPS com TLS 1.2 ou superior, para garantir a segurança dos dados transmitidos. |
-| RNF09   | Como Fábio, quero autenticação multifator (MFA) no acesso ao app, para aumentar a segurança da minha conta. |
-| RNF10   | Como Fábio, quero que dados sensíveis armazenados localmente sejam criptografados com uma criptografia simétrica forte, para proteger minhas informações mesmo em caso de perda ou roubo do dispositivo. |
-| RNF11   | Como Fábio, quero que o app exiba uma mensagem clara e forneça uma sugestão padrão caso o sistema de recomendação falhe, para que eu possa continuar usando o app sem frustração. |
-| RNF12   | Como Fábio, quero que o sistema esteja disponível no mínimo 99,5% do tempo mensal, para garantir que o serviço esteja quase sempre acessível quando eu precisar. |
-| RNF13   | Como Fábio, quero que o modelo de ML seja re-treinado automaticamente baseado em variação de dados e desempenho, para manter a qualidade e atualidade das recomendações. |
-| RNF14   | Como Fábio, quero que a exibição das recomendações siga boas práticas de usabilidade e seja validada com testes reais, para que a interface seja intuitiva e fácil de usar. |
+| ID    | User Story                                                                                                                                                                                                                                          |
+|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| RNF01 | **Como** assessor, **quero** que a aplicação rode em ambientes de nuvem, **para que** eu consiga acessar de qualquer lugar, com estabilidade e sem depender de um dispositivo específico.                                                           |
+| RNF02 | **Como** assessor, **quero** que a aplicação tenha autenticação segura usando métodos confiáveis, **para que** eu tenha confiança de que meus dados e informações estão protegidos contra acessos não autorizados.                                 |
+| RNF03 | **Como** assessor, **quero** que o sistema funcione de forma estável e sem erros, mesmo após atualizações, **para que** eu tenha uma experiência contínua, sem que mudanças em uma funcionalidade prejudiquem outras.                             |
+| RNF04 | **Como** assessor, **quero** que, se algo der errado nas recomendações ou verificações, o sistema me mostre uma mensagem clara e ofereça a opção de tentar novamente, **para que** eu não fique perdido e continue usando sem frustração.         |
+| RNF05 | **Como** assessor, **quero** que a interface do sistema seja intuitiva e fácil de usar, validada com usuários reais, **para que** eu consiga realizar minhas tarefas de forma rápida e sem dificuldades.                                           |
 
 
 <sup>Material produzido pelos autores (2025)</sup>
@@ -646,22 +614,13 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 <div align="center">
 <sub>Tabela X - Testes associados aos Requisitos Não Funcionais</sub><br>
 
-| **Caso de Teste**       | **RNF#** | **Descrição do Teste**                                                                                      | **Pré-condição**                                              | **Caso de Aceite**                                                                 | **Caso de Recusa**                                                                     |
-|-------------------------|---------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
-| CT-RNF01                | RNF01   | Medir o tempo de resposta de uma recomendação via ML sob carga normal de uso.                              | Servidor ativo com modelo treinado e base de dados populada.  | Tempo de resposta ≤ 2 segundos.                                                   | Tempo de resposta > 2 segundos.                                                        |
-| CT-RNF02                | RNF02   | Simular 3.000 acessos simultâneos e medir o tempo médio de resposta das requisições padrão (não-ML).          | Sistema em ambiente de teste com suporte a concorrência.      | Tempo médio de resposta < 1 segundo por requisição.                               | Tempo médio de resposta ≥ 1 segundo.                                                   |
-| CT-RNF03                | RNF03   | Verificar se todos os serviços rodam em containers e estão hospedados em ambiente de nuvem.                 | Sistema implantado.                                            | Todos os containers ativos em ambiente cloud.                                     | Componentes rodando fora de containers ou fora da nuvem.                               |
-| CT-RNF04                | RNF04   | Verificar se o app é compatível apenas com Android 10 ou superior.                                          | APK instalado em diferentes versões do Android.               | Funciona em Android 10+, falha em versões anteriores.                            | Funciona em Android < 10 ou não funciona em Android ≥ 10                                                            |
-| CT-RNF05                | RNF05   | 	Verificar se as APIs REST estão documentadas utilizando Swagger padrão, versionadas e autenticadas por provedor externo (Auth0 ou Firebase).              | Ambiente de desenvolvimento com APIs expostas.                 | Documentação disponível via Swagger, uso de Auth0 ou Firebase ativo e versionamento das APIs.                         | Ausência de documentação via Swagger, falta de versionamento ou autenticação manual.                 |
-| CT-RNF06                | RNF06   | 	Verificar a modularidade do sistema desativando um dos containers de serviço e validando se os demais componentes continuam operando normalmente.                          | Sistema containerizado em execução, com acesso de controle individual aos containers.                         | Componentes restantes continuam funcionando corretamente, evidenciando a separação de responsabilidades.                                       | Queda ou falha generalizada no sistema ao desativar um único componente, indicando alto acoplamento.                            |
-| CT-RNF07                | RNF07   | 	Verificar se o sistema de recomendação (ML) está em infraestrutura separada, enviando uma requisição direta à sua API e validando a resposta sem passar pelo backend.                | Sistema de ML ativo e exposto via API.                                           | Requisição direta à API do sistema de ML respondendo corretamente, comprovando a separação entre backend e ML.          | Sistema de ML inacessível diretamente ou dependente do backend para funcionamento.                       |
-| CT-RNF08                | RNF06   | Testar comunicação entre app e backend/sistema de ML com Wireshark e inspecionar se é feita via HTTPS com TLS ≥ 1.2.    | Servidores configurados com TLS.                              | Certificado válido e conexão segura.                                             | Conexão HTTP ou TLS inferior a 1.2.                                                     |
-| CT-RNF09                | RNF09   | Testar o fluxo de autenticação com MFA ativado.                                                             | Usuário com MFA configurado.                                  | MFA solicitado e validado corretamente.                                          | Login sem solicitação de segundo fator ou falha de verificação.                        |
-| CT-RNF10                | RNF10   | Simular armazenamento local de dados sensíveis e verificar criptografia.                                   | Dispositivo com dados armazenados.                            | Dados criptografados com algoritmo simétrico forte (ex: AES-256).               | Dados em texto plano ou criptografia fraca.                                            |
-| CT-RNF11                | RNF11   | Simular falha no sistema de recomendação e observar comportamento do app.                                   | Sistema de ML offline.                                        | App exibe mensagem amigável e sugestão padrão, com botão "Tentar novamente".     | App trava ou exibe erro genérico.                                                      |
-| CT-RNF12                | RNF12   | Verificar logs de uptime e incidentes no último mês.                                                        | Sistema em produção.                                           | Uptime ≥ 99,5% no período analisado.                                             | Uptime < 99,5%.                                                                        |
-| CT-RNF13                | RNF13   | Verificar, por meio dos logs ou registros do sistema, se o re-treinamento do modelo de Machine Learning é disparado automaticamente com base em indicadores matemáticos de variação dos dados e/ou de desempenho.                             | Base de dados e sistema de monitoramento de indicadores ativos.                      | Re-treinamentos registrados após detecção de variação relevante nos indicadores, sem falhas no processo.                                          | Re-treinamento não é disparado quando necessário, é disparado sem necessidade, ou ocorre com falhas.                          |
-| CT-RNF14                | RNF14   | Avaliar a interface de recomendações com base nas heurísticas de Nielsen e testes com pelo menos 5 usuários reais.       | Protótipo funcional e grupo de usuários disponíveis.            | Feedback positivo ≥ 80% em testes.                                               | Reclamações recorrentes ou reprovação nos testes.                                      |
+| Caso de Teste | RNF#  | Descrição do Teste                                                                                      | Pré-condição                                        | Caso de Aceite                                                                                 | Caso de Recusa                                                                             |
+|---------------|--------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| CT-RNF01      | RNF01  | Verificar se o sistema está containerizado com Docker e implantado em ambiente de nuvem.               | Sistema implantado e ambiente cloud configurado.   | Todos os serviços estão rodando em containers, funcionando corretamente em ambiente cloud.    | Serviços rodando fora de containers ou não em ambiente cloud.                             |
+| CT-RNF02      | RNF02  | Testar se as APIs são RESTful, autenticadas via Auth0 ou Firebase, e funcionam com segurança.           | APIs expostas com autenticação configurada.        | APIs respondem corretamente, autenticação segura via provedor ativo e documentação presente.  | APIs sem autenticação segura ou sem padrão REST; falha na autenticação.                   |
+| CT-RNF03      | RNF03  | Validar a modularidade desabilitando um módulo e verificando que os outros continuam operando normalmente. | Sistema modular rodando com controle individual.   | Outros módulos continuam funcionando sem impacto após a desativação de um módulo.             | Falha ou queda no sistema após desabilitar um módulo, mostrando acoplamento alto.         |
+| CT-RNF04      | RNF04  | Simular falha no processo de recomendação ou verificação e verificar a mensagem exibida ao usuário.      | Sistema de recomendação offline ou erro gerado.    | Mensagem clara de erro é exibida e opção "Tentar novamente" está disponível e funciona.       | Mensagem confusa, genérica, ou ausência de opção para tentar novamente.                   |
+| CT-RNF05      | RNF05  | Aplicar uma rodada de testes de usabilidade com usuários reais na interface de recomendações.            | Protótipo funcional da interface disponível.       | Feedback positivo em pelo menos 80% dos usuários quanto à facilidade e clareza da interface.  | Feedback negativo ou reclamações recorrentes que indicam má usabilidade.                  |
 
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -672,17 +631,14 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 <div align="center">
 <sub>Tabela X - Tabela de Correlação RFs e RNFs</sub><br>
 
-| Requisito Funcional | RNFs Correlatos                  | Justificativa da Correlação |
-|---------------------|----------------------------------|-----------------------------|
-| RF01                | RNF03, RNF05, RNF08              | A importação e processamento de dados exigem APIs bem estruturadas, ambiente cloud escalável e comunicação segura. |
-| RF02                | RNF01, RNF07, RNF13              | O cálculo do perfil deve ser rápido (desempenho), separado do backend (modularidade) e atualizado com re-treinamento automático. |
-| RF03                | RNF01, RNF02                     | A verificação de conformidade exige desempenho sob carga e resposta rápida mesmo com múltiplos acessos. |
-| RF04                | RNF11, RNF13                     | A recomendação deve lidar com falhas de sistema (resiliência) e refletir atualização contínua do modelo de ML. |
-| RF05                | RNF06, RNF14                     | A exibição no painel depende de boa estrutura modular e interface intuitiva e validada com usuários. |
-| RF06                | RNF14                            | Os filtros por conformidade devem seguir boas práticas de usabilidade para facilitar a navegação. |
-| RF07                | RNF06                            | O filtro por segmento depende de arquitetura modular que permita fácil evolução do sistema. |
-| RF08                | RNF10, RNF12                     | O histórico de sugestões envolve armazenamento seguro de dados sensíveis e alta disponibilidade do sistema. |
-| RF09                | RNF14                            | A visualização gráfica deve seguir heurísticas de usabilidade para facilitar a interpretação da carteira por usuários não técnicos. |
+| Requisito Funcional                         | RNFs Correlatos              | Justificativa da Correlação                                                                                                                                                    |
+|--------------------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| RF01 - Importação de Carteiras de Clientes | RNF01, RNF02, RNF03, RNF05  | O processo de importação exige APIs RESTful seguras (RNF02) para upload e integração, sistema containerizado e escalável para suportar grandes volumes (RNF01), arquitetura modular para manter o código organizado (RNF03) e interface usável para facilitar o upload e validação dos arquivos (RNF05).  |
+| RF02 - Cálculo do Perfil Atual da Carteira | RNF01, RNF03, RNF04         | O cálculo deve ser rápido e escalável (RNF01), implementado em módulos separados para facilitar manutenção e atualização (RNF03), e confiável para exibir mensagens claras em caso de falha no cálculo (RNF04).                                           |
+| RF03 - Verificação de Conformidade com Perfil Cadastrado | RNF01, RNF02, RNF03, RNF04  | A verificação precisa ser executada com alta disponibilidade e escalabilidade (RNF01), usando APIs seguras e compatíveis (RNF02), com arquitetura modular para permitir ajustes futuros sem impacto (RNF03) e garantir tratamento correto de erros (RNF04). |
+| RF04 - Geração de Recomendações de Readequação | RNF03, RNF04, RNF05         | A geração de recomendações deve estar em módulo separado para facilitar evolução (RNF03), ter confiabilidade para lidar com falhas exibindo mensagens claras (RNF04) e interface com boas práticas para exibir recomendações compreensíveis aos usuários (RNF05). |
+| RF05 - Direcionamento de Atendimento por Conformidade | RNF03, RNF05                | O direcionamento depende de arquitetura modular para integrar facilmente (RNF03) e de uma interface intuitiva e validada por usuários para garantir que o assessor utilize as informações de forma eficiente (RNF05).                        |
+
 
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -1128,69 +1084,58 @@ Define os níveis de assessores possíveis no sistema:
 
 <div align="center">
 <sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
-<img src="./img/uml-components.png">  
+<img src="./img/diagrama_componentes.jpg">  
 <sub>Fonte: Material produzido pelos autores (2025)</sub>  
 </div>
 
----
+## Arquitetura em Camadas do Aplicativo
 
-### Arquitetura em Camadas da Plataforma BTG
+O sistema segue uma arquitetura em camadas, organizada em: **Camada de Apresentação**, **Camada de Negócio** e **Camada de Dados**, fragmentadas nos componentes conforme o diagrama. Abaixo descrevemos os blocos responsáveis por cada funcionalidade:
 
-&emsp;O sistema foi desenvolvido com base em uma arquitetura em camadas, separando responsabilidades entre apresentação, lógica de negócio e persistência de dados. Abaixo descrevemos os componentes de cada camada e o fluxo entre eles:
+### Camada de Apresentação (Frontend Mobile)
 
----
+A interface principal para os assessores do BTG é o **Aplicativo Mobile**, responsável por coletar dados do usuário, exibir informações de perfil, recomendações e alertas de conformidade.
 
-## 5.3.1. Camada de Apresentação (Frontend Mobile)
+#### Componentes:
+- **Aplicativo Mobile (React Native):** Permite a interação do usuário com o sistema.
+- **Firebase:** Suporte a autenticação, notificações e sincronização em tempo real com o app.
 
-&emsp;A Camada de Apresentação é representada pelo aplicativo desenvolvido em React Native, que fornece a interface gráfica para os assessores do BTG interagirem com o sistema.
-
-### Componentes:
-- **Usuário (Assessor):** A pessoa que utiliza o aplicativo mobile.
-- **App React Native:** Interface do usuário que envia requisições para o backend.
-
-### Fluxo:
-1. O assessor acessa o sistema por meio do aplicativo.
-2. As ações realizadas no app (como login, filtros, visualização de perfis) são enviadas para o backend por meio do API Gateway.
+#### Fluxo:
+1. O usuário acessa o sistema pelo aplicativo mobile.
+2. O app se comunica com o **Firebase** para autenticação e sincronização.
+3. Requisições relacionadas a dados e recomendações são enviadas ao módulo **Service**, que coordena a lógica de negócio.
 
 ---
 
-## 5.3.2. Camada de Negócio (Backend)
+### Camada de Negócio (Backend / Orquestração)
 
-&emsp;A Camada de Negócio centraliza a lógica de processamento do sistema, autenticação, análise de carteiras e recomendação personalizada de investimentos.
+Responsável por orquestrar o processamento, validações e geração de recomendações com base nas informações fornecidas pelos usuários e dados do BTG.
 
-### Componentes:
-- **API Gateway (.NET):** Orquestra as requisições recebidas do app, redirecionando para os microserviços apropriados.
-- **Serviço de Autenticação:** Responsável pela integração com o Auth0 para validar os tokens de acesso.
-- **Serviço de Análise de Carteira:** Realiza a análise dos ativos do cliente em relação ao perfil de risco.
-- **Serviço de Conformidade:** Verifica se a carteira está em conformidade com o perfil do cliente.
-- **Serviço de Recomendação (Python):** Realiza cálculos e lógica para sugerir ajustes na carteira, utilizando inteligência de negócio e geração de perfis ideais.
-- **Engine de Perfis:** Módulo interno do serviço de recomendação que simula cenários ideais baseados nos dados do usuário.
+#### Componentes:
+- **Service:** Intermediário entre o app, o Firebase e os módulos internos do backend. Gerencia lógica de fluxo e chamadas de API.
+- **API de Recomendação:** Executa as regras de negócio, reclassificação de perfis e sugestão de alocação conforme regulamentação da CVM.
+- **Repositories:** Responsável por interagir com o banco de dados relacional para consultas e atualizações.
 
-### Fluxo:
-1. O API Gateway valida o token com o Serviço de Autenticação.
-2. Após autenticação, o Gateway redireciona a requisição para o serviço apropriado:
-   - **Análise de Carteira**: Para processar dados do portfólio.
-   - **Conformidade**: Para verificar o alinhamento com o perfil do cliente.
-   - **Recomendação**: Para gerar sugestões inteligentes de alocação.
-3. O Serviço de Recomendação acessa o Engine de Perfis e o banco de dados para gerar recomendações.
-4. Caso necessário, o Serviço de Análise também consulta arquivos e dados complementares via Supabase.
+#### Fluxo:
+1. O **Service** recebe requisições do app, autentica via Firebase e direciona as chamadas para a **API de Recomendação**.
+2. A API de Recomendação processa os dados recebidos e envia instruções de leitura/escrita para os **Repositories**.
+3. Os **Repositories** acessam o banco **PostgreSQL** para persistência ou leitura das informações.
 
 ---
 
-## 5.3.3. Camada de Dados
+### Camada de Dados
 
-&emsp;Esta camada é responsável pelo armazenamento persistente de dados do sistema, como perfis de clientes, carteiras e histórico de recomendações.
+Abriga os dados estruturados e operacionais do sistema.
 
-### Componentes:
-- **PostgreSQL:** Base de dados relacional principal do sistema.
-- **Supabase:** Usado para armazenar arquivos auxiliares, como documentos e imagens.
+#### Componentes:
+- **PostgreSQL:** Banco relacional para armazenamento de perfis de investidores, carteiras, registros de recomendação e histórico.
+- **Dados BTG:** Fonte externa integrada ao sistema que fornece informações essenciais para análise e recomendação.
 
-### Fluxo:
-1. Os microserviços de negócio consultam ou atualizam os dados diretamente no PostgreSQL.
-2. Dados auxiliares, como PDFs, arquivos ou planilhas, são manipulados via Supabase.
-3. As respostas são retornadas ao usuário via o API Gateway e exibidas no app mobile.
+#### Fluxo:
+1. A **API de Recomendação** consome os **Dados BTG** para análise inicial.
+2. **Repositories** acessam o **PostgreSQL** para registrar, atualizar ou recuperar dados do sistema.
+3. Resultados são retornados à **Camada de Negócio** e exibidos ao usuário via o app mobile.
 
----
 
 ## 5.4 Diagramas de Sequência da UML
 
@@ -1425,7 +1370,59 @@ Esse guia foi fundamental para manter a uniformidade e a eficiência ao longo do
 _conteúdo_
 
 ## 8.1 Arquitetura de Codificação e Estrutura de Diretórios
-_conteúdo_
+
+&emsp;Durante a Sprint 3, adotamos uma arquitetura modular e escalável, com separação clara de responsabilidades tanto no backend quanto no frontend. A organização visa facilitar a manutenção, testes e integração futura.
+
+---
+
+## Backend
+
+A estrutura do backend foi organizada por camadas funcionais, com base nos princípios de separação de responsabilidades:
+
+```
+/src
+ ├── controllers/     # Recebem requisições HTTP e retornam respostas
+ ├── services/        # Contêm a lógica de negócio central da aplicação
+ ├── models/          # Representam as entidades e interagem com o banco
+ ├── middleware/      # Valida o token JWT com Firebase antes de executar rotas protegidas
+```
+
+- O middleware garante que apenas usuários autenticados acessem rotas privadas, consultando o token Firebase.
+- O uso da camada `services` isola regras de negócio, promovendo legibilidade e testes.
+---
+
+## Frontend
+
+O frontend foi estruturado com uma arquitetura com relativamente baixa separação de responsabilidades e pastas, foco em componentização, reutilização de estilo e integração com o backend:
+
+```
+/src/frontend
+ ├── components/       # Componentes reutilizáveis (cards, botões, inputs, etc.)
+ ├── app/              # Páginas principais da aplicação (Home, Login, Carteira etc.)
+tailwind.config.ts     # Configuração de estilos e design system
+```
+
+- `components/`: abstração de elementos visuais com variação por props.
+- `app/`: páginas compostas por múltiplos componentes reutilizáveis.
+- `tailwind.config.ts`: contém o design system com as cores e sombras personalizadas utilizadas no Figma.
+
+### ▶️ Como executar o frontend (Expo)
+
+**Requisitos:**
+- Node.js instalado
+- Expo CLI (`npm install -g expo-cli`)
+- App **Expo Go** instalado no celular ou uso do emulador Android/iOS
+
+**Passos:**
+```bash
+cd src/frontend/
+npm install
+npm expo start # ou 'npm expo start --tunnel' para gerar um tunel isolado de rede e evitar complicações de conexão.
+```
+
+O comando abrirá o navegador com o Expo DevTools. Você pode:
+- Escanear o QR code com o app **Expo Go** no celular
+- Ou rodar em um emulador local com `i` (iOS), `a` (Android) ou `w` (web)
 
 ## 8.2 Modelo de Recomendação
 _conteúdo_
@@ -1436,7 +1433,106 @@ _conteúdo_
 **Nota:** Insira uma explicação de entregas em cada Sprint.
 
 ## 8.3.1 Sprint 3
-_conteúdo_
+
+&emsp;Durante a Sprint 3, foi realizado o desenvolvimento de telas funcionais e componentes visuais reutilizáveis, utilizando **React Native** com estilização baseada em classes utilitárias do **NativeWind**, dentro do ambiente **Expo**. Os dados estão atualmente mockados, mas toda a lógica de estado (`useState`) e efeitos (`useEffect`) foi estruturada para permitir integração fluida com o backend nas próximas sprints.
+
+---
+
+## Tecnologias e Bibliotecas Utilizadas
+- **React Native com Expo**: para desenvolvimento mobile multiplataforma.
+- **NativeWind**: integração do estilo utilitário do Tailwind para React Native.
+- **Phosphor Icons**: biblioteca de ícones leve e versátil.
+- **Hooks (`useState`, `useEffect`)**: para controle de estado e ciclos de vida nas telas.
+
+---
+
+## Padrão Visual e Design System
+
+&emsp;Toda a interface foi construída respeitando o design system definido no Figma, com cores customizadas aplicadas via `tailwind.config.ts`. As principais cores utilizadas foram:
+
+```js
+"azul-escuro-principal": "#001E62",
+"azul-claro-principal": "#AEC3F5",
+"azul-claro-secundario": "#C2D5FF",
+"rosa-secundario": "#FF7CA1",
+"vermelho-secundario": "#E9A5A5",
+"vermelho-principal": "#5A1A1A"
+```
+
+&emsp;Também foram aplicadas sombras customizadas (`shadow-clicaveis`) para destacar componentes interativos e bordas arredondadas (`rounded-2xl`) para promover suavidade visual e acessibilidade.
+
+---
+
+## Componentes Desenvolvidos
+
+<div align="center">
+<sub>Figura X - Componentes</sub><br> 
+<img src="img/componentes.png" width="70%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Todos os componentes foram projetados com foco em **modularidade, reuso e clareza visual**, e seguem as boas práticas de composição de interfaces.
+
+- **Componente de alternância (Switch)**: permite ao usuário alternar entre a tela de login e cadastro de forma intuitiva.
+- **Inputs personalizados**: campos estilizados para e-mail, senha e dados cadastrais, com foco em usabilidade.
+- **Botões de ação**: utilizados nas telas de login e cadastro, adaptáveis por props para diferentes ações.
+- **Card de Quantitativo Geral**: exibe total de carteiras regulares ou irregulares. Sua aparência (cor, ícone e textos) se ajusta conforme o tipo.
+- **Card por Perfil de Risco**: dinâmico, identifica o perfil de risco (Conservador, Moderado, Sofisticado) e exibe dados correspondentes com ícones e cores adequadas.
+- **Componente de Pesquisa por Cliente**: input com placeholder contextual, reutilizável em diferentes telas.
+- **Filtro de carteiras**: botão com função de abrir modal para aplicação de filtros por tipo de carteira.
+- **Card de Carteira de Investimento**: mostra banco, CPF, valor total, status e outros dados relevantes de uma carteira.
+- **Menu Inferior (Bottom Navigation)**: fixo e funcional, com rotas para Home, Carteiras e Perfil.
+- **Histórico de carteiras acessadas**: presente na tela de perfil do assessor, apresenta navegação por carteiras previamente consultadas.
+
+---
+
+## Telas Desenvolvidas
+
+&emsp;As telas desenvolvidas seguiram como majoritariamente previsto no Mockup construído no Figma, com mínimas alterações para refletir os feedbacks coletados durante as Sprint Reviews.
+
+<div align="center">
+<sub>Figura X - Telas desenvolvidas na Sprint 3</sub><br> 
+<img src="img/telas_sprint3.svg" width="100%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+### 1. Tela de Login/Cadastro  
+&emsp;Alternância via switch entre os fluxos de autenticação. Campos de entrada e botões estilizados com feedback visual.
+
+### 2. Tela Home  
+Exibe:
+- Mensagem de boas-vindas com nome do assessor.
+- Campo de busca por cliente.
+- Cards de resumo da quantidade de carteiras regulares/irregulares.
+- Cards por perfil de risco.
+- Menu inferior para navegação.
+
+### 3. Tela de Carteiras por Perfil  
+A partir do clique em um dos cards da Home, exibe:
+- Campo de busca e botão de filtro.
+- Quantidade de carteiras em conformidade no respectivo perfil.
+- Apesar do componente de informações de carteiras de investimento estar pronto, não foi totalmente integrado a esta tela.
+
+### 4. Tela de Carteira Individual  
+Apenas integrada, com planejamento de conclusão para a Sprint 4.
+
+### 5. Perfil do assessor
+- Contém informações cadastrais do assessor, o container de histórico de carteiras com componentes completamente integrados.
+
+&emsp;Durante a Sprint 3, o foco do backend foi a implementação de autenticação segura com Firebase, comunicação entre o sistema e o modelo de recomendação através de uma API e o desenvolvimento robusto do banco de dados com regras de negócio encapsuladas. Todo o ambiente foi estruturado com Docker, garantindo portabilidade e reprodutibilidade.
+
+&emsp;Como mencionado, iniciamos o desenvolvimento de uma **API intermediária** para integrar o modelo de recomendação de estatísticas, alocação de ativos e readequação de perfil (desenvolvido em Jupyter Notebook) ao nosso aplicativo. Para a Sprint 4, essa API pretende:
+
+- Receber dados simulados de carteiras e perfis de risco.
+- Processar as informações via chamada ao modelo.
+- Retornar sugestões de realocação em caso de divergência com o perfil.
+
+&emsp; sistema de persistência de dados foi estruturado com foco em robustez e lógica de negócio no lado do banco, sendo implementadas **Triggers**: para execução automática de regras durante inserções/atualizações; **Procedures**: para operações complexas encapsuladas; as regras de negócio foram implantadas diretamente no banco, visando integridade e menor dependência da aplicação para consistência dos dados, bem como todo o banco foi dockerizado, garantindo modularidade, segurança e disponibilidade das informações.
+
+### 5. Tela de Perfil do Assessor  
+Apresenta:
+- Dados cadastrais do assessor.
+- Container com histórico de carteiras acessadas.
 
 ## 8.3.2 Sprint 4
 _conteúdo_
@@ -1445,8 +1541,138 @@ _conteúdo_
 _conteúdo_
 
 ## 8.4 Testes Unitários e de Integração
-_conteúdo_
-Obs.: Insira informações sobre estratégias para realização dos testes
+
+### Planejamento de testes unitários
+
+&emsp;O desenvolvimento do aplicativo pretende seguir TDD (Test-Driven-Development), garantindo a qualidade, confiabilidade e evolução segura do sistema por meio de testes unitários. Dessa forma, essa seção detalha as estratégias para a construção de testes unitários que orientarão o desenvolvimento do aplicativo para o BTG Pactual. 
+
+---
+
+#### Procedimento esperado para o desenvolvimento
+
+- **Para cada nova funcionalidade:**
+1. Escreve-se primeiro um teste unitário que representa o comportamento esperado.
+2. Implementa-se o código mínimo necessário para fazer o teste passar.
+3. Refatora-se o código garantindo que os testes permaneçam passando.
+
+---
+
+#### Estratégias para Testes no Backend
+
+**Ferramentas Utilizadas**
+- `xUnit` – Framework de teste unitário.
+- `Moq` – Mock de dependências (serviços, repositórios, VHS, API externa).
+
+**Cobertura de Testes**
+- **Controladores:** Validação de status codes e chamadas aos serviços.
+- **Serviços:** Regras de negócio, integração com cache VHS, manipulação de dados.
+- **Utilitários:** Funções auxiliares de formatação, cálculo, etc.
+- **VHS (Cache):** Verificação se o dado está sendo buscado, armazenado e invalidado corretamente.
+
+**Exemplo de Estrutura**
+- Testes seguem a estrutura AAA (Arrange, Act, Assert).
+- Cada método público deve ter ao menos 1 cenário positivo e 1 negativo testado.
+
+---
+
+#### Estratégias para Testes no Frontend
+
+**Ferramentas Utilizadas**
+- `Jest` – Teste de funções, hooks e lógicas internas.
+- `React Native Testing Library (RNTL)` – Testes de componentes e interações.
+
+**Cobertura de Testes**
+- **Componentes Visuais:** Renderização com diferentes props e estados.
+- **Hooks Customizados:** Validação de lógica reativa (ex: uso de contexto, chamadas de API).
+- **Funções Isoladas:** Manipulação de dados, máscaras, validações de formulário.
+
+**Boas Práticas**
+- Testar estados iniciais, interações (ex: cliques, inputs), e efeitos visuais esperados.
+- Usar mocks de APIs quando necessário.
+
+---
+
+#### Validação dos Resultados
+
+- Os testes devem rodar automaticamente no pipeline CI/CD.
+- Ferramentas de cobertura como `Coverlet` (.NET) e `Jest --coverage` devem ser usadas para acompanhar a cobertura mínima (recomenda-se 80%).
+
+### Planejamento de testes de integração
+
+&emsp;Esta subseção planeja os testes para a integração entre os módulos internos do sistema (como o .NET para o back-end React Native integrado ao Expo no front-end), assim como entre o backend e as APIs externas, utilizando caching (VHS). Os testes pretendem verificar tanto o comportamento esperado quanto a resposta a erros, validando possíveis interações críticas.
+
+---
+
+#### Pontos de Integração Identificados
+
+- **Frontend (React Native/Expo) → Backend (.NET API)**
+- **Backend → Camadas Internas (controladores, serviços, repositórios)**
+- **Backend → Cache (VHS)**
+- **Backend → Banco de Dados**
+- **Backend → API Externa (com cache VHS obrigatoriamente)**
+
+---
+
+#### Integração: Frontend ↔ Backend
+
+- **Objetivo:** Validar o consumo correto de dados pela aplicação e o tratamento de erros.
+- **Pré-condição:** Backend rodando localmente ou em formato Docker, dentro do respectivo servidor disponibilizado pela faculdade.
+- **Cenário Positivo:** Requisições com parâmetros válidos retornam dados esperados.
+- **Cenário Negativo:** Requisições com parâmetros inválidos ou tokens expirados retornam mensagens de erro apropriadas.
+  - Exemplos: campos obrigatórios não preenchidos, dados enviados para a requisição não atendendo às regras de negócio implementadas no banco de dados, valores inválidos, erros de conexão, etc. 
+- **Pós-condição:** Tela renderiza corretamente os dados ou mensagens de erro.
+
+#### Integração: Backend ↔ Banco de Dados
+
+- **Objetivo:** Verificar persistência e recuperação de dados.
+- **Pré-condição:** Banco de dados com dados controlados para teste.
+- **Cenário Positivo:** POST cria entidade e GET a retorna corretamente.
+- **Cenário Negativo:** DELETE de entidade inexistente retorna erro 404.
+- **Pós-condição:** Estado do banco reflete a operação ou retorna erro esperado.
+
+#### Integração: Backend ↔ Cache (VHS)
+
+&emsp;Nota: O VHS (Volatile Hash Storage) é um mecanismo de caching temporário usado para armazenar respostas de APIs externas e evitar chamadas repetidas desnecessárias. Ele guarda os dados por um tempo limitado (o que é chamado de TTL – Time To Live) e entrega esses dados diretamente do cache enquanto forem válidos, melhorando o desempenho e reduzindo a latência do aplicativo. Quando o cache expira ou é invalidado, uma nova chamada à API é feita e o conteúdo é atualizado no cache.
+
+- **Objetivo:** Reduzir latência e evitar chamadas repetidas à API externa.
+- **Pré-condição:** VHS ativado e configurado.
+- **Cenário Positivo:** Primeira chamada armazena no cache; próximas chamadas retornam do cache.
+- **Cenário Negativo:** Cache expira ou é invalidado e nova chamada é feita.
+- **Pós-condição:** Cache atualizado e resposta válida.
+
+#### Integração: Backend ↔ API Externa (utilizando VHS)
+
+- **Objetivo:** Validar consumo seguro e otimizado de uma API externa.
+- **Pré-condição:** API externa acessível e VHS operacional.
+- **Cenário Positivo:** Resposta da API é armazenada no cache e usada em chamadas seguintes.
+- **Cenário Negativo:** API externa retorna erro (ex: 500); mensagem de erro tratada corretamente.
+- **Pós-condição:** Resposta do cache usada, ou erro tratado no backend e propagado ao frontend.
+
+---
+
+#### Ferramentas e Abordagens Possíveis
+
+- **Swagger (OpenAPI):** Validação de contratos de API e documentação.
+- **Postman:** Testes manuais, com exportação para coleções automatizadas (utilizando Newman), de forma a realizar  vários testes de integração ao mesmo tempo, ainda que manualmente.
+- **xUnit (.NET):** Testes de integração backend com dependências reais e mockadas.
+- **React Native Testing Library (RTL):** Validação de componentes que dependem de dados da API.
+
+---
+
+#### Validação dos Resultados
+
+- **Logs e métricas:** A validação será feita observando os status das respostas (ex: 200, 404, 500), mensagens de erro, tempo de resposta e se os dados vieram diretamente da API externa ou do cache (VHS).
+- **Cobertura de testes:** Todos os principais endpoints do sistema devem ter testes cobrindo casos de sucesso e falha.
+- **Ambiente de testes (Staging):** Os testes serão executados em um ambiente isolado que simula o ambiente de produção, garantindo segurança e realismo.
+
+---
+
+#### Cobertura de Interações Críticas
+
+- **Chamadas essenciais do frontend:** Como telas que exibem dados dinâmicos do usuário ou carregam listas a partir da API.
+- **Operações com impacto no banco de dados:** Criação, edição ou exclusão de registros que alteram o estado do sistema.
+- **Uso do cache (VHS) como proteção contra falhas externas:** O sistema deve continuar funcionando mesmo que a API externa esteja lenta ou fora do ar, usando os dados armazenados em cache.
+- **Tratamento de erros visível ao usuário:** Mensagens claras e apropriadas devem ser exibidas quando houver falhas (ex: falha na API externa ou erro no envio de dados).
 
 ## 8.5 Documentações automáticas
 _conteúdo_
@@ -1456,31 +1682,251 @@ Obs.: Insira informações sobre quais frameworks foram usados e como acessar.
 _conteúdo_
 
 ## 9.1 Testes Funcionais
-_conteúdo_
+
+&emsp;Neste tópico, será apresentado os planejamentos dos testes dos requisitos funcionais do nosso projeto, incluindo o cenário, propósito, pré-condições, instruções de execução,resultado esperado, pós-condições e tipo de teste (positivo/ negativo).
 
 ## 9.1.1 Planejamento
-_conteúdo_
+
+### RF01 - Importação automática de dados via API
+| Cenário          | Propósito                                                                 | Pré-condições                | Instruções de Execução                        | Resultado Esperado                                 | Pós-condições        | Tipo de Teste |
+| ---------------- | ------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------- | -------------------------------------------------- | -------------------- | ------------- |
+| Dados válidos    | Verificar se o sistema importa corretamente os dados de carteira via API. | API ativa com dados válidos. | Abrir o aplicativo, navegar até a seção de 'Carteiras', verificar apresentação dos dados. | Dados importados corretamente e exibidos.          | Exibição de carteiras atualizadas de acordo com a API. | Positivo      |
+| API indisponível | Verificar comportamento diante de falha na integração.                    | API offline ou com erro 500. | Abrir o aplicativo, acessar a seção de 'Carteiras', observar o comportamento do sistema diante a indisponibilidade dos dados.        | Exibição de mensagem de erro sem travar o sistema. | Nenhuma modificação. | Negativo      |
+
+### RF02 - Cálculo do perfil de risco
+| Cenário             | Propósito                                    | Pré-condições                   | Instruções de Execução                | Resultado Esperado                                  | Pós-condições                | Tipo de Teste |
+| ------------------- | -------------------------------------------- | ------------------------------- | ------------------------------------- | --------------------------------------------------- | ---------------------------- | ------------- |
+| Carteira com ativos | Validar cálculo correto do perfil.           | API de recomendação disponível. | Abrir o aplicativo, acessar o perfil de um cliente com ativos registrados na carteira e verificar o resultado exibido no componente de status da carteira. | Em caso de perfil coerente com a carteira, tag "Irregular" aparece no topo do status da carteira, bem como o quantitativo irregular e restantes estilizações do componente.                    | Perfil calculado armazenado. | Positivo      |
+| Carteira vazia      | Verificar tratamento de carteira sem ativos. | Cliente sem ativos acessado a partir da API de recomendação.             | Abrir o aplicativo, acessar o perfil de um cliente sem nenhum ativo registrado na carteira, e observar a resposta do sistema.   | Sistema informa que não é possível calcular perfil devido à falta de ativos. | Nenhuma alteração.           | Negativo      |
+
+### RF03 - Verificação de conformidade entre perfis
+| Cenário           | Propósito                                    | Pré-condições                         | Instruções de Execução               | Resultado Esperado      | Pós-condições                      | Tipo de Teste |
+| ----------------- | -------------------------------------------- | ------------------------------------- | ------------------------------------ | ----------------------- | ---------------------------------- | ------------- |
+| Perfis iguais     | Verificar se sistema reconhece conformidade. | Perfil calculado igual ao cadastrado. | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado é igual ao perfil cadastrado, abrir a seção da carteira e localizar o status de conformidade exibido pelo sistema. | Status: "Regular".     | Sistema pronto para outros testes. | Positivo      |
+| Perfis diferentes | Verificar detecção de não conformidade.      | Perfis divergentes.                   | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado difere do perfil cadastrado, abrir a seção da carteira e verificar o status de conformidade informado.        | Status: "Irregular". | Gatilho para recomendações.        | Negativo      |
+
+
+### RF04 - Recomendações de readequação
+| Cenário                 | Propósito                                       | Pré-condições          | Instruções de Execução                | Resultado Esperado                        | Pós-condições                      | Tipo de Teste |
+| ----------------------- | ----------------------------------------------- | ---------------------- | ------------------------------------- | ----------------------------------------- | ---------------------------------- | ------------- |
+| Cliente fora do perfil  | Verificar exibição das sugestões.               | Perfil “Irregular”. | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Não adequado', navegar até a seção de recomendações e verificar se o sistema apresenta opções de readequação da carteira. | Sistema exibe opções de readequação conforme recomendação.      | Recomendações salvas no histórico. | Positivo      |
+| Cliente em conformidade | Verificar ausência de sugestões desnecessárias. | Perfil “Regular”.     | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Adequado' e verificar se a seção de recomendações apresenta o hiperlink "Investimentos recomendados". | Ao acessar os investimentos recomendados, eles estão de acordo com o perfil declarado do cliente. | Nenhuma modificação.               | Negativo      |
+
+### RF05 - Painel visual de conformidade
+| Cenário               | Propósito                                    | Pré-condições                        | Instruções de Execução                | Resultado Esperado                                          | Pós-condições               | Tipo de Teste |
+| --------------------- | -------------------------------------------- | ------------------------------------ | ------------------------------------- | ----------------------------------------------------------- | --------------------------- | ------------- |
+| Exibição correta      | Validar exibição das carteiras com status.   | Vários clientes com dados completos. | Abrir o aplicativo, fazer login, navegar até o painel principal de visualização de carteiras e verificar se todas as carteiras cadastradas são exibidas corretamente com seus respectivos status de conformidade.             | Exibição de todas as carteiras com status.                  | Visualização atualizada.    | Positivo      |
+| Falha de renderização | Verificar sistema em caso de erro nos dados. | Dados inconsistentes ou incompletos. | Injetar manualmente dados corrompidos ou incompletos na base de dados de carteiras, acessar o painel principal e observar se o sistema exibe mensagens de erro amigáveis ou remove os itens problemáticos sem travar a aplicação. | Mensagem de erro amigável ou exclusão de itens corrompidos. | Sistema continua funcional. | Negativo      |
+
+### RF06 - Filtros por status de conformidade
+| Cenário                    | Propósito                                                 | Pré-condições                                  | Instruções de Execução                     | Resultado Esperado                       | Pós-condições                 | Tipo de Teste |
+| -------------------------- | --------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------ | ---------------------------------------- | ----------------------------- | ------------- |
+| Filtrar "Regulares"         | Validar filtro de carteiras conformes.                    | Existência de carteiras com status “Regular”. | Acessar a Home, clicar no tipo de perfil, localizar o componente de filtros, selecionar o filtro de status ‘regular’ e aplicar a filtragem. Observar se a lista de carteiras exibida contém somente aquelas com status ‘regular’. | Apenas carteiras adequadas são exibidas. | Filtro aplicado corretamente. | Positivo      |
+| Filtrar status inexistente | Verificar comportamento ao aplicar filtro sem resultados. | Nenhuma carteira com o status filtrado.        | No painel principal, abrir a opção de filtros, selecionar o filtro ‘Irregular’ quando não houver carteiras com esse status cadastrado, aplicar o filtro e verificar se é exibida a mensagem ‘Nenhum resultado encontrado’ e a lista fica vazia. | Mensagem “Nenhum resultado encontrado”.  | Tela limpa.                   | Negativo      |
 
 ## 9.1.2 Resultados
-_conteúdo_
+
+### RF01 - Importação automática de dados via API
+
+
+### RF02 - Cálculo do perfil de risco
+
+
+### RF03 - Verificação de conformidade entre perfis
+
+
+### RF04 - Recomendações de readequação
+
+
+### RF05 - Painel visual de conformidade
+
+
+### RF06 - Filtros por status de conformidade
+
+
+
+### RF09 - Exibição gráfica da carteira por tipo de ativo
+
 
 ## 9.2 Testes de RNFs
-_conteúdo_
+
+&emsp;Abaixo está o planejamento dos testes para os Requisitos Não Funcionais (RNFs) do aplicativo mobile da assessoria de investimentos. Cada teste contém cenários positivos e negativos, com descrição detalhada do propósito, pré e pós-condições, instruções de execução e resultados esperados.
 
 ## 9.2.1 Planejamento
-_conteúdo_
+
+### RNF01 - Portabilidade (Docker e Nuvem)
+| Cenário                        | Propósito                                        | Pré-condições                                                                              | Instruções de Execução                                                                                                                                                                                     | Ferramentas / Recursos Utilizados         | Resultado Esperado                                                                           | Métrica de Avaliação                                     | Pós-condições                                     | Tipo de Teste |
+| ------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------- | ------------- |
+| Execução em múltiplas nuvens   | Garantir portabilidade entre ambientes em nuvem. | Imagem Docker publicada em um registro (ex: Docker Hub); credenciais de AWS e GCP válidas. | 1. Realizar deploy da imagem Docker em uma instância EC2 (AWS) e em uma VM do Google Cloud. <br>2. Acessar a aplicação via IP público.<br>3. Verificar se todas as funcionalidades respondem corretamente. | Docker, AWS EC2, Google Cloud VM, Postman | Aplicação responde corretamente em ambas as nuvens, sem erro de dependência ou configuração. | 100% de funcionalidade operacional em ambos os ambientes | Sistema funcional em ambos os ambientes testados. | Positivo      |
+| Ambiente com incompatibilidade | Verificar falhas de portabilidade.               | Criar ambiente de teste com versão antiga do Docker (<19.03).                              | 1. Rodar o container no ambiente legado com dependências desatualizadas.<br>2. Observar falhas e capturar logs de erro.<br>3. Verificar se o sistema impede execução ou apresenta comportamento anômalo.   | Docker (versão antiga), Terminal          | Sistema não inicia corretamente ou exibe falhas claras no log.                               | Log de erro evidenciando incompatibilidade               | Log documentado e plano de ajuste traçado.        | Negativo      |
+
+
+### RNF02 - Compatibilidade (RESTful + autenticação segura)
+| Cenário                | Propósito                                          | Pré-condições                                                                                              | Instruções de Execução                                                                                                                                   | Ferramentas / Recursos Utilizados      | Resultado Esperado                                                       | Métrica de Avaliação                                  | Pós-condições                                     | Tipo de Teste |
+| ---------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------- | ------------------------------------------------- | ------------- |
+| Requisição autenticada | Validar acesso com token válido.                   | API REST publicada; serviço de autenticação ativo (Firebase); endpoints protegidos configurados. | 1. Realizar login via Firebase para obter um token JWT válido.<br>2. Usar o token para acessar rotas protegidas da API via Postman ou Insomnia. | Postman ou Insomnia, Firebase | Requisições autenticadas retornam status **HTTP 200** e dados esperados. | Sucesso em pelo menos 95% dos testes com token válido | Sessão autenticada e acesso autorizado registrado | Positivo      |
+| Token inválido         | Verificar resposta a requisições não autenticadas. | API REST publicada com middleware de autenticação configurado.                                             | 1. Fazer requisição sem token, com token expirado ou malformado.<br>2. Observar o status HTTP e a mensagem de erro retornada.                            | Postman ou Insomnia                    | API retorna status **HTTP 401** (sem token) ou **403** (token inválido). | Todos os casos inválidos bloqueados corretamente      | Nenhum dado protegido acessado                    | Negativo      |
+
+
+### RNF03 - Manutenibilidade (arquitetura modular)
+| Cenário                     | Propósito                                               | Pré-condições                                                               | Instruções de Execução                                                                                                                                                                             | Ferramentas / Recursos Utilizados                             | Resultado Esperado                                               | Métrica de Avaliação                                                     | Pós-condições                                 | Tipo de Teste |
+| --------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------- | ------------- |
+| Alteração isolada em módulo | Validar que mudanças em um módulo não afetam os demais. | Arquitetura modular implementada; suíte de testes automatizados atualizada. | 1. Alterar uma funcionalidade do módulo de autenticação (ex: formato do token retornado).<br>2. Rodar os testes automatizados dos módulos não relacionados.<br>3. Verificar se continuam passando. | VSCode ou outro IDE, Jest (ou framework de testes usado), Git | Testes dos demais módulos executam com sucesso após a alteração. | 100% dos testes externos ao módulo alterado passam                       | Confirmação da estabilidade da aplicação      | Positivo      |
+| Impacto em outro módulo     | Verificar existência de acoplamento indesejado.         | Arquitetura modular implementada; testes manuais permitidos.                | 1. Alterar internamente o módulo A (ex: recomendação).<br>2. Usar manualmente o módulo B (ex: consulta) que não deveria ser afetado.<br>3. Verificar anomalias no comportamento.                   | VSCode, Console do navegador/backend, checklist manual        | Mau funcionamento do módulo B indica dependência inesperada.     | Ao menos um comportamento anômalo identificado no módulo não relacionado | Registro da falha para refatoração estrutural | Negativo      |
+
+
+### RNF04 - Confiabilidade
+| Cenário                               | Propósito                                              | Pré-condições                                                                                               | Instruções de Execução                                                                                                                                                                           | Ferramentas / Recursos Utilizados   | Resultado Esperado                                                                        | Métrica de Avaliação                                         | Pós-condições                                        | Tipo de Teste |
+| ------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- | ------------- |
+| Falha simulada com retorno ao usuário | Verificar se o sistema lida bem com erros previsíveis. | Sistema com tratamento de exceções implementado; funcionalidade com dependência externa (ex: recomendação). | 1. Simular falha no backend (ex: interromper o serviço de recomendação).<br>2. Acessar a funcionalidade afetada via app.<br>3. Observar se o erro é tratado e se há retorno amigável ao usuário. | Ferramenta de log, navegador ou app | Mensagem clara informando falha + opção de tentar novamente ou seguir com outras funções. | Mensagem compreensível em 100% dos testes com falha induzida | Usuário consegue continuar navegando sem travamentos | Positivo      |
+| Falha sem retorno                     | Verificar ausência de feedback ao usuário em falhas.   | Versão do sistema sem tratamento de exceções ativo.                                                         | 1. Repetir a simulação de falha anterior (ex: interrupção de serviço).<br>2. Acompanhar o comportamento da interface e a ausência de retorno ao usuário.                                         | Navegador ou app, console de erro   | Sistema trava, fecha ou exibe mensagem genérica sem contexto.                             | Identificação de falha crítica em 100% dos testes            | Registro da falha para implementação de tratamento   | Negativo      |
+
+
+### RNF05 - Usabilidade
+| Cenário                  | Propósito                                                | Pré-condições                                                                                          | Instruções de Execução                                                                                                                                                               | Ferramentas / Recursos Utilizados                                          | Resultado Esperado                                                         | Métrica de Avaliação                                       | Pós-condições                                      | Tipo de Teste |
+| ------------------------ | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------- | ------------- |
+| Teste com usuários reais | Medir a facilidade de uso e identificar pontos críticos. | Interface funcional com tarefas básicas (login, consulta, recomendação).<br>Grupo de 5+ usuários-alvo. | 1. Aplicar teste com usuários reais realizando 3 tarefas básicas.<br>2. Observar tempo de execução, erros cometidos e necessidade de ajuda.<br>3. Aplicar questionário SUS ao final. | Cronômetro, gravação de tela (opcional), Google Forms com questionário SUS | Usuários concluem todas as tarefas com sucesso e dão nota SUS ≥ 70.        | ≥ 80% de sucesso nas tarefas + nota SUS ≥ 70               | Relatório de usabilidade com sugestões de melhoria | Positivo      |
+| Usuários confusos        | Detectar falhas na interface e pontos de frustração.     | Interface funcional com layout não validado por testes prévios.                                        | 1. Aplicar as mesmas tarefas com outro grupo de usuários (preferência novos).<br>2. Anotar dificuldades, desistências e comentários negativos durante ou após o uso.                 | Observação direta, anotações manuais, formulário de feedback aberto        | Usuários apresentam dúvidas recorrentes ou não conseguem concluir tarefas. | ≥ 2 desistências ou ≥ 50% com comentários negativos claros | Registro de problemas de UI/UX para correção       | Negativo      |
+
 
 ## 9.2.2 Resultados
-_conteúdo_
+
 
 ## 9.3 Testes de Usabilidade
-_conteúdo_
+
+&emsp;Neste tópico, será apresentado os planejamentos dos testes de usabilidade do nosso projeto, incluindo o perfil, idade, experiência com tecnologia, familiaridade com mercado financeiro e a justificativa do perfil.
 
 ## 9.3.1 Planejamento
-_conteúdo_
+
+### Objetivos dos Testes de Usabilidade
+&emsp;O principal objetivo dos testes de usabilidade é avaliar a facilidade de uso, clareza de informações e fluidez de navegação do aplicativo DIANA por meio da interação de usuários externos com diferentes níveis de familiaridade com tecnologia e com o mercado financeiro. Com os testes de usabilidade, buscamos identificar: 
+- Barreiras de uso em funcionalidades principais como visualização de carteiras, filtros por conformidade e acesso ao histórico.
+- Clareza das instruções e termos apresentados no app.
+- Satisfação geral do usuário com a experiência de navegação.
+- Pontos de melhoria na arquitetura da informação e feedbacks visuais.
+
+### Perfis dos Usuários e Contexto
+&emsp;Serão selecionados 5 usuários externos com perfis variados, conforme abaixo:
+
+| Perfil | Idade | Experiência com tecnologia | Familiaridade com mercado financeiro | Justificativa                                             |
+| ------ | ----- | -------------------------- | ------------------------------------ | --------------------------------------------------------- |
+| 1      | 20–25 | Alta                       | Baixa                                | Usuário jovem e tecnológico, mas sem conhecimento no tema |
+| 2      | 26–35 | Média                      | Média                                | Potencial assessor ou analista em formação                |
+| 3      | 35–50 | Baixa                      | Alta                                 | Profissional sênior que representa nosso público-alvo     |
+| 4      | 18–22 | Média                      | Baixa                                | Estudante de economia ou engenharia                       |
+| 5      | 30–40 | Alta                       | Alta                                 | Usuário experiente tanto em apps quanto no mercado        |
+
+&emsp;Contexto de aplicação: O teste será aplicado de forma presencial, utilizando dispositivos com o protótipo instalado. Haverá mediação pro um membro do grupo, que conduzirá a aplicação e tomará notas de observações comportamentais.
+
+### Método
+&emsp;Utilizaremos o SUS - System Usability Scale, complementado por observação direta e tarefas práticas. O SUS será aplicado ao final do teste para obter uma avaliação quantitativa padronizada da usabilidade do aplicativo. O formulário conterá:
+- 10 afirmações avaliadas em escala Likert (1 = Discordo totalmente, 5 = Concordo totalmente).
+- Campos adicionais para comentários livres.
+- Explicação introdutória sobre o objetivo do formulário e o que cada número representa.
+
+### Roteiro (Passo a Passo)
+1. Boas Vindas e Apresentação
+- Cumprimentar o usuário e agradecer a participação.
+- Explicar brevemente o objetivo do teste: “Estamos testando a usabilidade de um aplicativo que auxilia na visualização de carteiras de clientes e sugestões de readequação. Você não está sendo testado, é o app que está.”
+- Solicitar autorização para coleta anônima de feedback.
+
+2. Coleta de dados iniciais
+- Idade, ocupação, familiaridade com apps mobile e com o merado financeiro.
+- Solicitar e-mail e telefone (opicional).
+
+3. Tarefas a serem realizadas
+- Cenário 1: Verificar conformidade de carteiras
+  - Tarefa: Acesse a aba de conformidade e aplique o filtro “adequado” para visualizar carteiras conformes.
+
+- Cenário 2: Consultar cliente Platinum
+  - Tarefa: Acesse os clientes e filtre pelo segmento “Platinum”. Diga em voz alta o que você vê.
+
+- Cenário 3: Acessar histórico de sugestões
+  - Tarefa: Abra o perfil de um cliente e localize o histórico de sugestões de readequação.
+
+- Cenário 4: Ver gráfico de ativos
+  - Tarefa: Acesse a composição da carteira e analise o gráfico apresentado. Você entende os dados?
+
+- Cenário 5: Explorar sem ajuda
+  - Tarefa: Navegue livremente pelo aplicativo por 2 minutos. O que mais te chamou atenção? Teve algo confuso?
+
+4. Aplicação do SUS
+- Entregar formulário SUS ao usuário com as 10 perguntas.
+- Destacar a escala e explicar que não há respostas certas ou erradas.
+
+5. Feedback aberto
+- Perguntar: "Teve algo que te encomodou? Algo que você mudaria?".
+- Anotar sugestões espontâneas do usuário.
+
+6. Encerramento
+- Agradecer novamente a participação.
+
+### Ferramentas e Ambiente
+- Dispositivo: Dispositivo com o protótipo funcional do DIANA.
+- Registro: Anotações manuais, captura de tela e gravação.
+- Software: Figma(protótipo), Google Forms(SUS), Excel(análise).
 
 ## 9.3.2 Resultados
 _conteúdo_
+
+## 9.4 Teste das APIs Externas
+
+Esta seção apresenta o planejamento de testes voltados para as APIs externas utilizadas no sistema de recomendação da plataforma BTG. O objetivo é garantir que os componentes que dependem de serviços de terceiros — como autenticação, processamento de recomendações e fornecimento de dados — funcionem corretamente, mesmo em situações adversas. 
+
+---
+
+## 9.4.1 Planejamento
+
+### Propósito dos Testes
+
+Os testes têm como objetivo:
+
+- Validar a conectividade, autenticidade e confiabilidade das APIs externas integradas ao sistema.
+- Garantir o funcionamento adequado em cenários de uso normais (positivos) e situações de erro (negativos).
+- Avaliar respostas, tempos de resposta e códigos HTTP retornados por cada API.
+- Confirmar que as mensagens de erro sejam claras e padronizadas, facilitando o diagnóstico de falhas.
+
+As APIs testadas são:
+
+- Firebase Authentication: Responsável pelo login e autenticação de usuários do aplicativo mobile.
+- API de Recomendação: Exposta pelo backend da plataforma para processar perfis e gerar sugestões de alocação.
+- API de Dados BTG: Fonte externa com dados de ativos e carteiras utilizados na análise.
+
+---
+
+### Cenários Positivos
+
+| API                      | Cenário                              | Objetivo                                                    | Instrução para Execução                                                |
+|--------------------------|--------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
+| Firebase Authentication  | Login com credenciais válidas        | Verificar autenticação bem-sucedida                         | Enviar requisição POST com e-mail/senha válidos via Postman            |
+| API de Recomendação      | Envio de perfil válido               | Confirmar resposta com recomendações coerentes              | Enviar JSON com dados completos (idade, renda, perfil declarado etc.)  |
+| API de Dados BTG         | Consulta por ativo existente         | Verificar retorno correto de dados de ativo                 | Executar GET em `/ativos/B3SA3` e validar conteúdo da resposta         |
+
+---
+
+### Cenários Negativos
+
+| API                      | Cenário                              | Objetivo                                                    | Instrução para Execução                                                |
+|--------------------------|--------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
+| Firebase Authentication  | Token expirado ou inválido           | Garantir bloqueio de acesso e erro apropriado               | Usar token expirado e simular requisição autenticada                   |
+| API de Recomendação      | JSON malformado                      | Verificar tratamento de erro e retorno de código 400        | Remover campo obrigatório do corpo da requisição                       |
+| API de Recomendação      | Perfil com dados inconsistentes      | Confirmar que regras de negócio lidam com dados anômalos    | Enviar idade negativa ou perfil inexistente                            |
+| API de Dados BTG         | Consulta de ativo inexistente        | Validar resposta 404 ou equivalente                         | Fazer GET em `/ativos/XXXX` com código inexistente                     |
+| API de Dados BTG         | API indisponível (timeout simulado)  | Testar resposta do sistema em falhas externas               | Desabilitar endpoint no ambiente de testes e monitorar resposta        |
+
+---
+
+### Abrangência dos Testes
+
+Este conjunto de testes abrange os principais fluxos de comunicação com APIs externas, considerando:
+
+- Sucesso na autenticação e autorização de usuários.
+- Correto funcionamento do processo de recomendação com entradas válidas.
+- Respostas adequadas a erros de entrada e indisponibilidade de serviços.
+- Cobertura de cenários realistas de uso e falha, contemplando tolerância a falhas.
+
+As instruções de execução são aplicáveis via ferramentas como **Postman**, **Insomnia** ou testes automatizados com bibliotecas como `pytest` + `requests`.
+
 
 # 10. Procedimentos de Implantação
 _conteúdo_
