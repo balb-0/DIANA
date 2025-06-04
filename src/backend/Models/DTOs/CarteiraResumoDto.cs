@@ -1,6 +1,6 @@
 ﻿using backend.Models.Enums;
 
-namespace bakend.Models.DTOs
+namespace backend.Models.DTOs
 {
     public class CarteiraResumoDto
     {
