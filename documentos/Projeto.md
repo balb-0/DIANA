@@ -1534,6 +1534,27 @@ Apresenta:
 - Dados cadastrais do assessor.
 - Container com histórico de carteiras acessadas.
 
+## Vídeo da aplicação
+
+Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o console do Visual Studio Code aberto durante a demonstração das telas desenvolvidas.
+
+**Link:** https://www.youtube.com/watch?v=XRObgMKFe1M
+
+### Objetivo
+
+O vídeo serve como referência prática para visualizar o funcionamento do frontend e validar o desenvolvimento das interfaces.
+
+### Pontos-chave
+
+- **Aplicação rodando:** Demonstração do sistema em execução.
+- **Console do VS Code aberto:** Permite acompanhar logs e mensagens durante o uso.
+- **Telas desenvolvidas:** Visualização das interfaces implementadas.
+
+### Uso no projeto
+
+O vídeo será utilizado como material de apoio para revisões, apresentações e documentação do desenvolvimento do frontend.
+
+
 ## 8.3.2 Sprint 4
 _conteúdo_
 
