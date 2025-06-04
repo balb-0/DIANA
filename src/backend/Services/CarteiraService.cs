@@ -21,7 +21,7 @@ namespace backend.Services
             try
             {
                 // Validar tipo de risco
-                var tiposValidos = new[] { "conservador", "moderado", "sofisticado" };
+                var tiposValidos = new[] { "geral", "conservador", "moderado", "sofisticado" };
                 if (!tiposValidos.Contains(tipoRisco.ToLower()))
                 {
                     return ApiResponse<List<CarteiraDto>>.CreateError("Tipo de risco inválido. Valores aceitos: Conservador, Moderado, Sofisticado");
