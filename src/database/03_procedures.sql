@@ -133,24 +133,19 @@ RETURNS INTEGER AS $$
 DECLARE
     quantidade_clientes INTEGER := 0;
 BEGIN
-    -- Conta a quantidade de clientes que estão conformes
-    -- (risco declarado igual ao risco calculado mais recente)
     SELECT COUNT(*) INTO quantidade_clientes
     FROM historico_risco_calculado hrc
     WHERE hrc.id IN (
-        -- Seleciona o registro mais recente de risco calculado para cada cliente
         SELECT DISTINCT ON (hrc_sub.clientes_id) hrc_sub.id
         FROM historico_risco_calculado hrc_sub
         ORDER BY hrc_sub.clientes_id, hrc_sub.created_at DESC
     )
     AND EXISTS (
-        -- Verifica se existe um risco declarado igual ao calculado para o mesmo cliente
         SELECT 1 
         FROM historico_risco_declarado hrd
         WHERE hrd.clientes_id = hrc.clientes_id
         AND hrd.risco = hrc.risco
         AND hrd.id IN (
-            -- Considera apenas o risco declarado mais recente do cliente
             SELECT DISTINCT ON (hrd_sub.clientes_id) hrd_sub.id
             FROM historico_risco_declarado hrd_sub
             WHERE hrd_sub.clientes_id = hrd.clientes_id
@@ -158,7 +153,6 @@ BEGIN
         )
     )
     AND EXISTS (
-        -- Verifica se o cliente está ativo
         SELECT 1 FROM clientes c 
         WHERE c.id = hrc.clientes_id 
         AND c.is_active = TRUE
@@ -170,49 +164,38 @@ $$ LANGUAGE plpgsql;
 
 COMMENT ON FUNCTION obter_quantidade_clientes_conformes() IS 'Função que retorna a quantidade de clientes conformes (risco declarado igual ao risco calculado mais recente)';
 
-CREATE OR REPLACE FUNCTION obter_detalhes_clientes_conformes()
-RETURNS TABLE (
-    cliente_id VARCHAR,
-    nome_cliente VARCHAR,
-    risco_conforme risco_enum,
-    valor_total DOUBLE PRECISION,
-    percentual_rv DOUBLE PRECISION,
-    percentual_rf DOUBLE PRECISION,
-    data_calculo TIMESTAMP,
-    data_declaracao TIMESTAMP
-) AS $$
+CREATE OR REPLACE FUNCTION obter_quantidade_clientes_inconformes()
+RETURNS INTEGER AS $$
+DECLARE
+    quantidade_clientes INTEGER := 0;
 BEGIN
-    RETURN QUERY
-    SELECT 
-        c.id as cliente_id,
-        c.nome as nome_cliente,
-        hrc.risco as risco_conforme,
-        hrc.valorTotal as valor_total,
-        hrc.RV_percentual as percentual_rv,
-        hrc.RF_percentual as percentual_rf,
-        hrc.created_at as data_calculo,
-        hrd.created_at as data_declaracao
-    FROM clientes c
-    JOIN (
-        -- Pega o risco calculado mais recente de cada cliente
-        SELECT DISTINCT ON (hrc_sub.clientes_id) 
-            hrc_sub.id, hrc_sub.clientes_id, hrc_sub.risco, 
-            hrc_sub.valorTotal, hrc_sub.RV_percentual, 
-            hrc_sub.RF_percentual, hrc_sub.created_at
+    SELECT COUNT(*) INTO quantidade_clientes
+    FROM historico_risco_calculado hrc
+    WHERE hrc.id IN (
+        SELECT DISTINCT ON (hrc_sub.clientes_id) hrc_sub.id
         FROM historico_risco_calculado hrc_sub
         ORDER BY hrc_sub.clientes_id, hrc_sub.created_at DESC
-    ) hrc ON c.id = hrc.clientes_id
-    JOIN (
-        -- Pega o risco declarado mais recente de cada cliente
-        SELECT DISTINCT ON (hrd_sub.clientes_id)
-            hrd_sub.clientes_id, hrd_sub.risco, hrd_sub.created_at
-        FROM historico_risco_declarado hrd_sub
-        ORDER BY hrd_sub.clientes_id, hrd_sub.created_at DESC
-    ) hrd ON c.id = hrd.clientes_id
-    WHERE hrc.risco = hrd.risco -- Clientes conformes (risco calculado = risco declarado)
-    AND c.is_active = TRUE -- Apenas clientes ativos
-    ORDER BY hrc.valorTotal DESC;
+    )
+    AND EXISTS (
+        SELECT 1 FROM clientes c 
+        WHERE c.id = hrc.clientes_id 
+        AND c.is_active = TRUE
+    )
+    AND NOT EXISTS (
+        SELECT 1 
+        FROM historico_risco_declarado hrd
+        WHERE hrd.clientes_id = hrc.clientes_id
+        AND hrd.risco = hrc.risco
+        AND hrd.id IN (
+            SELECT DISTINCT ON (hrd_sub.clientes_id) hrd_sub.id
+            FROM historico_risco_declarado hrd_sub
+            WHERE hrd_sub.clientes_id = hrd.clientes_id
+            ORDER BY hrd_sub.clientes_id, hrd_sub.created_at DESC
+        )
+    );
+    
+    RETURN quantidade_clientes;
 END;
 $$ LANGUAGE plpgsql;
 
-COMMENT ON FUNCTION obter_detalhes_clientes_conformes() IS 'Função que retorna detalhes completos de todos os clientes conformes (risco declarado igual ao risco calculado mais recente)';
+COMMENT ON FUNCTION obter_quantidade_clientes_inconformes() IS 'Função que retorna a quantidade de clientes inconformes (risco declarado diferente do risco calculado mais recente)';
