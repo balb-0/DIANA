@@ -1,19 +1,17 @@
-// Program.cs - Configuração
 using backend.Services;
+using backend.Repositories;
 using backend.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Firebase Auth API", Version = "v1" });
 
-    // Configurar autenticação Bearer no Swagger
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "JWT Authorization header usando Bearer token. Exemplo: 'Bearer {token}'",
@@ -44,6 +42,8 @@ builder.Services.AddSwaggerGen(c =>
 
 // Registrar serviços
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IComplianceService, ComplianceService>();
+builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
 
 // Configurar autenticação
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

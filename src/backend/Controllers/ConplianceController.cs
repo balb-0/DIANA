@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Npgsql;
+using backend.Services;
 
 namespace backend.Controllers
 {
@@ -9,35 +9,21 @@ namespace backend.Controllers
     [Authorize]
     public class ComplianceController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
+        private readonly IComplianceService _complianceService;
         private readonly ILogger<ComplianceController> _logger;
 
-        public ComplianceController(IConfiguration configuration, ILogger<ComplianceController> logger)
+        public ComplianceController(IComplianceService complianceService, ILogger<ComplianceController> logger)
         {
-            _configuration = configuration;
+            _complianceService = complianceService;
             _logger = logger;
         }
+
         [HttpGet("clients-count")]
         public async Task<ActionResult<int>> GetClientsCount([FromQuery] bool nonconforming = false)
         {
             try
             {
-                var connectionString = _configuration.GetConnectionString("DefaultConnection");
-                
-                using var connection = new NpgsqlConnection(connectionString);
-                await connection.OpenAsync();
-
-                var functionName = nonconforming 
-                    ? "obter_quantidade_clientes_inconformes" 
-                    : "obter_quantidade_clientes_conformes";
-
-                using var command = new NpgsqlCommand($"SELECT {functionName}()", connection);
-                var result = await command.ExecuteScalarAsync();
-
-                var count = Convert.ToInt32(result);
-                
-                _logger.LogInformation($"Retrieved {count} {(nonconforming ? "non-conforming" : "conforming")} clients");
-                
+                var count = await _complianceService.GetClientsCountAsync(nonconforming);
                 return Ok(count);
             }
             catch (Exception ex)
