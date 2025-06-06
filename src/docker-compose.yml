@@ -1,17 +1,21 @@
-version: '3.9'
 services:
   db:
-    build: ./database
-    container_name: btg_postgres
+    image: postgres:16 # aqui, utilizamos a imagem oficial do postgres na versão 16
+    restart: always    # aqui é a política de recarregamento, caso o conteiner pare, ele tenta reiniciar
+    env_file:
+      - ./database/.env
     ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: btg_db
-      POSTGRES_USER: btg_user
-      POSTGRES_PASSWORD: btg_pass
+      - "5432:5432" # 1o num= a porta na maquina host (seu pc), 2o= o outro é a porta interna no container
     volumes:
+      - ./database/01_create_database.sql:/docker-entrypoint-initdb.d/01_create_database.sql
+      - ./database/02_initial_data.sql:/docker-entrypoint-initdb.d/02_initial_data.sql
       - pgdata:/var/lib/postgresql/data
-    restart: unless-stopped
+    networks:
+      - app-network
 
 volumes:
   pgdata:
+
+networks:
+  app-network:
+    driver: bridge
