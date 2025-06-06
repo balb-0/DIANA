@@ -1,6 +1,8 @@
 // Program.cs - Configuração
 using backend.Middleware;
 using backend.Services;
+using backend.Repositories;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +12,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Firebase Auth API", Version = "v1" });
-
     // Configurar autenticação Bearer no Swagger
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
@@ -20,7 +21,6 @@ builder.Services.AddSwaggerGen(c =>
         Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
-
     c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement()
     {
         {
@@ -40,8 +40,19 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Registrar serviços
+// Configuração do PostgreSQL
+builder.Services.AddSingleton<NpgsqlDataSource>(provider =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    if (string.IsNullOrEmpty(connectionString))
+        throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+    return NpgsqlDataSource.Create(connectionString);
+});
+
+// Registrar serviços e repositórios
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAssessorRepository, AssessorRepository>();
 
 // Configurar CORS
 builder.Services.AddCors(options =>
