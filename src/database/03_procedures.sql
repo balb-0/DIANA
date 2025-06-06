@@ -199,3 +199,32 @@ END;
 $$ LANGUAGE plpgsql;
 
 COMMENT ON FUNCTION obter_quantidade_clientes_inconformes() IS 'Função que retorna a quantidade de clientes inconformes (risco declarado diferente do risco calculado mais recente)';
+
+CREATE OR REPLACE FUNCTION obter_quantidade_clientes_conformes_por_perfil()
+RETURNS TABLE (
+    perfil risco_eunm,
+    quantidade INTEGER
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        hrc.risco,
+        count(*) AS quantidade
+    FROM (
+        SELECT DISTINCT ON (hrc_sub.clientes_id) *
+        FROM historico_risco_calculado hrc_sub
+        ORDER BY hrc_sub.clientes_id, hrc_sub.created_at DESC
+    ) hrc
+    JOIN (
+        SELECT DISTINCT ON (hrd_sub.clientes_id) *
+        FROM historico_risco_declarado hrd_sub
+        ORDER BY hrd_sub.clientes_id hrd_sub.created_at DESC
+    ) hrd ON hrc.clientes_id - hrd.clientes_id
+    JOIN clientes c ON c.id = hrc.clientes_id
+    WHERE hrc.risco = hrd.risco
+        AND c.is_active = TRUE
+    GROUP BY hrc.risco;
+END;
+$$ LANGUAGE plpgsql;
+
+COMMENT ON FUNCTION obter_quantidade_clientes_conformes_por_perfil() IS 'Retorna a quantidade de clientes conformes (perfil declarado igual ao calculado mais recente), agrupados por perfil de risco';
