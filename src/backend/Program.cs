@@ -4,12 +4,18 @@ using backend.Services;
 using backend.Repositories;
 using System.Data;
 using Npgsql;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+// Configurar Authentication - ADICIONAR ESTAS LINHAS
+builder.Services.AddAuthentication("Bearer")
+    .AddScheme<AuthenticationSchemeOptions, FirebaseAuthHandler>("Bearer", options => { });
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Firebase Auth API", Version = "v1" });
@@ -69,16 +75,17 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); // desativado no Docker, pois estamos rodando só HTTP
 app.UseCors("AllowAll");
 
-// Usar o middleware personalizado do Firebase
+app.UseAuthentication();
 app.UseMiddleware<FirebaseAuthMiddleware>();
 app.UseAuthorization();
 

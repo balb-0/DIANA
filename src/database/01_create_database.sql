@@ -5,7 +5,7 @@ CREATE TYPE risco_enum AS ENUM ('Conservador', 'Moderado', 'Sofisticado');
 -- Tabelas
 
 CREATE TABLE assessores (
-    id VARCHAR(26) PRIMARY KEY,
+    id VARCHAR(28) PRIMARY KEY,
     nome VARCHAR(45),
     unidade_btg VARCHAR(45)
 );
@@ -18,7 +18,7 @@ CREATE TABLE clientes (
     endereco VARCHAR(45),
     data_nascimento DATE,
     categoria categoria_enum,
-    assessores_id VARCHAR(26),
+    assessores_id VARCHAR(28),
     is_active BOOLEAN DEFAULT TRUE,
     inactive_datetime TIMESTAMP,
     FOREIGN KEY (assessores_id) REFERENCES assessores(id) ON DELETE SET NULL

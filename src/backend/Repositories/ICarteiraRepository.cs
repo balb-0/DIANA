@@ -4,6 +4,6 @@ namespace backend.Repositories
 {
     public interface ICarteiraRepository
     {
-        Task<List<CarteiraDto>> GetCarteirasByRiscoAsync(string tipoRisco);
+        Task<List<ClienteSimplificadoDto>> GetClientesByRiscoDeclaradoAsync(string tipoRisco, string assessorId);
     }
 }

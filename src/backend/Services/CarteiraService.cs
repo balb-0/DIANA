@@ -1,7 +1,6 @@
 ﻿using backend.Models;
 using backend.Models.DTOs;
 using backend.Repositories;
- 
 
 namespace backend.Services
 {
@@ -16,27 +15,31 @@ namespace backend.Services
             _logger = logger;
         }
 
-        public async Task<ApiResponse<List<CarteiraDto>>> GetCarteirasByRiscoAsync(string tipoRisco)
+        public async Task<ApiResponse<List<ClienteSimplificadoDto>>> GetClientesByRiscoDeclaradoAsync(string tipoRisco, string assessorId)
         {
             try
             {
-                // Validar tipo de risco
+                _logger.LogInformation($"Iniciando busca por clientes com risco declarado: {tipoRisco} para o assessor: {assessorId}");
+
+                // Validar tipo de risco - incluindo as variações de case
                 var tiposValidos = new[] { "geral", "conservador", "moderado", "sofisticado" };
                 if (!tiposValidos.Contains(tipoRisco.ToLower()))
                 {
-                    return ApiResponse<List<CarteiraDto>>.CreateError("Tipo de risco inválido. Valores aceitos: Conservador, Moderado, Sofisticado");
+                    _logger.LogWarning($"Tipo de risco inválido recebido: {tipoRisco}");
+                    return ApiResponse<List<ClienteSimplificadoDto>>.CreateError("Tipo de risco inválido. Valores aceitos: Conservador, Moderado, Sofisticado, Geral");
                 }
 
-                var carteiras = await _carteiraRepository.GetCarteirasByRiscoAsync(tipoRisco);
+                var clientes = await _carteiraRepository.GetClientesByRiscoDeclaradoAsync(tipoRisco, assessorId);
 
-                _logger.LogInformation($"Encontradas {carteiras.Count} carteiras do tipo {tipoRisco}");
+                _logger.LogInformation($"Encontrados {clientes.Count} clientes com risco declarado {tipoRisco} para o assessor {assessorId}");
 
-                return ApiResponse<List<CarteiraDto>>.CreateSuccess(carteiras, $"Carteiras do tipo {tipoRisco} encontradas com sucesso");
+                return ApiResponse<List<ClienteSimplificadoDto>>.CreateSuccess(clientes,
+                    $"Clientes com risco declarado {tipoRisco} encontrados com sucesso");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Erro ao buscar carteiras do tipo {tipoRisco}");
-                return ApiResponse<List<CarteiraDto>>.CreateError("Erro interno do servidor");
+                _logger.LogError(ex, $"Erro ao buscar clientes com risco declarado {tipoRisco} para o assessor {assessorId}. Detalhes: {ex.Message}");
+                return ApiResponse<List<ClienteSimplificadoDto>>.CreateError("Erro interno do servidor");
             }
         }
     }

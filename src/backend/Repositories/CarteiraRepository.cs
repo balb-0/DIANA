@@ -13,73 +13,41 @@ namespace backend.Repositories
             _connection = connection;
         }
 
-        public async Task<List<CarteiraDto>> GetCarteirasByRiscoAsync(string tipoRisco)
+        public async Task<List<ClienteSimplificadoDto>> GetClientesByRiscoDeclaradoAsync(string tipoRisco, string assessorId)
         {
             string sqlBase = @"
-        SELECT DISTINCT
-            c.id as ClienteId,
-            c.nome as ClienteNome,
-            c.cpf,
-            c.categoria,
-            a.nome as AssessorNome,
-            a.unidade_btg as UnidadeBTG,
-            hrc.risco as RiscoCalculado,
-            hrc.rv_percentual as RVPercentual,
-            hrc.rf_percentual as RFPercentual,
-            hrc.valortotal as ValorTotalCarteira,
-            hrc.created_at as DataCalculoRisco
-        FROM clientes c
-        INNER JOIN assessores a ON c.assessores_id = a.id
-        INNER JOIN historico_risco_calculado hrc ON c.id = hrc.clientes_id
-        INNER JOIN (
-            SELECT clientes_id, MAX(created_at) as max_created_at
-            FROM historico_risco_calculado
-            GROUP BY clientes_id
-        ) latest_risk ON hrc.clientes_id = latest_risk.clientes_id 
-                      AND hrc.created_at = latest_risk.max_created_at
-        WHERE c.is_active = true
-    ";
+                SELECT DISTINCT
+                    c.id as ClienteId,
+                    c.nome as ClienteNome
+                FROM clientes c
+                INNER JOIN historico_risco_declarado hrd ON c.id = hrd.clientes_id
+                INNER JOIN (
+                    SELECT clientes_id, MAX(created_at) as max_created_at
+                    FROM historico_risco_declarado
+                    GROUP BY clientes_id
+                ) latest_declared_risk ON hrd.clientes_id = latest_declared_risk.clientes_id 
+                                      AND hrd.created_at = latest_declared_risk.max_created_at
+                WHERE c.is_active = true 
+                AND c.assessores_id = @AssessorId";
+
+            // Declarar parametros como object para permitir diferentes tipos anônimos
+            object parametros;
 
             if (!string.Equals(tipoRisco, "geral", StringComparison.OrdinalIgnoreCase))
             {
-                sqlBase += " AND LOWER(hrc.risco) = LOWER(@TipoRisco)";
+                // Usar UPPER para garantir compatibilidade com o ENUM
+                sqlBase += " AND UPPER(hrd.risco::text) = UPPER(@TipoRisco)";
+                parametros = new { AssessorId = assessorId, TipoRisco = tipoRisco };
+            }
+            else
+            {
+                parametros = new { AssessorId = assessorId };
             }
 
             sqlBase += " ORDER BY c.nome";
 
-            var carteiras = await _connection.QueryAsync<CarteiraDto>(sqlBase,
-                string.Equals(tipoRisco, "geral", StringComparison.OrdinalIgnoreCase)
-                    ? null
-                    : new { TipoRisco = tipoRisco });
-
-            // Buscar investimentos para cada carteira
-            foreach (var carteira in carteiras)
-            {
-                carteira.Investimentos = await GetInvestimentosByClienteAsync(carteira.ClienteId);
-            }
-
-            return carteiras.ToList();
-        }
-
-
-        private async Task<List<InvestimentoDto>> GetInvestimentosByClienteAsync(string clienteId)
-        {
-            var sql = @"
-            SELECT 
-                i.id as InvestimentoId,
-                i.quantidade,
-                i.valortotal as ValorTotal,
-                i.data as DataInvestimento,
-                at.nome as AtivoNome,
-                at.tipo as AtivoTipo,
-                at.subgrupo as AtivoSubgrupo
-            FROM investimento i
-            INNER JOIN ativos at ON i.ativos_id = at.id
-            WHERE i.clientes_id = @ClienteId
-            ORDER BY i.data DESC";
-
-            var investimentos = await _connection.QueryAsync<InvestimentoDto>(sql, new { ClienteId = clienteId });
-            return investimentos.ToList();
+            var clientes = await _connection.QueryAsync<ClienteSimplificadoDto>(sqlBase, parametros);
+            return clientes.ToList();
         }
     }
 }
