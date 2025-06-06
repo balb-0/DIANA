@@ -54,6 +54,8 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddScoped<IClientService, ClientService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
