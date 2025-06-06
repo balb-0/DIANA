@@ -1,6 +1,8 @@
 // Program.cs - Configuração
-using backend.Middleware;
 using backend.Services;
+using backend.Middleware;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +45,21 @@ builder.Services.AddSwaggerGen(c =>
 // Registrar serviços
 builder.Services.AddScoped<IAuthService, AuthService>();
 
+// Configurar autenticação
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.Authority = $"https://securetoken.google.com/{builder.Configuration["Firebase:ProjectId"]}";
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = $"https://securetoken.google.com/{builder.Configuration["Firebase:ProjectId"]}",
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["Firebase:ProjectId"],
+            ValidateLifetime = true
+        };
+    });
+
 // Configurar CORS
 builder.Services.AddCors(options =>
 {
@@ -56,7 +73,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -66,9 +82,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 
-// Usar o middleware personalizado do Firebase
-app.UseMiddleware<FirebaseAuthMiddleware>();
+// Adicionar middleware personalizado do Firebase
+app.UseMiddleware<FirebaseAuthenticationMiddleware>();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
