@@ -1,8 +1,8 @@
-namespace backend.Repositories
+using backend.Models;
+
+public interface IClientRepository
 {
-    public interface IComplianceRepository
-    {
-        Task<int> GetConformingClientsCountAsync();
-        Task<int> GetNonConformingClientsCountAsync();
-    }
+    Task<IEnumerable<Client>> GetAllAsync();
+    Task<IEnumerable<Client>> GetBySegmentAsync(string segment);
+    Task<IEnumerable<Client>> GetByRiskProfileAsync(string risk);
 }
