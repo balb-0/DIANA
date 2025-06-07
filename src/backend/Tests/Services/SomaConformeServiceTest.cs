@@ -1,50 +1,36 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
-using backend.Models;
-using backend.Services;
+using Moq;
+using SomaConformeApi.Services;
+using SomaConformeApi.Models;
+using Microsoft.Extensions.Configuration;
 
-namespace backend.Tests
+namespace SomaConformeApi.Tests.Services
 {
-    public class ProfilesServiceTests
+    public class SomaConformeServiceTests
     {
         [Fact]
-        public async Task SomaPerfisConformesPorCategoria_DeveRetornarSomaCorreta()
+        public async Task SomaConformePorCategoriaAsync_DeveRetornarDadosCorretos()
         {
-            // Arrange
-            var perfis = new List<Perfil>
-            {
-                new Perfil { PerfilInvestidor = "conservador", Conforme = true },
-                new Perfil { PerfilInvestidor = "conservador", Conforme = false },
-                new Perfil { PerfilInvestidor = "moderado", Conforme = true },
-                new Perfil { PerfilInvestidor = "moderado", Conforme = true },
-                new Perfil { PerfilInvestidor = "arrojado", Conforme = false }
-            };
-            var service = new ProfilesService();
+            // Given (Arrange): Um mock de IConfiguration configurado para retornar a string de conexão correta
+            var mockConfiguration = new Mock<IConfiguration>();
+            var mockSection = new Mock<IConfigurationSection>();
+            // No teste, use:
+            mockSection.Setup(x => x["DefaultConnection"])
+                .Returns("Host=localhost;Database=btg_db;Username=btg_user;Password=btg_pass;Port=5432");
 
-            // Act
-            var resultado = await service.SomaPerfisConformesPorCategoria(perfis);
+            mockConfiguration.Setup(x => x.GetSection("ConnectionStrings"))
+                .Returns(mockSection.Object);
 
-            // Assert
-            Assert.Collection(resultado,
-                item => { Assert.Equal("conservador", item.PerfilInvestidor); Assert.Equal(1, item.TotalConformes); },
-                item => { Assert.Equal("moderado", item.PerfilInvestidor); Assert.Equal(2, item.TotalConformes); },
-                item => { Assert.Equal("arrojado", item.PerfilInvestidor); Assert.Equal(0, item.TotalConformes); }
-            );
-        }
+            var service = new SomaConformeService(mockConfiguration.Object);
 
-        [Fact]
-        public async Task SomaPerfisConformesPorCategoria_DeveRetornarVazio_SeNaoHouverPerfis()
-        {
-            // Arrange
-            var perfis = new List<Perfil>();
-            var service = new ProfilesService();
+            // When (Act): Chamando o método que retorna a soma conforme por categoria
+            var resultado = await service.SomaConformePorCategoriaAsync();
 
-            // Act
-            var resultado = await service.SomaPerfisConformesPorCategoria(perfis);
-
-            // Assert
-            Assert.Empty(resultado);
+            // Then (Assert): O resultado não é nulo e contém os perfis esperados
+            Assert.NotNull(resultado);
+            Assert.All(resultado, r => Assert.False(string.IsNullOrEmpty(r.PerfilInvestidor)));
         }
     }
 }

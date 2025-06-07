@@ -1,42 +1,36 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Xunit;
 using Moq;
+using SomaConformeApi.Controllers;
+using SomaConformeApi.Services;
+using SomaConformeApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using backend.Controllers;
-using backend.Models;
-using backend.Services;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace backend.Tests
+namespace SomaConformeApi.Tests.Controllers
 {
-    public class ProfilesControllerTests
+    public class SomaConformeControllerTests
     {
         [Fact]
-        public async Task GetConformingByCategory_DeveRetornarOkComResultado()
+        public async Task GetSomaConformePorCategoria_ReturnsOkWithResult()
         {
-            // Arrange
-            var mockService = new Mock<IProfilesService>();
-            var perfis = new List<Perfil>
+            // Given (Arrange): Um mock do service configurado para retornar uma lista esperada
+            var mockService = new Mock<ISomaConformeService>();
+            var expected = new List<SomaConformeCategoriaDto>
             {
-                new Perfil { PerfilInvestidor = "conservador", Conforme = true }
+                new SomaConformeCategoriaDto { PerfilInvestidor = "Conservador", TotalConformes = 2 },
+                new SomaConformeCategoriaDto { PerfilInvestidor = "Moderado", TotalConformes = 1 }
             };
-            var resultadoEsperado = new List<ProfileCategoryCount>
-            {
-                new ProfileCategoryCount { PerfilInvestidor = "conservador", TotalConformes = 1 },
-                new ProfileCategoryCount { PerfilInvestidor = "moderado", TotalConformes = 0 },
-                new ProfileCategoryCount { PerfilInvestidor = "arrojado", TotalConformes = 0 }
-            };
-            mockService.Setup(s => s.SomaPerfisConformesPorCategoria(perfis))
-                .ReturnsAsync(resultadoEsperado);
+            mockService.Setup(s => s.SomaConformePorCategoriaAsync()).ReturnsAsync(expected);
 
-            var controller = new ProfilesController(mockService.Object);
+            var controller = new SomaConformeController(mockService.Object);
 
-            // Act
-            var result = await controller.GetConformingByCategory(perfis);
+            // When (Act): Chamando o endpoint do controller
+            var result = await controller.GetSomaConformePorCategoria();
 
-            // Assert
+            // Then (Assert): O resultado é OkObjectResult e o valor é igual ao esperado
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            Assert.Equal(resultadoEsperado, okResult.Value);
+            Assert.Equal(expected, okResult.Value);
         }
     }
 }
