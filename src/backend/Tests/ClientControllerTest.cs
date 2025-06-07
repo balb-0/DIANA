@@ -3,6 +3,7 @@ using Moq;
 using Xunit;
 using backend.Controllers;
 using backend.Services;
+using System.Collections.Generic;
 
 namespace backend.Tests.Controllers
 {
@@ -18,33 +19,34 @@ namespace backend.Tests.Controllers
         }
 
         [Fact]
-        public void GetPerfilDeRisco_WithValidId_ReturnsExpectedPerfil()
+        public void GetPerfilDeRisco_ComIdValido_DeveRetornarPerfilEsperado()
         {
+            // Given: um ID de cliente válido e um perfil esperado
             var clientId = "123";
             var expectedPerfil = "Conservador";
+            _mockClientService.Setup(x => x.GetPerfilDeRisco(clientId)).Returns(expectedPerfil);
 
-            _mockClientService.Setup(x => x.GetPerfilDeRisco(clientId))
-                              .Returns(expectedPerfil);
-
+            // When: o método GetPerfilDeRisco é chamado no controller
             var result = _controller.GetPerfilDeRisco(clientId);
 
+            // Then: deve retornar um resultado OK com o perfil esperado
             var okResult = Assert.IsType<OkObjectResult>(result);
-            dynamic response = okResult.Value!;
-
-            Assert.Equal(clientId, (string)response.id);
-            Assert.Equal(expectedPerfil, (string)response.perfil_de_risco);
+            var value = Assert.IsType<Dictionary<string, string>>(okResult.Value);
+            Assert.Equal(expectedPerfil, value["perfil_de_risco"]);
+            Assert.Equal(clientId, value["id"]);
         }
 
         [Fact]
-        public void GetPerfilDeRisco_WithUnknownId_ReturnsNotFound()
+        public void GetPerfilDeRisco_ComClienteInexistente_DeveRetornarNotFound()
         {
+            // Given: um ID de cliente inexistente
             var clientId = "999";
+            _mockClientService.Setup(x => x.GetPerfilDeRisco(clientId)).Returns((string?)null);
 
-            _mockClientService.Setup(x => x.GetPerfilDeRisco(clientId))
-                              .Returns((string)null!);
-
+            // When: o método GetPerfilDeRisco é chamado
             var result = _controller.GetPerfilDeRisco(clientId);
 
+            // Then: deve retornar NotFound
             var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
             Assert.Equal("Cliente não encontrado.", notFoundResult.Value);
         }
