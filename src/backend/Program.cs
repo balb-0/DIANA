@@ -44,6 +44,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
+builder.Services.AddScoped<IClientService, ClientService>();
 
 // Configurar autenticação
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
