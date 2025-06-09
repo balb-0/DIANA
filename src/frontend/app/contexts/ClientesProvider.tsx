@@ -48,7 +48,6 @@ export const ClientesProvider = ({ children }: { children: ReactNode }) => {
     });
 
     useEffect(() => {
-        // Simula chamada da API
         setTimeout(() => {
             const dadosMock: Cliente[] = [
                 {   
@@ -104,7 +103,7 @@ export const ClientesProvider = ({ children }: { children: ReactNode }) => {
                 Regulares: dadosMock.filter((c) => c.status === "Regular"),
                 Inconformes: dadosMock.filter((c) => c.status === "Inconforme"),
             });
-        }, 1000);
+        }, 10);
     }, []);
 
     return (

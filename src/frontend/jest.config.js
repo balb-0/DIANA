@@ -1,12 +1,12 @@
 module.exports = {
-  preset: 'react-native',
-  setupFiles: ['<rootDir>/jest-setup.js'], // <-- Use setupFiles aqui
-  setupFilesAfterEnv: ['<rootDir>/jest-matchers.js'], // <-- Opcional, pode remover ou deixar vazio
+  preset: 'jest-expo',
+  setupFiles: ['<rootDir>/jest-setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest-matchers.js'],
   testMatch: ['**/*.test.tsx'],
   moduleNameMapper: {
-    '\\.(png|jpg|jpeg|gif|svg)$': 'identity-obj-proxy'
+    '\\.(png|jpg|jpeg|gif|svg)$': 'identity-obj-proxy',
   },
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|react-native-.*|expo|expo-.*|@expo|@expo/.*|nativewind|@testing-library/react-native)/)'
-  ]
+    'node_modules/(?!(react-native|@react-native|react-native-.*|expo|expo-.*|@expo|@expo/.*|nativewind|@testing-library/react-native)/)',
+  ],
 };
