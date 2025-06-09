@@ -71,6 +71,8 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddScoped<IClientService, ClientService>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
