@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
+    <GenerateSpecFlowSingleFileCodeBehind>true</GenerateSpecFlowSingleFileCodeBehind>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +24,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\backend\backend.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Features\**\*.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>$(Filename).feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
