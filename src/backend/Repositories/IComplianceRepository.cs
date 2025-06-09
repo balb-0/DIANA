@@ -6,3 +6,5 @@ public interface IClientRepository
     Task<IEnumerable<Client>> GetBySegmentAsync(string segment);
     Task<IEnumerable<Client>> GetByRiskProfileAsync(string risk);
 }
+
+//
