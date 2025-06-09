@@ -31,9 +31,9 @@ namespace backend.Tests.Controllers
 
             // Then: deve retornar um resultado OK com o perfil esperado
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var value = Assert.IsType<Dictionary<string, string>>(okResult.Value);
-            Assert.Equal(expectedPerfil, value["perfil_de_risco"]);
-            Assert.Equal(clientId, value["id"]);
+            dynamic value = okResult.Value;
+            Assert.Equal(clientId, value.id);
+            Assert.Equal(expectedPerfil, value.perfil_de_risco);
         }
 
         [Fact]
