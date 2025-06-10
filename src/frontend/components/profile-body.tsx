@@ -1,3 +1,5 @@
+import React from "react";
+import { useClientes } from "@/contexts/ClientesProvider";
 import { ClockCounterClockwise } from "phosphor-react-native";
 import { View, Text, ScrollView } from "react-native";
 import { ProfileBodyItem } from "./profile-body-item";
@@ -7,6 +9,8 @@ interface ProfileBodyProps {
 }
 
 export function ProfileBody({ children }: ProfileBodyProps) {
+  const { clientes } = useClientes();
+
   return (
     <View
       style={{ backgroundColor: "#001E62" }}
@@ -23,33 +27,19 @@ export function ProfileBody({ children }: ProfileBodyProps) {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ gap: 16 }}
       >
-        <ProfileBodyItem
-          name="Fulano da Silva Soares de S. Martins"
-          email="fulanodesilva@gmail.com"
-          cpf="111.111.111-11"
-          type="Regular"
-          assets={14}
-          value={12000.0}
-          bank="BTG Pactual"
-        />
-        <ProfileBodyItem
-          name="Fulano da Silva Soares de S. Martins"
-          email="fulanodesilva@gmail.com"
-          cpf="111.111.111-11"
-          type="Irregular"
-          assets={14}
-          value={12000.0}
-          bank="BTG Pactual"
-        />
-        <ProfileBodyItem
-          name="Fulano da Silva Soares de S. Martins"
-          email="fulanodesilva@gmail.com"
-          cpf="111.111.111-11"
-          type="Irregular"
-          assets={14}
-          value={12000.0}
-          bank="BTG Pactual"
-        />
+        {clientes.map((cliente) => (
+          <ProfileBodyItem
+            key={cliente.id}
+            id={cliente.id}
+            name={cliente.nome}
+            email={cliente.email}
+            cpf={cliente.cpf}
+            status={cliente.status}
+            assets={cliente.quantidadeAtivos}
+            value={cliente.quantiaInvestida}
+            bank={cliente.bancoInvestido}
+          />
+        ))}
       </ScrollView>
     </View>
   );

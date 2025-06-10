@@ -3,7 +3,7 @@ import CardCarteirasPerfil from "@/components/cardCarteirasPorPerfil";
 import StatusConformidade from "@/components/quantidadeConformidade";
 import { RelativePathString, useRouter } from "expo-router";
 import { View } from "react-native";
-import { useCarteiras } from "./contexts/CarteirasProvider";
+import { useCarteiras } from "../contexts/CarteirasProvider";
 
 export default function Index() {
     const router = useRouter();

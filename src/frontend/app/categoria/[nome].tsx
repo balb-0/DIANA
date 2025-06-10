@@ -1,7 +1,7 @@
 import { RelativePathString, useLocalSearchParams, useRouter } from "expo-router";
 import { Image, Text, View, ScrollView, TouchableOpacity } from "react-native";
-import { useClientes } from "../contexts/ClientesProvider";
-import { useCarteiras } from "../contexts/CarteirasProvider";
+import { useClientes } from "../../contexts/ClientesProvider";
+import { useCarteiras } from "../../contexts/CarteirasProvider";
 import BarraPesquisa from "@/components/barraPesquisa";
 import BotaoFiltro from "@/components/botaoFiltro";
 

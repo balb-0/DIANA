@@ -1,5 +1,6 @@
 import { View, TextInput, Text } from "react-native";
 import { Envelope } from "phosphor-react-native";
+import { JSX } from "react/jsx-runtime";
 
 interface EmailInputProps {
   value: string;
@@ -8,12 +9,12 @@ interface EmailInputProps {
   label?: string;
 }
 
-export const EmailInput: React.FC<EmailInputProps> = ({
+export const EmailInput = ({
   value,
   onChangeText,
   placeholder = "Digite seu e-mail",
   label = "E-mail",
-}) => {
+}: EmailInputProps): JSX.Element => {
   return (
     <View className="mb-5">
       <Text

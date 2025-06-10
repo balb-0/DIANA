@@ -2,8 +2,8 @@ import { BottomNavigation } from "@/components/nav-tabs";
 import Welcome from "@/components/welcome";
 import { Slot, usePathname } from "expo-router";
 import "../global.css";
-import { CarteirasProvider } from "./contexts/CarteirasProvider";
-import { ClientesProvider } from "./contexts/ClientesProvider";
+import { CarteirasProvider } from "../contexts/CarteirasProvider";
+import { ClientesProvider } from "../contexts/ClientesProvider";
 
 export default function Layout() {
   const pathname = usePathname();

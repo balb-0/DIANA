@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 import { ScrollView, Text, View } from "react-native";
-import { useClientes } from "../contexts/ClientesProvider";
+import { useClientes } from "../../contexts/ClientesProvider";
 
 export default function Investor() {
     const { investor } = useLocalSearchParams();

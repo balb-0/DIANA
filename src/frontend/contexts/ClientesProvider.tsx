@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
 type Cliente = {
     id: number;
@@ -50,7 +50,7 @@ export const ClientesProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         setTimeout(() => {
             const dadosMock: Cliente[] = [
-                {   
+                {
                     id: 1,
                     nome: "Joana Silva",
                     email: "joana@email.com",

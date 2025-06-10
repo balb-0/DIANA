@@ -5,26 +5,29 @@ import {
   Wallet,
   PiggyBank,
   CheckCircle,
+  WarningCircle,
 } from "phosphor-react-native";
 
 interface ProfileBodyItemProps {
   name: string;
   email: string;
   cpf: string;
-  type: "Regular" | "Irregular";
+  status: string;
   assets: number;
   value: number;
   bank: string;
+  id: string | number;
 }
 
 export function ProfileBodyItem({
   name,
   email,
   cpf,
-  type,
+  status,
   assets,
   value,
   bank,
+  id,
 }: ProfileBodyItemProps) {
   return (
     <View className="w-full bg-[#AEC3F5] rounded-2xl p-[16px]">
@@ -65,15 +68,20 @@ export function ProfileBodyItem({
         <View className="flex-row items-center gap-2">
           <View
             className={`px-3 py-1 rounded-full ${
-              type === "Regular" ? "bg-[#001E62]" : "bg-[#001E62]"
+              status === "Regular" ? "bg-azul-escuro-principal" : "bg-vermelho-principal"
             } flex-row items-center gap-1`}
           >
-            <Text className="text-[#AEC3F5] text-sm">{type}</Text>
-            <CheckCircle size={14} color="#AEC3F5" weight="bold" />
+            <Text className={`text-sm ${status === "Regular" ? "text-azul-claro-principal" : "text-vermelho-secundario"
+            }`}>{status}</Text>
+            {status !== "Regular" ? (
+              <WarningCircle size={14} weight="bold" color="#E9A5A5" />
+            ) : (
+              <CheckCircle size={14} weight="bold" color="#AEC3F5" />
+            )}
           </View>
           <Text className="text-[#001E62] text-base">
-            <Text className="font-bold">{assets}</Text>{" "}
-            <Text className="text-sm">Ativos</Text>
+            <Text className="font-bold">{assets}</Text>
+            <Text className="text-sm"> Ativos</Text>
           </Text>
         </View>
         <Text className="text-[#001E62] text-xl font-bold">
