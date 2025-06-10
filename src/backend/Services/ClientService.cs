@@ -8,12 +8,12 @@ namespace backend.Services
     {
         private readonly string _connectionString;
 
-        public ClientService(IConfiguration configuration)
+        public ClientService(string connectionString)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         }
 
-        public string? GetPerfilDeRisco(string id)
+        public string GetPerfilDeRisco(string id)
         {
             using var conn = new NpgsqlConnection(_connectionString);
             conn.Open();
@@ -29,7 +29,7 @@ namespace backend.Services
             cmd.Parameters.AddWithValue("id", id);
 
             var result = cmd.ExecuteScalar();
-            return result?.ToString();
+            return result?.ToString() ?? string.Empty;
         }
     }
 }
