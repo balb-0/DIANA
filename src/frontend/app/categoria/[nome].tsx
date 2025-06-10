@@ -4,6 +4,7 @@ import { useClientes } from "../../contexts/ClientesProvider";
 import { useCarteiras } from "../../contexts/CarteirasProvider";
 import BarraPesquisa from "@/components/barraPesquisa";
 import BotaoFiltro from "@/components/botaoFiltro";
+import { ProfileBodyItem } from "@/components/profile-body-item";
 
 export default function Categoria() {
     const { nome } = useLocalSearchParams();
@@ -50,15 +51,23 @@ export default function Categoria() {
                             carteiras nesta categoria
                         </Text>
                     </View>
-                    <ScrollView>
+                    <ScrollView contentContainerStyle={{ gap: 16 }}>
                         {clientesFiltrados.map((cliente) => (
                             <TouchableOpacity
                                 key={cliente.id}
-                                className="bg-white p-4 my-2 rounded-xl"
                                 onPress={() => navegarParaCliente(cliente.id)}
                             >
-                                <Text className="text-base font-bold text-azul-escuro-principal">{cliente.nome}</Text>
-                                <Text className="text-sm text-zinc-500">{cliente.perfilInvestidor} - {cliente.status}</Text>
+                                <ProfileBodyItem
+                                    investorProfile={cliente.perfilInvestidor}
+                                    id={cliente.id}
+                                    name={cliente.nome}
+                                    email={cliente.email}
+                                    cpf={cliente.cpf}
+                                    status={cliente.status}
+                                    assets={cliente.quantidadeAtivos}
+                                    value={cliente.quantiaInvestida}
+                                    bank={cliente.bancoInvestido}
+                                />
                             </TouchableOpacity>
                         ))}
                     </ScrollView>

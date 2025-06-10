@@ -19,7 +19,6 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
 }) => {
   return (
     <View className="relative">
-      {/* Background Image */}
       <ImageBackground
         source={{ uri: "/head.png" }}
         className="absolute inset-0"
@@ -39,10 +38,8 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         />
       </ImageBackground>
 
-      {/* Content */}
       <View className="flex justify-center px-6" style={{ height }}>
         <View className="flex-row items-center gap-2">
-          {/* Avatar */}
           <View>
             <View className="w-[76px] h-[76px] bg-[#AEC3F5] justify-center items-center rounded-[100000px] p-[26px]">
               {avatar ? (
@@ -57,12 +54,9 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             </View>
           </View>
 
-          {/* Info Section */}
           <View className="flex flex-1 gap-2">
-            {/* Name */}
             <Text className="text-[#AEC3F5] text-[18px] font-bold">{name}</Text>
 
-            {/* Phone */}
             <View className="flex-row items-center">
               <View className="bg-[#AEC3F5] rounded-md px-[8px] py-[2px] flex-row items-center">
                 <Phone size={18} color="#001E62" weight="fill" />
@@ -72,7 +66,6 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
               </View>
             </View>
 
-            {/* Email */}
             <View className="flex-row items-center">
               <View className="bg-[#AEC3F5]  rounded-md px-[8px] py-[2px] flex-row items-center">
                 <Envelope size={18} color="#001E62" weight="fill" />

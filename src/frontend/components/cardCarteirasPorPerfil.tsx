@@ -28,7 +28,14 @@ export default function CardCarteirasPerfil({
   onPress,
 }: CardCarteirasPerfilProps) {
   return (
-    <TouchableOpacity onPress={onPress} className="rounded-lg w-[45%] aspect-[174/220] p-4 bg-azul-claro-principal shadow-clicaveis justify-between">
+    <TouchableOpacity onPress={onPress} className="rounded-lg w-[45%] aspect-[174/220] p-4 bg-azul-claro-principal justify-between"
+      style={{
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
+        elevation: 8,
+      }}>
       <View className="flex-row justify-between items-center">
         <Text className="bg-azul-escuro-principal text-azul-claro-principal px-3 py-1 text-sm font-bold rounded-full">
           {perfil}

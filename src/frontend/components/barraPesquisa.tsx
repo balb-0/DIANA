@@ -27,7 +27,14 @@ export default function BarraPesquisa({
   };
 
   return (
-    <View className="flex-row items-center bg-azul-claro-principal shadow-clicaveis rounded-2xl px-4 flex-1 min-h-10">
+    <View className="flex-row items-center bg-azul-claro-principal rounded-2xl px-4 flex-1 min-h-10"
+      style={{
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
+        elevation: 8,
+      }}>
       <TouchableOpacity onPress={handleSearch} className="mr-3">
         <MagnifyingGlass size={20} color="#001E62" weight="regular" />
       </TouchableOpacity>

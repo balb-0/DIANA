@@ -13,6 +13,7 @@ interface ProfileBodyItemProps {
   email: string;
   cpf: string;
   status: string;
+  investorProfile: string;
   assets: number;
   value: number;
   bank: string;
@@ -27,6 +28,7 @@ export function ProfileBodyItem({
   assets,
   value,
   bank,
+  investorProfile,
   id,
 }: ProfileBodyItemProps) {
   return (
@@ -44,7 +46,7 @@ export function ProfileBodyItem({
             <View className="bg-[#001E62] rounded-full px-3 py-1 flex-row items-center gap-1">
               <PiggyBank size={16} color="#AEC3F5" weight="fill" />
               <Text className="text-[#AEC3F5] text-xs font-bold">
-                Conservador
+                {investorProfile}
               </Text>
             </View>
             <Text className="text-[#001E62] text-sm">{bank}</Text>

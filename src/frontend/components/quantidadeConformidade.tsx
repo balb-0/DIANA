@@ -7,7 +7,6 @@ import {
 } from "phosphor-react-native";
 
 type StatusConformidadeTipo = 'azul' | 'vermelho';
-
 interface StatusConformidadeProps {
     corFundo: StatusConformidadeTipo;
     tipo: string;
@@ -37,7 +36,6 @@ const statusConfig: Record<StatusConformidadeTipo, {
         categoria: 'inconformes',
         bgColor: 'bg-vermelho-principal',
         corQuadrado: '#E9A5A5',
-
     },
 };
 
@@ -56,7 +54,14 @@ export default function StatusConformidade({
         <TouchableOpacity
             testID="touchable"
             onPress={onPress}
-            className={`p-3 pb-1.5 rounded-xl ${config.bgColor} justify-center items-center w-[45%] aspect-[174/101] shadow-clicaveis`}
+            className={`p-3 pb-1.5 rounded-xl ${config.bgColor} justify-center items-center w-[45%] aspect-[174/101]`}
+            style={{
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.3,
+                shadowRadius: 8,
+                elevation: 8,
+            }}
         >
             <View className="flex-row items-start justify-between w-full">
                 <View className=''>
