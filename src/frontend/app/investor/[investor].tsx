@@ -1,52 +1,79 @@
+import { View, Text } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { ScrollView, Text, View } from "react-native";
+import { CarteiraDetailsHeader } from "@/components/carteira-details/carteira-details-header";
 import { useClientes } from "../contexts/ClientesProvider";
+import { useEffect, useState } from "react";
+import { PiggyBank, Wallet, CheckCircle } from "phosphor-react-native";
 
-export default function Investor() {
-    const { investor } = useLocalSearchParams();
-    const { clientesPorPerfil } = useClientes();
+export default function InvestorDetails() {
+  const { investor } = useLocalSearchParams();
+  const { clientes } = useClientes();
+  const [cliente, setCliente] = useState<any>(null);
 
-    const todosClientes = [
-        ...clientesPorPerfil.Conservador,
-        ...clientesPorPerfil.Moderado,
-        ...clientesPorPerfil.Sofisticado,
-    ];
-
-    const cliente = todosClientes.find((c) => c.id === Number(investor));
-
-    if (!cliente) {
-        return (
-            <View className="flex-1 justify-center items-center bg-azul-claro-secundario">
-                <Text className="text-azul-escuro-principal text-xl font-bold">Cliente não encontrado!</Text>
-            </View>
-        );
+  useEffect(() => {
+    // Find the client with the matching ID
+    const foundCliente = clientes.find((c) => c.id === Number(investor));
+    if (foundCliente) {
+      setCliente(foundCliente);
     }
+  }, [investor, clientes]);
 
-    return (
-        <View className="flex-1 px-4 py-6 bg-azul-claro-secundario">
+  if (!cliente) {
+    return null; // Or a loading state
+  }
 
-            <Text>{cliente.nome}</Text>
+  return (
+    <View className="flex-1 bg-azul-claro-principal">
+      <CarteiraDetailsHeader
+        name={cliente.nome}
+        email={cliente.email}
+        phone={cliente.telefone}
+        cpf={cliente.cpf}
+        birthDate={cliente.nascimento}
+      />
 
-            <Text>{cliente.email}</Text>
-
-            <Text>{cliente.cpf}</Text>
-
-            <Text>{cliente.nascimento}</Text>
-
-            <Text>{cliente.telefone}</Text>
-
-            <Text>{cliente.perfilInvestidor}</Text>
-
-            <Text>R$ {cliente.quantiaInvestida.toLocaleString()}</Text>
-
-            <Text>{cliente.bancoInvestido}</Text>
-
-            <Text>{cliente.quantidadeAtivos}</Text>
-
-            <Text className={cliente.status === "Regular" ? "text-green-600" : "text-red-600"}>
-                {cliente.status}
-            </Text>
+      {/* Additional Info */}
+      <View className="p-6 space-y-4">
+        <View className="flex-row items-center space-x-2">
+          <PiggyBank size={24} color="#001E62" weight="regular" />
+          <Text className="text-azul-escuro-principal text-lg">
+            {cliente.perfilInvestidor}
+          </Text>
         </View>
 
-    );
+        <View className="flex-row items-center space-x-2">
+          <Wallet size={24} color="#001E62" weight="regular" />
+          <Text className="text-azul-escuro-principal text-lg">
+            R${" "}
+            {cliente.quantiaInvestida.toLocaleString("pt-BR", {
+              minimumFractionDigits: 2,
+            })}
+          </Text>
+        </View>
+
+        <Text className="text-azul-escuro-principal text-lg">
+          {cliente.bancoInvestido}
+        </Text>
+
+        <Text className="text-azul-escuro-principal text-lg">
+          {cliente.quantidadeAtivos}
+        </Text>
+
+        <View className="flex-row items-center space-x-2">
+          <CheckCircle
+            size={24}
+            color={cliente.status === "Regular" ? "#4CAF50" : "#FF0000"}
+            weight="regular"
+          />
+          <Text
+            className={
+              cliente.status === "Regular" ? "text-[#4CAF50]" : "text-[#FF0000]"
+            }
+          >
+            {cliente.status}
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
 }
