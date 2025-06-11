@@ -45,6 +45,22 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
 
+// Registrar IPerfilService (estava faltando)
+builder.Services.AddScoped<IPerfilService>(provider =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não encontrada.");
+    return new PerfilService(connectionString);
+});
+
+builder.Services.AddScoped<IClientService>(provider =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não encontrada.");
+    return new ClientService(connectionString);
+});
+
+
 // Configurar autenticação
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -70,8 +86,6 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
-
-builder.Services.AddScoped<IClientService, ClientService>();
 
 var app = builder.Build();
 
