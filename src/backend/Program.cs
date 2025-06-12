@@ -1,6 +1,7 @@
-// Program.cs - Configuração
+// Program.cs - Configuraï¿½ï¿½o
 using backend.Middleware;
 using backend.Services;
+using SomaConformeApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Firebase Auth API", Version = "v1" });
 
-    // Configurar autenticação Bearer no Swagger
+    // Configurar autenticaï¿½ï¿½o Bearer no Swagger
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "JWT Authorization header usando Bearer token. Exemplo: 'Bearer {token}'",
@@ -40,8 +41,9 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Registrar serviços
+// Registrar serviï¿½os
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ISomaConformeService, SomaConformeService>();
 
 // Configurar CORS
 builder.Services.AddCors(options =>

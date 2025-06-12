@@ -8,6 +8,8 @@ import { useCarteiras } from "./contexts/CarteirasProvider";
 export default function Index() {
     const router = useRouter();
     const { carteiras, carteirasPorPerfil } = useCarteiras();
+    console.log('Contexto carteiras:', carteiras);
+    console.log('Contexto carteirasPorPerfil:', carteirasPorPerfil);
 
     const navegarParaCategoria = (nome: string) => {
         router.push(`/categoria/${nome}` as RelativePathString);

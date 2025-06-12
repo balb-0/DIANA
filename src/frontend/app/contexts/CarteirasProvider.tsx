@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { BASE_URL } from "../../constants";
 
 type Carteiras = {
     Regulares: { quantidade: number; total: number };
@@ -33,21 +34,65 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
     });
 
     useEffect(() => {
-        setTimeout(() => {
-            setCarteiras({
-                Regulares: { quantidade: 124, total: 198 },
-                Inconformes: { quantidade: 74, total: 198 },
-            });
-        }, 1000);
+        fetch(`${BASE_URL}/api/SomaConforme/por-categoria`)
+            .then(async (res) => {
+                if (!res.ok) {
+                    // Tenta extrair JSON de erro, se possível
+                    let errorJson = null;
+                    try {
+                        errorJson = await res.json();
+                    } catch {}
+                    throw new Error(errorJson?.error || `Erro ${res.status}`);
+                }
+                const text = await res.text();
+                if (!text) return;
+                const data = JSON.parse(text);
+                console.log('Dados recebidos do backend:', data);
+                const novo: CarteirasPorPerfil = {
+                    Moderado: { quantidade: 0, total: 0 },
+                    Conservador: { quantidade: 0, total: 0 },
+                    Sofisticado: { quantidade: 0, total: 0 },
+                    Todas: { quantidade: 0, total: 0 },
+                };
+                let somaTodas = 0;
+                data.forEach((item: any) => {
+                    if (item.perfilInvestidor === "Moderado") {
+                        novo.Moderado.quantidade = item.totalConformes;
+                        novo.Moderado.total = item.totalConformes;
+                        somaTodas += item.totalConformes;
+                    } else if (item.perfilInvestidor === "Conservador") {
+                        novo.Conservador.quantidade = item.totalConformes;
+                        novo.Conservador.total = item.totalConformes;
+                        somaTodas += item.totalConformes;
+                    } else if (item.perfilInvestidor === "Sofisticado") {
+                        novo.Sofisticado.quantidade = item.totalConformes;
+                        novo.Sofisticado.total = item.totalConformes;
+                        somaTodas += item.totalConformes;
+                    }
+                });
+                novo.Todas.quantidade = somaTodas;
+                novo.Todas.total = somaTodas;
+                console.log('Objeto mapeado para o frontend:', novo);
+                setCarteirasPorPerfil(novo);
 
-        setTimeout(() => {
-            setCarteirasPorPerfil({
-                Conservador: { quantidade: 19, total: 30 },
-                Moderado: { quantidade: 69, total: 110 },
-                Sofisticado: { quantidade: 20, total: 58 },
-                Todas: { quantidade: 124, total: 198 },
+                setCarteiras({
+                    Regulares: { quantidade: somaTodas, total: somaTodas },
+                    Inconformes: { quantidade: 0, total: somaTodas },
+                });
+            })
+            .catch((err) => {
+                console.error('Erro ao buscar dados do backend:', err.message || err);
+                setCarteirasPorPerfil({
+                    Conservador: { quantidade: 0, total: 0 },
+                    Moderado: { quantidade: 0, total: 0 },
+                    Sofisticado: { quantidade: 0, total: 0 },
+                    Todas: { quantidade: 0, total: 0 },
+                });
+                setCarteiras({
+                    Regulares: { quantidade: 0, total: 0 },
+                    Inconformes: { quantidade: 0, total: 0 },
+                });
             });
-        }, 1000);
     }, []);
 
     return (

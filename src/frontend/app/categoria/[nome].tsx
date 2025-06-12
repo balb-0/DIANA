@@ -10,11 +10,14 @@ export default function Categoria() {
     const router = useRouter();
     const { clientes } = useClientes();
 
+    // Fallback defensivo para evitar erro se clientes for undefined
+    const clientesArray = Array.isArray(clientes) ? clientes : [];
+
     const { carteirasPorPerfil, carteiras } = useCarteiras();
     const dadosCategoria = carteirasPorPerfil[nome as keyof typeof carteirasPorPerfil];
     const dadosStatus = carteiras[nome as keyof typeof carteiras];
 
-    const clientesFiltrados = clientes.filter((cliente) => {
+    const clientesFiltrados = clientesArray.filter((cliente) => {
         if (nome === "Todas") return true;
         if (nome === "Regulares") return cliente.status === "Regular";
         if (nome === "Inconformes") return cliente.status === "Inconforme";

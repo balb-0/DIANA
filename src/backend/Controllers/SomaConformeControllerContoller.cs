@@ -20,8 +20,16 @@ namespace SomaConformeApi.Controllers
         [HttpGet("por-categoria")]
         public async Task<ActionResult<List<SomaConformeCategoriaDto>>> GetSomaConformePorCategoria()
         {
-            var result = await _service.SomaConformePorCategoriaAsync();
-            return Ok(result);
+            try
+            {
+                var result = await _service.SomaConformePorCategoriaAsync();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                // Log do erro pode ser adicionado aqui se necessário
+                return StatusCode(500, new { error = "Erro interno no servidor", details = ex.Message });
+            }
         }
     }
 }

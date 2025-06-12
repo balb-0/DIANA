@@ -12,6 +12,15 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     restart: unless-stopped
+  backend:
+    build: ./backend
+    container_name: btg_backend
+    ports:
+      - "5176:5176"
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:5176
 
 volumes:
   pgdata:
