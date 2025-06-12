@@ -34,3 +34,7 @@ services:
 
 volumes:
   pgdata:
+  
+networks:
+  btg_network:
+    driver: bridge
