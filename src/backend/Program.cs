@@ -4,7 +4,6 @@ using backend.Repositories;
 using System.Data;
 using Npgsql;
 using Microsoft.AspNetCore.Authentication;
-using backend.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -13,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Configurar Authentication - ADICIONAR ESTAS LINHAS
+// Configurar Authentication - APENAS UMA VEZ
 builder.Services.AddAuthentication("Bearer")
     .AddScheme<AuthenticationSchemeOptions, FirebaseAuthHandler>("Bearer", options => { });
 
@@ -47,7 +46,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configura��o da conex�o com banco de dados
+// Configuração da conexão com banco de dados
 builder.Services.AddScoped<IDbConnection>(provider =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -58,25 +57,12 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
 
-// Configurar autenticação
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.Authority = $"https://securetoken.google.com/{builder.Configuration["Firebase:ProjectId"]}";
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidIssuer = $"https://securetoken.google.com/{builder.Configuration["Firebase:ProjectId"]}",
-            ValidateAudience = true,
-            ValidAudience = builder.Configuration["Firebase:ProjectId"],
-            ValidateLifetime = true
-        };
-    });
+// REMOVIDO: Segunda configuração de autenticação que causava o conflito
 
 // Registrar serviço de investimentos
 builder.Services.AddScoped<IInvestmentService, InvestmentService>();
 
-// Registrar novos servi�os para carteiras
+// Registrar novos serviços para carteiras
 builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
 builder.Services.AddScoped<ICarteiraService, CarteiraService>();
 
@@ -102,12 +88,11 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection(); // desativado no Docker, pois estamos rodando s� HTTP
+// app.UseHttpsRedirection(); // desativado no Docker, pois estamos rodando só HTTP
 app.UseCors("AllowAll");
 
 // Adicionar middleware personalizado do Firebase
 app.UseMiddleware<FirebaseAuthenticationMiddleware>();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
