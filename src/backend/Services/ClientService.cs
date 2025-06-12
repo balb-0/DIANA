@@ -8,16 +8,16 @@ namespace backend.Services
     {
         private readonly string _connectionString;
 
-        public ClientService(string connectionString)
+        public ClientService(IConfiguration configuration)
         {
-            _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
+            _connectionString = configuration.GetConnectionString("DefaultConnection")
+                ?? throw new ArgumentNullException("Connection string not found");
         }
 
         public string GetPerfilDeRisco(string id)
         {
             using var conn = new NpgsqlConnection(_connectionString);
             conn.Open();
-
             using var cmd = new NpgsqlCommand(@"
                 SELECT risco
                 FROM historico_risco_declarado
@@ -25,9 +25,7 @@ namespace backend.Services
                 ORDER BY created_at DESC
                 LIMIT 1;
             ", conn);
-
             cmd.Parameters.AddWithValue("id", id);
-
             var result = cmd.ExecuteScalar();
             return result?.ToString() ?? string.Empty;
         }
