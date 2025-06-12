@@ -42,14 +42,18 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
     const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
     // Função para obter o token do localStorage
-    // const getAuthToken = (): string | null => {
-    //     return localStorage.getItem('token');
-    // };
+    const getAuthToken = async (): Promise<string | null> => {
+        try {
+            return await AsyncStorage.getItem('@auth_token');
+        } catch (error) {
+            console.error('Erro ao recuperar o token:', error);
+            return null;
+        }
+};
 
     // Função para testar conectividade com o backend
     const testBackendConnection = async (): Promise<boolean> => {
-        const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YTEwZGVjZTk4MzY2ZDZmNjNlMTY3Mjg2YWU5YjYxMWQyYmFhMjciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoic3RyaW5nIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2RpYW5hLTQ0NmExIiwiYXVkIjoiZGlhbmEtNDQ2YTEiLCJhdXRoX3RpbWUiOjE3NDk3NDEwNzUsInVzZXJfaWQiOiJZSG1jMGFQSHQwT1VPUGFYcHJnNFVmWUFZb24xIiwic3ViIjoiWUhtYzBhUEh0ME9VT1BhWHByZzRVZllBWW9uMSIsImlhdCI6MTc0OTc0MTA3NSwiZXhwIjoxNzQ5NzQ0Njc1LCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidXNlckBleGFtcGxlLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.Lk05hmHSgoNnyex6I_7s3uH29fQgH0G21kAfvR1o4_IoP9txEK_J-s0aMVLcR2zl64ARzIEOOqMOZ4brr0qdPNG6DFIqkSTGLStJ0zb0OjSmSHYXZyniSpuvlbJGXu6cTPz_TEqDFCft62IHRGDWBrOzsG4woDvRyHBb9XiwP89HZyWRh7J3xOUQ3z8daXt-f1gbHQftG-S7ZvRRLD4FyiWDIEW6rbFSzfA-mwSW7lf_YUNibfchw51ZhneBM4bLlhONHTBk71JXa64fYG3kon7UyDiwIwI0UYs9jyFfiypGdxYy2R80y7_VgFzfzLdYoBQfCx3korkLeX74Wmks2Q";
-
+        const token = await getAuthToken();
         try {
             const response = await fetch(`${API_BASE_URL}/api/Compliance/clients-count?nonconforming=false`, {
                 method: 'GET', // Apenas testa se o endpoint existe
@@ -68,8 +72,7 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
 
     // Função para buscar dados de clientes conformes
     const fetchConformingClients = async (): Promise<number> => {
-        // const token = getAuthToken();
-        const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YTEwZGVjZTk4MzY2ZDZmNjNlMTY3Mjg2YWU5YjYxMWQyYmFhMjciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoic3RyaW5nIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2RpYW5hLTQ0NmExIiwiYXVkIjoiZGlhbmEtNDQ2YTEiLCJhdXRoX3RpbWUiOjE3NDk3NDEwNzUsInVzZXJfaWQiOiJZSG1jMGFQSHQwT1VPUGFYcHJnNFVmWUFZb24xIiwic3ViIjoiWUhtYzBhUEh0ME9VT1BhWHByZzRVZllBWW9uMSIsImlhdCI6MTc0OTc0MTA3NSwiZXhwIjoxNzQ5NzQ0Njc1LCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidXNlckBleGFtcGxlLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.Lk05hmHSgoNnyex6I_7s3uH29fQgH0G21kAfvR1o4_IoP9txEK_J-s0aMVLcR2zl64ARzIEOOqMOZ4brr0qdPNG6DFIqkSTGLStJ0zb0OjSmSHYXZyniSpuvlbJGXu6cTPz_TEqDFCft62IHRGDWBrOzsG4woDvRyHBb9XiwP89HZyWRh7J3xOUQ3z8daXt-f1gbHQftG-S7ZvRRLD4FyiWDIEW6rbFSzfA-mwSW7lf_YUNibfchw51ZhneBM4bLlhONHTBk71JXa64fYG3kon7UyDiwIwI0UYs9jyFfiypGdxYy2R80y7_VgFzfzLdYoBQfCx3korkLeX74Wmks2Q";
+        const token = await getAuthToken();
 
         if (!token) {
             throw new Error('Token de autenticação não encontrado');
@@ -117,8 +120,7 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
 
     // Função para buscar dados de clientes não conformes
     const fetchNonConformingClients = async (): Promise<number> => {
-        // const token = getAuthToken();
-        const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YTEwZGVjZTk4MzY2ZDZmNjNlMTY3Mjg2YWU5YjYxMWQyYmFhMjciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoic3RyaW5nIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2RpYW5hLTQ0NmExIiwiYXVkIjoiZGlhbmEtNDQ2YTEiLCJhdXRoX3RpbWUiOjE3NDk3NDAzOTQsInVzZXJfaWQiOiJZSG1jMGFQSHQwT1VPUGFYcHJnNFVmWUFZb24xIiwic3ViIjoiWUhtYzBhUEh0ME9VT1BhWHByZzRVZllBWW9uMSIsImlhdCI6MTc0OTc0MDM5NCwiZXhwIjoxNzQ5NzQzOTk0LCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidXNlckBleGFtcGxlLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.fKGDKWAvICG6sQgfrr6qAgoqNAfDUtog7W6fTsBiC5nvHPomNof9rN1x-lXbkPzDgD6-5rkC5gESXdVXNp2yh4Oh8mmHspuBWa9E-ruKq7sDycQ0lMDZ5BJuSk-OWz7TJGxEBjJA47HpzlHsT5KEsZHNpFOr1DInwHPdr6-v7vIukye-SfgamEbW-GREzFIfsTwsZpdM3LZkQzoWbu2DeKqv1fPgn-KXcLvpmy4KqsRGP-84L6ZTrXI2if3XmDXjw0r5_DAd4TuHBc6wdsxFMEvYPcfNRBA0ewGedoLmh2tR856T9aOLT5M7AENiACTahs4qIq5LPXWmM4e_MsP6-g";
+        const token = await getAuthToken();
         
         if (!token) {
             throw new Error('Token de autenticação não encontrado');
