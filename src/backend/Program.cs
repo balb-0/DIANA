@@ -1,14 +1,15 @@
-// Program.cs - Configuração
 using backend.Middleware;
 using backend.Services;
 using backend.Repositories;
 using System.Data;
 using Npgsql;
 using Microsoft.AspNetCore.Authentication;
+using backend.Middleware;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -19,7 +20,6 @@ builder.Services.AddAuthentication("Bearer")
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Firebase Auth API", Version = "v1" });
-    // Configurar autenticação Bearer no Swagger
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "JWT Authorization header usando Bearer token. Exemplo: 'Bearer {token}'",
@@ -47,17 +47,36 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configuração da conexão com banco de dados
+// Configuraï¿½ï¿½o da conexï¿½o com banco de dados
 builder.Services.AddScoped<IDbConnection>(provider =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     return new NpgsqlConnection(connectionString);
 });
 
-// Registrar serviços existentes
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IComplianceService, ComplianceService>();
+builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
 
-// Registrar novos serviços para carteiras
+// Configurar autenticaÃ§Ã£o
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.Authority = $"https://securetoken.google.com/{builder.Configuration["Firebase:ProjectId"]}";
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = $"https://securetoken.google.com/{builder.Configuration["Firebase:ProjectId"]}",
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["Firebase:ProjectId"],
+            ValidateLifetime = true
+        };
+    });
+
+// Registrar serviÃ§o de investimentos
+builder.Services.AddScoped<IInvestmentService, InvestmentService>();
+
+// Registrar novos serviï¿½os para carteiras
 builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
 builder.Services.AddScoped<ICarteiraService, CarteiraService>();
 
@@ -72,9 +91,10 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddScoped<IClientService, ClientService>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
@@ -82,11 +102,13 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection(); // desativado no Docker, pois estamos rodando só HTTP
+// app.UseHttpsRedirection(); // desativado no Docker, pois estamos rodando sï¿½ HTTP
 app.UseCors("AllowAll");
 
+// Adicionar middleware personalizado do Firebase
+app.UseMiddleware<FirebaseAuthenticationMiddleware>();
+
 app.UseAuthentication();
-app.UseMiddleware<FirebaseAuthMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();
