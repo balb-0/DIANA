@@ -48,9 +48,15 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
 
     // Função para testar conectividade com o backend
     const testBackendConnection = async (): Promise<boolean> => {
+        const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YTEwZGVjZTk4MzY2ZDZmNjNlMTY3Mjg2YWU5YjYxMWQyYmFhMjciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoic3RyaW5nIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2RpYW5hLTQ0NmExIiwiYXVkIjoiZGlhbmEtNDQ2YTEiLCJhdXRoX3RpbWUiOjE3NDk3NDEwNzUsInVzZXJfaWQiOiJZSG1jMGFQSHQwT1VPUGFYcHJnNFVmWUFZb24xIiwic3ViIjoiWUhtYzBhUEh0ME9VT1BhWHByZzRVZllBWW9uMSIsImlhdCI6MTc0OTc0MTA3NSwiZXhwIjoxNzQ5NzQ0Njc1LCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidXNlckBleGFtcGxlLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.Lk05hmHSgoNnyex6I_7s3uH29fQgH0G21kAfvR1o4_IoP9txEK_J-s0aMVLcR2zl64ARzIEOOqMOZ4brr0qdPNG6DFIqkSTGLStJ0zb0OjSmSHYXZyniSpuvlbJGXu6cTPz_TEqDFCft62IHRGDWBrOzsG4woDvRyHBb9XiwP89HZyWRh7J3xOUQ3z8daXt-f1gbHQftG-S7ZvRRLD4FyiWDIEW6rbFSzfA-mwSW7lf_YUNibfchw51ZhneBM4bLlhONHTBk71JXa64fYG3kon7UyDiwIwI0UYs9jyFfiypGdxYy2R80y7_VgFzfzLdYoBQfCx3korkLeX74Wmks2Q";
+
         try {
             const response = await fetch(`${API_BASE_URL}/api/Compliance/clients-count?nonconforming=false`, {
-                method: 'HEAD', // Apenas testa se o endpoint existe
+                method: 'GET', // Apenas testa se o endpoint existe
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                }
             });
             console.log('Teste de conectividade - Status:', response.status);
             return response.status !== 0; // Status 0 indica falha de rede
@@ -63,7 +69,7 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
     // Função para buscar dados de clientes conformes
     const fetchConformingClients = async (): Promise<number> => {
         // const token = getAuthToken();
-        const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YTEwZGVjZTk4MzY2ZDZmNjNlMTY3Mjg2YWU5YjYxMWQyYmFhMjciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoic3RyaW5nIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2RpYW5hLTQ0NmExIiwiYXVkIjoiZGlhbmEtNDQ2YTEiLCJhdXRoX3RpbWUiOjE3NDk2NzQ3MTMsInVzZXJfaWQiOiJZSG1jMGFQSHQwT1VPUGFYcHJnNFVmWUFZb24xIiwic3ViIjoiWUhtYzBhUEh0ME9VT1BhWHByZzRVZllBWW9uMSIsImlhdCI6MTc0OTY3NDcxMywiZXhwIjoxNzQ5Njc4MzEzLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidXNlckBleGFtcGxlLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.HWtP6uPcP5ZNmeewgJpn9DDrZFZ8Br82QYfsiwYDXgReiRAOfvKnkmeP80Bq3blU7Wg0s-5Sj6lUWy7LlQO-wik7KsJoqTgUUYoTCYstivzioPavxWRYADk9Gy0n7QIHwPXPQQhq0qdmozq2onljG01fHsZy454mV6VsiWuBf75Urm-UXxSHaC2SD9mVL5Y7nUzApuw8qhabdbl_xiWjNld-xBt09xpXawCXVBS9VeOxuW7IOkmmZRN-j6WWKw1aboua29blS_HlGJegaV4xxMKMA0yXq2RO-LUvlUnQ5ISo3bTRwPSk8FPSZ4fywd-XNBUUyvWXy5wOOoi793g9xA";
+        const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YTEwZGVjZTk4MzY2ZDZmNjNlMTY3Mjg2YWU5YjYxMWQyYmFhMjciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoic3RyaW5nIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2RpYW5hLTQ0NmExIiwiYXVkIjoiZGlhbmEtNDQ2YTEiLCJhdXRoX3RpbWUiOjE3NDk3NDEwNzUsInVzZXJfaWQiOiJZSG1jMGFQSHQwT1VPUGFYcHJnNFVmWUFZb24xIiwic3ViIjoiWUhtYzBhUEh0ME9VT1BhWHByZzRVZllBWW9uMSIsImlhdCI6MTc0OTc0MTA3NSwiZXhwIjoxNzQ5NzQ0Njc1LCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidXNlckBleGFtcGxlLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.Lk05hmHSgoNnyex6I_7s3uH29fQgH0G21kAfvR1o4_IoP9txEK_J-s0aMVLcR2zl64ARzIEOOqMOZ4brr0qdPNG6DFIqkSTGLStJ0zb0OjSmSHYXZyniSpuvlbJGXu6cTPz_TEqDFCft62IHRGDWBrOzsG4woDvRyHBb9XiwP89HZyWRh7J3xOUQ3z8daXt-f1gbHQftG-S7ZvRRLD4FyiWDIEW6rbFSzfA-mwSW7lf_YUNibfchw51ZhneBM4bLlhONHTBk71JXa64fYG3kon7UyDiwIwI0UYs9jyFfiypGdxYy2R80y7_VgFzfzLdYoBQfCx3korkLeX74Wmks2Q";
 
         if (!token) {
             throw new Error('Token de autenticação não encontrado');
@@ -112,7 +118,7 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
     // Função para buscar dados de clientes não conformes
     const fetchNonConformingClients = async (): Promise<number> => {
         // const token = getAuthToken();
-        const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YTEwZGVjZTk4MzY2ZDZmNjNlMTY3Mjg2YWU5YjYxMWQyYmFhMjciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoic3RyaW5nIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2RpYW5hLTQ0NmExIiwiYXVkIjoiZGlhbmEtNDQ2YTEiLCJhdXRoX3RpbWUiOjE3NDk2NzQ3MTMsInVzZXJfaWQiOiJZSG1jMGFQSHQwT1VPUGFYcHJnNFVmWUFZb24xIiwic3ViIjoiWUhtYzBhUEh0ME9VT1BhWHByZzRVZllBWW9uMSIsImlhdCI6MTc0OTY3NDcxMywiZXhwIjoxNzQ5Njc4MzEzLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidXNlckBleGFtcGxlLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.HWtP6uPcP5ZNmeewgJpn9DDrZFZ8Br82QYfsiwYDXgReiRAOfvKnkmeP80Bq3blU7Wg0s-5Sj6lUWy7LlQO-wik7KsJoqTgUUYoTCYstivzioPavxWRYADk9Gy0n7QIHwPXPQQhq0qdmozq2onljG01fHsZy454mV6VsiWuBf75Urm-UXxSHaC2SD9mVL5Y7nUzApuw8qhabdbl_xiWjNld-xBt09xpXawCXVBS9VeOxuW7IOkmmZRN-j6WWKw1aboua29blS_HlGJegaV4xxMKMA0yXq2RO-LUvlUnQ5ISo3bTRwPSk8FPSZ4fywd-XNBUUyvWXy5wOOoi793g9xA";
+        const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YTEwZGVjZTk4MzY2ZDZmNjNlMTY3Mjg2YWU5YjYxMWQyYmFhMjciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoic3RyaW5nIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2RpYW5hLTQ0NmExIiwiYXVkIjoiZGlhbmEtNDQ2YTEiLCJhdXRoX3RpbWUiOjE3NDk3NDAzOTQsInVzZXJfaWQiOiJZSG1jMGFQSHQwT1VPUGFYcHJnNFVmWUFZb24xIiwic3ViIjoiWUhtYzBhUEh0ME9VT1BhWHByZzRVZllBWW9uMSIsImlhdCI6MTc0OTc0MDM5NCwiZXhwIjoxNzQ5NzQzOTk0LCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidXNlckBleGFtcGxlLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.fKGDKWAvICG6sQgfrr6qAgoqNAfDUtog7W6fTsBiC5nvHPomNof9rN1x-lXbkPzDgD6-5rkC5gESXdVXNp2yh4Oh8mmHspuBWa9E-ruKq7sDycQ0lMDZ5BJuSk-OWz7TJGxEBjJA47HpzlHsT5KEsZHNpFOr1DInwHPdr6-v7vIukye-SfgamEbW-GREzFIfsTwsZpdM3LZkQzoWbu2DeKqv1fPgn-KXcLvpmy4KqsRGP-84L6ZTrXI2if3XmDXjw0r5_DAd4TuHBc6wdsxFMEvYPcfNRBA0ewGedoLmh2tR856T9aOLT5M7AENiACTahs4qIq5LPXWmM4e_MsP6-g";
         
         if (!token) {
             throw new Error('Token de autenticação não encontrado');
