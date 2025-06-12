@@ -1,3 +1,4 @@
+using backend.Middleware;
 using backend.Services;
 using backend.Repositories;
 using backend.Middleware;
@@ -11,7 +12,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Firebase Auth API", Version = "v1" });
-
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "JWT Authorization header usando Bearer token. Exemplo: 'Bearer {token}'",
@@ -40,7 +40,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Registrar serviços
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
@@ -59,6 +58,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime = true
         };
     });
+
+// Registrar serviço de investimentos
+builder.Services.AddScoped<IInvestmentService, InvestmentService>();
 
 // Configurar CORS
 builder.Services.AddCors(options =>
