@@ -199,3 +199,43 @@ END;
 $$ LANGUAGE plpgsql;
 
 COMMENT ON FUNCTION obter_quantidade_clientes_inconformes() IS 'Função que retorna a quantidade de clientes inconformes (risco declarado diferente do risco calculado mais recente)';
+
+CREATE OR REPLACE PROCEDURE obter_soma_conformes_inconformes(
+    OUT total_conforme INT,
+    OUT total_inconforme INT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Obtém risco calculado mais recente por cliente
+    WITH risco_calculado AS (
+        SELECT DISTINCT ON (clientes_id) clientes_id, risco
+        FROM historico_risco_calculado
+        ORDER BY clientes_id, created_at DESC
+    ),
+    -- Obtém risco declarado mais recente por cliente
+    risco_declarado AS (
+        SELECT DISTINCT ON (clientes_id) clientes_id, risco
+        FROM historico_risco_declarado
+        ORDER BY clientes_id, created_at DESC
+    )
+    -- Conta clientes ativos com risco declarado igual ao calculado (conformes)
+    SELECT COUNT(*) INTO total_conforme
+    FROM risco_calculado rc
+    JOIN clientes c ON rc.clientes_id = c.id
+    JOIN risco_declarado rd ON rc.clientes_id = rd.clientes_id
+    WHERE c.is_active = TRUE
+    AND rc.risco = rd.risco;
+
+    -- Conta clientes ativos com risco declarado diferente do calculado (inconformes)
+    SELECT COUNT(*) INTO total_inconforme
+    FROM risco_calculado rc
+    JOIN clientes c ON rc.clientes_id = c.id
+    JOIN risco_declarado rd ON rc.clientes_id = rd.clientes_id
+    WHERE c.is_active = TRUE
+    AND rc.risco <> rd.risco;
+END;
+$$;
+
+COMMENT ON PROCEDURE obter_soma_conformes_inconformes()
+IS 'Retorna a soma de clientes conformes e inconformes, baseado na comparação do risco declarado mais recente com o risco calculado mais recente';
