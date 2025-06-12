@@ -1,23 +1,22 @@
--- Dados iniciais para a tabela assessores (primeiro!)
+-- Dados iniciais para a tabela assessores
 INSERT INTO assessores (
   id, nome, unidade_btg
 ) VALUES 
   ('01HXQK6T7F9D78XK9F0WJ79PZ5', 'Maria Souza', 'BTG São Paulo'),
   ('01HXQK6T7F9D78XK9F0WJ79PZ6', 'Carlos Mendes', 'BTG Rio de Janeiro'),
   ('01HXQK6T7F9D78XK9F0WJ79PZ7', 'Ana Oliveira', 'BTG Brasília');
+  ('rfvQP8smGPS0MUnBAWwfXt4FgvU2', 'Zillinho', 'BTG Marília');
 
--- Dados iniciais para a tabela clientes
 INSERT INTO clientes (
   id, nome, cpf, rg, endereco, data_nascimento, categoria, assessores_id, is_active, inactive_datetime
 ) VALUES 
-  -- Cliente já existente (perfil moderado - misto de investimentos)
   ('01HXQK6Q1YXKH2QKSR89NR9A1W', 'João da Silva', '12345678900', 'MG1234567', 'Rua Exemplo, 123', '1985-10-10', 'Gold', '01HXQK6T7F9D78XK9F0WJ79PZ5', true, NULL),
-  
-  -- Novo cliente (perfil conservador - foco em renda fixa)
   ('01HXQK6Q1YXKH2QKSR89NR9A2W', 'Ana Pereira', '98765432100', 'SP7654321', 'Avenida Central, 456', '1972-05-18', 'Platinum', '01HXQK6T7F9D78XK9F0WJ79PZ6', true, NULL),
-  
-  -- Novo cliente (perfil sofisticado - foco em renda variável)
   ('01HXQK6Q1YXKH2QKSR89NR9A3W', 'Roberto Almeida', '45678912300', 'RJ5678912', 'Rua das Flores, 789', '1990-08-22', 'Gold', '01HXQK6T7F9D78XK9F0WJ79PZ7', true, NULL);
+  ('01HXQK6Q1YXKH2QKSR89NR9A1W', 'João da Silva', '12345678900', 'MG1234567', 'Rua Exemplo, 123', '1985-10-10', 'Gold', '01HXQK6T7F9D78XK9F0WJ79PZ5', true, NULL),
+  ('01JX2RB6JD6QCZAXNA3M7KERAV', 'Ricardo Castro', '22222233345', 'SP1234567', 'Rua Exemplo, 344', '1995-11-12', 'Gold', 'rfvQP8smGPS0MUnBAWwfXt4FgvU2', true, NULL),
+  ('01JX2REHEB5Y7Y7N28R94MH0W5', 'Maria Santos', '12345678910', 'MG1233347', 'Rua Exemplo, 800', '2000-10-12', 'Gold', 'rfvQP8smGPS0MUnBAWwfXt4FgvU2', true, NULL);
+
 
 -- Dados iniciais para a tabela ativos
 INSERT INTO ativos (
@@ -84,16 +83,16 @@ INSERT INTO historico_risco_declarado (
   ('01HXQK7765XZDKZSR0ZCWG68Q9', 'Moderado', NOW(), '01HXQK6Q1YXKH2QKSR89NR9A1W'),
   ('01HXQK7765XZDKZSR0ZCWG68QA', 'Conservador', NOW(), '01HXQK6Q1YXKH2QKSR89NR9A2W'),
   ('01HXQK7765XZDKZSR0ZCWG68QB', 'Sofisticado', NOW(), '01HXQK6Q1YXKH2QKSR89NR9A3W');
+  ('01JX2RGAKJBZCRJ7VGMK833VQ8', 'Sofisticado', NOW(), '01JX2RB6JD6QCZAXNA3M7KERAV'),
+  ('01JX2RGFA66GBAYZKCGJPCCS90', 'Conservador', NOW(), '01JX2REHEB5Y7Y7N28R94MH0W5');
 
 -- Dados iniciais para a tabela historico_risco_calculado
 INSERT INTO historico_risco_calculado (
   id, risco, RV_percentual, RF_percentual, valorTotal, created_at, clientes_id
 ) VALUES 
-  -- Cliente 1 - João da Silva (Moderado)
   ('01HXQK7B2A83AVJQ9MMS2PY9EP', 'Moderado', 28.0, 72.0, 266137.56, NOW(), '01HXQK6Q1YXKH2QKSR89NR9A1W'),
-  
-  -- Cliente 2 - Ana Pereira (Conservador)
   ('01HXQK7B2A83AVJQ9MMS2PY9EQ', 'Conservador', 8.1, 91.9, 309219.01, NOW(), '01HXQK6Q1YXKH2QKSR89NR9A2W'),
-  
-  -- Cliente 3 - Roberto Almeida (Sofisticado)
   ('01HXQK7B2A83AVJQ9MMS2PY9ER', 'Sofisticado', 86.3, 13.7, 286165.51, NOW(), '01HXQK6Q1YXKH2QKSR89NR9A3W');
+  ('01HXQK7B2A83AVJQ9MMS2PY9EP', 'Moderado', 28.0, 72.0, 216137.56, NOW(), '01HXQK6Q1YXKH2QKSR89NR9A1W'),
+  ('01JX2RGM0NFN03YWJVDHC9VMA4', 'Sofisticado', 50.0, 90.0, 782147.56, NOW(), '23701bcf-a294-4883-b6ab-aa7de47ce89d'),
+  ('01JX2RGR0GA58G1DE8GD7WNWCF', 'Conservador', 10.0, 104.0, 19924.56, NOW(), 'b3638bb4-b780-44ff-9922-ccdd10ad7ca6');

@@ -13,6 +13,25 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U btg_user -d btg_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  
+  backend:
+    build: ./backend
+    container_name: btg_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=db;Database=btg_db;Username=btg_user;Password=btg_pass;Port=5432
+    restart: unless-stopped
 
   api_recomendacao:
     build: 
@@ -27,3 +46,7 @@ services:
 
 volumes:
   pgdata:
+  
+networks:
+  btg_network:
+    driver: bridge
