@@ -13,10 +13,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Configurar Authentication - ADICIONAR ESTAS LINHAS
-builder.Services.AddAuthentication("Bearer")
-    .AddScheme<AuthenticationSchemeOptions, FirebaseAuthHandler>("Bearer", options => { });
-
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Firebase Auth API", Version = "v1" });
@@ -47,7 +43,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configura��o da conex�o com banco de dados
+// Configuração da conexão com banco de dados
 builder.Services.AddScoped<IDbConnection>(provider =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -58,7 +54,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
 
-// Registrar IPerfilService (estava faltando)
+// Registrar IPerfilService
 builder.Services.AddScoped<IPerfilService>(provider =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
@@ -66,15 +62,14 @@ builder.Services.AddScoped<IPerfilService>(provider =>
     return new PerfilService(connectionString);
 });
 
+// Registrar ClientService com IConfiguration
 builder.Services.AddScoped<IClientService>(provider =>
 {
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não encontrada.");
-    return new ClientService(connectionString);
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    return new ClientService(configuration);
 });
 
-
-// Configurar autenticação
+// Configurar autenticação Firebase
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -92,7 +87,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 // Registrar serviço de investimentos
 builder.Services.AddScoped<IInvestmentService, InvestmentService>();
 
-// Registrar novos servi�os para carteiras
+// Registrar novos serviços para carteiras
 builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
 builder.Services.AddScoped<ICarteiraService, CarteiraService>();
 
@@ -116,7 +111,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection(); // desativado no Docker, pois estamos rodando s� HTTP
+// app.UseHttpsRedirection(); // desativado no Docker, pois estamos rodando só HTTP
 app.UseCors("AllowAll");
 
 // Adicionar middleware personalizado do Firebase
