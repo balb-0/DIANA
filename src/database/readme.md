@@ -96,12 +96,15 @@
 
 ## Visão Geral
 
-Este diretório contém os scripts e arquivos de configuração necessários para a implementação do banco de dados PostgreSQL utilizado na aplicação de recomendação de investimentos do BTG Pactual. O banco armazena informações sobre clientes, assessores, ativos financeiros, investimentos e histórico de perfil de risco.
+Este diretório contém os scripts e arquivos de configuração necessários para a implementação d4. **Trigger não funciona**:
+   - Verifique se o script 03_procedures.sql foi executado: `\df recalcular_perfil_risco`
+   - Confira os logs para erros na criação da função ou triggeranco de dados PostgreSQL utilizado na aplicação de recomendação de investimentos do BTG Pactual. O banco armazena informações sobre clientes, assessores, ativos financeiros, investimentos e histórico de perfil de risco.
 
 ## Estrutura de Arquivos
 
 - `01_create_database.sql`: Script de criação das tabelas e estruturas do banco de dados
 - `02_initial_data.sql`: Script de população inicial do banco com dados de exemplo
+- `03_procedures.sql`: Script com triggers e procedures para automação do banco
 - `Dockerfile`: Configuração para criação da imagem Docker do PostgreSQL
 - `docker-compose.yml`: Arquivo para orquestração do container do banco de dados
 
@@ -129,6 +132,37 @@ A implementação do banco de dados PostgreSQL foi realizada com atenção espec
 - Índices implícitos em chaves primárias
 - Campo is_active para filtros rápidos, evitando exclusão física
 - Timestamp de inativação para manter histórico de clientes
+
+### Automação de Perfil de Risco
+- Implementação de triggers que monitoram alterações na tabela de investimentos
+- Recálculo automático do perfil de risco sempre que um investimento é adicionado, modificado ou removido
+- Cálculo dos percentuais de Renda Fixa e Renda Variável na carteira total
+- Classificação do perfil baseada em regras de negócio:
+  - **Conservador**: ≥ 90% em Renda Fixa
+  - **Sofisticado**: ≥ 70% em Renda Variável
+  - **Moderado**: Todos os demais casos
+- Registro histórico de todas as alterações de perfil com timestamp
+
+### Dados de Teste
+
+O banco é populado com dados de teste para demonstrar diferentes perfis de investimento:
+
+1. **Cliente 1 - João da Silva (Perfil Moderado)**
+   - Combinação de Renda Fixa (72%) e Renda Variável (28%)
+   - Investimentos diversificados em CRAs, Debêntures e algumas ações
+
+2. **Cliente 2 - Ana Pereira (Perfil Conservador)**
+   - Concentração em Renda Fixa (91.9%)
+   - Apenas 8.1% em Renda Variável (ETF)
+   - Foco em segurança com baixa exposição a riscos
+
+3. **Cliente 3 - Roberto Almeida (Perfil Sofisticado)**
+   - Alta concentração em Renda Variável (86.3%)
+   - Diversidade de ações (INBR32, ONCO3, BBAS3, PETR4, VALE3)
+   - Apenas 13.7% em Renda Fixa
+   - Foco em maior rentabilidade com tolerância a riscos
+
+Os dados estão estruturados para permitir testar a funcionalidade de recálculo automático de perfil conforme regras estabelecidas.
 
 ## Modelo Físico
 
@@ -171,16 +205,52 @@ Dicioniários dos dados aqui.
 
 5. **Comandos úteis dentro do PostgreSQL**:
    ```sql
-   -- Listar todas as tabelas
    \dt
    
-   -- Visualizar estrutura de uma tabela específica
    \d nome_da_tabela
    
-   -- Consultar dados de exemplo
    SELECT * FROM clientes;
    SELECT * FROM assessores;
    SELECT * FROM ativos LIMIT 5;
+   
+   SELECT c.nome, hrc.risco, hrc.RV_percentual, hrc.RF_percentual, hrc.valorTotal, hrc.created_at
+   FROM historico_risco_calculado hrc
+   JOIN clientes c ON hrc.clientes_id = c.id
+   WHERE hrc.id IN (
+       SELECT MAX(id) FROM historico_risco_calculado 
+       GROUP BY clientes_id
+   )
+   ORDER BY c.nome;
+   
+   INSERT INTO investimento (id, ativos_id, clientes_id, quantidade, valorTotal, data)
+   VALUES ('99TESTEINVEST1', '01HFAKEATIVO09', '01HXQK6Q1YXKH2QKSR89NR9A2W', 100, 50000.00, NOW());
+   
+   SELECT c.nome, hrc.risco, hrc.RV_percentual, hrc.RF_percentual, hrc.valorTotal
+   FROM historico_risco_calculado hrc
+   JOIN clientes c ON hrc.clientes_id = c.id
+   WHERE c.id = '01HXQK6Q1YXKH2QKSR89NR9A2W'
+   ORDER BY hrc.created_at DESC LIMIT 2;
+
+   UPDATE investimento SET valorTotal = 100000.00 
+   WHERE id = '99TESTEINVEST1';
+   
+   SELECT c.nome, hrc.risco, hrc.RV_percentual, hrc.RF_percentual, hrc.valorTotal
+   FROM historico_risco_calculado hrc
+   JOIN clientes c ON hrc.clientes_id = c.id
+   WHERE c.id = '01HXQK6Q1YXKH2QKSR89NR9A2W'
+   ORDER BY hrc.created_at DESC LIMIT 1;
+   
+   DELETE FROM investimento WHERE id = '99TESTEINVEST1';
+   
+   SELECT c.nome, hrc.risco, hrc.RV_percentual, hrc.RF_percentual, hrc.valorTotal
+   FROM historico_risco_calculado hrc
+   JOIN clientes c ON hrc.clientes_id = c.id
+   WHERE c.id = '01HXQK6Q1YXKH2QKSR89NR9A2W'
+   ORDER BY hrc.created_at DESC LIMIT 1;
+   
+   SELECT obter_perfil_cliente('01HXQK6Q1YXKH2QKSR89NR9A1W');
+   
+   SELECT * FROM obter_perfil_risco_cliente('01HXQK6Q1YXKH2QKSR89NR9A1W');
    ```
 
 ### Configuração Manual (sem Docker)
@@ -204,6 +274,7 @@ Se preferir instalar manualmente o PostgreSQL:
    ```bash
    psql -U btg_user -d btg_db -f 01_create_database.sql
    psql -U btg_user -d btg_db -f 02_initial_data.sql
+   psql -U btg_user -d btg_db -f 03_procedures.sql
    ```
 
 ## Manutenção e Backup
