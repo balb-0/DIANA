@@ -34,7 +34,6 @@ services:
     networks:
       - btg_network
     restart: unless-stopped
-
   api_recomendacao:
     build: 
       context: ./recomendationAPI
@@ -47,11 +46,18 @@ services:
     environment:
       - PYTHONPATH=/app/src
       - PYTHONUNBUFFERED=1
+      # MongoDB Audit Environment Variables
+      - MONGO_HOST=btg_mongodb_auditoria
+      - MONGO_PORT=27017
+      - MONGO_USERNAME=auditoria_user
+      - MONGO_PASSWORD=auditoria_pass_2025
+      - MONGO_DATABASE=auditoria_db
     networks:
       - btg_network
     restart: unless-stopped
     depends_on:
       - db
+      - mongodb_auditoria
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
@@ -79,6 +85,22 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+  mongo-express:
+    image: mongo-express:latest
+    container_name: btg_mongo_express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin_pass_2025
+      ME_CONFIG_MONGODB_URL: mongodb://admin:admin_pass_2025@btg_mongodb_auditoria:27017/
+      ME_CONFIG_BASICAUTH: false
+    depends_on:
+      mongodb_auditoria:
+        condition: service_healthy
+    networks:
+      - btg_network
+    restart: unless-stopped
 
 volumes:
   pgdata:

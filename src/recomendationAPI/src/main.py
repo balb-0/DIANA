@@ -8,10 +8,20 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from models.recommendation_engine import RecommendationEngine
 from utils.data_loader import DataLoader
 from schemas.request_response import RecomendacaoRequest, RecomendacaoResponse
+from middleware.audit_middleware import AuditMiddleware
+from utils.audit_logger import audit_logger
 import uvicorn
+import logging
+
+# Configurar logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # --- Configuração do App FastAPI ---
-app = FastAPI(title="API de Recomendação com KMeans")
+app = FastAPI(title="API de Recomendação com KMeans - Com Auditoria MongoDB")
+
+# Adicionar middleware de auditoria
+app.add_middleware(AuditMiddleware)
 
 # --- Carregar Dados e Modelos ---
 BASE_PATH = './data/'
@@ -72,8 +82,30 @@ async def health_check():
         "status": "healthy",
         "barema_loaded": not DF_BAREMA.empty,
         "model_loaded": recommendation_engine.kmeans_model is not None,
-        "matrices_loaded": len(recommendation_engine.similarity_matrices) > 0
+        "matrices_loaded": len(recommendation_engine.similarity_matrices) > 0,
+        "audit_mongodb_connected": audit_logger.is_connected()
     }
+
+@app.get("/audit/status")
+async def audit_status():
+    """Endpoint para verificar status do sistema de auditoria"""
+    return {
+        "audit_system": "active",
+        "mongodb_connected": audit_logger.is_connected(),
+        "mongodb_host": os.getenv('MONGO_HOST', 'btg_mongodb_auditoria'),
+        "mongodb_database": os.getenv('MONGO_DATABASE', 'auditoria_db'),
+        "collections": ["recommendation_logs", "recommendation_metrics"] if audit_logger.is_connected() else []
+    }
+
+@app.get("/audit/client/{cliente_id}")
+async def get_client_audit_summary(cliente_id: str, days: int = 30):
+    """Endpoint para obter resumo de auditoria de um cliente específico"""
+    try:
+        summary = audit_logger.get_client_audit_summary(cliente_id, days)
+        return summary
+    except Exception as e:
+        logger.error(f"Erro ao obter resumo de auditoria: {e}")
+        raise HTTPException(status_code=500, detail=f"Erro ao obter dados de auditoria: {str(e)}")
 
 @app.post("/recomendacoes", response_model=RecomendacaoResponse)
 async def api_gerar_recomendacoes_simplificado(request: RecomendacaoRequest):
