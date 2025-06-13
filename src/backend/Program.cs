@@ -4,7 +4,6 @@ using backend.Repositories;
 using System.Data;
 using Npgsql;
 using Microsoft.AspNetCore.Authentication;
-using backend.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -12,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Firebase Auth API", Version = "v1" });
@@ -116,7 +114,6 @@ app.UseCors("AllowAll");
 
 // Adicionar middleware personalizado do Firebase
 app.UseMiddleware<FirebaseAuthenticationMiddleware>();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
