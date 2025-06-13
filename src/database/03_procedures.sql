@@ -202,7 +202,7 @@ COMMENT ON FUNCTION obter_quantidade_clientes_inconformes() IS 'Função que ret
 
 CREATE OR REPLACE FUNCTION obter_quantidade_clientes_conformes_por_perfil()
 RETURNS TABLE (
-    perfil risco_eunm,
+    perfil risco_enum,
     quantidade INTEGER
 ) AS $$
 BEGIN
@@ -219,7 +219,7 @@ BEGIN
         SELECT DISTINCT ON (hrd_sub.clientes_id) *
         FROM historico_risco_declarado hrd_sub
         ORDER BY hrd_sub.clientes_id hrd_sub.created_at DESC
-    ) hrd ON hrc.clientes_id - hrd.clientes_id
+    ) hrd ON hrc.clientes_id = hrd.clientes_id
     JOIN clientes c ON c.id = hrc.clientes_id
     WHERE hrc.risco = hrd.risco
         AND c.is_active = TRUE
