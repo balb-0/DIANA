@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage'; // ← ADICIONAR ESTA LINHA
 
 type Carteiras = {
     Regulares: { quantidade: number; total: number };
@@ -44,7 +45,9 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
     // Função para obter o token do localStorage
     const getAuthToken = async (): Promise<string | null> => {
         try {
-            return await AsyncStorage.getItem('@auth_token');
+            const token = await AsyncStorage.getItem('@auth_token');
+            console.log(`TOKEN: ${token}`);
+            return token;
         } catch (error) {
             console.error('Erro ao recuperar o token:', error);
             return null;
