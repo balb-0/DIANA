@@ -33,7 +33,7 @@ export const CarteiraDetailsHeader: React.FC<CarteiraDetailsHeaderProps> = ({
         source={require("../../assets/head.png")}
         className="absolute inset-0"
         style={{
-          height: 240,
+          height: 220,
           width: "100%",
         }}
         resizeMode="stretch"
