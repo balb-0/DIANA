@@ -73,7 +73,12 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<IClientService, ClientService>(provider =>
+{
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    var connectionString = configuration.GetConnectionString("DefaultConnection") ?? "";
+    return new ClientService(connectionString);
+});
 
 var app = builder.Build();
 
@@ -94,3 +99,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

@@ -13,7 +13,7 @@ namespace backend.Services
         {
             _configuration = configuration;
             _logger = logger;
-            _connectionString = "Host=localhost;Port=5432;Database=btg_db;Username=btg_user;Password=btg_pass";
+            _connectionString = _configuration.GetConnectionString("DefaultConnection") ?? "";
         }
 
         public async Task<IEnumerable<Investment>> GetInvestmentsByClientIdAsync(string clientId)
@@ -71,4 +71,4 @@ namespace backend.Services
             return investments;
         }
     }
-} 
+}
