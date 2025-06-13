@@ -22,9 +22,8 @@
 - <a href="https://www.linkedin.com/in/thiagovolcati/">Thiago Volcati</a>
 - <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Balbo</a>
 
-
-
 # Sumário
+
 - [1. Introdução](#1-introdução)
 - [2. Avaliação das Sprints](#2-avaliação-das-sprints)
   - [2.1 Sprint 1](#21-sprint-1)
@@ -43,6 +42,7 @@
 # 1. Introdução
 
 ## 1.1 Objetivo do Documento
+
 &nbsp;&nbsp;&nbsp;&nbsp;Este documento tem como objetivo registrar a evolução do trabalho realizado pelo grupo ao longo do desenvolvimento do projeto, por meio do destaque dos pontos fortes e fracos ao longo das sprints, além de ações de melhorias a serem realizadas para melhor desenvolvimento do grupo.
 
 ---
@@ -157,30 +157,73 @@
 - **Documentação Colaborativa e Contínua:** Durante o desenvolvimento, cada integrante será responsável por registrar breves notas sobre decisões técnicas e aprendizados, reunidas em um repositório acessível (como um Notion, Google Docs ou README). Isso facilitará o onboarding interno e futuras tasks de documentação sobre o processo de desenvolvimento.
 
 ## 2.4 Sprint 4
-_conteúdo_
- **Nota:** Insira informações sobre mudanças realizadas.
+
+#### **Pontos Fortes**
+
+- A equipe apresentou uma boa organização durante a Sprint Planning, conseguindo definir tarefas com clareza e distribuir responsabilidades de forma eficiente.
+- A comunicação entre os membros melhorou em relação às sprints anteriores, com mais interações nos canais do grupo e maior disposição para discutir dúvidas técnicas em conjunto.
+
+#### **Pontos Fracos**
+
+- O cansaço acumulado do final do semestre impactou o ritmo de trabalho, gerando momentos de baixa produtividade.
+- Algumas entregas foram deixadas para os últimos dias da sprint, comprometendo a qualidade do desenvolvimento e dificultando os testes e validações.
+- Houve acúmulo de tarefas na coluna de revisão do Trello, o que atrasou a finalização de algumas demandas.
+
+---
+
+### Mudanças Realizadas
+
+- A equipe buscou melhorar a comunicação interna com mensagens mais frequentes e claras nos canais do grupo, além de encontros pontuais para alinhar dúvidas.
+- A Sprint Planning foi mais objetiva, e o time conseguiu mapear dependências com mais atenção, o que facilitou a execução inicial da sprint.
+
+---
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Combater o acúmulo de tarefas em revisão
+
+- Definir limites para a coluna de revisão no Trello, incentivando revisões mais ágeis e distribuídas ao longo da sprint.
+- Estimular revisores fixos e rotativos entre os membros, para reduzir gargalos de aprovação.
+
+#### 2. Melhor gestão do tempo ao longo da sprint
+
+- Estabelecer metas parciais semanais, com prazos intermediários para evitar acúmulo próximo ao encerramento da sprint.
+- Criar lembretes de checkpoints no meio da sprint para revisar o que ainda está pendente.
+
+#### 3. Redução do impacto do cansaço de fim de semestre
+
+- Realocar tarefas mais complexas para os primeiros dias da sprint.
+- Compartilhar a carga entre os membros de maneira equilibrada, levando em conta a disponibilidade individual em semanas mais críticas.
 
 ## 2.5 Sprint 5
+
 _conteúdo_
- **Nota:** Insira informações sobre mudanças realizadas.
+**Nota:** Insira informações sobre mudanças realizadas.
 
 # 3. Análise de Riscos
+
 _conteúdo_
 
 ## 3.1 Riscos identificados
+
 _conteúdo_
 
 ## 3.2 Mitigação de Riscos
+
 _conteúdo_
 
 # 4. Análise Post Mortem
+
 _conteúdo_
 
 ## 4.1 Sucessos do Projeto
+
 _conteúdo_
 
 ## 4.2 Oportunidades de Melhoria
+
 _conteúdo_
 
 ## 4.3 Lições Aprendidas
+
 _conteúdo_

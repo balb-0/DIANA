@@ -1,21 +1,56 @@
+version: '3.9'
+
 services:
   db:
-    image: postgres:16 # aqui, utilizamos a imagem oficial do postgres na versão 16
-    restart: always    # aqui é a política de recarregamento, caso o conteiner pare, ele tenta reiniciar
-    env_file:
-      - ./database/.env
+    image: postgres:16 # utilizamos a imagem oficial do postgres na versão 16
+    container_name: btg_postgres
+    restart: unless-stopped # política de recarregamento melhorada
     ports:
-      - "5432:5432" # 1o num= a porta na maquina host (seu pc), 2o= o outro é a porta interna no container
+      - "5432:5432" # porta host:container
     volumes:
       - ./database/01_create_database.sql:/docker-entrypoint-initdb.d/01_create_database.sql
       - ./database/02_initial_data.sql:/docker-entrypoint-initdb.d/02_initial_data.sql
       - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U btg_user -d btg_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
-      - app-network
+      - btg_network
+
+  backend:
+    build: ./backend
+    container_name: btg_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=db;Database=btg_db;Username=btg_user;Password=btg_pass;Port=5432
+    restart: unless-stopped
+    networks:
+      - btg_network
+
+  api_recomendacao:
+    build: 
+      context: ./recomendationAPI
+      dockerfile: Dockerfile
+    container_name: btg_api_recomendacao
+    ports:
+      - "8000:8000" 
+    volumes:
+      - ./recomendationAPI/data:/app/data 
+    restart: unless-stopped
+    networks:
+      - btg_network
 
 volumes:
   pgdata:
-
+  
 networks:
-  app-network:
+  btg_network:
     driver: bridge
