@@ -1,7 +1,7 @@
+import { usePathname, useRouter } from 'expo-router';
 import React from 'react';
-import { useRouter, usePathname } from 'expo-router';
-import { useAuth } from '@/app/contexts/AuthProvider';
-import { View, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
+import { useAuth } from '../contexts/AuthProvider';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
     if (!isLoading && !isAuthenticated && !isPublicRoute) {
       router.replace('/login');
     }
-  }, [isAuthenticated, isLoading, isPublicRoute]);
+  }, [isAuthenticated, isLoading, isPublicRoute, router]);
 
   // Show loading screen while checking authentication
   if (isLoading) {

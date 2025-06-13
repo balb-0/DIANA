@@ -7,7 +7,7 @@ import { LoginButton } from "./login-button";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { RememberMeCheckbox } from "./remember-me-checkbox";
 import { useAuth } from "@/hooks/useAuth";
-import { useAuth as useAuthContext } from "@/app/contexts/AuthProvider";
+import { useAuth as useAuthContext } from "../contexts/AuthProvider";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");

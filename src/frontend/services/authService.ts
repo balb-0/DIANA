@@ -31,13 +31,13 @@ export const authService = {
       });
 
       const data: AuthResponse = await response.json();
-      
+
       if (data.success && data.idToken) {
         // Store JWT token for future requests
         localStorage.setItem('authToken', data.idToken);
         localStorage.setItem('user', JSON.stringify(data.user));
       }
-      
+
       return data;
     } catch (error) {
       console.error('Login error:', error);
@@ -65,11 +65,21 @@ export const authService = {
   // Helper method to make authenticated requests
   async makeAuthenticatedRequest(url: string, options: RequestInit = {}): Promise<Response> {
     const token = this.getStoredToken();
-    
-    const headers = {
+
+    // Garante que headers seja sempre um objeto simples
+    let headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      ...options.headers,
     };
+
+    if (options.headers) {
+      if (options.headers instanceof Headers) {
+        options.headers.forEach((value, key) => {
+          headers[key] = value;
+        });
+      } else {
+        headers = { ...headers, ...(options.headers as Record<string, string>) };
+      }
+    }
 
     if (token) {
       headers['Authorization'] = `Bearer ${token}`;
