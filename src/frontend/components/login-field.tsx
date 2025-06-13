@@ -1,22 +1,43 @@
-import { View } from "react-native";
+import React, { useState } from "react";
+import { View, Alert } from "react-native";
 import { EmailInput } from "./email-input";
 import { PasswordInput } from "./password-input";
-import { useState } from "react";
 import { AuthToggle } from "./auth-toggle";
 import { LoginButton } from "./login-button";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { RememberMeCheckbox } from "./remember-me-checkbox";
+import { useAuth } from "@/hooks/useAuth";
+import { useAuth as useAuthContext } from "@/app/contexts/AuthProvider";
 
-export const LoginForm: React.FC = () => {
+export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const { login: apiLogin, isLoading, error } = useAuth();
+  const { login: authLogin } = useAuthContext();
   const router = useRouter();
   const { mode } = useLocalSearchParams();
 
-  const handleLogin = () => {
-    // Handle login logic here
-    console.log("Login with:", { email, password, rememberMe });
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert("Erro", "Por favor, preencha todos os campos");
+      return;
+    }
+
+    // First make the API call
+    const apiResult = await apiLogin({ email, password });
+
+    if (apiResult.success) {
+      // If API call succeeds, update auth context
+      const authResult = await authLogin(email, password);
+      if (authResult.success) {
+        router.replace("/");
+      } else {
+        Alert.alert("Erro", "Erro ao atualizar estado de autenticação");
+      }
+    } else {
+      Alert.alert("Erro", apiResult.message || "Erro ao fazer login");
+    }
   };
 
   const handleToggle = (mode: "login" | "register") => {
@@ -40,10 +61,10 @@ export const LoginForm: React.FC = () => {
           checked={rememberMe}
           onToggle={() => setRememberMe(!rememberMe)}
         />
-        <LoginButton onPress={handleLogin} />
+        <LoginButton onPress={handleLogin} isLoading={isLoading} />
       </View>
     </View>
   );
-};
+}
 
 export default LoginForm;

@@ -6,7 +6,7 @@ function Login() {
   return (
     <View className="flex-1 bg-[#c3d5ff]">
       <TitleHeader />
-      <View className="flex-1 items-center justify-start ">
+      <View className="flex-1 items-center justify-start">
         <LoginForm />
       </View>
     </View>
