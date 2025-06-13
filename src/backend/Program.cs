@@ -57,8 +57,6 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
 
-// REMOVIDO: Segunda configuração de autenticação que causava o conflito
-
 // Registrar serviço de investimentos
 builder.Services.AddScoped<IInvestmentService, InvestmentService>();
 
@@ -76,8 +74,6 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
-
-builder.Services.AddScoped<IClientService, ClientService>();
 
 var app = builder.Build();
 
