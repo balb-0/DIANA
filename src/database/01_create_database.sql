@@ -31,7 +31,7 @@ CREATE TABLE ativos (
     subgrupo VARCHAR(45)
 );
 
-CREATE TABLE investimentos (
+CREATE TABLE investimento (
     id VARCHAR(26) PRIMARY KEY,
     ativos_id VARCHAR(26) NOT NULL,
     clientes_id VARCHAR(26) NOT NULL,
