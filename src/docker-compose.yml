@@ -1,7 +1,8 @@
 version: '3.9'
+
 services:
   db:
-    build: ./database
+    build: ./database  
     container_name: btg_postgres
     ports:
       - "5432:5432"
@@ -32,5 +33,20 @@ services:
       - ConnectionStrings__DefaultConnection=Host=db;Database=btg_db;Username=btg_user;Password=btg_pass;Port=5432
     restart: unless-stopped
 
+  api_recomendacao:
+    build: 
+      context: ./recomendationAPI
+      dockerfile: Dockerfile
+    container_name: btg_api_recomendacao
+    ports:
+      - "8000:8000" 
+    volumes:
+      - ./recomendationAPI/data:/app/data 
+    restart: unless-stopped
+
 volumes:
   pgdata:
+  
+networks:
+  btg_network:
+    driver: bridge
