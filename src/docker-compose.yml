@@ -2,17 +2,15 @@ version: '3.9'
 
 services:
   db:
-    build: ./database  
+    image: postgres:16 # utilizamos a imagem oficial do postgres na versão 16
     container_name: btg_postgres
+    restart: unless-stopped # política de recarregamento melhorada
     ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: btg_db
-      POSTGRES_USER: btg_user
-      POSTGRES_PASSWORD: btg_pass
+      - "5432:5432" # porta host:container
     volumes:
+      - ./database/01_create_database.sql:/docker-entrypoint-initdb.d/01_create_database.sql
+      - ./database/02_initial_data.sql:/docker-entrypoint-initdb.d/02_initial_data.sql
       - pgdata:/var/lib/postgresql/data
-    restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U btg_user -d btg_db"]
       interval: 30s
@@ -21,7 +19,10 @@ services:
       start_period: 30s
     networks:
       - btg_network
-  
+      retries: 3
+    networks:
+      - btg_network
+
   backend:
     build: ./backend
     container_name: btg_backend

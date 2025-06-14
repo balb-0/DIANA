@@ -1556,7 +1556,82 @@ O vídeo será utilizado como material de apoio para revisões, apresentações 
 
 
 ## 8.3.2 Sprint 4
-_conteúdo_
+
+&emsp;Durante a Sprint 4, houve um ênfase no desenvolvimento das funcionalidades e da lógica do aplicativo. O back-end da aplicação foi feito com .NET, com testes unitários produzidos com xUnit para cada endpoint.
+
+### **Proteção de rotas com autenticação**
+
+&emsp;Utilizando Firebase como middleware e a biblioteca de Authentication, os endpoints criados foram protegidos. Executando a documentação Swagger pela rota `localhost/8080/swagger`, clicando no botão "Authorize" e inserindo um token ID de sessão, é possível testar os endpoints protegidos.
+
+### **Endpoints de login e registro de usuário**
+
+<div align="center">
+<sub>Figura X - Registro de usuário</sub><br> 
+<img src="img/login_register_edp.png" width="100%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Pelo endpoint `Auth/register`, um usuário é criado, e pode ser utilizado no `Auth/login`, no qual é gerado um token ID de sessão a ser solicitado para o acesso a rotas protegidas.
+
+### **Endpoint de retorno de perfil de risco declarado do cliente**
+
+<div align="center">
+<sub>Figura X - Perfil de risco declarado</sub><br> 
+<img src="img/conforme_perfil_edp.png" width="70%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Pelo endpoint `Client/{id}/perfil`, o perfil de risco declarado por um cliente é retornado, o que será integrado à tela de detalhes de uma carteira de investimentos.
+
+### **Endpoint de contagem de clientes por conformidade**
+
+<div align="center">
+<sub>Figura X - Registro de usuário</sub><br> 
+<img src="img/contagem_conforme_edp.png" width="70%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Pelo endpoint `Compliance/clients-count`, a quantidade de carteiras conformes ou inconformes é retornada, o que será integrado à tela Home do aplicativo.
+
+### **Procedures e triggers para o banco de dados**
+
+Dentro do diretório `src/database`, foi criado um arquivo dedicado às **procedures** e **triggers**, responsáveis por automatizar lógicas importantes no banco de dados.
+
+## Principais Funções Implementadas
+
+### `recalcular_perfil_risco`
+- **Objetivo:** Recalcula o perfil de risco de um cliente sempre que há alterações na tabela de investimentos
+- **Chamada por:** Triggers (`after_investimento_insert`, `after_investimento_update`, `after_investimento_delete`)
+
+### `obter_perfil_risco_cliente`
+- **Retorno:** O perfil de risco mais recente do cliente, incluindo percentuais, valor total, data, nome e ID
+
+### `obter_perfil_cliente`
+- **Retorno:** Apenas o **tipo de perfil de risco** mais recente do cliente (ex: "Conservador", "Moderado", "Agressivo")
+
+### `obter_quantidade_clientes_conformes`
+- **Retorno:** Número de clientes cujo **risco declarado** é igual ao **risco calculado** mais recente
+
+### `obter_quantidade_clientes_inconformes`
+- **Retorno:** Número de clientes cujo **risco declarado** difere do **risco calculado** mais recente
+
+### `obter_quantidade_clientes_conformes_por_perfil`
+- **Retorno:** Quantidade de clientes **conformes**, agrupados por tipo de perfil de risco
+
+### `obter_soma_conformes_inconformes` (Procedure)
+- **Retorno:** Via parâmetros de saída (`OUT`), fornece o **total de clientes conformes e inconformes**
+
+## Triggers Configurados
+
+Os seguintes triggers garantem que o perfil de risco seja recalculado automaticamente após alterações na tabela `investimentos`:
+
+| Trigger                     | Disparado Quando                     | Ação                                                          |
+|-----------------------------|--------------------------------------|---------------------------------------------------------------|
+| `after_investimento_insert` | Após a **inserção** de um investimento | Chama `recalcular_perfil_risco` para atualizar o perfil       |
+| `after_investimento_update` | Após **atualização** de investimento  | Recalcula se houver mudança no **valor** ou **ativo**         |
+| `after_investimento_delete` | Após a **exclusão** de um investimento | Atualiza o perfil de risco do cliente afetado  
+
+&emsp;Para a Sprint 5, espera-se a integração completa das funcionalidades do aplicativo com o front-end.
 
 ## 8.3.3 Sprint 5
 _conteúdo_
