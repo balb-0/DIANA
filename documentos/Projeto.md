@@ -1693,6 +1693,20 @@ _conteúdo_
 - Os testes devem rodar automaticamente no pipeline CI/CD.
 - Ferramentas de cobertura como `Coverlet` (.NET) e `Jest --coverage` devem ser usadas para acompanhar a cobertura mínima (recomenda-se 80%).
 
+### Resultados (Sprint 5)
+
+&emsp;Os testes unitários estão presentes na pasta `Tests` de `src/backend`. Para o ClientController, testamos o comportamento da rota que retorna o perfil de risco de um cliente. Garantimos que, quando o cliente é encontrado, o sistema responde com sucesso e o perfil correto. Em contrapartida, quando o cliente não existe, o controlador retorna corretamente um erro 404.
+
+&emsp;No InvestmentController, os testes cobrem uma gama mais ampla de cenários. Validamos que, para um ID de cliente válido, a API retorna uma lista de investimentos esperada. Também verificamos o retorno adequado quando não há investimentos associados ao cliente e tratamos exceções que simulam falhas internas, como erro de conexão com o banco. Há ainda testes que confirmam o comportamento do sistema para IDs nulos ou vazios, e uma verificação completa da estrutura de um investimento retornado.
+
+&emsp;Complementando essa camada, desenvolvemos testes de integração com o InvestmentControllerIntegrationTest, onde simulamos chamadas reais à API. Utilizando um mock do serviço de investimentos e um bypass de autenticação, conseguimos validar que as respostas HTTP estão corretas, tanto em casos de sucesso quanto em situações de erro interno. Também testamos o retorno de uma lista vazia quando o ID fornecido está em branco.
+
+&emsp;No serviço de investimentos (InvestmentService), os testes buscaram validar a robustez da lógica, especialmente no tratamento de erros de conexão com o banco de dados PostgreSQL. Confirmamos que exceções são lançadas adequadamente e que logs de erro são gerados com as mensagens esperadas.
+
+&emsp;Para o PerfilController, testamos amplamente os diferentes tipos de resposta esperada ao consultar a distribuição de ativos de um cliente. Isso inclui perfis variados (como Conservador, Moderado e Arrojado), clientes com dados nulos, com valores extremos (zero ou muito altos), bem como diferentes formatos de ID. Também garantimos que o serviço é chamado apenas uma vez por requisição e que exceções são propagadas corretamente.
+
+&emsp;Por fim, no PerfilService, realizamos testes que simulam diferentes distribuições de carteira e validamos o perfil de risco atribuído. Cobrimos desde casos simples, com valores bem definidos, até clientes com perfis ausentes, nulos ou com múltiplos investimentos somados. Também foram tratados casos de exceção e garantido que o objeto retornado esteja sempre completo e bem formado.
+
 ### Planejamento de testes de integração
 
 &emsp;Esta subseção planeja os testes para a integração entre os módulos internos do sistema (como o .NET para o back-end React Native integrado ao Expo no front-end), assim como entre o backend e as APIs externas, utilizando caching (VHS). Os testes pretendem verificar tanto o comportamento esperado quanto a resposta a erros, validando possíveis interações críticas.
