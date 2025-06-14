@@ -218,7 +218,7 @@ BEGIN
     JOIN (
         SELECT DISTINCT ON (hrd_sub.clientes_id) *
         FROM historico_risco_declarado hrd_sub
-        ORDER BY hrd_sub.clientes_id hrd_sub.created_at DESC
+        ORDER BY hrd_sub.clientes_id, hrd_sub.created_at DESC
     ) hrd ON hrc.clientes_id = hrd.clientes_id
     JOIN clientes c ON c.id = hrc.clientes_id
     WHERE hrc.risco = hrd.risco
