@@ -15,6 +15,10 @@ services:
       test: ["CMD-SHELL", "pg_isready -U btg_user -d btg_db"]
       interval: 30s
       timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - btg_network
       retries: 3
     networks:
       - btg_network

@@ -11,11 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-
-// Configurar Authentication - APENAS UMA VEZ
-builder.Services.AddAuthentication("Bearer")
-    .AddScheme<AuthenticationSchemeOptions, FirebaseAuthHandler>("Bearer", options => { });
-
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Firebase Auth API", Version = "v1" });
@@ -56,6 +51,36 @@ builder.Services.AddScoped<IDbConnection>(provider =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
+
+// Registrar IPerfilService
+builder.Services.AddScoped<IPerfilService>(provider =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não encontrada.");
+    return new PerfilService(connectionString);
+});
+
+// Registrar ClientService com IConfiguration
+builder.Services.AddScoped<IClientService>(provider =>
+{
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    return new ClientService(configuration);
+});
+
+// Configurar autenticação Firebase
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.Authority = $"https://securetoken.google.com/{builder.Configuration["Firebase:ProjectId"]}";
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = $"https://securetoken.google.com/{builder.Configuration["Firebase:ProjectId"]}",
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["Firebase:ProjectId"],
+            ValidateLifetime = true
+        };
+    });
 
 // Registrar serviço de investimentos
 builder.Services.AddScoped<IInvestmentService, InvestmentService>();
