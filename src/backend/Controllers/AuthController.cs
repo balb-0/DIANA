@@ -23,7 +23,7 @@ namespace backend.Controllers
         /// </summary>
         [HttpPost("register")]
         public async Task<ActionResult<AuthResponse>> Register([FromBody] RegisterRequest request)
-        {
+        {   
             if (!ModelState.IsValid)
             {
                 return BadRequest(new AuthResponse

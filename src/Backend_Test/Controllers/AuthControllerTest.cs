@@ -7,8 +7,10 @@ using backend.Models;
 using backend.Services;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
-namespace backend.Tests.Controllers
+
+namespace backend_test.Controllers
 {
     public class AuthControllerTests
     {
