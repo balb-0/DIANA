@@ -1,24 +1,29 @@
-version: '3.9'
-
 services:
   db:
-    build: ./database  
+    image: postgres:16 # utilizamos a imagem oficial do postgres na versão 16
     container_name: btg_postgres
+    restart: unless-stopped # política de recarregamento melhorada
     ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: btg_db
-      POSTGRES_USER: btg_user
-      POSTGRES_PASSWORD: btg_pass
+      - "5432:5432" # porta host:container
     volumes:
+      - ./database/01_create_database.sql:/docker-entrypoint-initdb.d/01_create_database.sql
+      - ./database/02_initial_data.sql:/docker-entrypoint-initdb.d/02_initial_data.sql
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - btg_network
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U btg_user -d btg_db"]
       interval: 30s
       timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - btg_network
       retries: 3
-  
+    networks:
+      - btg_network
+
   backend:
     build: ./backend
     container_name: btg_backend
@@ -31,8 +36,11 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__DefaultConnection=Host=db;Database=btg_db;Username=btg_user;Password=btg_pass;Port=5432
+    networks:
+      - btg_network
     restart: unless-stopped
-
+    networks:
+      - btg_network
   api_recomendacao:
     build: 
       context: ./recomendationAPI
@@ -42,10 +50,70 @@ services:
       - "8000:8000" 
     volumes:
       - ./recomendationAPI/data:/app/data 
+    environment:
+      - PYTHONPATH=/app/src
+      - PYTHONUNBUFFERED=1
+      # MongoDB Audit Environment Variables
+      - MONGO_HOST=btg_mongodb_auditoria
+      - MONGO_PORT=27017
+      - MONGO_USERNAME=auditoria_user
+      - MONGO_PASSWORD=auditoria_pass_2025
+      - MONGO_DATABASE=auditoria_db
+    networks:
+      - btg_network
     restart: unless-stopped
+    depends_on:
+      - db
+      - mongodb_auditoria
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+  mongodb_auditoria:
+    image: mongo:7.0
+    container_name: btg_mongodb_auditoria
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin_pass_2025
+      MONGO_INITDB_DATABASE: auditoria_db
+    volumes:
+      - mongodb_data:/data/db
+      - ./auditoria/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - btg_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+  mongo-express:
+    image: mongo-express:latest
+    container_name: btg_mongo_express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin_pass_2025
+      ME_CONFIG_MONGODB_URL: mongodb://admin:admin_pass_2025@btg_mongodb_auditoria:27017/
+      ME_CONFIG_BASICAUTH: false
+    depends_on:
+      mongodb_auditoria:
+        condition: service_healthy
+    networks:
+      - btg_network
+    restart: unless-stopped
+    networks:
+      - btg_network
 
 volumes:
   pgdata:
+  mongodb_data:
   
 networks:
   btg_network:

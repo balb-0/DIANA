@@ -3,7 +3,6 @@ from fastapi.testclient import TestClient
 import sys
 import os
 
-# Adicionar o diretório src ao path para importar a aplicação
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from main import app
@@ -39,7 +38,6 @@ def test_recommendations_endpoint():
     assert response.status_code == 200
     data = response.json()
     
-    # Verificar campos obrigatórios na resposta
     assert "ClienteIdSolicitado" in data
     assert "PerfilCalculadoCliente" in data
     assert "PerfilDeclaradoCliente" in data
@@ -47,7 +45,6 @@ def test_recommendations_endpoint():
     assert "AtivosRecomendados" in data
     assert "MensagemAjuste" in data
     
-    # Verificar tipos
     assert isinstance(data["AtivosRecomendados"], list)
     assert isinstance(data["ClusterAssignado"], int)
 
@@ -59,7 +56,6 @@ def test_recommendations_endpoint_empty_assets():
         "ClassificacaoDeclarada": "Conservador"
     })
     
-    # A API deve lidar com carteiras vazias graciosamente
     assert response.status_code in [200, 400, 500]
 
 def test_recommendations_endpoint_invalid_profile():
@@ -72,7 +68,6 @@ def test_recommendations_endpoint_invalid_profile():
         "ClassificacaoDeclarada": "PerfilInexistente"
     })
     
-    # A API deve processar mesmo com perfil não padrão
     assert response.status_code in [200, 400, 422]
 
 if __name__ == "__main__":

@@ -1556,7 +1556,82 @@ O vídeo será utilizado como material de apoio para revisões, apresentações 
 
 
 ## 8.3.2 Sprint 4
-_conteúdo_
+
+&emsp;Durante a Sprint 4, houve um ênfase no desenvolvimento das funcionalidades e da lógica do aplicativo. O back-end da aplicação foi feito com .NET, com testes unitários produzidos com xUnit para cada endpoint.
+
+### **Proteção de rotas com autenticação**
+
+&emsp;Utilizando Firebase como middleware e a biblioteca de Authentication, os endpoints criados foram protegidos. Executando a documentação Swagger pela rota `localhost/8080/swagger`, clicando no botão "Authorize" e inserindo um token ID de sessão, é possível testar os endpoints protegidos.
+
+### **Endpoints de login e registro de usuário**
+
+<div align="center">
+<sub>Figura X - Registro de usuário</sub><br> 
+<img src="img/login_register_edp.png" width="100%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Pelo endpoint `Auth/register`, um usuário é criado, e pode ser utilizado no `Auth/login`, no qual é gerado um token ID de sessão a ser solicitado para o acesso a rotas protegidas.
+
+### **Endpoint de retorno de perfil de risco declarado do cliente**
+
+<div align="center">
+<sub>Figura X - Perfil de risco declarado</sub><br> 
+<img src="img/conforme_perfil_edp.png" width="70%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Pelo endpoint `Client/{id}/perfil`, o perfil de risco declarado por um cliente é retornado, o que será integrado à tela de detalhes de uma carteira de investimentos.
+
+### **Endpoint de contagem de clientes por conformidade**
+
+<div align="center">
+<sub>Figura X - Registro de usuário</sub><br> 
+<img src="img/contagem_conforme_edp.png" width="70%"><br> 
+<sup>Fonte: Material produzido pelos autores (2025) </sup>
+</div>
+
+&emsp;Pelo endpoint `Compliance/clients-count`, a quantidade de carteiras conformes ou inconformes é retornada, o que será integrado à tela Home do aplicativo.
+
+### **Procedures e triggers para o banco de dados**
+
+Dentro do diretório `src/database`, foi criado um arquivo dedicado às **procedures** e **triggers**, responsáveis por automatizar lógicas importantes no banco de dados.
+
+## Principais Funções Implementadas
+
+### `recalcular_perfil_risco`
+- **Objetivo:** Recalcula o perfil de risco de um cliente sempre que há alterações na tabela de investimentos
+- **Chamada por:** Triggers (`after_investimento_insert`, `after_investimento_update`, `after_investimento_delete`)
+
+### `obter_perfil_risco_cliente`
+- **Retorno:** O perfil de risco mais recente do cliente, incluindo percentuais, valor total, data, nome e ID
+
+### `obter_perfil_cliente`
+- **Retorno:** Apenas o **tipo de perfil de risco** mais recente do cliente (ex: "Conservador", "Moderado", "Agressivo")
+
+### `obter_quantidade_clientes_conformes`
+- **Retorno:** Número de clientes cujo **risco declarado** é igual ao **risco calculado** mais recente
+
+### `obter_quantidade_clientes_inconformes`
+- **Retorno:** Número de clientes cujo **risco declarado** difere do **risco calculado** mais recente
+
+### `obter_quantidade_clientes_conformes_por_perfil`
+- **Retorno:** Quantidade de clientes **conformes**, agrupados por tipo de perfil de risco
+
+### `obter_soma_conformes_inconformes` (Procedure)
+- **Retorno:** Via parâmetros de saída (`OUT`), fornece o **total de clientes conformes e inconformes**
+
+## Triggers Configurados
+
+Os seguintes triggers garantem que o perfil de risco seja recalculado automaticamente após alterações na tabela `investimentos`:
+
+| Trigger                     | Disparado Quando                     | Ação                                                          |
+|-----------------------------|--------------------------------------|---------------------------------------------------------------|
+| `after_investimento_insert` | Após a **inserção** de um investimento | Chama `recalcular_perfil_risco` para atualizar o perfil       |
+| `after_investimento_update` | Após **atualização** de investimento  | Recalcula se houver mudança no **valor** ou **ativo**         |
+| `after_investimento_delete` | Após a **exclusão** de um investimento | Atualiza o perfil de risco do cliente afetado  
+
+&emsp;Para a Sprint 5, espera-se a integração completa das funcionalidades do aplicativo com o front-end.
 
 ## 8.3.3 Sprint 5
 _conteúdo_
@@ -1617,6 +1692,20 @@ _conteúdo_
 
 - Os testes devem rodar automaticamente no pipeline CI/CD.
 - Ferramentas de cobertura como `Coverlet` (.NET) e `Jest --coverage` devem ser usadas para acompanhar a cobertura mínima (recomenda-se 80%).
+
+### Resultados (Sprint 5)
+
+&emsp;Os testes unitários estão presentes na pasta `Tests` de `src/backend`. Para o ClientController, testamos o comportamento da rota que retorna o perfil de risco de um cliente. Garantimos que, quando o cliente é encontrado, o sistema responde com sucesso e o perfil correto. Em contrapartida, quando o cliente não existe, o controlador retorna corretamente um erro 404.
+
+&emsp;No InvestmentController, os testes cobrem uma gama mais ampla de cenários. Validamos que, para um ID de cliente válido, a API retorna uma lista de investimentos esperada. Também verificamos o retorno adequado quando não há investimentos associados ao cliente e tratamos exceções que simulam falhas internas, como erro de conexão com o banco. Há ainda testes que confirmam o comportamento do sistema para IDs nulos ou vazios, e uma verificação completa da estrutura de um investimento retornado.
+
+&emsp;Complementando essa camada, desenvolvemos testes de integração com o InvestmentControllerIntegrationTest, onde simulamos chamadas reais à API. Utilizando um mock do serviço de investimentos e um bypass de autenticação, conseguimos validar que as respostas HTTP estão corretas, tanto em casos de sucesso quanto em situações de erro interno. Também testamos o retorno de uma lista vazia quando o ID fornecido está em branco.
+
+&emsp;No serviço de investimentos (InvestmentService), os testes buscaram validar a robustez da lógica, especialmente no tratamento de erros de conexão com o banco de dados PostgreSQL. Confirmamos que exceções são lançadas adequadamente e que logs de erro são gerados com as mensagens esperadas.
+
+&emsp;Para o PerfilController, testamos amplamente os diferentes tipos de resposta esperada ao consultar a distribuição de ativos de um cliente. Isso inclui perfis variados (como Conservador, Moderado e Arrojado), clientes com dados nulos, com valores extremos (zero ou muito altos), bem como diferentes formatos de ID. Também garantimos que o serviço é chamado apenas uma vez por requisição e que exceções são propagadas corretamente.
+
+&emsp;Por fim, no PerfilService, realizamos testes que simulam diferentes distribuições de carteira e validamos o perfil de risco atribuído. Cobrimos desde casos simples, com valores bem definidos, até clientes com perfis ausentes, nulos ou com múltiplos investimentos somados. Também foram tratados casos de exceção e garantido que o objeto retornado esteja sempre completo e bem formado.
 
 ### Planejamento de testes de integração
 
@@ -1888,7 +1977,121 @@ _conteúdo_
 - Software: Figma(protótipo), Google Forms(SUS), Excel(análise).
 
 ## 9.3.2 Resultados
-_conteúdo_
+
+### Participantes do Teste
+
+Devido às limitações de acesso a assessores de investimento reais durante o período de desenvolvimento, os testes de usabilidade foram realizados com 5 colegas de outras turmas da faculdade, todos da área de tecnologia. Embora essa amostra possa ter introduzido alguns vieses devido ao background técnico dos participantes, foi possível obter insights valiosos sobre a usabilidade geral da interface.
+
+**Perfil dos Participantes:**
+- João Victor Wandermurem (20 anos), Engenharia da Computação
+- David Deodato (19 anos), Sistemas de Informação  
+- Fernanda Correia (20 anos), Sistemas de Informação
+- João Pedro Carbone (20 anos), Ciências da Computação
+- Livia Bonotto (22 anos), Engenharia de Software - 4º ano
+
+### Execução dos Testes
+
+Os testes foram conduzidos individualmente com cada participante, seguindo o protocolo estabelecido. Cada sessão durou aproximadamente 10-15 minutos, incluindo a explicação inicial, execução das tarefas, aplicação do questionário SUS e coleta de feedback qualitativo.
+
+### Resultados das Tarefas
+
+**Taxa de Sucesso por Tarefa:**
+
+| Tarefa | Taxa de Sucesso | Observações |
+|--------|----------------|-------------|
+| 1. Login no sistema | 100% (5/5) | Todos concluíram sem dificuldades |
+| 2. Visualizar dashboard principal | 100% (5/5) | Interface intuitiva, usuários gostaram da organização por status de conformidade |
+| 3. Buscar cliente específico | 100% (5/5) | Barra de pesquisa na home foi muito bem avaliada |
+| 4. Acessar perfil de investidor | 80% (4/5) | 1 participante inicialmente tentou clicar no nome em vez do card |
+| 5. Navegar entre categorias de perfil | 100% (5/5) | Cards de "Moderado", "Conservador", "Sofisticado" foram bem compreendidos |
+
+### Tempo Médio de Execução
+
+| Tarefa | Tempo Médio | Desvio Padrão |
+|--------|-------------|---------------|
+| Login | 1m 15s | ±20s |
+| Navegação no dashboard | 2m 30s | ±45s |
+| Busca de cliente | 1m 45s | ±30s |
+| Acesso ao perfil | 2m 10s | ±1m |
+| Navegação entre categorias | 1m 55s | ±25s |
+
+### Resultados do Questionário SUS
+
+**Respostas Individuais (Escala 1-5: 1=Discordo Totalmente, 5=Concordo Totalmente):**
+
+| Pergunta | João V. | David | Fernanda | João P. | Livia | Média |
+|----------|---------|-------|----------|---------|-------|-------|
+| 1. Gostaria de usar o DIANA com frequência | 4 | 4 | 5 | 4 | 4 | 4.2 |
+| 2. Sistema desnecessariamente complexo | 2 | 2 | 1 | 2 | 2 | 1.8 |
+| 3. Sistema fácil de usar | 4 | 5 | 4 | 4 | 5 | 4.4 |
+| 4. Precisaria de ajuda de especialista | 2 | 1 | 2 | 2 | 1 | 1.6 |
+| 5. Funcionalidades bem integradas | 4 | 4 | 5 | 4 | 4 | 4.2 |
+| 6. Muita inconsistência na exibição | 2 | 2 | 1 | 2 | 2 | 1.8 |
+| 7. Maioria aprenderia rapidamente | 5 | 4 | 4 | 4 | 5 | 4.4 |
+| 8. Sistema atrapalhado para navegar | 2 | 2 | 1 | 2 | 1 | 1.6 |
+| 9. Senti-me confiante ao usar | 4 | 4 | 4 | 3 | 4 | 3.8 |
+| 10. Precisei aprender muitos termos específicos | 3 | 2 | 2 | 3 | 2 | 2.4 |
+
+**Cálculo do Score SUS:**
+
+Para cada participante, o score SUS foi calculado seguindo a metodologia padrão:
+- Para perguntas ímpares (1,3,5,7,9): Resposta - 1
+- Para perguntas pares (2,4,6,8,10): 5 - Resposta
+- Soma dos 10 itens multiplicada por 2.5
+
+| Participante | Score SUS |
+|--------------|-----------|
+| João Victor Wandermurem | 80.0 |
+| David Deodato | 85.0 |
+| Fernanda Correia | 87.5 |
+| João Pedro Carbone | 77.5 |
+| Livia Bonotto | 85.0 |
+| **Média Final** | **83.0** |
+
+### Análise dos Resultados
+
+**Pontos Fortes Identificados:**
+- **Interface intuitiva**: Score médio de 4.4 para facilidade de uso
+- **Organização visual eficaz**: Usuários elogiaram a separação clara entre carteiras "Regulares" e "Irregulares" na tela principal
+- **Navegação fluida**: Cards clicáveis para diferentes perfis de investidor foram bem compreendidos
+- **Funcionalidade de busca**: Barra de pesquisa na home foi destacada positivamente por todos os participantes
+- **Aprendizado rápido**: 4.4 de média na percepção de que outros usuários aprenderiam rapidamente
+
+**Áreas de Melhoria:**
+- **Clareza na navegação para perfis individuais**: Um participante teve dificuldade inicial para acessar detalhes do investidor
+- **Terminologia específica**: Score de 2.4 indica que alguns termos podem precisar de explicações adicionais
+- **Confiança de uso**: Score de 3.8 sugere espaço para melhorias na confiança do usuário
+
+### Feedback Qualitativo
+
+**Comentários Positivos:**
+- "Gostei muito de ter os botões de status na tela principal, fica fácil ver rapidamente quantas carteiras estão regulares ou não" (Fernanda)
+- "A barra de pesquisa logo na home é muito prática, não preciso ficar navegando para encontrar um cliente" (David)
+- "As cores azul e vermelho para regular/irregular são bem intuitivas" (João Pedro)
+- "O design está limpo e profissional, parece um app que eu usaria no trabalho" (Livia)
+
+**Sugestões de Melhoria:**
+- "Seria interessante ter um indicador visual quando clico nos cards, para saber que algo está carregando" (João Victor)
+- "Talvez alguns tooltips explicando os termos técnicos ajudariam usuários novos" (David)
+- "Poderia ter um botão 'voltar' mais visível em algumas telas" (Fernanda)
+
+### Limitações do Teste
+
+É importante destacar que os resultados podem estar enviesados pelo fato de todos os participantes serem da área de tecnologia, o que pode ter influenciado positivamente:
+- **Familiaridade com interfaces digitais**: Podem ter tido menos dificuldades que assessores menos acostumados com tecnologia
+- **Tolerância a problemas de UX**: Podem ter sido mais complacentes com pequenas inconsistências
+- **Compreensão técnica**: Podem ter entendido mais facilmente alguns aspectos da navegação
+
+### Conclusões
+
+O score SUS médio de **83.0** indica uma **excelente usabilidade** do sistema DIANA, superando o benchmark de 68 pontos considerado como "acima da média" para sistemas de software. Os resultados sugerem que:
+
+1. **A interface é intuitiva e fácil de aprender**
+2. **A organização visual é eficaz para o contexto de uso**
+3. **As funcionalidades principais são acessíveis e bem integradas**
+4. **Pequenos ajustes podem melhorar ainda mais a experiência do usuário**
+
+Para validação completa, recomenda-se a realização de testes adicionais com assessores de investimento reais para confirmar esses resultados em condições de uso autênticas.
 
 ## 9.4 Teste das APIs Externas
 

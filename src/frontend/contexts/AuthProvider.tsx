@@ -12,6 +12,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,24 +38,49 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const login = async (email: string, password: string) => {
+    
     try {
       setIsLoading(true);
       
-      // Simulate API call - replace with real authentication
-      if (email && password) {
-        const userData = { name: 'João', email };
-        await AsyncStorage.setItem('@auth_token', 'fake_token');
+      // Fazer login real com a API
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        
+        // Assumindo que a resposta tem a estrutura: { token: string, user: { name: string, email: string } }
+        const { idToken, user: userData } = data;
+
+        console.log(`TOKEN_LOGIN: ${idToken}`);
+        console.log(`DATA_LOGIN: ${userData}`);
+        
+        await AsyncStorage.setItem('@auth_token', idToken);
         await AsyncStorage.setItem('@user_data', JSON.stringify(userData));
         
         setIsAuthenticated(true);
         setUser(userData.name);
         
         return { success: true };
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        return { 
+          success: false, 
+          message: errorData.message || 'Credenciais inválidas' 
+        };
       }
       
-      return { success: false, message: 'Credenciais inválidas' };
     } catch (error) {
-      return { success: false, message: 'Erro ao fazer login' };
+      console.error('Login error:', error);
+      return { 
+        success: false, 
+        message: 'Erro ao conectar com o servidor' 
+      };
     } finally {
       setIsLoading(false);
     }

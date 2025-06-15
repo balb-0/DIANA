@@ -1,52 +1,61 @@
+import { ScrollView, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { ScrollView, Text, View } from "react-native";
+import { CarteiraDetailsHeader } from "@/components/carteira-details/carteira-details-header";
 import { useClientes } from "../../contexts/ClientesProvider";
+import { useEffect, useState } from "react";
+import { CarteiraDetailsBody } from "@/components/carteira-details/carteira-details-body";
+import { InvestmentToggle } from "@/components/investment-toggle";
+import { CarteiraDetailsMain } from "@/components/carteira-details/carteira-details-main";
+import CarteiraRecommendations from "@/components/carteira-details/carteira-recommendations";
 
-export default function Investor() {
-    const { investor } = useLocalSearchParams();
-    const { clientesPorPerfil } = useClientes();
+export default function InvestorDetails() {
+  const { investor } = useLocalSearchParams();
+  const { clientes } = useClientes();
+  const [cliente, setCliente] = useState<any>(null);
+  const [activeTab, setActiveTab] = useState<"investments" | "recommendations">(
+    "investments"
+  );
 
-    const todosClientes = [
-        ...clientesPorPerfil.Conservador,
-        ...clientesPorPerfil.Moderado,
-        ...clientesPorPerfil.Sofisticado,
-    ];
-
-    const cliente = todosClientes.find((c) => c.id === Number(investor));
-
-    if (!cliente) {
-        return (
-            <View className="flex-1 justify-center items-center bg-azul-claro-secundario">
-                <Text className="text-azul-escuro-principal text-xl font-bold">Cliente não encontrado!</Text>
-            </View>
-        );
+  useEffect(() => {
+    // Find the client with the matching ID
+    const foundCliente = clientes.find((c) => c.id === Number(investor));
+    if (foundCliente) {
+      setCliente(foundCliente);
     }
+  }, [investor, clientes]);
 
-    return (
-        <View className="flex-1 px-4 py-6 bg-azul-claro-secundario">
+  if (!cliente) {
+    return null; // Or a loading state
+  }
 
-            <Text>{cliente.nome}</Text>
-
-            <Text>{cliente.email}</Text>
-
-            <Text>{cliente.cpf}</Text>
-
-            <Text>{cliente.nascimento}</Text>
-
-            <Text>{cliente.telefone}</Text>
-
-            <Text>{cliente.perfilInvestidor}</Text>
-
-            <Text>R$ {cliente.quantiaInvestida.toLocaleString()}</Text>
-
-            <Text>{cliente.bancoInvestido}</Text>
-
-            <Text>{cliente.quantidadeAtivos}</Text>
-
-            <Text className={cliente.status === "Regular" ? "text-green-600" : "text-red-600"}>
-                {cliente.status}
-            </Text>
-        </View>
-
-    );
+  return (
+    <View className="flex-1 bg-azul-claro-principal">
+      <ScrollView
+        className="flex-1"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 96 }}
+      >
+        <CarteiraDetailsHeader
+          name={cliente.nome}
+          email={cliente.email}
+          phone={cliente.telefone}
+          cpf={cliente.cpf}
+          birthDate={cliente.nascimento}
+        />
+        <CarteiraDetailsMain
+          totalAmount={20460.57}
+          irregularAmount={3215.21}
+          irregularPercentage={30}
+          currentProfile="Conservador"
+          recommendedProfile="Moderado"
+        />
+        <InvestmentToggle activeTab={activeTab} onToggle={setActiveTab} />
+        {activeTab === "investments" ? (
+          <CarteiraDetailsBody />
+        ) : (
+          <CarteiraRecommendations />
+        )}
+      </ScrollView>
+    </View>
+  );
 }
