@@ -781,13 +781,94 @@ Ref: historico_risco_calculado.clientes_id > clientes.id
 &emsp;Em resumo, o modelo foi construído para ser flexível e escalável, fornecendo rastreabilidade temporal e permitindo a expansão futura para auditoria, governança e recomendações automatizadas de alocação.
 
 ## 4.4 Modelo Físico de Dados
-_conteúdo_
 
-**Nota:** Insira uma explicação e direcionamento para o readme.md da pasta database.
+&emsp;O modelo físico de dados foi implementado em **PostgreSQL** com foco em robustez, integridade e automação de regras de negócio. A estrutura contempla não apenas as tabelas e relacionamentos, mas também um conjunto abrangente de **procedures**, **funções** e **triggers** que garantem a consistência dos dados e automatizam processos críticos do sistema.
+
+### Procedures e Funções Implementadas
+
+&emsp;Para garantir a integridade dos dados e automatizar cálculos essenciais, foram desenvolvidas diversas procedures e funções que operam diretamente no banco de dados:
+
+#### **Funções de Cálculo de Perfil de Risco**
+
+- **`recalcular_perfil_risco()`**: Função principal que **recalcula automaticamente o perfil de risco** de um cliente sempre que há alterações em seus investimentos. Esta função:
+  - Analisa a composição da carteira (Renda Fixa vs Renda Variável)
+  - Determina se o cliente se enquadra nos perfis: **Conservador** (≥90% RF), **Moderado** (intermediário) ou **Sofisticado** (≥70% RV)
+  - Gera automaticamente um ID único para o histórico
+  - Registra o resultado no `historico_risco_calculado`
+
+- **`obter_perfil_risco_cliente(cliente_id VARCHAR)`**: Retorna o **perfil de risco mais recente e completo** do cliente, incluindo:
+  - Tipo de perfil (Conservador/Moderado/Sofisticado)
+  - Percentual de Renda Variável e Renda Fixa
+  - Valor total da carteira
+  - Data do cálculo
+  - Nome e ID do cliente
+
+- **`obter_perfil_cliente(cliente_id VARCHAR)`**: Função simplificada que retorna apenas o **tipo de perfil de risco** mais recente do cliente.
+
+#### **Funções de Análise de Conformidade**
+
+- **`obter_quantidade_clientes_conformes()`**: Calcula e retorna o **número de clientes conformes** - aqueles cujo perfil de risco declarado está alinhado com o perfil calculado mais recentemente.
+
+- **`obter_quantidade_clientes_inconformes()`**: Retorna a **quantidade de clientes inconformes** - aqueles que apresentam divergência entre o perfil declarado e o perfil calculado, indicando necessidade de readequação.
+
+- **`obter_quantidade_clientes_conformes_por_perfil()`**: Agrupa e conta **clientes conformes por tipo de perfil** de risco, retornando uma tabela com:
+  - `perfil`: Tipo do perfil (risco_enum)
+  - `quantidade`: Número de clientes conformes para cada perfil
+
+#### **Procedure de Relatório Consolidado**
+
+- **`obter_soma_conformes_inconformes(OUT total_conforme INT, OUT total_inconforme INT)`**: Procedure que utiliza **parâmetros de saída** (`OUT`) para fornecer simultaneamente:
+  - Total de clientes conformes
+  - Total de clientes inconformes
+  - Otimiza consultas que necessitam de ambos os valores
+
+#### **Triggers de Automação**
+
+&emsp;O sistema conta com triggers configurados para garantir que o perfil de risco seja **recalculado automaticamente** sempre que houver alterações na tabela de investimentos:
+
+| Trigger | Evento Disparador | Função Executada | Condição |
+|---------|------------------|------------------|----------|
+| `after_investimento_insert` | Após inserção de novo investimento | `recalcular_perfil_risco()` | Todos os inserts |
+| `after_investimento_update` | Após atualização de investimento | `recalcular_perfil_risco()` | Apenas quando `valorTotal` ou `ativos_id` mudam |
+| `after_investimento_delete` | Após exclusão de investimento | `recalcular_perfil_risco()` | Todas as exclusões |
+
+#### **Regras de Classificação de Perfil**
+
+&emsp;A lógica de classificação implementada na função `recalcular_perfil_risco()` segue os seguintes critérios:
+
+- **Conservador**: ≥ 90% da carteira em Renda Fixa
+- **Sofisticado**: ≥ 70% da carteira em Renda Variável  
+- **Moderado**: Demais distribuições (intermediário)
+
+#### **Vantagens da Implementação**
+
+&emsp;A escolha por implementar a lógica de negócio diretamente no banco de dados através de procedures e triggers oferece:
+
+- **Consistência de Dados**: Garante que os perfis de risco estejam sempre atualizados, independentemente da origem da alteração
+- **Performance**: Evita múltiplas consultas e cálculos no lado da aplicação
+- **Integridade**: Reduz a possibilidade de inconsistências causadas por falhas na aplicação
+- **Auditoria**: Facilita o rastreamento de mudanças e cálculos realizados através dos históricos
+- **Escalabilidade**: Permite que múltiplas aplicações utilizem as mesmas regras de negócio
+- **Automação**: Triggers garantem que nenhuma alteração passe despercebida
+
+&emsp;Esta arquitetura foi projetada para ser **flexível e escalável**, fornecendo rastreabilidade temporal através dos históricos de risco declarado e calculado, além de permitir expansões futuras para funcionalidades de auditoria, governança e sistemas automatizados de recomendação de alocação de ativos.
+
+**Resumo das Implementações:**
+- **6 Funções** de cálculo e consulta
+- **1 Procedure** de relatório consolidado  
+- **3 Triggers** de automação
+- **Comentários** documentando cada implementação
+- **Tipagem forte** com uso de ENUMs e tipos personalizados
+
+**Nota:** Para informações detalhadas sobre a implementação do banco de dados, consulte o arquivo `README.md` localizado na pasta `src/database/`. Este documento contém também dados de teste pré-configurados, comandos SQL de exemplo para testar as funcionalidades e orientações completas para manutenção do sistema de banco de dados.
 
 # 5. Solução Técnica (Design)
 
+_conteúdo_
+
 ## 5.1 Diagrama de Casos de Uso
+
+_conteúdo_
 
 ### 5.1.1 Visão Geral do Sistema
 
