@@ -864,11 +864,11 @@ Ref: historico_risco_calculado.clientes_id > clientes.id
 
 # 5. Solução Técnica (Design)
 
-_conteúdo_
+Esta seção apresenta a arquitetura técnica, diagramas e principais decisões de design do sistema, detalhando como as funcionalidades são implementadas e integradas.
 
 ## 5.1 Diagrama de Casos de Uso
 
-_conteúdo_
+Aqui são descritos os principais casos de uso do sistema, seus atores e as interações essenciais para o funcionamento da solução.
 
 ### 5.1.1 Visão Geral do Sistema
 
@@ -1161,7 +1161,7 @@ Define os níveis de assessores possíveis no sistema:
 
 ## 5.3 Diagrama de Componentes da UML
 
-  &emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
+&emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
 
 <div align="center">
 <sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
@@ -1298,16 +1298,294 @@ Define os níveis de assessores possíveis no sistema:
 
 
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
-_conteúdo_
+
+&emsp;Este capítulo descreve a arquitetura de infraestrutura do sistema, detalhando como os componentes são implantados, as decisões técnicas de deployment e as considerações de segurança e performance. O sistema foi projetado para ser totalmente containerizado usando Docker, garantindo portabilidade, escalabilidade e facilidade de manutenção.
 
 ## 6.1 Diagrama de Implantação da UML
-_conteúdo_
+
+&emsp;O diagrama de implantação apresenta a arquitetura física do sistema, demonstrando como os componentes de software são distribuídos entre os nós de hardware e como eles se comunicam através da rede.
+
+```mermaid
+flowchart TB
+    subgraph "AWS Cloud"
+        subgraph "EC2 Instance (Ubuntu 22.04)"
+            subgraph "Docker Containers"
+                Backend["🔧 BTG Backend<br/>.NET 8.0 API<br/>Port: 8080<br/>Resources: 1GB RAM, 1 CPU"]
+                RecommendAPI["🤖 Recommendation API<br/>FastAPI (Python)<br/>Port: 8000<br/>Resources: 2GB RAM, 2 CPU"]
+                MongoDB["🗄️ MongoDB<br/>Audit System<br/>Port: 27017<br/>Resources: 512MB RAM, 0.5 CPU"]
+                MongoExpress["🖥️ Mongo Express<br/>Admin Interface<br/>Port: 8081<br/>Resources: 256MB RAM, 0.25 CPU"]
+            end
+        end
+        
+        subgraph "Amazon RDS"
+            PostgreSQL["🗃️ PostgreSQL 16<br/>BTG Database<br/>Port: 5432<br/>Multi-AZ, Backups, Encryption"]
+        end
+    end
+    
+    subgraph "Mobile Devices"
+        MobileApp["📱 React Native App<br/>Expo Application<br/>Android (Primary)<br/>iOS (Future)"]
+    end
+    
+    subgraph "Google Cloud"
+        Firebase["🔐 Firebase Services<br/>Authentication<br/>SDK"]
+    end
+    
+    %% Conexões principais
+    MobileApp -->|HTTPS/REST API| Backend
+    MobileApp -->|Authentication| Firebase
+    Backend -->|Database Connection| PostgreSQL
+    Backend -->|ML Requests| RecommendAPI
+    RecommendAPI -->|Audit Logs| MongoDB
+    MongoExpress -->|Admin Access| MongoDB
+    Backend -->|Token Validation| Firebase
+    
+    %% Styling
+    classDef awsService fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#fff
+    classDef container fill:#0066CC,stroke:#003366,stroke-width:2px,color:#fff
+    classDef mobile fill:#00C851,stroke:#007E33,stroke-width:2px,color:#fff
+    classDef firebase fill:#FFA000,stroke:#FF6F00,stroke-width:2px,color:#fff
+    
+    class Backend,RecommendAPI,MongoDB,MongoExpress container
+    class PostgreSQL awsService
+    class MobileApp mobile
+    class Firebase firebase
+```
+
+<div align="center">
+<sub>Figura X - Diagrama de Implantação UML</sub><br>
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+### Ambiente de Produção - AWS EC2
+
+&emsp;O sistema é implantado em uma instância **Amazon EC2** executando **Ubuntu 22.04 LTS**, que hospeda todos os serviços containerizados. A escolha por uma única instância EC2 se justifica pela natureza MVP do projeto e pela facilidade de gerenciamento, com possibilidade de escalabilidade horizontal futura.
+
+#### Componentes Implantados:
+
+**1. Container: BTG Backend (.NET 8.0)**
+- **Porta**: 8080
+- **Função**: API principal do sistema com autenticação Firebase
+- **Recursos**: 1GB RAM, 1 CPU core
+- **Dependências**: PostgreSQL (gerenciado), Firebase Authentication
+
+**2. Container: Recommendation API (Python/FastAPI)**
+- **Porta**: 8000  
+- **Função**: Processamento de ML e geração de recomendações
+- **Recursos**: 2GB RAM, 2 CPU cores
+- **Dependências**: Modelos ML pré-treinados, dados CSV
+
+**3. Container: MongoDB**
+- **Porta**: 27017
+- **Função**: Sistema de auditoria e logs
+- **Recursos**: 512MB RAM, 0.5 CPU core
+- **Persistência**: Volume Docker para dados
+
+**4. Container: Mongo Express**
+- **Porta**: 8081
+- **Função**: Interface administrativa para MongoDB
+- **Recursos**: 256MB RAM, 0.25 CPU core
+
+#### Banco de Dados Gerenciado - Amazon RDS PostgreSQL
+
+&emsp;O banco de dados principal utiliza **Amazon RDS PostgreSQL 16**, proporcionando:
+- **Alta disponibilidade** com Multi-AZ deployment
+- **Backups automatizados** com retenção de 7 dias
+- **Monitoramento** integrado via CloudWatch
+- **Segurança** com encryption at rest e in transit
+- **Escalabilidade** vertical conforme demanda
+
+### Dispositivos Cliente
+
+&emsp;**Aplicativo Mobile (React Native/Expo)**
+- **Plataformas**: Android (primário), iOS (futuro)
+- **Conectividade**: HTTPS para API Backend
+- **Autenticação**: Firebase Authentication
+- **Comunicação**: RESTful APIs via JSON
 
 ## 6.2 Justificativa das Escolhas de Implantação
-_conteúdo_
+
+### Containerização com Docker
+
+&emsp;A adoção do **Docker** como tecnologia de containerização oferece múltiplos benefícios:
+
+#### Vantagens Técnicas:
+- **Isolamento de ambiente**: Cada serviço executa em seu próprio container isolado
+- **Reprodutibilidade**: Garantia de que o ambiente de desenvolvimento é idêntico ao de produção
+- **Portabilidade**: Facilita migração entre diferentes provedores de nuvem
+- **Gestão de dependências**: Cada container possui suas próprias dependências versionadas
+- **Facilidade de deployment**: Deploy com um único comando (`docker-compose up --build`)
+
+#### Orquestração com Docker Compose:
+```yaml
+# Estrutura simplificada do docker-compose.yml
+services:
+  backend:          # API .NET principal
+  api_recomendacao: # API Python ML
+  mongodb_auditoria: # Sistema de auditoria
+  mongo-express:    # Interface administrativa
+```
+
+### Arquitetura de Microserviços
+
+&emsp;O sistema adota uma abordagem de microserviços com separação clara de responsabilidades:
+
+#### Backend Principal (.NET):
+- **Responsabilidade**: Autenticação, CRUD de dados, orquestração de negócio
+- **Tecnologia**: ASP.NET Core 8.0 com Entity Framework
+- **Padrão**: Repository Pattern e Dependency Injection
+- **Segurança**: Middleware de autenticação Firebase JWT
+
+#### API de Recomendação (Python):
+- **Responsabilidade**: Processamento de Machine Learning e geração de recomendações
+- **Tecnologia**: FastAPI com scikit-learn e pandas
+- **Modelos**: KMeans clustering e matrizes de similaridade
+- **Dados**: Processamento de arquivos CSV com dados financeiros
+
+#### Sistema de Auditoria (MongoDB):
+- **Responsabilidade**: Log de todas as requisições de recomendação
+- **Tecnologia**: MongoDB 7.0 com índices otimizados
+- **Funcionalidade**: TTL para limpeza automática, métricas agregadas
+- **Interface**: Mongo Express para visualização administrativa
+
+### Banco de Dados como Serviço
+
+&emsp;A utilização do **Amazon RDS PostgreSQL** oferece:
+
+#### Benefícios Operacionais:
+- **Backup automatizado**: Eliminação de pontos únicos de falha
+- **Patches automáticos**: Atualizações de segurança sem intervenção manual
+- **Monitoramento integrado**: CloudWatch para métricas de performance
+- **Escalabilidade gerenciada**: Read replicas e vertical scaling sob demanda
+
+#### Configuração de Conexão:
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Host=btg-postgres.region.rds.amazonaws.com;Database=btg_db;Username=btg_user;Password=btg_pass;Port=5432"
+}
+```
+
+### Autenticação Externa com Firebase
+
+&emsp;A integração com **Firebase Authentication** proporciona:
+- **Segurança empresarial**: Padrões OAuth 2.0 e OpenID Connect
+- **Escalabilidade global**: Infraestrutura do Google Cloud
+- **Facilidade de integração**: SDKs nativos para React Native e .NET
+- **Gerenciamento centralizado**: Dashboard administrativo para usuários
 
 ## 6.3 Considerações sobre Desempenho e Segurança
-_conteúdo_
+
+### Performance e Otimização
+
+#### Estratégias de Cache:
+- **Application-level caching**: Implementação de cache em memória para consultas frequentes
+- **Database query optimization**: Uso de índices compostos e procedures otimizadas
+- **Container resource limits**: Limitação de recursos para evitar contenção
+
+#### Monitoramento de Performance:
+```yaml
+# Health checks implementados
+healthcheck:
+  test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+  interval: 30s
+  timeout: 10s
+  retries: 3
+```
+
+#### Métricas Coletadas:
+- **Latência de resposta** das APIs
+- **Throughput** de requisições por segundo
+- **Utilização de recursos** (CPU, memória, I/O)
+- **Logs de erro** centralizados
+
+### Segurança da Aplicação
+
+#### Autenticação e Autorização:
+- **Firebase JWT**: Tokens de acesso com expiração automática
+- **Middleware de segurança**: Validação de tokens em todas as rotas protegidas
+- **HTTPS obrigatório**: Toda comunicação criptografada via TLS 1.3
+
+#### Proteção de Dados:
+```json
+// Configuração segura no appsettings.json
+"Firebase": {
+  "ProjectId": "diana-446a1",
+  "ServiceAccountKeyPath": "./diana-446a1-firebase-adminsdk-fbsvc-cfd405b774.json"
+}
+```
+
+#### Segurança de Infraestrutura:
+- **Security Groups AWS**: Firewall com regras restritivas por porta
+- **VPC isolada**: Rede privada virtual para comunicação entre serviços
+- **Secrets management**: Credenciais sensíveis em variáveis de ambiente
+- **Container isolation**: Containers sem privilégios administrativos
+
+#### Auditoria e Compliance:
+- **Logs centralizados**: Todas as operações auditadas no MongoDB
+- **Retention policy**: Logs mantidos por 24 meses com TTL automático
+- **Data encryption**: Dados em repouso e em trânsito criptografados
+- **Access logs**: Rastreamento completo de acessos e operações
+
+### Procedimentos de Implantação
+
+#### Pré-requisitos de Deploy:
+
+1. **Configuração da instância EC2**:
+```bash
+# Instalação do Docker e Docker Compose
+sudo apt update && sudo apt install -y docker.io docker-compose-v2
+sudo usermod -aG docker $USER
+```
+
+2. **Criação da pasta de dados**:
+```bash
+# Pasta necessária para a Recommendation API
+mkdir -p src/recomendationAPI/data
+# Copiar arquivos CSV de treinamento
+```
+
+3. **Configuração do Firebase**:
+```bash
+# Adicionar arquivo de autenticação Firebase
+cp diana-446a1-firebase-adminsdk-fbsvc-cfd405b774.json src/backend/
+```
+
+4. **Deploy da aplicação**:
+```bash
+# Clone do repositório na EC2
+git clone <repository-url>
+cd 2025-1B-T13-ES06-G03/src
+
+# Configuração de variáveis de ambiente para RDS
+export DB_HOST=btg-postgres.region.rds.amazonaws.com
+export DB_PASSWORD=<senha-segura>
+
+# Deploy completo
+docker-compose up --build -d
+```
+
+#### Monitoramento Pós-Deploy:
+```bash
+# Verificação do status dos serviços
+docker-compose ps
+docker-compose logs -f backend
+docker-compose logs -f api_recomendacao
+```
+
+### Backup e Recuperação
+
+#### Estratégia de Backup:
+- **RDS PostgreSQL**: Backups automáticos diários com retenção de 7 dias
+- **MongoDB**: Volumes Docker com snapshot semanal da EC2
+- **Aplicação**: Código versionado no Git com tags de release
+- **Dados ML**: Modelos treinados versionados no repositório
+
+#### Plano de Recuperação:
+1. **Falha de serviço**: Restart automático via Docker restart policies
+2. **Falha de dados**: Restore do backup RDS mais recente
+3. **Falha de instância**: Provisioning de nova EC2 com mesmo setup
+4. **Disaster recovery**: Backup cross-region para recuperação completa
+
+&emsp;Esta arquitetura garante alta disponibilidade, segurança e facilidade de manutenção, atendendo aos requisitos não funcionais estabelecidos e proporcionando base sólida para escalabilidade futura do sistema.
 
 # 7. Projeto Visual da Solução
 
