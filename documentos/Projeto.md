@@ -88,7 +88,7 @@
 
 
 # 1. Introdução
-_conteúdo_
+&emsp;O projeto Diana tem como objetivo desenvolver um aplicativo mobile que auxilia assessores de investimento do BTG Pactual na análise e verificação da conformidade entre o perfil de risco declarado pelos clientes e a composição real de suas carteiras de investimento.
 
 ## 1.1 Termos e Abreviações
 
@@ -295,11 +295,11 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 
 ## 2.5.1 Cadeia de Valor
 
-&nbsp;&nbsp; Esta seção detalha a cadeia de valor do aplicativo de verificação de perfil de investidor desenvolvido para o BTG Pactual. O objetivo é mapear e compreender as principais atividades envolvidas na geração de valor para o cliente, desde a entrada de dados até a entrega de uma análise precisa de conformidade regulatória. A estrutura apresentada considera os processos principais, de suporte e de gestão, bem como os indicadores de desempenho e o alinhamento com o ciclo de BPM (Business Process Management).
+&emsp; Esta seção detalha a cadeia de valor do aplicativo de verificação de perfil de investidor desenvolvido para o BTG Pactual. O objetivo é mapear e compreender as principais atividades envolvidas na geração de valor para o cliente, desde a entrada de dados até a entrega de uma análise precisa de conformidade regulatória. A estrutura apresentada considera os processos principais, de suporte e de gestão, bem como os indicadores de desempenho e o alinhamento com o ciclo de BPM (Business Process Management).
 
 ### Cadeia de Valor – App de Verificação de Perfil de Investidor (BTG Pactual)
 
-&nbsp;&nbsp; O processo principal inicia com a importação dos dados de clientes e suas carteiras de ativos. Esses dados alimentam o classificador automático do aplicativo, que calcula o perfil do investidor com base na regulamentação da CVM (Resolução 175). A seguir, o sistema compara esse perfil calculado com o perfil cadastrado, apontando divergências e sugerindo readequações. Todo esse fluxo é apresentado de forma visual em um painel interativo, facilitando a análise e a tomada de decisão. O objetivo final é garantir a aderência entre o portfólio do cliente e seu perfil, promovendo transparência, governança e segurança regulatória.
+&emsp; O processo principal inicia com a importação dos dados de clientes e suas carteiras de ativos. Esses dados alimentam o classificador automático do aplicativo, que calcula o perfil do investidor com base na regulamentação da CVM (Resolução 175). A seguir, o sistema compara esse perfil calculado com o perfil cadastrado, apontando divergências e sugerindo readequações. Todo esse fluxo é apresentado de forma visual em um painel interativo, facilitando a análise e a tomada de decisão. O objetivo final é garantir a aderência entre o portfólio do cliente e seu perfil, promovendo transparência, governança e segurança regulatória.
 
 ---
 
@@ -374,8 +374,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 
 ## 2.5.2 Fluxo de Negócio Proposto (AS-IS e TO-BE)
 
-
-A modelagem dos fluxos de negócio AS-IS e TO-BE, apresentada a seguir via BPMN, é fundamental para visualizar as limitações do processo atual e o valor agregado pela solução proposta.
+&emsp;A modelagem dos fluxos de negócio AS-IS e TO-BE, apresentada a seguir via BPMN, é fundamental para visualizar as limitações do processo atual e o valor agregado pela solução proposta.
 
 [Link de acesso aos fluxos no Miro](https://miro.com/app/board/uXjVIGy2aYQ=/?share_link_id=918758245621)
 
@@ -386,7 +385,8 @@ A modelagem dos fluxos de negócio AS-IS e TO-BE, apresentada a seguir via BPMN,
 <sub>Fonte: Material produzido pelos autores (2025).</sub>
 </div>
 <br>
-O fluxo atual de recomendação e adequação de investimentos depende significativamente da análise manual do assessor. Este processo apresenta desafios como:
+
+&emsp;O fluxo atual de recomendação e adequação de investimentos depende significativamente da análise manual do assessor. Este processo apresenta desafios como:
 
 * **Contexto Limitado:** O assessor muitas vezes opera com informações de perfil do investidor que podem não refletir completamente a adequação da carteira atual do cliente às normativas vigentes da CVM (como a Resolução 175).
 * **Análise Manual Intensiva:** A verificação da adequação e a filtragem de produtos compatíveis são realizadas manualmente, consumindo tempo e tornando difícil garantir consistência e personalização em escala.
@@ -401,7 +401,7 @@ O fluxo atual de recomendação e adequação de investimentos depende significa
 <sub>Fonte: Material produzido pelos autores (2025).</sub>
 </div>
 <br>
-A introdução do aplicativo móvel redesenha o fluxo de negócio para superar as limitações atuais. Os principais ganhos incluem:
+&emsp; A introdução do aplicativo móvel redesenha o fluxo de negócio para superar as limitações atuais. Os principais ganhos incluem:
 
 
 * **Recomendações Contextualizadas:** A solução considera o histórico do cliente e utiliza filtros para sugerir ajustes ou novas recomendações de investimento que sejam verdadeiramente personalizadas e aderentes ao perfil de risco e objetivos do investidor.
@@ -450,9 +450,9 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 ## 2.8 Canvas do Projeto
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;O Canvas MVP é uma ferramenta visual utilizada para estruturar, de forma rápida e simples, os principais elementos de um MVP (Mínimo Produto Viável). O seu objetivo é alinhar a equipe quanto à proposta da solução, as funcionalidades prioritárias, os públicos-alvo atendidos, jornadas de usuário, expectativas e métricas que validarão as hipóteses do negócio.
+&emsp;O Canvas MVP é uma ferramenta visual utilizada para estruturar, de forma rápida e simples, os principais elementos de um MVP (Mínimo Produto Viável). O seu objetivo é alinhar a equipe quanto à proposta da solução, as funcionalidades prioritárias, os públicos-alvo atendidos, jornadas de usuário, expectativas e métricas que validarão as hipóteses do negócio.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Segue abaixo, o canvas MVP da aplicação web desenvolvido a partir das atividades realizadas durante o workshop com o parceiro.
+&emsp;Segue abaixo, o canvas MVP da aplicação web desenvolvido a partir das atividades realizadas durante o workshop com o parceiro.
 
 <div align="center">
 <sub>Figura x - Canvas MVP do projeto</sub><br>
@@ -686,7 +686,7 @@ A introdução do aplicativo móvel redesenha o fluxo de negócio para superar a
 
   Um assessor pode monitorar diversos clientes, e ao mesmo tempo cada cliente é acompanhado por um único assessor.
 
-&emsp; O modelo conceitual existe para ser acessível a olhares diferentes do técnico. Dessa forma, é implicito neste o uso de tabelas intermediárias para relações N:N e entidades fracas, como as de log. Essas estarão representadas na seção [4.3](#43-modelo-lógico-de-dados) e [4.4](#44-modelo-físico-de-dados) — modelo físico e lógico de dados respectivamente.
+&emsp;O modelo conceitual existe para ser acessível a olhares diferentes do técnico. Dessa forma, é implicito neste o uso de tabelas intermediárias para relações N:N e entidades fracas, como as de log. Essas estarão representadas na seção [4.3](#43-modelo-lógico-de-dados) e [4.4](#44-modelo-físico-de-dados) — modelo físico e lógico de dados respectivamente.
 
 ## 4.3 Modelo Lógico de Dados
 
@@ -1090,11 +1090,11 @@ Define os níveis de assessores possíveis no sistema:
 
 ## Arquitetura em Camadas do Aplicativo
 
-O sistema segue uma arquitetura em camadas, organizada em: **Camada de Apresentação**, **Camada de Negócio** e **Camada de Dados**, fragmentadas nos componentes conforme o diagrama. Abaixo descrevemos os blocos responsáveis por cada funcionalidade:
+&emsp;O sistema segue uma arquitetura em camadas, organizada em: **Camada de Apresentação**, **Camada de Negócio** e **Camada de Dados**, fragmentadas nos componentes conforme o diagrama. Abaixo descrevemos os blocos responsáveis por cada funcionalidade:
 
 ### Camada de Apresentação (Frontend Mobile)
 
-A interface principal para os assessores do BTG é o **Aplicativo Mobile**, responsável por coletar dados do usuário, exibir informações de perfil, recomendações e alertas de conformidade.
+&emsp;A interface principal para os assessores do BTG é o **Aplicativo Mobile**, responsável por coletar dados do usuário, exibir informações de perfil, recomendações e alertas de conformidade.
 
 #### Componentes:
 - **Aplicativo Mobile (React Native):** Permite a interação do usuário com o sistema.
@@ -1109,7 +1109,7 @@ A interface principal para os assessores do BTG é o **Aplicativo Mobile**, resp
 
 ### Camada de Negócio (Backend / Orquestração)
 
-Responsável por orquestrar o processamento, validações e geração de recomendações com base nas informações fornecidas pelos usuários e dados do BTG.
+&emsp;Responsável por orquestrar o processamento, validações e geração de recomendações com base nas informações fornecidas pelos usuários e dados do BTG.
 
 #### Componentes:
 - **Service:** Intermediário entre o app, o Firebase e os módulos internos do backend. Gerencia lógica de fluxo e chamadas de API.
@@ -1125,7 +1125,7 @@ Responsável por orquestrar o processamento, validações e geração de recomen
 
 ### Camada de Dados
 
-Abriga os dados estruturados e operacionais do sistema.
+&emsp;Abriga os dados estruturados e operacionais do sistema.
 
 #### Componentes:
 - **PostgreSQL:** Banco relacional para armazenamento de perfis de investidores, carteiras, registros de recomendação e histórico.
@@ -1139,7 +1139,7 @@ Abriga os dados estruturados e operacionais do sistema.
 
 ## 5.4 Diagramas de Sequência da UML
 
-&emsp; Este fluxo descreve o processo de autenticação e análise de perfis com inconsistências no sistema, incluindo o uso de filtros para refinar a consulta. O sistema é acessado por um assessor via aplicativo mobile, e os dados são processados por um serviço de backend que utiliza um banco PostgreSQL.
+&emsp;Este fluxo descreve o processo de autenticação e análise de perfis com inconsistências no sistema, incluindo o uso de filtros para refinar a consulta. O sistema é acessado por um assessor via aplicativo mobile, e os dados são processados por um serviço de backend que utiliza um banco PostgreSQL.
 
 <div align="center">
 <sub>Figura x - Diagrama de Filtro UML</sub><br>
@@ -1230,11 +1230,11 @@ _conteúdo_
 
 # 7. Projeto Visual da Solução
 
-Antes da implementação de qualquer solução digital, é fundamental estruturar visualmente as funcionalidades e a experiência do usuário. Por isso, o desenvolvimento do **wireframe** e do **mockup** representa uma etapa estratégica no processo de design de interfaces.
+&emsp;Antes da implementação de qualquer solução digital, é fundamental estruturar visualmente as funcionalidades e a experiência do usuário. Por isso, o desenvolvimento do **wireframe** e do **mockup** representa uma etapa estratégica no processo de design de interfaces.
 
-O **wireframe** atua como o esqueleto do aplicativo, permitindo mapear e testar a **estrutura, hierarquia da informação e fluxos de navegação**, sem distrações com elementos visuais. No nosso caso, o foco *Mobile First* orientou todas as decisões para garantir usabilidade, clareza e agilidade na experiência do assessor em dispositivos móveis — onde o espaço é limitado e a interação depende de toques e gestos.
+&emsp;O **wireframe** atua como o esqueleto do aplicativo, permitindo mapear e testar a **estrutura, hierarquia da informação e fluxos de navegação**, sem distrações com elementos visuais. No nosso caso, o foco *Mobile First* orientou todas as decisões para garantir usabilidade, clareza e agilidade na experiência do assessor em dispositivos móveis — onde o espaço é limitado e a interação depende de toques e gestos.
 
-Já o **mockup** transforma essa estrutura bruta em uma representação visual mais refinada e próxima do produto final. Ele incorpora **cores, ícones, fontes, espaçamentos e feedbacks visuais**, além de simular interações e transições, ajudando a validar a estética e a identidade visual com todos os stakeholders do projeto.
+&emsp;Já o **mockup** transforma essa estrutura bruta em uma representação visual mais refinada e próxima do produto final. Ele incorpora **cores, ícones, fontes, espaçamentos e feedbacks visuais**, além de simular interações e transições, ajudando a validar a estética e a identidade visual com todos os stakeholders do projeto.
 
 Essa jornada do wireframe ao mockup possibilita:
 - Detectar e corrigir problemas de usabilidade antes da codificação;
@@ -1243,13 +1243,13 @@ Essa jornada do wireframe ao mockup possibilita:
 
 
 
-O projeto visual da solução foi desenvolvido com foco na abordagem *Mobile First*, garantindo acessibilidade e usabilidade otimizadas para dispositivos móveis. O aplicativo tem como objetivo auxiliar assessores do BTG Pactual na verificação da conformidade entre o perfil de investidor e a alocação de ativos dos clientes, conforme a Resolução CVM 175.
+&emsp;O projeto visual da solução foi desenvolvido com foco na abordagem *Mobile First*, garantindo acessibilidade e usabilidade otimizadas para dispositivos móveis. O aplicativo tem como objetivo auxiliar assessores do BTG Pactual na verificação da conformidade entre o perfil de investidor e a alocação de ativos dos clientes, conforme a Resolução CVM 175.
 
 ---
 
 ## 7.1 Desenvolvimento de Wireframes
 
-Os wireframes foram elaborados no Figma utilizando boas práticas de design responsivo, como:
+&emsp;Os wireframes foram elaborados no Figma utilizando boas práticas de design responsivo, como:
 
 - **Auto Layout**, **Componentes reutilizáveis** e **Propriedades** para escalabilidade.
 - **Espaçamentos múltiplos de 4px** e **grid de 8 colunas com 8px de *gutter*** para organização visual.
@@ -1284,7 +1284,7 @@ Os wireframes foram elaborados no Figma utilizando boas práticas de design resp
 
 ## 7.2 Desenvolvimento de Mockups
 
-Os mockups foram desenvolvidos com base no wireframe aprovado, refletindo a identidade visual do parceiro BTG Pactual. Utilizamos:
+&emsp;Os mockups foram desenvolvidos com base no wireframe aprovado, refletindo a identidade visual do parceiro BTG Pactual. Utilizamos:
 
 - **Cores institucionais**:  
   - Azul escuro `#001E62` (primária);  
@@ -1298,7 +1298,7 @@ Os mockups foram desenvolvidos com base no wireframe aprovado, refletindo a iden
 
 ### Navegabilidade
 
-O mockup possui fluxo interativo completo com transições suaves e simulação realista da navegação no app, permitindo que o usuário explore:
+&emsp;O mockup possui fluxo interativo completo com transições suaves e simulação realista da navegação no app, permitindo que o usuário explore:
 
 - Login, cadastro e recuperação de senha;
 - Home com KPIs principais;
@@ -1308,7 +1308,7 @@ O mockup possui fluxo interativo completo com transições suaves e simulação 
 
 ### Consistência com o Wireframe
 
-Todos os elementos de estrutura e navegação definidos nos wireframes foram mantidos. A navegação é fluida e intuitiva, com feedback visual em todas as ações simuladas.
+&emsp;Todos os elementos de estrutura e navegação definidos nos wireframes foram mantidos. A navegação é fluida e intuitiva, com feedback visual em todas as ações simuladas.
 
 ### Visualização
 
@@ -1324,17 +1324,16 @@ Todos os elementos de estrutura e navegação definidos nos wireframes foram man
 
 ## 7.3 Guia Visual
 
-#
-O Guia Visual foi elaborado de forma colaborativa durante o processo de desenvolvimento dos mockups. A intenção foi garantir **consistência visual, identidade clara e fácil manutenção do design** ao longo das iterações.
+&emsp;O Guia Visual foi elaborado de forma colaborativa durante o processo de desenvolvimento dos mockups. A intenção foi garantir **consistência visual, identidade clara e fácil manutenção do design** ao longo das iterações.
 
-Nosso ponto de partida foi a paleta de cores institucional do parceiro BTG Pactual, o que nos permitiu alinhar o aplicativo à identidade da marca. Com isso, definimos um esquema de cores que equilibra seriedade e leveza visual. Adicionamos também uma cor de destaque — o vermelho rosado — como uma homenagem à identidade do nosso grupo "Watermelon", trazendo um toque único ao layout.
+&emsp;Nosso ponto de partida foi a paleta de cores institucional do parceiro BTG Pactual, o que nos permitiu alinhar o aplicativo à identidade da marca. Com isso, definimos um esquema de cores que equilibra seriedade e leveza visual. Adicionamos também uma cor de destaque — o vermelho rosado — como uma homenagem à identidade do nosso grupo "Watermelon", trazendo um toque único ao layout.
 
-Além disso, definimos um sistema de componentes reutilizáveis no Figma, adotando padrões como:
+&emsp;Além disso, definimos um sistema de componentes reutilizáveis no Figma, adotando padrões como:
 - **Espaçamento múltiplo de 4px** e **grid de 8 colunas**;
 - **Ícones com peso regular do Phosphor Icons**, garantindo harmonia visual;
 - Tipografia clara e responsiva, assegurando legibilidade em telas pequenas.
 
-Esse guia foi fundamental para manter a uniformidade e a eficiência ao longo do projeto, facilitando tanto o design quanto a futura implementação técnica.
+&emsp;Esse guia foi fundamental para manter a uniformidade e a eficiência ao longo do projeto, facilitando tanto o design quanto a futura implementação técnica.
 
 
 ### Paleta de Cores
@@ -1377,7 +1376,7 @@ _conteúdo_
 
 ## Backend
 
-A estrutura do backend foi organizada por camadas funcionais, com base nos princípios de separação de responsabilidades:
+&emsp;A estrutura do backend foi organizada por camadas funcionais, com base nos princípios de separação de responsabilidades:
 
 ```
 /src
@@ -1393,7 +1392,7 @@ A estrutura do backend foi organizada por camadas funcionais, com base nos princ
 
 ## Frontend
 
-O frontend foi estruturado com uma arquitetura com relativamente baixa separação de responsabilidades e pastas, foco em componentização, reutilização de estilo e integração com o backend:
+&emsp;O frontend foi estruturado com uma arquitetura com relativamente baixa separação de responsabilidades e pastas, foco em componentização, reutilização de estilo e integração com o backend:
 
 ```
 /src/frontend
@@ -1542,7 +1541,7 @@ Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o c
 
 ### Objetivo
 
-O vídeo serve como referência prática para visualizar o funcionamento do frontend e validar o desenvolvimento das interfaces.
+&emsp;O vídeo serve como referência prática para visualizar o funcionamento do frontend e validar o desenvolvimento das interfaces.
 
 ### Pontos-chave
 
@@ -1552,7 +1551,7 @@ O vídeo serve como referência prática para visualizar o funcionamento do fron
 
 ### Uso no projeto
 
-O vídeo será utilizado como material de apoio para revisões, apresentações e documentação do desenvolvimento do frontend.
+&emsp;Será utilizado como material de apoio para revisões, apresentações e documentação do desenvolvimento do frontend.
 
 
 ## 8.3.2 Sprint 4
@@ -1595,7 +1594,7 @@ O vídeo será utilizado como material de apoio para revisões, apresentações 
 
 ### **Procedures e triggers para o banco de dados**
 
-Dentro do diretório `src/database`, foi criado um arquivo dedicado às **procedures** e **triggers**, responsáveis por automatizar lógicas importantes no banco de dados.
+&emsp;Dentro do diretório `src/database`, foi criado um arquivo dedicado às **procedures** e **triggers**, responsáveis por automatizar lógicas importantes no banco de dados.
 
 ## Principais Funções Implementadas
 
@@ -1623,7 +1622,7 @@ Dentro do diretório `src/database`, foi criado um arquivo dedicado às **proced
 
 ## Triggers Configurados
 
-Os seguintes triggers garantem que o perfil de risco seja recalculado automaticamente após alterações na tabela `investimentos`:
+&emsp;Os seguintes triggers garantem que o perfil de risco seja recalculado automaticamente após alterações na tabela `investimentos`:
 
 | Trigger                     | Disparado Quando                     | Ação                                                          |
 |-----------------------------|--------------------------------------|---------------------------------------------------------------|
@@ -2077,25 +2076,25 @@ Para cada participante, o score SUS foi calculado seguindo a metodologia padrão
 
 ### Limitações do Teste
 
-É importante destacar que os resultados podem estar enviesados pelo fato de todos os participantes serem da área de tecnologia, o que pode ter influenciado positivamente:
+&emsp;É importante destacar que os resultados podem estar enviesados pelo fato de todos os participantes serem da área de tecnologia, o que pode ter influenciado positivamente:
 - **Familiaridade com interfaces digitais**: Podem ter tido menos dificuldades que assessores menos acostumados com tecnologia
 - **Tolerância a problemas de UX**: Podem ter sido mais complacentes com pequenas inconsistências
 - **Compreensão técnica**: Podem ter entendido mais facilmente alguns aspectos da navegação
 
 ### Conclusões
 
-O score SUS médio de **83.0** indica uma **excelente usabilidade** do sistema DIANA, superando o benchmark de 68 pontos considerado como "acima da média" para sistemas de software. Os resultados sugerem que:
+&emsp;O score SUS médio de **83.0** indica uma **excelente usabilidade** do sistema DIANA, superando o benchmark de 68 pontos considerado como "acima da média" para sistemas de software. Os resultados sugerem que:
 
 1. **A interface é intuitiva e fácil de aprender**
 2. **A organização visual é eficaz para o contexto de uso**
 3. **As funcionalidades principais são acessíveis e bem integradas**
 4. **Pequenos ajustes podem melhorar ainda mais a experiência do usuário**
 
-Para validação completa, recomenda-se a realização de testes adicionais com assessores de investimento reais para confirmar esses resultados em condições de uso autênticas.
+&emsp;Para validação completa, recomenda-se a realização de testes adicionais com assessores de investimento reais para confirmar esses resultados em condições de uso autênticas.
 
 ## 9.4 Teste das APIs Externas
 
-Esta seção apresenta o planejamento de testes voltados para as APIs externas utilizadas no sistema de recomendação da plataforma BTG. O objetivo é garantir que os componentes que dependem de serviços de terceiros — como autenticação, processamento de recomendações e fornecimento de dados — funcionem corretamente, mesmo em situações adversas. 
+&emsp;Esta seção apresenta o planejamento de testes voltados para as APIs externas utilizadas no sistema de recomendação da plataforma BTG. O objetivo é garantir que os componentes que dependem de serviços de terceiros — como autenticação, processamento de recomendações e fornecimento de dados — funcionem corretamente, mesmo em situações adversas. 
 
 ---
 
@@ -2142,14 +2141,14 @@ As APIs testadas são:
 
 ### Abrangência dos Testes
 
-Este conjunto de testes abrange os principais fluxos de comunicação com APIs externas, considerando:
+&emsp;Este conjunto de testes abrange os principais fluxos de comunicação com APIs externas, considerando:
 
 - Sucesso na autenticação e autorização de usuários.
 - Correto funcionamento do processo de recomendação com entradas válidas.
 - Respostas adequadas a erros de entrada e indisponibilidade de serviços.
 - Cobertura de cenários realistas de uso e falha, contemplando tolerância a falhas.
 
-As instruções de execução são aplicáveis via ferramentas como **Postman**, **Insomnia** ou testes automatizados com bibliotecas como `pytest` + `requests`.
+&emsp;As instruções de execução são aplicáveis via ferramentas como **Postman**, **Insomnia** ou testes automatizados com bibliotecas como `pytest` + `requests`.
 
 
 # 10. Procedimentos de Implantação
