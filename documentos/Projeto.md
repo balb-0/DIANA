@@ -1639,7 +1639,7 @@ Os seguintes triggers garantem que o perfil de risco seja recalculado automatica
 
 &emsp;Começamos pelas atividades de integração e testes. Foram implementados e validados os endpoints de listagem de carteiras, listagem de recomendações, investimentos de clientes e perfil de risco. Também realizamos testes de integração nas principais páginas da aplicação: Página Home, Página de Autenticação, Listagem e Detalhamento de Carteiras. Após essas integrações, foi conduzido um teste geral de toda a aplicação para assegurar o funcionamento coeso do sistema.
 
-&emsp;Em paralelo, a equipe tratou da preparação do ambiente de produção. Foi configurada a conexão com o banco de dados no servidor do Inteli, o backend foi corretamente ajustado e implantado no servidor, e o banco foi populado com dados reais para garantir uma apresentação consistente.
+&emsp;Em paralelo, a equipe tratou da preparação do ambiente de produção. Foi configurada a conexão com o banco de dados em uma instância do Render, o backend foi corretamente ajustado e implantado no servidor do Inteli. O banco também foi populado com dados reais para garantir uma apresentação consistente.
 
 &emsp;Na parte de documentação, finalizamos a seção de desenvolvimento da sprint, bem como a documentação dos testes (unitários, funcionais e não funcionais). Também foram concluídas as entregas de "Gestão Evolutiva de Projetos" e ajustes relacionados ao Escritório de Projetos, fundamentais para o fechamento formal do projeto.
 
