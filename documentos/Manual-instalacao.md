@@ -7,9 +7,10 @@
   </tr>
 </table>
 
-# Nome do Projeto: <nome do projeto>
 
-## Nome do Grupo: <nome do grupo>
+# Nome do Projeto: Diana.
+
+## Nome do Grupo: Watermelon
 
 
 
