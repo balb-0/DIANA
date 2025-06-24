@@ -13,7 +13,7 @@ namespace backend.Repositories
             _connection = connection;
         }
 
-        public async Task<List<ClienteSimplificadoDto>> GetClientesByRiscoDeclaradoAsync(string tipoRisco, string assessorId)
+        public async Task<List<ClienteSimplificadoDto>> GetClientesByRiscoDeclaradoAsync(string tipoRisco)
         {
             string sqlBase = @"
                 SELECT DISTINCT
@@ -27,21 +27,16 @@ namespace backend.Repositories
                     GROUP BY clientes_id
                 ) latest_declared_risk ON hrd.clientes_id = latest_declared_risk.clientes_id 
                                       AND hrd.created_at = latest_declared_risk.max_created_at
-                WHERE c.is_active = true 
-                AND c.assessores_id = @AssessorId";
+                WHERE c.is_active = true";
 
             // Declarar parametros como object para permitir diferentes tipos anônimos
-            object parametros;
+            object parametros = null;
 
             if (!string.Equals(tipoRisco, "geral", StringComparison.OrdinalIgnoreCase))
             {
                 // Usar UPPER para garantir compatibilidade com o ENUM
                 sqlBase += " AND UPPER(hrd.risco::text) = UPPER(@TipoRisco)";
-                parametros = new { AssessorId = assessorId, TipoRisco = tipoRisco };
-            }
-            else
-            {
-                parametros = new { AssessorId = assessorId };
+                parametros = new { TipoRisco = tipoRisco };
             }
 
             sqlBase += " ORDER BY c.nome";
