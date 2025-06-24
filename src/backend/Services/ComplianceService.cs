@@ -11,25 +11,15 @@ namespace backend.Services
         {
             _complianceRepository = complianceRepository;
             _logger = logger;
-        }
-
-        public async Task<int> GetClientsCountAsync(bool nonconforming = false)
+        }        public async Task<int> GetClientsCountAsync(bool nonconforming = false)
         {
-            try
-            {
-                var count = nonconforming 
-                    ? await _complianceRepository.GetNonConformingClientsCountAsync()
-                    : await _complianceRepository.GetConformingClientsCountAsync();
+            var count = nonconforming 
+                ? await _complianceRepository.GetNonConformingClientsCountAsync()
+                : await _complianceRepository.GetConformingClientsCountAsync();
 
-                _logger.LogInformation($"Retrieved {count} {(nonconforming ? "non-conforming" : "conforming")} clients");
-                
-                return count;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in compliance service while retrieving clients count");
-                throw;
-            }
+            _logger.LogInformation($"Retrieved {count} {(nonconforming ? "non-conforming" : "conforming")} clients");
+            
+            return count;
         }
     }
 }
