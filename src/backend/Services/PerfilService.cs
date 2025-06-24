@@ -9,70 +9,39 @@ namespace backend.Services
 
         public PerfilService(string connectionString)
         {
-        _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
+            _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         }
 
         public PerfilDto ObterPerfilDistribuicao(string clienteId)
         {
-            var perfil = ObterPerfilDeRisco(clienteId);
-            var distribuicao = ObterDistribuicao(clienteId);
-
-            return new PerfilDto
-            {
-                Perfil = perfil,
-                Distribuicao = distribuicao,
-            };
-        }
-
-        private string ObterPerfilDeRisco(string id)
-        {
             using var conn = new NpgsqlConnection(_connectionString);
             conn.Open();
 
-            using var cmd = new NpgsqlCommand(@"
-                SELECT risco
-                FROM historico_risco_declarado
-                WHERE clientes_id = @id
-                ORDER BY created_at DESC
-                LIMIT 1;
-            ", conn);
+            using var cmd = new NpgsqlCommand("SELECT * FROM obter_perfil_risco_cliente(@cliente_id)", conn);
+            cmd.Parameters.AddWithValue("cliente_id", clienteId);
 
-            cmd.Parameters.AddWithValue("id", id);
-            var result = cmd.ExecuteScalar();
-
-            return result?.ToString() ?? "Desconhecido";
-        }
-
-        private DistribuicaoDto ObterDistribuicao(string clienteId)
-        {
-            using var conn = new NpgsqlConnection(_connectionString);
-            conn.Open();
-
-            using var cmd = new NpgsqlCommand(@"
-                SELECT tipo, SUM(valor) as total
-                FROM investimentos
-                WHERE clientes_id = @id
-                GROUP BY tipo;
-            ", conn);
-
-            cmd.Parameters.AddWithValue("id", clienteId);
             using var reader = cmd.ExecuteReader();
 
-            double rendaFixa = 0, rendaVariavel = 0;
-            while (reader.Read())
+            if (reader.Read())
             {
-                var tipo = reader.GetString(0);
-                var valor = reader.GetDouble(1);
-
-                if (tipo == "RendaFixa") rendaFixa += valor;
-                else if (tipo == "RendaVariavel") rendaVariavel += valor;
+                return new PerfilDto
+                {
+                    Perfil = reader.GetString(reader.GetOrdinal("perfil")),
+                    Distribuicao = new DistribuicaoDto
+                    {
+                        RendaFixa = reader.GetDouble(reader.GetOrdinal("percentual_renda_fixa")),
+                        RendaVariavel = reader.GetDouble(reader.GetOrdinal("percentual_renda_variavel"))
+                    },
+                    ValorTotal = reader.GetDouble(reader.GetOrdinal("valor_total")),
+                    DataCalculo = reader.GetDateTime(reader.GetOrdinal("data_calculo")),
+                    NomeCliente = reader.GetString(reader.GetOrdinal("nome_cliente")),
+                    ClienteId = reader.GetString(reader.GetOrdinal("id_cliente"))
+                };
             }
-
-            return new DistribuicaoDto
+            else
             {
-                RendaFixa = rendaFixa,
-                RendaVariavel = rendaVariavel
-            };
+                return null;
+            }
         }
     }
 }
