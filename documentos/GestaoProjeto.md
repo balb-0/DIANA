@@ -304,16 +304,28 @@ _conteúdo_
 
 # 4. Análise Post Mortem
 
-_conteúdo_
+A análise Post Mortem tem como objetivo refletir sobre o processo de desenvolvimento do projeto, identificando os principais acertos, desafios enfrentados e lições aprendidas durante a execução. Essa prática é útil e nos ajuda a consolidar aprendizados, otimizar futuras iniciativas e fortalecer a capacidade de trabalho em equipe. Ao longo das etapas do projeto, foram observados pontos positivos, aspectos que exigiram adaptação e oportunidades claras de melhoria que serão apresentadas nas próximas subseções.
 
 ## 4.1 Sucessos do Projeto
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Ao longo das cinco sprints, a equipe demonstrou evolução significativa tanto em aspectos técnicos quanto na dinâmica de trabalho em grupo. Houve um progresso visível na comunicação interna, que se fortaleceu semana após semana, o que permitiu tomar decisões mais rápidas e alinhadas. A realização de plannings mais organizadas e o uso consistente de ferramentas como Trello e Slack contribuíram para manter o fluxo de trabalho em movimento, mesmo diante de adversidades.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Outro destaque foi o engajamento progressivo nos ritos ágeis. A equipe passou a se adaptar melhor às cerimônias e passou a tratá-las como oportunidades reais de alinhamento e planejamento. Isso refletiu diretamente na melhoria da produtividade e no entendimento coletivo das tarefas. A postura crítica do grupo também foi um diferencial, com abertura para refletir sobre os erros e propor ações de melhoria já nas sprints seguintes.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Por fim, o grupo entregou funcionalidades que atenderam às expectativas estabelecidas no início do projeto, respeitando os prazos e buscando qualidade técnica mesmo em um cenário de carga acadêmica intensa. A colaboração ativa, especialmente em tarefas mais complexas, mostrou maturidade e senso de responsabilidade por parte de todos os integrantes.
 
 ## 4.2 Oportunidades de Melhoria
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Apesar dos resultados positivos, alguns pontos ao longo do projeto mostraram-se como desafios que impactaram o andamento de certas entregas. Um deles foi a baixa adesão aos rituais ágeis nas sprints iniciais. A ausência de membros em dailys e plannings comprometeu o alinhamento interno e atrasou a identificação de problemas críticos.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Outro aspecto que se mostrou recorrente foi a concentração de conhecimento técnico, principalmente no back-end. Isso resultou em sobrecarga de membros específicos e dificultou a autonomia do restante do grupo, especialmente nas etapas que exigiam integração entre sistema e banco de dados.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Além disso, a gestão de tempo foi um ponto de atenção, especialmente nas Sprints 3 e 4. A entrega de funcionalidades nos últimos dias da sprint dificultou testes, validações e ajustes, comprometendo em alguns casos a qualidade final. O acúmulo de tarefas na coluna de revisão também atrasou a finalização de demandas importantes.
 
 ## 4.3 Lições Aprendidas
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Uma das principais lições tiradas deste projeto foi a importância de manter um ritmo constante de trabalho e de revisão ao longo de toda a sprint. Evitar o acúmulo de tarefas nos dias finais foi um aprendizado prático que impactou diretamente a eficiência do grupo.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A experiência também reforçou a relevância dos rituais ágeis como instrumentos de alinhamento. Quando bem aplicadas, dailys, plannings e retrospectivas se mostraram essenciais para manter a equipe sincronizada, evitar retrabalho e corrigir rumos com agilidade.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Por fim, ficou evidente o valor da troca de conhecimento dentro da equipe. As tentativas de descentralizar o domínio técnico, especialmente a partir da Sprint 3, tiveram impacto positivo na autonomia do grupo e no aprendizado coletivo. Práticas como pair programming e documentação colaborativa se mostraram eficazes para garantir continuidade, mesmo diante de ausências ou mudanças de escopo inesperadas.
