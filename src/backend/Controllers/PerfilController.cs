@@ -21,7 +21,7 @@ namespace backend.Controllers
 
             if (perfil == null)
             {
-                return NotFound(new { message = "Cliente não encontrado ou sem perfil de risco" });
+                return NotFound(new { message = "Cliente não encontrado ou sem perfil de risco calculado" });
             }
 
             return Ok(perfil);
