@@ -1,46 +1,15 @@
 services:
-  db:
-    image: postgres:16 # utilizamos a imagem oficial do postgres na versão 16
-    container_name: btg_postgres
-    restart: unless-stopped # política de recarregamento melhorada
-    ports:
-      - "5432:5432" # porta host:container
-    volumes:
-      - ./database/01_create_database.sql:/docker-entrypoint-initdb.d/01_create_database.sql
-      - ./database/02_initial_data.sql:/docker-entrypoint-initdb.d/02_initial_data.sql
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - btg_network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U btg_user -d btg_db"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 30s
-    networks:
-      - btg_network
-      retries: 3
-    networks:
-      - btg_network
 
   backend:
     build: ./backend
     container_name: btg_backend
     ports:
       - "8080:8080"
-    depends_on:
-      db:
-        condition: service_healthy
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
-      - ConnectionStrings__DefaultConnection=Host=db;Database=btg_db;Username=btg_user;Password=btg_pass;Port=5432
-    networks:
-      - btg_network
+      - ConnectionStrings__DefaultConnection=Host=dpg-d1c80f8dl3ps73fd1v7g-a.oregon-postgres.render.com;Database=btg_db;Username=btg_user;Password=8DciecZhXK9PWBKdukcN0aZ1fzADcYV0;Port=5432
     restart: unless-stopped
-    networks:
-      - btg_network
   api_recomendacao:
     build: 
       context: ./recomendationAPI
@@ -59,11 +28,8 @@ services:
       - MONGO_USERNAME=auditoria_user
       - MONGO_PASSWORD=auditoria_pass_2025
       - MONGO_DATABASE=auditoria_db
-    networks:
-      - btg_network
     restart: unless-stopped
     depends_on:
-      - db
       - mongodb_auditoria
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
@@ -83,8 +49,6 @@ services:
     volumes:
       - mongodb_data:/data/db
       - ./auditoria/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-    networks:
-      - btg_network
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
@@ -105,8 +69,6 @@ services:
     depends_on:
       mongodb_auditoria:
         condition: service_healthy
-    networks:
-      - btg_network
     restart: unless-stopped
     networks:
       - btg_network
