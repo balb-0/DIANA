@@ -202,11 +202,71 @@ _conteúdo_
 
 # 3. Análise de Riscos
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp; A análise de riscos nos ajuda a identificar ameaças que possam atrapalhar o desenvolvimento e a entrega do projeto. Serve também para nos ajudar a identificar oportunidades de êxito. Nesta seção, estão apresentados os principais riscos identificados pelo grupo ao longo do desenvolvimento do projeto. A identificação e o acompanhamento contínuo dos riscos nos permitem agir de forma ágil, minimizando retrabalhos, atrasos e falhas.
 
 ## 3.1 Riscos identificados
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Durante o desenvolvimento do projeto, foram identificados riscos que poderiam comprometer o andamento da equipe e a qualidade das entregas. Esses riscos surgiram tanto no aspecto técnico quanto organizacional, exigindo atenção constante para que o grupo conseguisse avançar de maneira eficiente ao longo das sprints.
+
+### Riscos Técnicos
+
+- **Concentração de conhecimento técnico em poucos membros**
+
+  - Probabilidade: Alta
+  - Impacto: Alto
+  - Nível de Risco: Muito Alto  
+    A centralização do domínio do back-end dificultou a autonomia de outros integrantes e gerou gargalos em momentos críticos da sprint.
+
+- **Falta de checkpoints técnicos regulares**
+
+  - Probabilidade: Média
+  - Impacto: Médio
+  - Nível de Risco: Moderado  
+    A ausência de checkpoints intermediários comprometeu a sincronia entre implementações dependentes e aumentou chances de retrabalho.
+
+- **Acúmulo de tarefas em revisão**
+
+  - Probabilidade: Alta
+  - Impacto: Médio
+  - Nível de Risco: Alto  
+    O atraso na revisão de tarefas criou gargalos no fluxo de entrega e impactou o prazo de finalização das demandas.
+
+- **Entrega de funcionalidades nos últimos dias da sprint**
+  - Probabilidade: Alta
+  - Impacto: Médio
+  - Nível de Risco: Alto  
+    A proximidade entre entrega e deadline dificultou testes, validações e ajustes, comprometendo a qualidade.
+
+### Riscos Não Técnicos
+
+- **Baixo comprometimento com os rituais ágeis**
+
+  - Probabilidade: Alta
+  - Impacto: Alto
+  - Nível de Risco: Muito Alto  
+    A baixa adesão às dailys e outras cerimônias prejudicou o alinhamento da equipe, especialmente nas sprints iniciais.
+
+- **Comunicação falha entre membros**
+
+  - Probabilidade: Média
+  - Impacto: Alto
+  - Nível de Risco: Alto  
+    A dessincronia e a falta de momentos estruturados de discussão impactaram decisões técnicas e causaram desalinhamentos.
+
+- **Sobrecarga de tarefas no fim do semestre**
+
+  - Probabilidade: Alta
+  - Impacto: Alto
+  - Nível de Risco: Muito Alto  
+    O cansaço e a sobrecarga acadêmica reduziram a produtividade da equipe, dificultando o andamento fluido da sprint.
+
+- **Falta de planejamento detalhado nas primeiras sprints**
+  - Probabilidade: Média
+  - Impacto: Médio
+  - Nível de Risco: Moderado  
+    A pouca clareza inicial sobre interdependências técnicas dificultou a divisão equilibrada das tarefas.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Esses riscos se manifestaram especialmente nas Sprints 1, 3 e 4, onde o grupo enfrentou desafios de alinhamento, revisão e produtividade. A equipe foi capaz de reconhecer essas fragilidades e adaptar estratégias nas sprints seguintes para mitigá-los.
 
 ## 3.2 Mitigação de Riscos
 
