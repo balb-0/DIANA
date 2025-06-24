@@ -270,7 +270,37 @@ _conteúdo_
 
 ## 3.2 Mitigação de Riscos
 
-_conteúdo_
+&nbsp;&nbsp;&nbsp;&nbsp;Com base nos riscos identificados durante o desenvolvimento, o grupo proôs e adotou estratégias para reduzir seus impactos e diminuir dificuldades em entregas futuras. Algumas dessas ações foram aplicadas nas últimas sprints, enquanto outras foram mapeadas para aplicação contínua em novos ciclos de desenvolvimento.
+
+### Riscos Técnicos
+
+- **Concentração de conhecimento técnico em poucos membros**  
+  Incentivar pair programming e reuniões técnicas entre os integrantes com menor e maior domínio. Criar uma documentação mínima das decisões e lógicas principais no Notion ou README para facilitar o repasse.
+
+- **Falta de checkpoints técnicos regulares**  
+  Incluir pequenos alinhamentos técnicos ao longo da sprint, com foco em dependências entre componentes e revisões de implementação antes de avançar para estágios finais.
+
+- **Acúmulo de tarefas em revisão**  
+  Definir limites de WIP (work in progress) para a coluna de revisão e priorizar tarefas que estão aguardando aprovação. Rotacionar revisores entre os membros e revisar as tasks durante as dailys.
+
+- **Entrega de funcionalidades nos últimos dias da sprint**  
+  Dividir tarefas grandes em subtarefas com deadlines parciais. Utilizar checkpoints internos no meio da sprint para reavaliar pendências e redistribuir o foco se necessário.
+
+### Riscos Não Técnicos
+
+- **Baixo comprometimento com os rituais ágeis**  
+  Estabelecer horários fixos e curtos para dailys. Criar lembretes automáticos e reforçar a importância da presença nas cerimônias para o andamento coletivo do time.
+
+- **Comunicação falha entre membros**  
+  Utilizar canais específicos (Slack, Discord) com marcações diretas e pautas claras. Estimular mensagens de atualização frequentes e abertura para feedback rápido nas discussões.
+
+- **Sobrecarga de tarefas no fim do semestre**  
+  Realocar tarefas complexas para o início da sprint, com foco em dividir a carga entre os membros. Planejar sprints mais leves em semanas sabidamente críticas no calendário acadêmico.
+
+- **Falta de planejamento detalhado nas primeiras sprints**  
+  Reservar mais tempo para detalhamento coletivo das tarefas durante a planning. Mapear dependências técnicas logo no início e validar se as estimativas de tempo estão realistas.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A implementação dessas ações contribuiu para um processo mais organizado e resiliente, especialmente nas Sprints 4 e 5. O grupo segue atento para reavaliar seus riscos e se adaptar de forma contínua.
 
 # 4. Análise Post Mortem
 
