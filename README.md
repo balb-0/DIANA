@@ -7,30 +7,33 @@
   </tr>
 </table>
 
-# Nome do Projeto: <nome do projeto>
+# Nome do Projeto: <DIANA>
 
-## Nome do Grupo: <nome do grupo>
+## Nome do Grupo: <Watermelon>
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/aluno1/">Aluno 1</a>
-- <a href="https://www.linkedin.com/in/aluno2/">Aluno 2</a>
-- <a href="https://www.linkedin.com/in/aluno3/">Aluno 3</a>
-- <a href="https://www.linkedin.com/in/aluno4">Aluno 4</a>
-- <a href="https://www.linkedin.com/in/aluno5">Aluno 5</a>
-- <a href="https://www.linkedin.com/in/aluno6">Aluno 6</a>
-- <a href="https://www.linkedin.com/in/aluno7">Aluno 7</a>
-- <a href="https://www.linkedin.com/in/aluno7">Aluno 8</a>
-
+- <a href="https://www.linkedin.com/in/anacdejesus/">Ana Carolina Pacheco</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>
+- <a href="https://www.linkedin.com/in/gabriel-nascimento-563382243/">Gabriel Nascimento</a>
+- <a href="https://www.linkedin.com/in/joao-souza-campos/">João Victor de Souza Campos</a>
+- <a href="https://www.linkedin.com/in/lucas-tort/">Lucas Cozzolino Tort</a>
+- <a href="https://www.linkedin.com/in/natalycunha/">Nataly Cunha</a>
+- <a href="https://www.linkedin.com/in/thiagovolcati/">Thiago Volcati</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Balbo</a>
 
 ## Professores:
-### Orientador(a) 
+
+### Orientador(a)
+
 - <a href="https://www.linkedin.com/in/vanunes/">Vanessa Nunes</a>
+
 ### Instrutores
+
 - <a href="https://www.linkedin.com/in/professor1/">Computação - Jefferson de Oliveira</a>
 - <a href="https://www.linkedin.com/in/professor1/">Matemática e Física - Diogo Morais</a>
 - <a href="https://www.linkedin.com/in/professor1/">Negócios - Lisane Valdo</a>
-- <a href="https://www.linkedin.com/in/professor1/">Design - Guilherme Cestari</a> 
+- <a href="https://www.linkedin.com/in/professor1/">Design - Guilherme Cestari</a>
 - <a href="https://www.linkedin.com/in/professor1/">Liderança - Filipe Gonçalves</a>
 
 ## 📝 Descrição
@@ -46,19 +49,18 @@
 ## 📁 Estrutura de pastas
 
 |--> documentos<br>
-  &emsp;| --> outros <br>
-  &emsp;| documento<br>
-  &emsp;| documento<br>
+&emsp;| --> outros <br>
+&emsp;| documento<br>
+&emsp;| documento<br>
 |--> imagens<br>
 |--> src<br>
-  &emsp;|--> dir<br>
-  &emsp;|--> dir<br>
-  &emsp;|--> dir<br>
-  &emsp;|--> dir<br>
-  &emsp;|--> dir<br>
-  &emsp;|--> dir<br>
+&emsp;|--> dir<br>
+&emsp;|--> dir<br>
+&emsp;|--> dir<br>
+&emsp;|--> dir<br>
+&emsp;|--> dir<br>
+&emsp;|--> dir<br>
 | readme.md<br>
-
 
 Dentre os arquivos presentes na raiz do projeto, definem-se:
 
@@ -77,26 +79,27 @@ Para configurar o desenvolvimento da aplicação, [instale o git](https://git-sc
 ```
 git clone https://github.com/<endereco>
 ```
+
 Em seguida siga as instruções presentes em nosso <a href="/documentos/manual-instalacao.md">manual de instalação</a>.
 
 ## 🗃 Histórico de lançamentos
 
-* 0.1.0 - DD/MM/2024
-    * Artefato
-    * Artefato
-* 0.2.0 - DD/MM/2024
-    * Artefato
-    * Artefato
-* 0.3.0 - DD/MM/2024
-    * Artefato
-    * Artefato
-* 0.4.0 - DD/MM/2024
-    * Artefato
-    * Artefato
-* 0.5.0 - DD/MM/2024
-    * Artefato
-    * Artefato
+- 0.1.0 - 30/04/2024
+  - Artefato
+  - Artefato
+- 0.2.0 - 16/05/2024
+  - Artefato
+  - Artefato
+- 0.3.0 - 30/05/2024
+  - Artefato
+  - Artefato
+- 0.4.0 - 13/06/2024
+  - Artefato
+  - Artefato
+- 0.5.0 - 26/06/2024
+  - Artefato
+  - Artefato
 
 ## 📋 Licença/License
 
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/ENDEREÇOGRUPO>"><nome do projeto></a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/ENDEREÇOGRUPO">INTELI, <aluno1>, <aluno2>, <aluno3>, <aluno4>, <aluno5>, <aluno6></a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/ENDEREÇOGRUPO>"><nome do projeto></a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/ENDEREÇOGRUPO">INTELI, <a href="https://www.linkedin.com/in/anacdejesus/">Ana Carolina Pacheco</a>, <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>, <a href="https://www.linkedin.com/in/gabriel-nascimento-563382243/">Gabriel Nascimento</a>, <a href="https://www.linkedin.com/in/joao-souza-campos/">João Victor de Souza Campos</a>, <a href="https://www.linkedin.com/in/lucas-tort/">Lucas Cozzolino Tort</a>, <a href="https://www.linkedin.com/in/natalycunha/">Nataly Cunha</a>, <a href="https://www.linkedin.com/in/thiagovolcati/">Thiago Volcati</a>, <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Balbo</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
