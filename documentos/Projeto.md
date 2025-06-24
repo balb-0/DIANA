@@ -660,6 +660,8 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 
 # 4. Modelagem de Dados
 
+Essa seção tem como objetivo apresentar uma visão geral da modelagem de dados do projeto, explicando como os dados são estruturados e organizados para suportar o sistema de análise de carteiras de investimento.
+
 ## 4.1 Especificação da Base de Dados para Modelo de Recomendação
 
 &emsp;A construção da base de dados para o modelo de recomendação exigiu um processo de limpeza, padronização e enriquecimento dos dados originais recebidos. O arquivo CSV inicial chegou sem títulos nas colunas, o que demandou a adição manual dos nomes para possibilitar a correta leitura e manipulação.
@@ -1000,6 +1002,8 @@ Como um assessor de investimento, quero que o sistema calcule automaticamente o 
 
 ## 5.2 Diagrama de Classes
 
+O diagrama de classes define a estrutura orientada a objetos do sistema, incluindo entidades como Cliente, Ativo, Recomendação e seus relacionamentos, fornecendo a base para implementação do código e comunicação entre componentes.
+
 ### Visão Geral do Diagrama de Classes
 
 &emsp;O diagrama de classes representa o modelo de domínio do sistema, identificando as principais entidades, seus atributos, métodos e relacionamentos. Ele foi desenvolvido com base na estrutura lógica do banco de dados e nos requisitos do sistema de recomendação de investimentos.
@@ -1306,6 +1310,8 @@ Define os níveis de assessores possíveis no sistema:
 &emsp;Este fluxo garante que apenas usuários autenticados tenham acesso aos dados analisados, promovendo segurança e precisão na identificação de perfis com inconsistências.
 
 ## 5.5 Tecnologias e Linguagens
+
+Define o stack tecnológico utilizado no projeto: C# com .NET para backend, React Native para frontend, SQL Server para banco de dados, e ferramentas complementares para desenvolvimento, deploy e monitoramento.
 
 ### 5.5.1 Back-end
 
@@ -1783,7 +1789,7 @@ Essa jornada do wireframe ao mockup possibilita:
 
 # 8. Desenvolvimento do Projeto
 
-_conteúdo_
+Documenta o processo de implementação da solução, incluindo arquitetura de código, modelos de recomendação, funcionalidades desenvolvidas por sprint e estratégias de teste adotadas.
 
 ## 8.1 Arquitetura de Codificação e Estrutura de Diretórios
 
@@ -1846,11 +1852,11 @@ O comando abrirá o navegador com o Expo DevTools. Você pode:
 
 ## 8.2 Modelo de Recomendação
 
-_conteúdo_
+Descreve o algoritmo de machine learning desenvolvido para recomendar investimentos com base no perfil do cliente, incluindo coleta de dados, treinamento do modelo e integração com o sistema.
 
 ## 8.3 Desenvolvimento de Features
 
-_conteúdo_
+Apresenta o progresso do desenvolvimento através das sprints, detalhando funcionalidades implementadas, tecnologias utilizadas e marcos atingidos em cada fase do projeto.
 
 **Nota:** Insira uma explicação de entregas em cada Sprint.
 
@@ -2073,9 +2079,11 @@ Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o c
 
 ## 8.3.3 Sprint 5
 
-_conteúdo_
+Finalização do projeto com integração completa entre frontend e backend, implementação de funcionalidades avançadas de recomendação e preparação para deployment em ambiente de produção.
 
 ## 8.4 Testes Unitários e de Integração
+
+Estratégia de teste automatizado para garantir qualidade do código, incluindo cobertura de funções críticas, validação de APIs e integração entre componentes do sistema.
 
 ### Planejamento de testes unitários
 
@@ -2232,12 +2240,13 @@ _conteúdo_
 
 ## 8.5 Documentações automáticas
 
-_conteúdo_
-Obs.: Insira informações sobre quais frameworks foram usados e como acessar.
+Sistemas de documentação automática implementados para APIs e código, utilizando ferramentas como Swagger para endpoints e comentários estruturados para facilitar manutenção.
+
+_Obs.: Insira informações sobre quais frameworks foram usados e como acessar._
 
 # 9. Planejamento e Execução de Testes
 
-_conteúdo_
+Metodologia completa de validação da solução através de testes funcionais, não-funcionais e de usabilidade, garantindo que o sistema atenda aos requisitos e proporcione boa experiência ao usuário.
 
 ## 9.1 Testes Funcionais
 
@@ -2289,19 +2298,19 @@ _conteúdo_
 
 ## 9.1.2 Resultados
 
-### RF01 - Importação automática de dados via API
+**RF01 - Importação automática de dados via API**
 
-### RF02 - Cálculo do perfil de risco
+**RF02 - Cálculo do perfil de risco**
 
-### RF03 - Verificação de conformidade entre perfis
+**RF03 - Verificação de conformidade entre perfis**
 
-### RF04 - Recomendações de readequação
+**RF04 - Recomendações de readequação**
 
-### RF05 - Painel visual de conformidade
+**RF05 - Painel visual de conformidade**
 
-### RF06 - Filtros por status de conformidade
+**RF06 - Filtros por status de conformidade**
 
-### RF09 - Exibição gráfica da carteira por tipo de ativo
+**RF09 - Exibição gráfica da carteira por tipo de ativo**
 
 ## 9.2 Testes de RNFs
 
@@ -2346,11 +2355,15 @@ _conteúdo_
 
 ## 9.2.2 Resultados
 
+Consolidação dos resultados obtidos nos testes não-funcionais, incluindo métricas de performance, capacidade de carga, tempo de resposta e avaliação da conformidade com os critérios estabelecidos.
+
 ## 9.3 Testes de Usabilidade
 
 &emsp;Neste tópico, será apresentado os planejamentos dos testes de usabilidade do nosso projeto, incluindo o perfil, idade, experiência com tecnologia, familiaridade com mercado financeiro e a justificativa do perfil.
 
 ## 9.3.1 Planejamento
+
+Estratégia para avaliação da experiência do usuário, definindo perfil dos testadores, cenários de uso, métricas de usabilidade e metodologia para coleta de feedback estruturado.
 
 ### Objetivos dos Testes de Usabilidade
 
@@ -2438,6 +2451,8 @@ _conteúdo_
 - Software: Figma(protótipo), Google Forms(SUS), Excel(análise).
 
 ## 9.3.2 Resultados
+
+Análise dos dados coletados nos testes de usabilidade, incluindo taxa de sucesso nas tarefas, tempo de execução, pontuação SUS e identificação de pontos de melhoria na interface.
 
 ### Participantes do Teste
 
@@ -2569,6 +2584,8 @@ Para cada participante, o score SUS foi calculado seguindo a metodologia padrão
 
 ## 9.4.1 Planejamento
 
+Metodologia para validação das APIs e integração entre serviços, definindo cenários de teste, dados de entrada esperados e critérios de aceitação para endpoints críticos.
+
 ### Propósito dos Testes
 
 Os testes têm como objetivo:
@@ -2621,15 +2638,15 @@ As APIs testadas são:
 
 # 10. Procedimentos de Implantação
 
-_conteúdo_
+Guia completo para deploy da solução em ambiente de produção, incluindo configuração de infraestrutura, banco de dados, monitoramento e procedimentos de manutenção.
 
 ## 10.1 Implantação e Configuração do Banco de Dados
 
-_conteúdo_
+Procedimentos para setup do PostgreSQL em produção, incluindo criação de schemas, configuração de usuários, aplicação de migrations e configuração de backup automático.
 
 ## 10.2 Implantação do Protótipo para uso por equipe de desenvolvimento
 
-_conteúdo_
+Configuração de ambiente de desenvolvimento e staging, incluindo containerização com Docker, configuração de CI/CD e acesso para testes internos da equipe.
 
 # Referências
 
