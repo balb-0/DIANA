@@ -2638,15 +2638,403 @@ As APIs testadas são:
 
 # 10. Procedimentos de Implantação
 
-Guia completo para deploy da solução em ambiente de produção, incluindo configuração de infraestrutura, banco de dados, monitoramento e procedimentos de manutenção.
+&emsp;Esta seção apresenta um guia completo para implantação da solução Diana em ambiente de produção, incluindo a configuração de infraestrutura, banco de dados e procedimentos de manutenção. O sistema foi arquitetado para ser totalmente containerizado, garantindo portabilidade, escalabilidade e facilidade de deployment.
+
+&emsp;A arquitetura de implantação inclui quatro serviços principais containerizados (Backend .NET, Recommendation API Python, MongoDB para auditoria e Mongo Express) e um banco de dados PostgreSQL gerenciado via Amazon RDS. Todo o processo de deploy é orquestrado através do Docker Compose, permitindo implantação com um único comando.
+
+## Visão Geral da Arquitetura de Produção
+
+&emsp;O sistema é implantado em uma instância **Amazon EC2** executando **Ubuntu 22.04 LTS**, que hospeda todos os serviços containerizados. A escolha por esta arquitetura se justifica pela natureza MVP do projeto e pela facilidade de gerenciamento, com possibilidade de escalabilidade horizontal futura.
+
+### Componentes da Infraestrutura:
+
+- **BTG Backend (.NET 8.0)** - Porta 8080: API principal com autenticação Firebase
+- **Recommendation API (Python/FastAPI)** - Porta 8000: Processamento ML e recomendações
+- **MongoDB** - Porta 27017: Sistema de auditoria e logs
+- **Mongo Express** - Porta 8081: Interface administrativa para MongoDB
+- **PostgreSQL RDS**: Banco principal gerenciado pela AWS
+- **Firebase Authentication**: Serviço externo de autenticação
 
 ## 10.1 Implantação e Configuração do Banco de Dados
 
-Procedimentos para setup do PostgreSQL em produção, incluindo criação de schemas, configuração de usuários, aplicação de migrations e configuração de backup automático.
+&emsp;O banco de dados principal utiliza **Amazon RDS PostgreSQL 16**, proporcionando alta disponibilidade, backups automatizados e escalabilidade gerenciada. Esta seção detalha os procedimentos para configuração e conexão com o banco gerenciado.
+
+### Configuração do Amazon RDS PostgreSQL
+
+#### Pré-requisitos:
+
+- Conta AWS configurada com permissões para RDS
+- Security Groups configurados para permitir acesso na porta 5432
+- Credenciais de banco de dados definidas
+
+#### Passos para Configuração:
+
+**1. Criação da Instância RDS:**
+
+```bash
+# Via AWS CLI (opcional)
+aws rds create-db-instance \
+    --db-instance-identifier btg-postgres \
+    --db-instance-class db.t3.micro \
+    --engine postgres \
+    --engine-version 16.1 \
+    --master-username btg_user \
+    --master-user-password <SENHA_SEGURA> \
+    --allocated-storage 20 \
+    --vpc-security-group-ids sg-xxxxxxxxx \
+    --backup-retention-period 7 \
+    --deletion-protection \
+    --storage-encrypted
+```
+
+**2. Configuração do Security Group:**
+
+```bash
+# Permitir acesso na porta PostgreSQL apenas da EC2
+aws ec2 authorize-security-group-ingress \
+    --group-id sg-xxxxxxxxx \
+    --protocol tcp \
+    --port 5432 \
+    --source-group sg-ec2-xxxxxxxxx
+```
+
+**3. Obtenção do Endpoint de Conexão:**
+
+```bash
+# Após criação, obter endpoint do RDS
+aws rds describe-db-instances \
+    --db-instance-identifier btg-postgres \
+    --query 'DBInstances[0].Endpoint.Address'
+```
+
+### Configuração da String de Conexão
+
+&emsp;A string de conexão deve ser configurada no Docker Compose para substituir a conexão local pelo RDS:
+
+```yaml
+# No docker-compose.yml - seção backend
+environment:
+  - ConnectionStrings__DefaultConnection=Host=btg-postgres.xxxxxx.us-east-1.rds.amazonaws.com;Database=btg_db;Username=btg_user;Password=<SENHA_SEGURA>;Port=5432;SslMode=Require
+```
+
+### Aplicação de Migrations e Scripts
+
+&emsp;Os scripts de inicialização devem ser executados manualmente no RDS, pois não temos acesso direto ao docker-entrypoint-initdb.d:
+
+```bash
+# Conectar ao RDS via psql
+psql -h btg-postgres.xxxxxx.us-east-1.rds.amazonaws.com \
+     -U btg_user \
+     -d postgres \
+     -p 5432
+
+# Executar scripts na ordem
+\i 01_create_database.sql
+\i 02_initial_data.sql
+\i 03_procedures.sql
+```
+
+### Monitoramento e Backup
+
+&emsp;O RDS oferece funcionalidades automáticas de monitoramento e backup:
+
+- **Backup Automático**: Configurado para 7 dias de retenção
+- **Performance Insights**: Habilitado para monitoramento de performance
+- **CloudWatch Metrics**: Métricas automáticas de CPU, memória e I/O
+- **Logs de Consulta**: Habilitados para auditoria e troubleshooting
 
 ## 10.2 Implantação do Protótipo para uso por equipe de desenvolvimento
 
-Configuração de ambiente de desenvolvimento e staging, incluindo containerização com Docker, configuração de CI/CD e acesso para testes internos da equipe.
+&emsp;Esta seção detalha o processo completo de implantação da aplicação em uma instância EC2, incluindo configuração do ambiente, preparação dos dados e execução dos serviços containerizados.
+
+### Preparação da Instância EC2
+
+#### Especificações Recomendadas:
+
+- **Tipo de Instância**: t3.medium (2 vCPUs, 4GB RAM)
+- **Sistema Operacional**: Ubuntu 22.04 LTS
+- **Storage**: 20GB GP3 SSD
+- **Security Groups**: Portas 22, 8080, 8000, 8081, 27017
+
+#### Configuração Inicial da EC2:
+
+```bash
+# 1. Atualizar sistema e instalar dependências
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y git curl wget unzip
+
+# 2. Instalar Docker e Docker Compose
+sudo apt install -y docker.io docker-compose-v2
+sudo usermod -aG docker ubuntu
+sudo systemctl enable docker
+sudo systemctl start docker
+
+# 3. Verificar instalação
+docker --version
+docker compose version
+```
+
+### Clonagem e Preparação do Repositório
+
+```bash
+# 1. Clonar repositório
+git clone https://github.com/seu-repositorio/2025-1B-T13-ES06-G03.git
+cd 2025-1B-T13-ES06-G03/src
+
+# 2. Verificar estrutura
+ls -la
+```
+
+### Configuração dos Dados da Recommendation API
+
+&emsp;A API de recomendação requer uma pasta `data` com os arquivos de modelo e datasets:
+
+```bash
+# 1. Criar pasta de dados
+mkdir -p recomendationAPI/data
+
+# 2. Copiar arquivos necessários (fazer upload via SCP ou S3)
+# Arquivos requeridos:
+#   - barema_completo_processado.csv
+#   - subgrupo_dist_df.csv
+#   - matrizes de similaridade (cluster_0.csv, cluster_1.csv, cluster_2.csv)
+#   - modelo KMeans serializado (kmeans_model.joblib)
+
+# Exemplo usando SCP do ambiente local:
+scp -i sua-chave.pem local/data/* ubuntu@ec2-ip:/home/ubuntu/projeto/src/recomendationAPI/data/
+```
+
+### Configuração da Autenticação Firebase
+
+&emsp;O backend requer o arquivo JSON de credenciais do Firebase para autenticação:
+
+```bash
+# 1. Copiar arquivo de credenciais Firebase para o backend
+# O arquivo deve estar na pasta backend/ com o nome:
+# diana-446a1-firebase-adminsdk-fbsvc-cfd405b774.json
+
+scp -i sua-chave.pem diana-446a1-firebase-adminsdk-fbsvc-cfd405b774.json \
+    ubuntu@ec2-ip:/home/ubuntu/projeto/src/backend/
+
+# 2. Verificar se o arquivo está no local correto
+ls -la backend/diana-446a1-firebase-adminsdk-fbsvc-cfd405b774.json
+```
+
+### Configuração do Docker Compose para Produção
+
+&emsp;Ajustar o docker-compose.yml para conectar ao RDS ao invés do PostgreSQL local:
+
+```yaml
+# Editar docker-compose.yml
+nano docker-compose.yml
+
+# Comentar ou remover o serviço 'db' local:
+# services:
+#   db:
+#     image: postgres:16
+#     # ... configurações do postgres local
+
+# Atualizar environment do backend:
+services:
+  backend:
+    build: ./backend
+    container_name: btg_backend
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=SEU_RDS_ENDPOINT;Database=btg_db;Username=btg_user;Password=SUA_SENHA;Port=5432;SslMode=Require
+    networks:
+      - btg_network
+    restart: unless-stopped
+```
+
+### Configuração das Variáveis de Ambiente
+
+&emsp;Criar arquivo `.env` para configurações sensíveis:
+
+```bash
+# Criar arquivo .env
+cat > .env << EOF
+# PostgreSQL RDS
+RDS_ENDPOINT=btg-postgres.xxxxxx.us-east-1.rds.amazonaws.com
+DB_PASSWORD=sua_senha_segura
+
+# MongoDB Auditoria
+MONGO_ROOT_PASSWORD=admin_pass_2025
+MONGO_AUDIT_PASSWORD=auditoria_pass_2025
+
+# Firebase
+FIREBASE_PROJECT_ID=diana-446a1
+EOF
+
+# Proteger arquivo de variáveis
+chmod 600 .env
+```
+
+### Execução da Aplicação
+
+```bash
+# 1. Construir e iniciar todos os serviços
+docker compose up --build -d
+
+# 2. Verificar status dos containers
+docker compose ps
+
+# 3. Verificar logs de cada serviço
+docker compose logs backend
+docker compose logs api_recomendacao
+docker compose logs mongodb_auditoria
+docker compose logs mongo-express
+
+# 4. Testar saúde dos serviços
+curl http://localhost:8080/swagger
+curl http://localhost:8000/health
+curl http://localhost:8081  # Mongo Express
+```
+
+### Verificação de Conectividade
+
+#### Teste do Backend:
+
+```bash
+# Teste de health check
+curl -X GET http://localhost:8080/api/health
+
+# Teste de autenticação (requer token Firebase válido)
+curl -X POST http://localhost:8080/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com","password":"testpass"}'
+```
+
+#### Teste da Recommendation API:
+
+```bash
+# Teste de health
+curl -X GET http://localhost:8000/health
+
+# Teste de recomendação (exemplo)
+curl -X POST http://localhost:8000/recomendacoes \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ClienteId": "test123",
+    "Ativos": [{"CodigoAtivo": "B3SA3", "ValorInvestido": 10000}],
+    "ClassificacaoDeclarada": "Moderado"
+  }'
+```
+
+### Monitoramento e Logs
+
+```bash
+# Monitoramento contínuo dos logs
+docker compose logs -f
+
+# Logs específicos de um serviço
+docker compose logs -f backend
+
+# Verificar uso de recursos
+docker stats
+
+# Verificar espaço em disco
+df -h
+```
+
+### Troubleshooting Comum
+
+#### Problemas de Conectividade com RDS:
+
+```bash
+# Testar conectividade de rede
+telnet SEU_RDS_ENDPOINT 5432
+
+# Verificar security groups
+aws ec2 describe-security-groups --group-ids sg-xxxxxxxxx
+```
+
+#### Problemas com Firebase:
+
+```bash
+# Verificar se arquivo está presente
+ls -la backend/diana-446a1-firebase-adminsdk-fbsvc-cfd405b774.json
+
+# Verificar logs de autenticação
+docker compose logs backend | grep -i firebase
+```
+
+#### Problemas com Dados da Recommendation API:
+
+```bash
+# Verificar arquivos de dados
+ls -la recomendationAPI/data/
+
+# Verificar logs da API
+docker compose logs api_recomendacao | grep -i "dados_carregados"
+```
+
+### Comandos de Manutenção
+
+```bash
+# Parar todos os serviços
+docker compose down
+
+# Reiniciar um serviço específico
+docker compose restart backend
+
+# Atualizar código (pull + rebuild)
+git pull origin main
+docker compose down
+docker compose up --build -d
+
+# Limpeza de containers e volumes antigos
+docker system prune -f
+docker volume prune -f
+```
+
+### Backup e Recuperação
+
+#### Backup dos Dados de Auditoria (MongoDB):
+
+```bash
+# Backup automático do MongoDB
+docker exec btg_mongodb_auditoria mongodump \
+  --username admin \
+  --password admin_pass_2025 \
+  --authenticationDatabase admin \
+  --db auditoria_db \
+  --out /backup
+
+# Copiar backup para fora do container
+docker cp btg_mongodb_auditoria:/backup ./backup_$(date +%Y%m%d)
+```
+
+#### Monitoramento de Saúde:
+
+```bash
+# Script de health check automático
+cat > health_check.sh << 'EOF'
+#!/bin/bash
+echo "=== Health Check $(date) ==="
+
+# Backend
+backend_status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/swagger)
+echo "Backend: $backend_status"
+
+# Recommendation API
+api_status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/health)
+echo "Recommendation API: $api_status"
+
+# MongoDB
+mongo_status=$(docker exec btg_mongodb_auditoria mongosh --eval "db.adminCommand('ping')" --quiet)
+echo "MongoDB: $mongo_status"
+
+echo "=========================="
+EOF
+
+chmod +x health_check.sh
+```
+
+&emsp;Esta documentação fornece um guia completo para implantação em produção, considerando todas as dependências e configurações necessárias para o funcionamento correto do sistema Diana.
 
 # Referências
 
