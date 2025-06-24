@@ -197,8 +197,38 @@
 
 ## 2.5 Sprint 5
 
-_conteúdo_
-**Nota:** Insira informações sobre mudanças realizadas.
+### Análise da Sprint Review
+
+#### **Pontos Fortes**
+
+- Não foi necessário cortar escopo para a entrega final, o que demonstra um bom planejamento e execução das tarefas.
+- A equipe manteve uma boa produtividade, conseguindo avançar com as demandas mesmo em um período de maior cansaço.
+
+#### **Pontos Fracos**
+
+- O cansaço acumulado de final de semestre impactou a energia da equipe durante a sprint.
+- O feriado reduziu a disponibilidade de tempo útil para execução, exigindo maior esforço nos demais dias.
+
+---
+
+### Mudanças Realizadas
+
+- A equipe manteve os aprendizados das sprints anteriores, com foco na divisão equilibrada de tarefas e priorização de entregas críticas.
+- As metas parciais e checkpoints estabelecidos ajudaram a evitar acúmulo de atividades no final da sprint.
+
+---
+
+### Ações de Melhoria para os Pontos Fracos
+
+#### 1. Mitigar o impacto de períodos críticos (como finais de semestre)
+
+- Antecipar tarefas mais pesadas para os primeiros dias da sprint.
+- Ajustar o planejamento de acordo com a energia e carga horária disponível do time, garantindo entregas realistas.
+
+#### 2. Compensar perdas de tempo por feriados
+
+- Incluir margens de segurança no planejamento sempre que houver feriados ou eventos acadêmicos.
+- Estabelecer prioridades claras para que, mesmo com menos tempo, o essencial seja entregue com qualidade.
 
 # 3. Análise de Riscos
 
