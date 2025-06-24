@@ -86,8 +86,8 @@
   - [10.2 Implantação do Protótipo para uso por equipe de desenvolvimento](#102-implantação-do-protótipo-para-uso-por-equipe-de-desenvolvimento)
 - [Referências](#referências)
 
-
 # 1. Introdução
+
 &emsp;O projeto Diana tem como objetivo desenvolver um aplicativo mobile que auxilia assessores de investimento do BTG Pactual na análise e verificação da conformidade entre o perfil de risco declarado pelos clientes e a composição real de suas carteiras de investimento.
 
 ## 1.1 Termos e Abreviações
@@ -95,52 +95,53 @@
 &emsp;Nesta subseção reúnem-se as abreviações de palavras, termos comuns a serem discutidos na documentação e, por fim, siglas.
 
 ### Siglas e abreviações
-| Sigla/Abreviação | Significado |
-|------------------|-------------|
-| **API**          | *Application Programming Interface* (Interface de Programação de Aplicações) |
-| **BPM**          | *Business Process Management* (Gerenciamento de Processos de Negócio) |
-| **BTG**          | BTG Pactual |
-| **CSV**          | *Comma-Separated Values* (Formato de arquivo separado por vírgulas) |
-| **CVM**          | Comissão de Valores Mobiliários |
-| **IDE**          | *Integrated Development Environment* (Ambiente de Desenvolvimento Integrado) |
-| **ISO/IEC 25010**| Norma internacional de requisitos de qualidade de software |
-| **KPI**          | *Key Performance Indicator* (Indicador-chave de desempenho) |
-| **ML**           | *Machine Learning* (Aprendizado de Máquina) |
-| **MFA**          | *Multi-Factor Authentication* (Autenticação Multifator) |
-| **PO**           | *Product Owner* |
-| **QA**           | *Quality Assurance* (Garantia de Qualidade) |
-| **RF** / **RFs** | Requisito(s) Funcional(is) |
-| **RNF** / **RNFs**| Requisito(s) Não Funcional(is) |
-| **SSL**          | *Secure Sockets Layer* |
-| **Swagger**      | Ferramenta para documentação de APIs |
-| **TLS**          | *Transport Layer Security* |
-| **UML**          | *Unified Modeling Language* |
-| **UX/UI**        | *User Experience* / *User Interface* |
+
+| Sigla/Abreviação   | Significado                                                                  |
+| ------------------ | ---------------------------------------------------------------------------- |
+| **API**            | _Application Programming Interface_ (Interface de Programação de Aplicações) |
+| **BPM**            | _Business Process Management_ (Gerenciamento de Processos de Negócio)        |
+| **BTG**            | BTG Pactual                                                                  |
+| **CSV**            | _Comma-Separated Values_ (Formato de arquivo separado por vírgulas)          |
+| **CVM**            | Comissão de Valores Mobiliários                                              |
+| **IDE**            | _Integrated Development Environment_ (Ambiente de Desenvolvimento Integrado) |
+| **ISO/IEC 25010**  | Norma internacional de requisitos de qualidade de software                   |
+| **KPI**            | _Key Performance Indicator_ (Indicador-chave de desempenho)                  |
+| **ML**             | _Machine Learning_ (Aprendizado de Máquina)                                  |
+| **MFA**            | _Multi-Factor Authentication_ (Autenticação Multifator)                      |
+| **PO**             | _Product Owner_                                                              |
+| **QA**             | _Quality Assurance_ (Garantia de Qualidade)                                  |
+| **RF** / **RFs**   | Requisito(s) Funcional(is)                                                   |
+| **RNF** / **RNFs** | Requisito(s) Não Funcional(is)                                               |
+| **SSL**            | _Secure Sockets Layer_                                                       |
+| **Swagger**        | Ferramenta para documentação de APIs                                         |
+| **TLS**            | _Transport Layer Security_                                                   |
+| **UML**            | _Unified Modeling Language_                                                  |
+| **UX/UI**          | _User Experience_ / _User Interface_                                         |
 
 ### Termos Técnicos e de Projeto
 
-| Termo                        | Significado |
-|-----------------------------|-------------|
-| **Adequação Regulátoria**   | Conformidade com normas e regras de órgãos reguladores como a CVM |
-| **AS-IS / TO-BE**           | Estado atual / Estado proposto de um processo |
-| **Cloud / Nuvem**           | Infraestrutura de computação remota |
-| **Compliance**              | Conformidade com políticas, leis e regulamentos |
-| **Dashboard**               | Painel de visualização interativa de dados |
-| **Feature**                 | Funcionalidade de um sistema |
-| **Heurísticas de Nielsen**  | Princípios de usabilidade para interfaces |
-| **Mockup**                  | Protótipo visual com detalhes de design |
-| **Modularidade**            | Organização em partes independentes |
-| **Painel Interativo**       | Visualização dinâmica de dados com filtros e status |
-| **Personas**                | Perfis fictícios de usuários representativos |
-| **Sprint**                  | Iteração de desenvolvimento em metodologia ágil |
-| **Suitability**             | Adequação entre produto e perfil do investidor |
-| **User Story**              | Descrição de funcionalidade sob o ponto de vista do usuário |
-| **White Label**             | Produto que pode ser personalizado e utilizado por terceiros |
-| **Wireframe**               | Esboço inicial da estrutura da interface |
+| Termo                      | Significado                                                       |
+| -------------------------- | ----------------------------------------------------------------- |
+| **Adequação Regulátoria**  | Conformidade com normas e regras de órgãos reguladores como a CVM |
+| **AS-IS / TO-BE**          | Estado atual / Estado proposto de um processo                     |
+| **Cloud / Nuvem**          | Infraestrutura de computação remota                               |
+| **Compliance**             | Conformidade com políticas, leis e regulamentos                   |
+| **Dashboard**              | Painel de visualização interativa de dados                        |
+| **Feature**                | Funcionalidade de um sistema                                      |
+| **Heurísticas de Nielsen** | Princípios de usabilidade para interfaces                         |
+| **Mockup**                 | Protótipo visual com detalhes de design                           |
+| **Modularidade**           | Organização em partes independentes                               |
+| **Painel Interativo**      | Visualização dinâmica de dados com filtros e status               |
+| **Personas**               | Perfis fictícios de usuários representativos                      |
+| **Sprint**                 | Iteração de desenvolvimento em metodologia ágil                   |
+| **Suitability**            | Adequação entre produto e perfil do investidor                    |
+| **User Story**             | Descrição de funcionalidade sob o ponto de vista do usuário       |
+| **White Label**            | Produto que pode ser personalizado e utilizado por terceiros      |
+| **Wireframe**              | Esboço inicial da estrutura da interface                          |
 
 ## 1.2 Objetivo do Documento
 
-&emsp;Este documento visa consolidar o entendimento do parceiro e do projeto, orientando seu desenvolvimento técnico com base nas necessidades do parceiro e dos usuários finais, bem como detalhar os planejamentos e execuções do desenvolvimento do *aplicativo mobile* e testes associados.
+&emsp;Este documento visa consolidar o entendimento do parceiro e do projeto, orientando seu desenvolvimento técnico com base nas necessidades do parceiro e dos usuários finais, bem como detalhar os planejamentos e execuções do desenvolvimento do _aplicativo mobile_ e testes associados.
 
 # 2. Entendimento do Projeto e do Negócio
 
@@ -194,7 +195,7 @@
 
 &emsp;A definição de personas e a construção das respectivas jornadas de usuário são etapas fundamentais no processo de design centrado no ser humano. Elas ajudam a guiar as decisões de desenvolvimento, garantindo que o produto atenda de forma eficaz às reais necessidades dos usuários finais.
 
-&emsp;Por outro lado, a jornada é  uma ferramenta  para visualizar, de forma estruturada, o caminho percorrido por uma persona durante sua rotina com (ou sem) a aplicação em desenvolvimento. Ela tem como objetivo revelar pontos críticos de interação do usuário com o sistema. 
+&emsp;Por outro lado, a jornada é uma ferramenta para visualizar, de forma estruturada, o caminho percorrido por uma persona durante sua rotina com (ou sem) a aplicação em desenvolvimento. Ela tem como objetivo revelar pontos críticos de interação do usuário com o sistema.
 
 &emsp;Para garantir a compreensão completa da jornada aplicada, uma breve descrição das seções pode se fazer importante.
 
@@ -240,7 +241,7 @@
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
 
-&emsp;Ao estudar essa persona, foi possível ampliar a compreensão sobre o relacionamento entre cliente e assessor, percebendo que ele ocorre de forma contínua por meio de canais informais como WhatsApp e ligações telefônicas. 
+&emsp;Ao estudar essa persona, foi possível ampliar a compreensão sobre o relacionamento entre cliente e assessor, percebendo que ele ocorre de forma contínua por meio de canais informais como WhatsApp e ligações telefônicas.
 
 &emsp;Durante o processo de construção da Mariana, também ficou evidente a dificuldade de representar um perfil único de cliente. O público atendido por assessores é extremamente diverso em aspectos como idade, grau de instrução, familiaridade com finanças e objetivos de investimento. Assim, Mariana foi concebida como um recorte representativo entre muitos possíveis, e suas características — como sua formação acadêmica ou nível de conhecimento em economia — não devem ser tomadas como generalizáveis a todos os clientes.
 
@@ -268,7 +269,7 @@
 
 &emsp;Antes da implementação da plataforma, Mariana contava com um acompanhamento de qualidade por parte de seu assessor. No entanto, a grande quantidade de clientes sob responsabilidade do profissional fazia com que houvesse um intervalo considerável entre a percepção de uma mudança no comportamento de Mariana e a tomada de ação para corrigi-la.
 
-&emsp;Mesmo com boas intenções e processos funcionais, esse _gap_ de tempo abria margem para que Mariana, sem perceber, se desviasse do seu perfil de investidora original, o que poderia comprometer sua estratégia financeira de longo prazo. 
+&emsp;Mesmo com boas intenções e processos funcionais, esse _gap_ de tempo abria margem para que Mariana, sem perceber, se desviasse do seu perfil de investidora original, o que poderia comprometer sua estratégia financeira de longo prazo.
 
 <div align="center">
 <sub>Figura x - Jornada do Cliente - Depois da Solução</sub>
@@ -304,57 +305,64 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 ---
 
 #### Principais etapas do processo:
-- Importação de dados via CSV, XLSX ou API  
-- Classificação automática do perfil de investidor conforme a CVM 175  
-- Verificação de conformidade entre o perfil cadastrado e o calculado  
-- Geração de recomendações de ajuste por cliente  
-- Exibição em painel visual com filtros por risco, categoria e status  
+
+- Importação de dados via CSV, XLSX ou API
+- Classificação automática do perfil de investidor conforme a CVM 175
+- Verificação de conformidade entre o perfil cadastrado e o calculado
+- Geração de recomendações de ajuste por cliente
+- Exibição em painel visual com filtros por risco, categoria e status
 
 ---
 
 #### Processos de suporte:
-- Infraestrutura de TI segura e escalável para garantir confidencialidade e desempenho  
-- Interpretação jurídica das normas regulatórias para assegurar aderência normativa  
-- Gestão dos dados com controle de acesso, backup e integridade  
+
+- Infraestrutura de TI segura e escalável para garantir confidencialidade e desempenho
+- Interpretação jurídica das normas regulatórias para assegurar aderência normativa
+- Gestão dos dados com controle de acesso, backup e integridade
 
 ---
 
 #### Processos de gestão:
-- Coordenação estratégica do projeto com definição de escopo, entregáveis e cronograma  
-- Matriz RACI com papéis bem definidos entre stakeholders  
-- Monitoramento da performance do sistema, análise de conformidade e coleta de feedback  
+
+- Coordenação estratégica do projeto com definição de escopo, entregáveis e cronograma
+- Matriz RACI com papéis bem definidos entre stakeholders
+- Monitoramento da performance do sistema, análise de conformidade e coleta de feedback
 
 ---
 
 #### Indicadores de valor (KPI's sugeridos):
-- Redução no número de descasamentos de perfil por cliente  
-- Tempo médio de verificação de conformidade antes e depois do uso do app  
-- Taxa de conformidade regulatória das carteiras monitoradas  
-- Nível de confiança percebido pelo cliente (em pesquisas internas)  
+
+- Redução no número de descasamentos de perfil por cliente
+- Tempo médio de verificação de conformidade antes e depois do uso do app
+- Taxa de conformidade regulatória das carteiras monitoradas
+- Nível de confiança percebido pelo cliente (em pesquisas internas)
 
 ---
 
 #### Valor para o cliente/investidor:
-- Mais segurança e transparência no alinhamento entre seu perfil e seus investimentos  
-- Acesso facilitado às informações sobre adequação da carteira  
-- Redução do risco de investir em produtos incompatíveis com seu perfil  
-- Fortalecimento da relação com o BTG por meio de uma experiência digital confiável  
+
+- Mais segurança e transparência no alinhamento entre seu perfil e seus investimentos
+- Acesso facilitado às informações sobre adequação da carteira
+- Redução do risco de investir em produtos incompatíveis com seu perfil
+- Fortalecimento da relação com o BTG por meio de uma experiência digital confiável
 
 ---
 
 #### Relação com o ciclo de BPM:
-- **Descoberta do processo**: mapeamento da jornada de verificação de perfil  
-- **Análise**: identificação de falhas nos processos manuais ou desatualizados  
-- **Redesenho**: automação com base nas regras da CVM  
-- **Implementação**: desenvolvimento e testes do app com dados simulados  
-- **Monitoramento**: uso de painéis com indicadores de conformidade por cliente  
+
+- **Descoberta do processo**: mapeamento da jornada de verificação de perfil
+- **Análise**: identificação de falhas nos processos manuais ou desatualizados
+- **Redesenho**: automação com base nas regras da CVM
+- **Implementação**: desenvolvimento e testes do app com dados simulados
+- **Monitoramento**: uso de painéis com indicadores de conformidade por cliente
 
 ---
 
 #### Potencial de expansão e integração futura:
-- Integração com sistemas internos do BTG, como CRM e plataformas de alocação  
-- Criação de APIs para validação externa por entidades ou auditores  
-- Escalabilidade para avaliação de outros produtos financeiros ou perfis avançados  
+
+- Integração com sistemas internos do BTG, como CRM e plataformas de alocação
+- Criação de APIs para validação externa por entidades ou auditores
+- Escalabilidade para avaliação de outros produtos financeiros ou perfis avançados
 
 ---
 
@@ -379,6 +387,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 [Link de acesso aos fluxos no Miro](https://miro.com/app/board/uXjVIGy2aYQ=/?share_link_id=918758245621)
 
 **Fluxo AS-IS (Processo Atual):**
+
 <div align="center">
 <sup>Figura X - Fluxo de Negócios Atual</sup>
 <img src="./img/fluxo_atual.jpg">
@@ -388,13 +397,15 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 
 &emsp;O fluxo atual de recomendação e adequação de investimentos depende significativamente da análise manual do assessor. Este processo apresenta desafios como:
 
-* **Contexto Limitado:** O assessor muitas vezes opera com informações de perfil do investidor que podem não refletir completamente a adequação da carteira atual do cliente às normativas vigentes da CVM (como a Resolução 175).
-* **Análise Manual Intensiva:** A verificação da adequação e a filtragem de produtos compatíveis são realizadas manualmente, consumindo tempo e tornando difícil garantir consistência e personalização em escala.
-* **Risco de Desalinhamento:** Há um risco inerente de desalinhamento entre o perfil formal do cliente e sua carteira real, o que pode levar a problemas de conformidade regulatória e suitability.
-<br>
+- **Contexto Limitado:** O assessor muitas vezes opera com informações de perfil do investidor que podem não refletir completamente a adequação da carteira atual do cliente às normativas vigentes da CVM (como a Resolução 175).
+- **Análise Manual Intensiva:** A verificação da adequação e a filtragem de produtos compatíveis são realizadas manualmente, consumindo tempo e tornando difícil garantir consistência e personalização em escala.
+- **Risco de Desalinhamento:** Há um risco inerente de desalinhamento entre o perfil formal do cliente e sua carteira real, o que pode levar a problemas de conformidade regulatória e suitability.
+  <br>
+
 ---
 
 **Fluxo TO-BE (Processo Proposto com a Solução):**
+
 <div align="center">
 <sup>Figura X - Fluxo de Negócios Atual</sup>
 <img src="./img/fluxo_proposto.jpg">
@@ -403,11 +414,9 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 <br>
 &emsp; A introdução do aplicativo móvel redesenha o fluxo de negócio para superar as limitações atuais. Os principais ganhos incluem:
 
-
-* **Recomendações Contextualizadas:** A solução considera o histórico do cliente e utiliza filtros para sugerir ajustes ou novas recomendações de investimento que sejam verdadeiramente personalizadas e aderentes ao perfil de risco e objetivos do investidor.
-* **Proatividade e Eficiência:** O assessor ganha eficiência com a automação da análise e pode atuar de forma mais proativa na gestão da carteira dos clientes, apoiado por informações e sugestões geradas pelo sistema.
-* **Adequação com Interesse REAL do cliente:** Facilita no processo de retorno ao perfil de investidor do cliente. Caso um cliente tenha feitos investimentos fora do seu feitio de maneira pontual, o sistema entrega produtos que vão de encontro com seu perfil original, caso seja de interesse do cliente.
-
+- **Recomendações Contextualizadas:** A solução considera o histórico do cliente e utiliza filtros para sugerir ajustes ou novas recomendações de investimento que sejam verdadeiramente personalizadas e aderentes ao perfil de risco e objetivos do investidor.
+- **Proatividade e Eficiência:** O assessor ganha eficiência com a automação da análise e pode atuar de forma mais proativa na gestão da carteira dos clientes, apoiado por informações e sugestões geradas pelo sistema.
+- **Adequação com Interesse REAL do cliente:** Facilita no processo de retorno ao perfil de investidor do cliente. Caso um cliente tenha feitos investimentos fora do seu feitio de maneira pontual, o sistema entrega produtos que vão de encontro com seu perfil original, caso seja de interesse do cliente.
 
 ## 2.6 Matriz de Risco do Projeto
 
@@ -429,26 +438,25 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 
 ## 2.7 Ideação
 
-&emsp;Neste estágio inicial de planejamento da aplicação, foi feito um *brainstorm* de funcionalidades que podem ser oferecidas pelo sistema, sendo alinhadas com o entendimento do negócio e do projeto. Foram elencadas 10 funcionalidades, listadas por esforço e prioridade em relação às necessidades do BTG Pactual e o prazo de desenvolvimento da solução.
+&emsp;Neste estágio inicial de planejamento da aplicação, foi feito um _brainstorm_ de funcionalidades que podem ser oferecidas pelo sistema, sendo alinhadas com o entendimento do negócio e do projeto. Foram elencadas 10 funcionalidades, listadas por esforço e prioridade em relação às necessidades do BTG Pactual e o prazo de desenvolvimento da solução.
 
 ### Brainstorm de Features
 
-| # | Feature | Descrição | Prioridade | Esforço |
-|:---|:---|:---|:---| :---|
-| 1 | Leitura de carteira | Leitura de componentes de carteira de investimentos | Alta | Médio/baixo |
-| 2 | Análise de Conformidade da Carteira | Avaliação automática se a carteira está adequada ao perfil de risco do cliente. | Alta | Médio |
-| 3 | Recomendação de Readequação de Perfil | Caso detectada divergência, gerar sugestão de novo perfil do cliente ao assessor. | Alta | Alto |
-| 4 | Cálculo de Peso dos Ativos na Carteira | Cálculo ponderado dos tipos de investimento para identificação do perfil. | Alta | Médio |
-| 5 | Painel de Visualização de Conformidade | Página para os assessores visualizarem status de todas as carteiras (adequadas ou não). | Alta | Médio |
-| 6 | Filtro por Necessidade de Realocação | Recurso de filtragem por carteiras divergentes com grupo de risco original, que resultará na listagem de carteiras com necessidade de realocação de perfil. | Alta | Médio |
-| 7 | Filtro por Segmento | Permitir ao usuário filtrar os clientes por segmento (exemplo: Prata, Ouro, Platinum). | Média | Baixo |
-| 9 | Histórico de Readequações de Perfil | Registro das mudanças/sugestões de perfil ao longo do tempo para cada cliente. | Média | Alto |
-| 10 | Visualização de Pesos dos Ativos | Exibição visual de distribuição percentual por classe de ativos (gráfico pizza/barras). | Baixa | Médio |
+| #   | Feature                                | Descrição                                                                                                                                                   | Prioridade | Esforço     |
+| :-- | :------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------- | :---------- |
+| 1   | Leitura de carteira                    | Leitura de componentes de carteira de investimentos                                                                                                         | Alta       | Médio/baixo |
+| 2   | Análise de Conformidade da Carteira    | Avaliação automática se a carteira está adequada ao perfil de risco do cliente.                                                                             | Alta       | Médio       |
+| 3   | Recomendação de Readequação de Perfil  | Caso detectada divergência, gerar sugestão de novo perfil do cliente ao assessor.                                                                           | Alta       | Alto        |
+| 4   | Cálculo de Peso dos Ativos na Carteira | Cálculo ponderado dos tipos de investimento para identificação do perfil.                                                                                   | Alta       | Médio       |
+| 5   | Painel de Visualização de Conformidade | Página para os assessores visualizarem status de todas as carteiras (adequadas ou não).                                                                     | Alta       | Médio       |
+| 6   | Filtro por Necessidade de Realocação   | Recurso de filtragem por carteiras divergentes com grupo de risco original, que resultará na listagem de carteiras com necessidade de realocação de perfil. | Alta       | Médio       |
+| 7   | Filtro por Segmento                    | Permitir ao usuário filtrar os clientes por segmento (exemplo: Prata, Ouro, Platinum).                                                                      | Média      | Baixo       |
+| 9   | Histórico de Readequações de Perfil    | Registro das mudanças/sugestões de perfil ao longo do tempo para cada cliente.                                                                              | Média      | Alto        |
+| 10  | Visualização de Pesos dos Ativos       | Exibição visual de distribuição percentual por classe de ativos (gráfico pizza/barras).                                                                     | Baixa      | Médio       |
 
 &emsp;Dessa forma, a ideação de features foi um passo importante para discussão e concretização de ideias iniciais a serem concretizadas como decisões da equipe. Além disso, a ideação orientará a elaboração dos Requisitos Funcionais e Não Funcionais, base do desenvolvimento do projeto.
 
 ## 2.8 Canvas do Projeto
-
 
 &emsp;O Canvas MVP é uma ferramenta visual utilizada para estruturar, de forma rápida e simples, os principais elementos de um MVP (Mínimo Produto Viável). O seu objetivo é alinhar a equipe quanto à proposta da solução, as funcionalidades prioritárias, os públicos-alvo atendidos, jornadas de usuário, expectativas e métricas que validarão as hipóteses do negócio.
 
@@ -469,19 +477,21 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 &emsp;A seguir são detalhados os valores estimados para o desenvolvimento e manutenção do projeto durante 12 meses, considerando as categorias da Pessoas, Software e Infraestrutura.
 
 ### Pessoas
-| Cargo                   | Salário Mensal (R$) | Quantidade | Custo em 12 meses (R$) |
-|-------------------------|---------------------|------------|------------------------|
-| Gestor do Projeto       | 10.000              | 1          | 120.000                |
-| Desenvolvedor Backend   | 8.000               | 3          | 192.000                |
-| Desenvolvedor Frontend  | 7.000               | 2          | 168.000                |
-| UX/UI Designer          | 6.000               | 1          | 36.000                 |
-| Product Owner (PO)      | 10.000              | 1          | 60.000                 |
-| Analista de QA          | 6.500               | 1          | 39.000                 |
-| **Total Pessoas**       |                     |            | **615.000**            |
+
+| Cargo                  | Salário Mensal (R$) | Quantidade | Custo em 12 meses (R$) |
+| ---------------------- | ------------------- | ---------- | ---------------------- |
+| Gestor do Projeto      | 10.000              | 1          | 120.000                |
+| Desenvolvedor Backend  | 8.000               | 3          | 192.000                |
+| Desenvolvedor Frontend | 7.000               | 2          | 168.000                |
+| UX/UI Designer         | 6.000               | 1          | 36.000                 |
+| Product Owner (PO)     | 10.000              | 1          | 60.000                 |
+| Analista de QA         | 6.500               | 1          | 39.000                 |
+| **Total Pessoas**      |                     |            | **615.000**            |
 
 ### Software
+
 | Item                               | Custo Mensal (R$) | Custo em 12 meses (R$) |
-|------------------------------------|-------------------|------------------------|
+| ---------------------------------- | ----------------- | ---------------------- |
 | Licença Figma Professional (UX/UI) | 80                | 960                    |
 | IDE JetBrains (ex: WebStorm)       | 40                | 480                    |
 | API Externa (se necessário)        | 200               | 2.400                  |
@@ -489,29 +499,31 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 | **Total Software**                 |                   | **4.080**              |
 
 ### Infraestrutura
-| Item                                               | Custo Mensal (R$) | Custo em 12 meses (R$) |
-|----------------------------------------------------|-------------------|------------------------|
-| AWS EC2 (2 Instâncias Médias com Auto Scaling)     | 1.200             | 14.400                 |
-| AWS RDS (Banco de Dados Alta Disponibilidade)      | 800               | 9.600                  |
-| AWS S3 (Storage com Redundância)                   | 200               | 2.400                  |
-| Load Balancer + CloudFront (Distribuição global)   | 300               | 3.600                  |
-| Certificado SSL + Domínio + DNS Gerenciado         | 100               | 1.200                  |
-| Monitoramento e Alertas (Datadog, UptimeRobot Pro) | 300               | 3.600                  |
-| Backup Automático e Logs Centralizados (CloudWatch)| 200               | 2.400                  |
-| **Total Infraestrutura**                           |                   | **37.200**             |
 
+| Item                                                | Custo Mensal (R$) | Custo em 12 meses (R$) |
+| --------------------------------------------------- | ----------------- | ---------------------- |
+| AWS EC2 (2 Instâncias Médias com Auto Scaling)      | 1.200             | 14.400                 |
+| AWS RDS (Banco de Dados Alta Disponibilidade)       | 800               | 9.600                  |
+| AWS S3 (Storage com Redundância)                    | 200               | 2.400                  |
+| Load Balancer + CloudFront (Distribuição global)    | 300               | 3.600                  |
+| Certificado SSL + Domínio + DNS Gerenciado          | 100               | 1.200                  |
+| Monitoramento e Alertas (Datadog, UptimeRobot Pro)  | 300               | 3.600                  |
+| Backup Automático e Logs Centralizados (CloudWatch) | 200               | 2.400                  |
+| **Total Infraestrutura**                            |                   | **37.200**             |
 
 ### Custo Total Estimado
-| Categoria        | Total (R$) |
-|------------------|------------|
-| Pessoas          | 615.000    |
-| Software         | 4.080      |
-| Infraestrutura   | 37.200     |
-| **Total Geral**  | **656.280** |
+
+| Categoria       | Total (R$)  |
+| --------------- | ----------- |
+| Pessoas         | 615.000     |
+| Software        | 4.080       |
+| Infraestrutura  | 37.200      |
+| **Total Geral** | **656.280** |
 
 &emsp;A estimativa de investimento apresentada acima foi construída com base em valores de mercado atualizados até o mês de abril de 2025, considerando a realidade brasileira para o setor de tecnologia e desenvolvimento de software. Os profissionais de UX/UI Designer, Product Owner e Analista de QA estão alocados em meio período no projeto, o que justifica o salário proporcional.
 
 # 3. Requisitos do Projeto
+
 &emsp;Esta seção tem como objetivo identificar, organizar e descrever os requisitos do sistema proposto, com base na análise do problema, nas necessidades do parceiro BTG Pactual e nas expectativas dos principais usuários do sistema (personas Fábio e Mariana).
 
 &emsp;Os requisitos aqui definidos norteiam o desenvolvimento do aplicativo e garantem que o produto final atenda às funcionalidades esperadas, bem como aos atributos de qualidade exigidos em um contexto sensível, que envolve dados financeiros e adequação regulatória.
@@ -531,15 +543,16 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 <div align="center">
 <sub>Tabela X - Requisitos Funcionais</sub><br>
 
-| ID     | Título                                           | Descrição Breve                                                                                                                                                    | Prioridade |
-|--------|--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| RF01   | Importação de Carteiras de Clientes              | Permitir o carregamento de dados das carteiras via upload de arquivos (.CSV ou .XLSX) ou via uma API simples.                                                      | Alta       |
-| RF02   | Cálculo do Perfil Atual da Carteira              | Calcular automaticamente o perfil de risco **atual da carteira**, com base na composição atual dos ativos                | Alta       |
-| RF03   | Verificação de Conformidade com Perfil Cadastrado| Verificar se o perfil da carteira atual está alinhado com o perfil cadastrado do cliente (suitability).                                                            | Alta       |
-| RF04   | Geração de Recomendações de Readequação          | Gerar recomendações informativas quando houver desalinhamento, indicando ajustes possíveis na carteira, **sem induzir ações ou sugerir erros a serem corrigidos**.| Alta      |
-| RF05   | Direcionamento de Atendimento por Conformidade   | A interface deve **priorizar e destacar clientes cujas carteiras estejam fora de conformidade**, auxiliando o assessor na priorização dos atendimentos.           | Média      |
+| ID   | Título                                            | Descrição Breve                                                                                                                                                    | Prioridade |
+| ---- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| RF01 | Importação de Carteiras de Clientes               | Permitir o carregamento de dados das carteiras via upload de arquivos (.CSV ou .XLSX) ou via uma API simples.                                                      | Alta       |
+| RF02 | Cálculo do Perfil Atual da Carteira               | Calcular automaticamente o perfil de risco **atual da carteira**, com base na composição atual dos ativos                                                          | Alta       |
+| RF03 | Verificação de Conformidade com Perfil Cadastrado | Verificar se o perfil da carteira atual está alinhado com o perfil cadastrado do cliente (suitability).                                                            | Alta       |
+| RF04 | Geração de Recomendações de Readequação           | Gerar recomendações informativas quando houver desalinhamento, indicando ajustes possíveis na carteira, **sem induzir ações ou sugerir erros a serem corrigidos**. | Alta       |
+| RF05 | Direcionamento de Atendimento por Conformidade    | A interface deve **priorizar e destacar clientes cujas carteiras estejam fora de conformidade**, auxiliando o assessor na priorização dos atendimentos.            | Média      |
 
 <sup>Material produzido pelos autores (2025)</sup>
+
 </div><br>
 
 ### Requisitos Funcionais Definidos como User Stories
@@ -547,14 +560,15 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 <div align="center">
 <sub>Tabela X - User Stories dos Requisitos Funcionais</sub><br>
 
-| ID           | User Story                                                                                                                                                       |
-|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| RF01          | Como assessor, quero **acessar as carteiras dos meus clientes** diretamente no sistema, para visualizar e iniciar análises sem depender de uploads ou integrações manuais. |
-| RF02 e RF03   | Como assessor, quero que o sistema **verifique se a carteira do cliente está aderente ao perfil cadastrado**, considerando automaticamente a composição atual dos ativos, para garantir conformidade e reduzir riscos. |
-| RF04          | Como assessor, quero receber **recomendações informativas** de ajuste quando houver desalinhamento, para orientar meus clientes de forma responsável, sem induzir mudanças. |
-| RF05          | Como assessor, quero que a interface **destaque automaticamente os clientes** com carteiras fora de conformidade, para priorizar meu atendimento nos casos críticos.           |
+| ID          | User Story                                                                                                                                                                                                             |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RF01        | Como assessor, quero **acessar as carteiras dos meus clientes** diretamente no sistema, para visualizar e iniciar análises sem depender de uploads ou integrações manuais.                                             |
+| RF02 e RF03 | Como assessor, quero que o sistema **verifique se a carteira do cliente está aderente ao perfil cadastrado**, considerando automaticamente a composição atual dos ativos, para garantir conformidade e reduzir riscos. |
+| RF04        | Como assessor, quero receber **recomendações informativas** de ajuste quando houver desalinhamento, para orientar meus clientes de forma responsável, sem induzir mudanças.                                            |
+| RF05        | Como assessor, quero que a interface **destaque automaticamente os clientes** com carteiras fora de conformidade, para priorizar meu atendimento nos casos críticos.                                                   |
 
 <sup>Material produzido pelos autores (2025)</sup>
+
 </div><br>
 
 ### Tabela de Testes para Requisitos Funcionais
@@ -562,15 +576,16 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 <div align="center">
 <sub>Tabela X - Testes associados aos Requisitos Funcionais</sub><br>
 
-| Caso de Teste | RF   | Descrição do Teste                                                                                           | Pré-condição                                                                                         | Critério de Aceite                                                                                                                                                     | Critério de Falha                                                                                                          |
-|----------------|------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| CT-RF01        | RF01 | Verificar a importação bem-sucedida de carteiras por upload (.CSV ou .XLSX) ou API simples.                  | Usuário autenticado, arquivo válido disponível para upload ou endpoint de API funcional.            | O sistema processa corretamente o arquivo ou os dados da API, carrega os dados da carteira e os exibe na interface sem erros.                                        | Arquivo não é processado, dados incorretos, erro no carregamento ou falha na integração da API.                           |
-| CT-RF02        | RF02 | Validar o cálculo correto do perfil atual da carteira, com base nos ativos presentes.                       | Carteira de cliente carregada com ativos classificados.                                             | O sistema calcula automaticamente o perfil da carteira com base nas regras definidas e apresenta o resultado na interface.                                           | Perfil não calculado, cálculo incorreto, inconsistência nos resultados ou ausência do resultado.                          |
-| CT-RF03        | RF03 | Verificar se o sistema avalia corretamente a conformidade da carteira com o perfil cadastrado do cliente.   | Perfil cadastrado no sistema e carteira importada.                                                  | O sistema compara o perfil cadastrado com o perfil calculado da carteira e exibe claramente se está aderente ou não (status de conformidade visível).                 | Sistema não apresenta o status de conformidade, apresenta status incorreto ou não realiza a comparação.                    |
-| CT-RF04        | RF04 | Verificar a geração de recomendações quando a carteira está fora do perfil cadastrado.                      | Carteira importada, perfil calculado e identificado como não aderente.                              | O sistema exibe recomendações claras e informativas sobre possíveis ajustes na carteira (ex.: alterar alocação entre classes de ativos), sem executar ações diretas. | Ausência de recomendações, recomendações incorretas, pouco claras ou que induzem erro de interpretação.                   |
-| CT-RF05        | RF05 | Verificar se os clientes fora de conformidade são destacados na interface de atendimento.                   | Base de clientes carregada, alguns clientes fora do perfil.                                         | O sistema destaca visualmente (cor, ícones, etiquetas, posição na lista, etc.) os clientes fora de conformidade, priorizando sua visualização pelo assessor.          | Sistema não faz nenhum tipo de destaque, priorização incorreta ou ausência de sinalização visual dos casos críticos.       |
+| Caso de Teste | RF   | Descrição do Teste                                                                                        | Pré-condição                                                                             | Critério de Aceite                                                                                                                                                   | Critério de Falha                                                                                                    |
+| ------------- | ---- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| CT-RF01       | RF01 | Verificar a importação bem-sucedida de carteiras por upload (.CSV ou .XLSX) ou API simples.               | Usuário autenticado, arquivo válido disponível para upload ou endpoint de API funcional. | O sistema processa corretamente o arquivo ou os dados da API, carrega os dados da carteira e os exibe na interface sem erros.                                        | Arquivo não é processado, dados incorretos, erro no carregamento ou falha na integração da API.                      |
+| CT-RF02       | RF02 | Validar o cálculo correto do perfil atual da carteira, com base nos ativos presentes.                     | Carteira de cliente carregada com ativos classificados.                                  | O sistema calcula automaticamente o perfil da carteira com base nas regras definidas e apresenta o resultado na interface.                                           | Perfil não calculado, cálculo incorreto, inconsistência nos resultados ou ausência do resultado.                     |
+| CT-RF03       | RF03 | Verificar se o sistema avalia corretamente a conformidade da carteira com o perfil cadastrado do cliente. | Perfil cadastrado no sistema e carteira importada.                                       | O sistema compara o perfil cadastrado com o perfil calculado da carteira e exibe claramente se está aderente ou não (status de conformidade visível).                | Sistema não apresenta o status de conformidade, apresenta status incorreto ou não realiza a comparação.              |
+| CT-RF04       | RF04 | Verificar a geração de recomendações quando a carteira está fora do perfil cadastrado.                    | Carteira importada, perfil calculado e identificado como não aderente.                   | O sistema exibe recomendações claras e informativas sobre possíveis ajustes na carteira (ex.: alterar alocação entre classes de ativos), sem executar ações diretas. | Ausência de recomendações, recomendações incorretas, pouco claras ou que induzem erro de interpretação.              |
+| CT-RF05       | RF05 | Verificar se os clientes fora de conformidade são destacados na interface de atendimento.                 | Base de clientes carregada, alguns clientes fora do perfil.                              | O sistema destaca visualmente (cor, ícones, etiquetas, posição na lista, etc.) os clientes fora de conformidade, priorizando sua visualização pelo assessor.         | Sistema não faz nenhum tipo de destaque, priorização incorreta ou ausência de sinalização visual dos casos críticos. |
 
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
+
 </div>
 
 ## 3.2 Requisitos Não Funcionais (RNFs)
@@ -580,15 +595,16 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 <div align="center">
 <sub>Tabela X - Requisitos não funcionais</sub><br>
 
-| **RNF#** | **Descrição**                                                                                                                                          | **Aspecto de Qualidade (ISO 25010)** | **Prioridade** |
-|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|----------------|
-| RNF01   | O sistema deve ser containerizado com Docker e projetado para rodar em ambientes de nuvem, garantindo portabilidade e escalabilidade.                   | Portabilidade                        | Alta           |
-| RNF02   | As APIs devem ser RESTful, com autenticação segura via provedores como Auth0 ou Firebase.                                                               | Compatibilidade                      | Alta           |
-| RNF03   | A arquitetura deve ser modular, com separação clara de responsabilidades, facilitando manutenção e evolução do código sem impacto em outros módulos.    | Manutenibilidade                     | Alta           |
-| RNF04   | Em caso de falha nas verificações ou geração de recomendações, o sistema deve exibir mensagem clara e oferecer opção de tentar novamente.               | Confiabilidade                       | Alta           |
-| RNF05   | A interface deve seguir boas práticas de usabilidade e ser validada com pelo menos uma rodada de testes com usuários reais.                            | Usabilidade                          | Média          |
+| **RNF#** | **Descrição**                                                                                                                                        | **Aspecto de Qualidade (ISO 25010)** | **Prioridade** |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | -------------- |
+| RNF01    | O sistema deve ser containerizado com Docker e projetado para rodar em ambientes de nuvem, garantindo portabilidade e escalabilidade.                | Portabilidade                        | Alta           |
+| RNF02    | As APIs devem ser RESTful, com autenticação segura via provedores como Auth0 ou Firebase.                                                            | Compatibilidade                      | Alta           |
+| RNF03    | A arquitetura deve ser modular, com separação clara de responsabilidades, facilitando manutenção e evolução do código sem impacto em outros módulos. | Manutenibilidade                     | Alta           |
+| RNF04    | Em caso de falha nas verificações ou geração de recomendações, o sistema deve exibir mensagem clara e oferecer opção de tentar novamente.            | Confiabilidade                       | Alta           |
+| RNF05    | A interface deve seguir boas práticas de usabilidade e ser validada com pelo menos uma rodada de testes com usuários reais.                          | Usabilidade                          | Média          |
 
 <sup>Material produzido pelos autores (2025)</sup>
+
 </div><br>
 
 ### Requisitos Não Funcionais Definidos como User Stories
@@ -596,56 +612,56 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 <div align="center">
 <sub>Tabela X - User Stories dos Requisitos Não Funcionais</sub><br>
 
-| ID    | User Story                                                                                                                                                                                                                                          |
-|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| RNF01 | **Como** assessor, **quero** que a aplicação rode em ambientes de nuvem, **para que** eu consiga acessar de qualquer lugar, com estabilidade e sem depender de um dispositivo específico.                                                           |
-| RNF02 | **Como** assessor, **quero** que a aplicação tenha autenticação segura usando métodos confiáveis, **para que** eu tenha confiança de que meus dados e informações estão protegidos contra acessos não autorizados.                                 |
-| RNF03 | **Como** assessor, **quero** que o sistema funcione de forma estável e sem erros, mesmo após atualizações, **para que** eu tenha uma experiência contínua, sem que mudanças em uma funcionalidade prejudiquem outras.                             |
-| RNF04 | **Como** assessor, **quero** que, se algo der errado nas recomendações ou verificações, o sistema me mostre uma mensagem clara e ofereça a opção de tentar novamente, **para que** eu não fique perdido e continue usando sem frustração.         |
-| RNF05 | **Como** assessor, **quero** que a interface do sistema seja intuitiva e fácil de usar, validada com usuários reais, **para que** eu consiga realizar minhas tarefas de forma rápida e sem dificuldades.                                           |
-
+| ID    | User Story                                                                                                                                                                                                                                |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RNF01 | **Como** assessor, **quero** que a aplicação rode em ambientes de nuvem, **para que** eu consiga acessar de qualquer lugar, com estabilidade e sem depender de um dispositivo específico.                                                 |
+| RNF02 | **Como** assessor, **quero** que a aplicação tenha autenticação segura usando métodos confiáveis, **para que** eu tenha confiança de que meus dados e informações estão protegidos contra acessos não autorizados.                        |
+| RNF03 | **Como** assessor, **quero** que o sistema funcione de forma estável e sem erros, mesmo após atualizações, **para que** eu tenha uma experiência contínua, sem que mudanças em uma funcionalidade prejudiquem outras.                     |
+| RNF04 | **Como** assessor, **quero** que, se algo der errado nas recomendações ou verificações, o sistema me mostre uma mensagem clara e ofereça a opção de tentar novamente, **para que** eu não fique perdido e continue usando sem frustração. |
+| RNF05 | **Como** assessor, **quero** que a interface do sistema seja intuitiva e fácil de usar, validada com usuários reais, **para que** eu consiga realizar minhas tarefas de forma rápida e sem dificuldades.                                  |
 
 <sup>Material produzido pelos autores (2025)</sup>
-</div><br>
 
+</div><br>
 
 ### Tabela de Testes para Requisitos Não Funcionais
 
 <div align="center">
 <sub>Tabela X - Testes associados aos Requisitos Não Funcionais</sub><br>
 
-| Caso de Teste | RNF#  | Descrição do Teste                                                                                      | Pré-condição                                        | Caso de Aceite                                                                                 | Caso de Recusa                                                                             |
-|---------------|--------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| CT-RNF01      | RNF01  | Verificar se o sistema está containerizado com Docker e implantado em ambiente de nuvem.               | Sistema implantado e ambiente cloud configurado.   | Todos os serviços estão rodando em containers, funcionando corretamente em ambiente cloud.    | Serviços rodando fora de containers ou não em ambiente cloud.                             |
-| CT-RNF02      | RNF02  | Testar se as APIs são RESTful, autenticadas via Auth0 ou Firebase, e funcionam com segurança.           | APIs expostas com autenticação configurada.        | APIs respondem corretamente, autenticação segura via provedor ativo e documentação presente.  | APIs sem autenticação segura ou sem padrão REST; falha na autenticação.                   |
-| CT-RNF03      | RNF03  | Validar a modularidade desabilitando um módulo e verificando que os outros continuam operando normalmente. | Sistema modular rodando com controle individual.   | Outros módulos continuam funcionando sem impacto após a desativação de um módulo.             | Falha ou queda no sistema após desabilitar um módulo, mostrando acoplamento alto.         |
-| CT-RNF04      | RNF04  | Simular falha no processo de recomendação ou verificação e verificar a mensagem exibida ao usuário.      | Sistema de recomendação offline ou erro gerado.    | Mensagem clara de erro é exibida e opção "Tentar novamente" está disponível e funciona.       | Mensagem confusa, genérica, ou ausência de opção para tentar novamente.                   |
-| CT-RNF05      | RNF05  | Aplicar uma rodada de testes de usabilidade com usuários reais na interface de recomendações.            | Protótipo funcional da interface disponível.       | Feedback positivo em pelo menos 80% dos usuários quanto à facilidade e clareza da interface.  | Feedback negativo ou reclamações recorrentes que indicam má usabilidade.                  |
+| Caso de Teste | RNF#  | Descrição do Teste                                                                                         | Pré-condição                                     | Caso de Aceite                                                                               | Caso de Recusa                                                                    |
+| ------------- | ----- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| CT-RNF01      | RNF01 | Verificar se o sistema está containerizado com Docker e implantado em ambiente de nuvem.                   | Sistema implantado e ambiente cloud configurado. | Todos os serviços estão rodando em containers, funcionando corretamente em ambiente cloud.   | Serviços rodando fora de containers ou não em ambiente cloud.                     |
+| CT-RNF02      | RNF02 | Testar se as APIs são RESTful, autenticadas via Auth0 ou Firebase, e funcionam com segurança.              | APIs expostas com autenticação configurada.      | APIs respondem corretamente, autenticação segura via provedor ativo e documentação presente. | APIs sem autenticação segura ou sem padrão REST; falha na autenticação.           |
+| CT-RNF03      | RNF03 | Validar a modularidade desabilitando um módulo e verificando que os outros continuam operando normalmente. | Sistema modular rodando com controle individual. | Outros módulos continuam funcionando sem impacto após a desativação de um módulo.            | Falha ou queda no sistema após desabilitar um módulo, mostrando acoplamento alto. |
+| CT-RNF04      | RNF04 | Simular falha no processo de recomendação ou verificação e verificar a mensagem exibida ao usuário.        | Sistema de recomendação offline ou erro gerado.  | Mensagem clara de erro é exibida e opção "Tentar novamente" está disponível e funciona.      | Mensagem confusa, genérica, ou ausência de opção para tentar novamente.           |
+| CT-RNF05      | RNF05 | Aplicar uma rodada de testes de usabilidade com usuários reais na interface de recomendações.              | Protótipo funcional da interface disponível.     | Feedback positivo em pelo menos 80% dos usuários quanto à facilidade e clareza da interface. | Feedback negativo ou reclamações recorrentes que indicam má usabilidade.          |
 
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
-</div>
 
+</div>
 
 ## 3.3 Correlação RFs e RNFs
 
 <div align="center">
 <sub>Tabela X - Tabela de Correlação RFs e RNFs</sub><br>
 
-| Requisito Funcional                         | RNFs Correlatos              | Justificativa da Correlação                                                                                                                                                    |
-|--------------------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| RF01 - Importação de Carteiras de Clientes | RNF01, RNF02, RNF03, RNF05  | O processo de importação exige APIs RESTful seguras (RNF02) para upload e integração, sistema containerizado e escalável para suportar grandes volumes (RNF01), arquitetura modular para manter o código organizado (RNF03) e interface usável para facilitar o upload e validação dos arquivos (RNF05).  |
-| RF02 - Cálculo do Perfil Atual da Carteira | RNF01, RNF03, RNF04         | O cálculo deve ser rápido e escalável (RNF01), implementado em módulos separados para facilitar manutenção e atualização (RNF03), e confiável para exibir mensagens claras em caso de falha no cálculo (RNF04).                                           |
-| RF03 - Verificação de Conformidade com Perfil Cadastrado | RNF01, RNF02, RNF03, RNF04  | A verificação precisa ser executada com alta disponibilidade e escalabilidade (RNF01), usando APIs seguras e compatíveis (RNF02), com arquitetura modular para permitir ajustes futuros sem impacto (RNF03) e garantir tratamento correto de erros (RNF04). |
-| RF04 - Geração de Recomendações de Readequação | RNF03, RNF04, RNF05         | A geração de recomendações deve estar em módulo separado para facilitar evolução (RNF03), ter confiabilidade para lidar com falhas exibindo mensagens claras (RNF04) e interface com boas práticas para exibir recomendações compreensíveis aos usuários (RNF05). |
-| RF05 - Direcionamento de Atendimento por Conformidade | RNF03, RNF05                | O direcionamento depende de arquitetura modular para integrar facilmente (RNF03) e de uma interface intuitiva e validada por usuários para garantir que o assessor utilize as informações de forma eficiente (RNF05).                        |
-
+| Requisito Funcional                                      | RNFs Correlatos            | Justificativa da Correlação                                                                                                                                                                                                                                                                              |
+| -------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RF01 - Importação de Carteiras de Clientes               | RNF01, RNF02, RNF03, RNF05 | O processo de importação exige APIs RESTful seguras (RNF02) para upload e integração, sistema containerizado e escalável para suportar grandes volumes (RNF01), arquitetura modular para manter o código organizado (RNF03) e interface usável para facilitar o upload e validação dos arquivos (RNF05). |
+| RF02 - Cálculo do Perfil Atual da Carteira               | RNF01, RNF03, RNF04        | O cálculo deve ser rápido e escalável (RNF01), implementado em módulos separados para facilitar manutenção e atualização (RNF03), e confiável para exibir mensagens claras em caso de falha no cálculo (RNF04).                                                                                          |
+| RF03 - Verificação de Conformidade com Perfil Cadastrado | RNF01, RNF02, RNF03, RNF04 | A verificação precisa ser executada com alta disponibilidade e escalabilidade (RNF01), usando APIs seguras e compatíveis (RNF02), com arquitetura modular para permitir ajustes futuros sem impacto (RNF03) e garantir tratamento correto de erros (RNF04).                                              |
+| RF04 - Geração de Recomendações de Readequação           | RNF03, RNF04, RNF05        | A geração de recomendações deve estar em módulo separado para facilitar evolução (RNF03), ter confiabilidade para lidar com falhas exibindo mensagens claras (RNF04) e interface com boas práticas para exibir recomendações compreensíveis aos usuários (RNF05).                                        |
+| RF05 - Direcionamento de Atendimento por Conformidade    | RNF03, RNF05               | O direcionamento depende de arquitetura modular para integrar facilmente (RNF03) e de uma interface intuitiva e validada por usuários para garantir que o assessor utilize as informações de forma eficiente (RNF05).                                                                                    |
 
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
+
 </div>
 
 # 4. Modelagem de Dados
 
 ## 4.1 Especificação da Base de Dados para Modelo de Recomendação
+
 &emsp;A construção da base de dados para o modelo de recomendação exigiu um processo de limpeza, padronização e enriquecimento dos dados originais recebidos. O arquivo CSV inicial chegou sem títulos nas colunas, o que demandou a adição manual dos nomes para possibilitar a correta leitura e manipulação.
 
 &emsp;Durante a análise, foram identificados alguns registros duplicados (embora não em grande quantidade), que precisaram ser removidos para garantir a integridade da base. Também foi necessário corrigir nomes de ativos que continham vírgulas (em dois casos), pois isso causava erros na separação dos campos durante a importação. Esses nomes foram ajustados manualmente para garantir que cada ativo ocupasse apenas uma coluna.
@@ -681,7 +697,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 - **Clientes — Contêm — Ativos (N:N)**
 
   Um cliente pode conter um ou vários ativos ao mesmo tempo que cada ativo pode ser associado a varios clientes.
-  
+
 - **Assessores — Monitoram — Clientes (1:N)**
 
   Um assessor pode monitorar diversos clientes, e ao mesmo tempo cada cliente é acompanhado por um único assessor.
@@ -738,7 +754,7 @@ Table ativos {
 }
 
 Table investimento {
-  id ULID [primary key]  
+  id ULID [primary key]
   ativos_id INT [not null]
   clientes_id INT [not null]
   quantidade INT
@@ -772,9 +788,9 @@ Ref: historico_risco_calculado.clientes_id > clientes.id
 
 &emsp;É importante ressaltar determinadas justificativas para alguns pontos relacionados ao modelo; a entidade clientes representa os investidores do sistema, sendo uma regra de negócio um cliente poder possuir apenas uma carteira de investimento no banco BTG Pactual, e por isso, a tabela também contempla informações financeiras como o `saldo_carteira`. Além disso, toda vez que o teste de perfil de risco, essa informação é registrada como histórico dentro da entidade historico_risco_declarado através do campo "risco" e o created_at que guarda o instante exato do registro. Um cliente pode estar associado apenas com o seu perfil de risco mais atual dentro o histórico, mas um tipo de perfil de risco pode estar atribuído a vários clientes, por isso o relacionamento de um-para-muitos; também há a associação com a entidade historico_risco_calculado, por onde se espera registrar o cálculo de perfil de risco a partir da leitura de ativos que compoem a carteira de investimento. Da mesma forma, o risco fica armazenado no campo "risco", obtendo-se um created_at que indica o instante exato do cálculo. A carteira do cliente pode estar associada com seu perfil de risco mais atual dentre o histórico, mas um tipo de perfil de risco pode estar atribuído à carteira de vários clientes, por isso o relacionamento de um-para-muitos.
 
-&emsp;Ainda nesse contexto, vale ressaltar que anteriormente as informações financeiras de uma carteira eram mantidas em uma tabela separada, entretanto, para fins de facilidade de comunicação e acesso dos futuros serviços a serem implementados para no aplicativo, manteve-se as informações da carteira dentro da tabela de cliente. 
+&emsp;Ainda nesse contexto, vale ressaltar que anteriormente as informações financeiras de uma carteira eram mantidas em uma tabela separada, entretanto, para fins de facilidade de comunicação e acesso dos futuros serviços a serem implementados para no aplicativo, manteve-se as informações da carteira dentro da tabela de cliente.
 
-&emsp;Além disso, a decisão de se manter em tabelas separadas os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução. Ademais, através dos campos `risco` como tipo JSON, é possível construir metadados flexíveis para maior detalhamento dessas atividades. 
+&emsp;Além disso, a decisão de se manter em tabelas separadas os registros de perfis de risco calculados e declarados se deu pela intenção de tanto manter um histórico detalhado dessas informações, quanto garantir uma maneira fácil de atribuir os resultados dos cálculos de perfis, ainda que sua lógica seja alterada conforme evolução da solução. Ademais, através dos campos `risco` como tipo JSON, é possível construir metadados flexíveis para maior detalhamento dessas atividades.
 
 &emsp;Outro detalhe é o tipo "enum" do campo `categoria` na tabela de assessores, que se trata de um enumerador que pode atribuir 3 características possíveis de categoria de um assessor — Ouro, Prata e Platinum —, baseada no nível patrimonial dos investidores que ele atende.
 
@@ -791,12 +807,14 @@ Ref: historico_risco_calculado.clientes_id > clientes.id
 #### **Funções de Cálculo de Perfil de Risco**
 
 - **`recalcular_perfil_risco()`**: Função principal que **recalcula automaticamente o perfil de risco** de um cliente sempre que há alterações em seus investimentos. Esta função:
+
   - Analisa a composição da carteira (Renda Fixa vs Renda Variável)
   - Determina se o cliente se enquadra nos perfis: **Conservador** (≥90% RF), **Moderado** (intermediário) ou **Sofisticado** (≥70% RV)
   - Gera automaticamente um ID único para o histórico
   - Registra o resultado no `historico_risco_calculado`
 
 - **`obter_perfil_risco_cliente(cliente_id VARCHAR)`**: Retorna o **perfil de risco mais recente e completo** do cliente, incluindo:
+
   - Tipo de perfil (Conservador/Moderado/Sofisticado)
   - Percentual de Renda Variável e Renda Fixa
   - Valor total da carteira
@@ -826,18 +844,18 @@ Ref: historico_risco_calculado.clientes_id > clientes.id
 
 &emsp;O sistema conta com triggers configurados para garantir que o perfil de risco seja **recalculado automaticamente** sempre que houver alterações na tabela de investimentos:
 
-| Trigger | Evento Disparador | Função Executada | Condição |
-|---------|------------------|------------------|----------|
-| `after_investimento_insert` | Após inserção de novo investimento | `recalcular_perfil_risco()` | Todos os inserts |
-| `after_investimento_update` | Após atualização de investimento | `recalcular_perfil_risco()` | Apenas quando `valorTotal` ou `ativos_id` mudam |
-| `after_investimento_delete` | Após exclusão de investimento | `recalcular_perfil_risco()` | Todas as exclusões |
+| Trigger                     | Evento Disparador                  | Função Executada            | Condição                                        |
+| --------------------------- | ---------------------------------- | --------------------------- | ----------------------------------------------- |
+| `after_investimento_insert` | Após inserção de novo investimento | `recalcular_perfil_risco()` | Todos os inserts                                |
+| `after_investimento_update` | Após atualização de investimento   | `recalcular_perfil_risco()` | Apenas quando `valorTotal` ou `ativos_id` mudam |
+| `after_investimento_delete` | Após exclusão de investimento      | `recalcular_perfil_risco()` | Todas as exclusões                              |
 
 #### **Regras de Classificação de Perfil**
 
 &emsp;A lógica de classificação implementada na função `recalcular_perfil_risco()` segue os seguintes critérios:
 
 - **Conservador**: ≥ 90% da carteira em Renda Fixa
-- **Sofisticado**: ≥ 70% da carteira em Renda Variável  
+- **Sofisticado**: ≥ 70% da carteira em Renda Variável
 - **Moderado**: Demais distribuições (intermediário)
 
 #### **Vantagens da Implementação**
@@ -854,8 +872,9 @@ Ref: historico_risco_calculado.clientes_id > clientes.id
 &emsp;Esta arquitetura foi projetada para ser **flexível e escalável**, fornecendo rastreabilidade temporal através dos históricos de risco declarado e calculado, além de permitir expansões futuras para funcionalidades de auditoria, governança e sistemas automatizados de recomendação de alocação de ativos.
 
 **Resumo das Implementações:**
+
 - **6 Funções** de cálculo e consulta
-- **1 Procedure** de relatório consolidado  
+- **1 Procedure** de relatório consolidado
 - **3 Triggers** de automação
 - **Comentários** documentando cada implementação
 - **Tipagem forte** com uso de ENUMs e tipos personalizados
@@ -895,54 +914,65 @@ Como um assessor de investimento, quero que o sistema importe automaticamente os
 Como um assessor de investimento, quero que o sistema calcule automaticamente o perfil de risco com base nos ativos da carteira para que eu possa entender rapidamente o nível de exposição a risco de cada cliente.
 
 **Relacionamentos**:
+
 - **<<include>>** Importar Dados de Carteira via API
 
 #### 5.1.3.3 Verificar Conformidade de Perfil
+
 **Descrição**: O sistema verifica a conformidade entre o perfil calculado e o perfil cadastrado do cliente.
 
 **História de Usuário**:  
 &emsp;Como um assessor de investimento, quero que o sistema verifique a conformidade entre o perfil calculado e o perfil cadastrado do cliente para que eu possa identificar possíveis desalinhamentos.
 
 **Relacionamentos**:
+
 - **<<include>>** Calcular Perfil de Risco
 
 #### 5.1.3.4 Exibir Recomendações de Readequação
+
 **Descrição**: O sistema exibe recomendações de readequação do perfil quando for identificado um desalinhamento.
 
 **História de Usuário**:  
 &emsp;Como um assessor de investimento, quero visualizar recomendações de readequação quando um desalinhamento de perfil for identificado para que eu possa sugerir ajustes apropriados aos meus clientes.
 
 **Relacionamentos**:
+
 - **<<include>>** Verificar Conformidade de Perfil
 
 #### 5.1.3.5 Visualizar Painel de Conformidade
+
 **Descrição**: O sistema apresenta, de forma visual, o status de conformidade de todas as carteiras em um painel.
 
 **História de Usuário**:  
 &emsp;Como um assessor de investimento, quero visualizar em um painel o status de conformidade de todas as carteiras para que eu possa ter uma visão geral da situação dos meus clientes.
 
 **Relacionamentos**:
+
 - **<<include>>** Verificar Conformidade de Perfil
 
 #### 5.1.3.6 Filtrar Carteiras por Status
+
 **Descrição**: O sistema oferece filtros por status de conformidade (adequado/não adequado).
 
 **História de Usuário**:  
 &emsp;Como um assessor de investimento, quero filtrar as carteiras por status de conformidade (adequado/não adequado) para que eu possa priorizar os clientes que precisam de atenção imediata.
 
 #### 5.1.3.7 Filtrar Clientes por Segmento
+
 **Descrição**: O sistema permite filtro de clientes por segmento (Prata, Ouro, Platinum).
 
 **História de Usuário**:  
 &emsp;Como um assessor de investimento, quero filtrar os clientes por segmento (Prata, Ouro, Platinum) para que eu possa direcionar meus esforços de acordo com a importância do cliente.
 
 #### 5.1.3.8 Consultar Histórico de Sugestões
+
 **Descrição**: O sistema mantém o histórico das sugestões de readequação de perfil por cliente.
 
 **História de Usuário**:  
 &emsp;Como um assessor de investimento, quero consultar o histórico das sugestões de readequação de perfil por cliente para que eu possa acompanhar a evolução e as recomendações anteriores.
 
 #### 5.1.3.9 Visualizar Composição da Carteira
+
 **Descrição**: O sistema exibe graficamente a composição da carteira por tipo de ativo.
 
 **História de Usuário**:  
@@ -950,17 +980,17 @@ Como um assessor de investimento, quero que o sistema calcule automaticamente o 
 
 ### 5.1.4 Tabela de Associação entre Requisitos Funcionais e Casos de Uso
 
-| ID | Requisito Funcional | Prioridade | Caso de Uso Associado |
-|----|-------------------|------------|---------------------|
-| RF01 | O sistema deve importar e processar automaticamente os dados de carteira de clientes por meio de integração via API. | Alta | Importar Dados de Carteira via API |
-| RF02 | O sistema deve calcular automaticamente o perfil de risco com base nos ativos da carteira. | Alta | Calcular Perfil de Risco |
-| RF03 | O sistema deve verificar a conformidade entre o perfil calculado e o perfil cadastrado do cliente. | Alta | Verificar Conformidade de Perfil |
-| RF04 | O sistema deve exibir recomendações de readequação do perfil quando for identificado um desalinhamento. | Alta | Exibir Recomendações de Readequação |
-| RF05 | O sistema deve apresentar, de forma visual, o status de conformidade de todas as carteiras em um painel. | Alta | Visualizar Painel de Conformidade |
-| RF06 | O sistema deve oferecer filtros por status de conformidade (adequado/não adequado). | Média | Filtrar Carteiras por Status |
-| RF07 | O sistema deve permitir filtro de clientes por segmento (Prata, Ouro, Platinum). | Média | Filtrar Clientes por Segmento |
-| RF08 | O sistema deve manter o histórico das sugestões de readequação de perfil por cliente. | Média | Consultar Histórico de Sugestões |
-| RF09 | O sistema deve exibir graficamente a composição da carteira por tipo de ativo. | Baixa | Visualizar Composição da Carteira |
+| ID   | Requisito Funcional                                                                                                  | Prioridade | Caso de Uso Associado               |
+| ---- | -------------------------------------------------------------------------------------------------------------------- | ---------- | ----------------------------------- |
+| RF01 | O sistema deve importar e processar automaticamente os dados de carteira de clientes por meio de integração via API. | Alta       | Importar Dados de Carteira via API  |
+| RF02 | O sistema deve calcular automaticamente o perfil de risco com base nos ativos da carteira.                           | Alta       | Calcular Perfil de Risco            |
+| RF03 | O sistema deve verificar a conformidade entre o perfil calculado e o perfil cadastrado do cliente.                   | Alta       | Verificar Conformidade de Perfil    |
+| RF04 | O sistema deve exibir recomendações de readequação do perfil quando for identificado um desalinhamento.              | Alta       | Exibir Recomendações de Readequação |
+| RF05 | O sistema deve apresentar, de forma visual, o status de conformidade de todas as carteiras em um painel.             | Alta       | Visualizar Painel de Conformidade   |
+| RF06 | O sistema deve oferecer filtros por status de conformidade (adequado/não adequado).                                  | Média      | Filtrar Carteiras por Status        |
+| RF07 | O sistema deve permitir filtro de clientes por segmento (Prata, Ouro, Platinum).                                     | Média      | Filtrar Clientes por Segmento       |
+| RF08 | O sistema deve manter o histórico das sugestões de readequação de perfil por cliente.                                | Média      | Consultar Histórico de Sugestões    |
+| RF09 | O sistema deve exibir graficamente a composição da carteira por tipo de ativo.                                       | Baixa      | Visualizar Composição da Carteira   |
 
 <div align="center">
 <sub>Figura x - Diagrama de Casos de Uso</sub><br>
@@ -1002,43 +1032,42 @@ As principais classes são:
 
 &emsp;Representa um investidor do sistema. Anteriormente separada da `Carteira`, agora incorpora também os atributos da carteira e se relaciona diretamente com o `Assessor`.
 
-| Atributo     | Tipo    | Descrição                        |
-|--------------|---------|----------------------------------|
-| id           | UUID    | Identificador único              |
-| nome         | String  | Primeiro nome do cliente         |
-| sobrenome    | String  | Sobrenome do cliente             |
-| email        | String  | Contato por e-mail               |
-| telefone     | String  | Contato por telefone             |
-| cpf          | String  | CPF do cliente                   |
-| rg           | String  | Documento de identidade          |
-| endereco     | String  | Endereço residencial             |
-| dataNasc     | Date    | Data de nascimento               |
-| saldo        | float   | Valor total investido            |
-| assessor     | Assessor| Assessor responsável             |
+| Atributo  | Tipo     | Descrição                |
+| --------- | -------- | ------------------------ |
+| id        | UUID     | Identificador único      |
+| nome      | String   | Primeiro nome do cliente |
+| sobrenome | String   | Sobrenome do cliente     |
+| email     | String   | Contato por e-mail       |
+| telefone  | String   | Contato por telefone     |
+| cpf       | String   | CPF do cliente           |
+| rg        | String   | Documento de identidade  |
+| endereco  | String   | Endereço residencial     |
+| dataNasc  | Date     | Data de nascimento       |
+| saldo     | float    | Valor total investido    |
+| assessor  | Assessor | Assessor responsável     |
 
 **Métodos:**
 
 - `acessarCarteira()`: retorna a lista de investimentos do cliente
 - `visualizarPerfil()`: retorna o perfil declarado associado
 
-
 ### Classe `Assessor`
 
 Responsável por acompanhar clientes e aprovar perfis de risco calculados.
 
-| Atributo     | Tipo               | Descrição                        |
-|--------------|--------------------|----------------------------------|
-| id           | UUID               | Identificador único              |
-| nome         | String             | Primeiro nome                    |
-| sobrenome    | String             | Sobrenome                        |
-| email        | String             | Contato                          |
-| telefone     | String             | Contato                          |
-| cpf          | String             | CPF                              |
-| rg           | String             | Documento de identidade          |
-| endereco     | String             | Endereço                         |
-| dataNasc     | Date               | Data de nascimento               |
-| categoria    | CategoriaAssessor  | Categoria do assessor (enum)     |
-| unidadeBTG   | String             | Local de atuação                 |
+| Atributo   | Tipo              | Descrição                    |
+| ---------- | ----------------- | ---------------------------- |
+| id         | UUID              | Identificador único          |
+| nome       | String            | Primeiro nome                |
+| sobrenome  | String            | Sobrenome                    |
+| email      | String            | Contato                      |
+| telefone   | String            | Contato                      |
+| cpf        | String            | CPF                          |
+| rg         | String            | Documento de identidade      |
+| endereco   | String            | Endereço                     |
+| dataNasc   | Date              | Data de nascimento           |
+| categoria  | CategoriaAssessor | Categoria do assessor (enum) |
+| unidadeBTG | String            | Local de atuação             |
 
 **Métodos:**
 
@@ -1046,88 +1075,82 @@ Responsável por acompanhar clientes e aprovar perfis de risco calculados.
 - `aprovarPerfilCalculado(cliente)`: valida o perfil calculado do cliente
 - `repassarRecomendacao(cliente)`: repassa a recomendação gerada pelo sistema
 
-
 ### Classe `Investimento`
 
 Representa uma aplicação específica feita por um cliente em um ativo.
 
-| Atributo       | Tipo     | Descrição                                 |
-|----------------|----------|-------------------------------------------|
-| id             | UUID     | Identificador do investimento             |
-| cliente        | Cliente  | Cliente que realizou o investimento       |
-| ativo          | Ativo    | Ativo investido                           |
-| valor          | float    | Valor aplicado                            |
-| percentual     | float    | Participação percentual na carteira       |
-| quantidade     | int      | Quantidade de ativos comprados            |
-| valorTotal     | float    | Valor total da posição (quantidade × preço) |
-| dataAplicacao  | Date     | Data da aplicação                         |
+| Atributo      | Tipo    | Descrição                                   |
+| ------------- | ------- | ------------------------------------------- |
+| id            | UUID    | Identificador do investimento               |
+| cliente       | Cliente | Cliente que realizou o investimento         |
+| ativo         | Ativo   | Ativo investido                             |
+| valor         | float   | Valor aplicado                              |
+| percentual    | float   | Participação percentual na carteira         |
+| quantidade    | int     | Quantidade de ativos comprados              |
+| valorTotal    | float   | Valor total da posição (quantidade × preço) |
+| dataAplicacao | Date    | Data da aplicação                           |
 
 **Métodos:**
 
 - `criarInvestimento()`: registra um novo investimento
 - `deletarInvestimento()`: remove um investimento existente
 
-
 ### Classe `Ativo`
 
 Representa um produto financeiro (fundo, ação, título, etc.) disponível no sistema.
 
-| Atributo   | Tipo    | Descrição                                 |
-|------------|---------|---------------------------------------------|
-| id         | UUID    | Identificador único do ativo               |
-| nome       | String  | Nome do ativo                              |
-| tipo       | String  | Tipo de ativo (ex: fundo, ação, renda fixa)|
-| subgrupo   | String  | Categoria mais específica do ativo         |
+| Atributo | Tipo   | Descrição                                   |
+| -------- | ------ | ------------------------------------------- |
+| id       | UUID   | Identificador único do ativo                |
+| nome     | String | Nome do ativo                               |
+| tipo     | String | Tipo de ativo (ex: fundo, ação, renda fixa) |
+| subgrupo | String | Categoria mais específica do ativo          |
 
 **Método:**
 
 - `getAtivosById(id)`: retorna os dados do ativo com base no ID informado
 
-
 ### Classe `HistoricoRiscoDeclarado`
 
 Representa o perfil de risco informado pelo cliente.
 
-| Atributo    | Tipo      | Descrição                            |
-|-------------|-----------|----------------------------------------|
-| id          | UUID      | Identificador                         |
-| risco       | JSON      | Perfil de risco declarado             |
-| cliente     | Cliente   | Cliente que declarou                  |
-| timestamp   | DateTime  | Data da declaração                    |
+| Atributo  | Tipo     | Descrição                 |
+| --------- | -------- | ------------------------- |
+| id        | UUID     | Identificador             |
+| risco     | JSON     | Perfil de risco declarado |
+| cliente   | Cliente  | Cliente que declarou      |
+| timestamp | DateTime | Data da declaração        |
 
 **Método:**
 
 - `atualizarPerfil(tipo)`: atualiza o tipo de perfil declarado
 
-
 ### Classe `HistoricoRiscoCalculado`
 
 &emsp;Representa o resultado calculado automaticamente do perfil de risco do cliente com base nos seus ativos.
 
-| Atributo    | Tipo      | Descrição                            |
-|-------------|-----------|----------------------------------------|
-| id          | UUID      | Identificador                         |
-| risco       | String    | Perfil calculado                      |
-| cliente     | Cliente   | Cliente analisado                     |
-| timestamp   | DateTime  | Data do cálculo                       |
+| Atributo  | Tipo     | Descrição         |
+| --------- | -------- | ----------------- |
+| id        | UUID     | Identificador     |
+| risco     | String   | Perfil calculado  |
+| cliente   | Cliente  | Cliente analisado |
+| timestamp | DateTime | Data do cálculo   |
 
 **Métodos:**
 
 - `calcularNovoPerfil()`: calcula o perfil com base nos ativos
 - `compararComDeclarado(perfil)`: retorna um JSON com a análise comparativa
 
-
 ### Classe `Recomendacao`
 
 &emsp;Classe que representa uma recomendação de alocação ou ação gerada automaticamente pelo sistema para o cliente.
 
-| Atributo    | Tipo    | Descrição                                 |
-|-------------|---------|--------------------------------------------|
-| id          | UUID    | Identificador da recomendação             |
-| cliente     | Cliente | Cliente ao qual a recomendação se destina |
-| texto       | String  | Conteúdo da recomendação                  |
-| data        | Date    | Data de geração da recomendação           |
-
+| Atributo | Tipo    | Descrição                                 |
+| -------- | ------- | ----------------------------------------- |
+| id       | UUID    | Identificador da recomendação             |
+| cliente  | Cliente | Cliente ao qual a recomendação se destina |
+| texto    | String  | Conteúdo da recomendação                  |
+| data     | Date    | Data de geração da recomendação           |
 
 ### Enum `CategoriaAssessor`
 
@@ -1137,18 +1160,16 @@ Define os níveis de assessores possíveis no sistema:
 - `Prata`
 - `Platinum`
 
-
 ### Relacionamentos
 
-| Origem               | Destino                  | Tipo de Relação | Descrição                                               |
-|----------------------|--------------------------|------------------|-----------------------------------------------------------|
-| Cliente              | Investimento             | 1:N              | Um cliente pode possuir vários investimentos             |
-| Investimento         | Ativo                    | N:1              | Cada investimento se refere a um único ativo             |
-| Cliente              | HistoricoRiscoDeclarado  | 1:N              | Um cliente pode declarar múltiplos perfis ao longo do tempo |
-| Cliente              | HistoricoRiscoCalculado  | 1:N              | Um cliente pode ter múltiplos perfis calculados          |
-| Cliente              | Recomendacao             | 0:N              | Um cliente pode receber várias recomendações             |
-| Assessor             | Cliente                  | 1:N              | Um assessor orienta vários clientes                      |
-
+| Origem       | Destino                 | Tipo de Relação | Descrição                                                   |
+| ------------ | ----------------------- | --------------- | ----------------------------------------------------------- |
+| Cliente      | Investimento            | 1:N             | Um cliente pode possuir vários investimentos                |
+| Investimento | Ativo                   | N:1             | Cada investimento se refere a um único ativo                |
+| Cliente      | HistoricoRiscoDeclarado | 1:N             | Um cliente pode declarar múltiplos perfis ao longo do tempo |
+| Cliente      | HistoricoRiscoCalculado | 1:N             | Um cliente pode ter múltiplos perfis calculados             |
+| Cliente      | Recomendacao            | 0:N             | Um cliente pode receber várias recomendações                |
+| Assessor     | Cliente                 | 1:N             | Um assessor orienta vários clientes                         |
 
 ### Conclusão
 
@@ -1157,7 +1178,6 @@ Define os níveis de assessores possíveis no sistema:
 &emsp;Além disso, os relacionamentos entre as classes refletem corretamente a multiplicidade e o fluxo de responsabilidade entre os agentes do sistema, proporcionando uma base sólida para o desenvolvimento e validação das funcionalidades previstas.
 
 &emsp;Esse diagrama fornece uma base conceitual robusta para o desenvolvimento do sistema, servindo como referência para a implementação de funcionalidades, a definição das regras de negócio e a integração entre os módulos do projeto.
-
 
 ## 5.3 Diagrama de Componentes da UML
 
@@ -1178,10 +1198,12 @@ Define os níveis de assessores possíveis no sistema:
 &emsp;A interface principal para os assessores do BTG é o **Aplicativo Mobile**, responsável por coletar dados do usuário, exibir informações de perfil, recomendações e alertas de conformidade.
 
 #### Componentes:
+
 - **Aplicativo Mobile (React Native):** Permite a interação do usuário com o sistema.
 - **Firebase:** Suporte a autenticação, notificações e sincronização em tempo real com o app.
 
 #### Fluxo:
+
 1. O usuário acessa o sistema pelo aplicativo mobile.
 2. O app se comunica com o **Firebase** para autenticação e sincronização.
 3. Requisições relacionadas a dados e recomendações são enviadas ao módulo **Service**, que coordena a lógica de negócio.
@@ -1193,11 +1215,13 @@ Define os níveis de assessores possíveis no sistema:
 &emsp;Responsável por orquestrar o processamento, validações e geração de recomendações com base nas informações fornecidas pelos usuários e dados do BTG.
 
 #### Componentes:
+
 - **Service:** Intermediário entre o app, o Firebase e os módulos internos do backend. Gerencia lógica de fluxo e chamadas de API.
 - **API de Recomendação:** Executa as regras de negócio, reclassificação de perfis e sugestão de alocação conforme regulamentação da CVM.
 - **Repositories:** Responsável por interagir com o banco de dados relacional para consultas e atualizações.
 
 #### Fluxo:
+
 1. O **Service** recebe requisições do app, autentica via Firebase e direciona as chamadas para a **API de Recomendação**.
 2. A API de Recomendação processa os dados recebidos e envia instruções de leitura/escrita para os **Repositories**.
 3. Os **Repositories** acessam o banco **PostgreSQL** para persistência ou leitura das informações.
@@ -1209,14 +1233,15 @@ Define os níveis de assessores possíveis no sistema:
 &emsp;Abriga os dados estruturados e operacionais do sistema.
 
 #### Componentes:
+
 - **PostgreSQL:** Banco relacional para armazenamento de perfis de investidores, carteiras, registros de recomendação e histórico.
 - **Dados BTG:** Fonte externa integrada ao sistema que fornece informações essenciais para análise e recomendação.
 
 #### Fluxo:
+
 1. A **API de Recomendação** consome os **Dados BTG** para análise inicial.
 2. **Repositories** acessam o **PostgreSQL** para registrar, atualizar ou recuperar dados do sistema.
 3. Resultados são retornados à **Camada de Negócio** e exibidos ao usuário via o app mobile.
-
 
 ## 5.4 Diagramas de Sequência da UML
 
@@ -1229,9 +1254,11 @@ Define os níveis de assessores possíveis no sistema:
 </div>
 
 ### Ator
+
 - **Assessor**: Usuário que utiliza o aplicativo para consultar perfis com inconsistências.
 
 ### Componentes
+
 - App Mobile (React Native): Interface de entrada usada pelo assessor.
 - API Gateway(.NET): Intermediador de requisições.
 - Firebase: Serviço de autenticação.
@@ -1240,11 +1267,13 @@ Define os níveis de assessores possíveis no sistema:
 - Usuário: Representa os dados dos perfis armazenados.
 
 ### Fluxo de Login
+
 1. O assessor abre o aplicativo.
 2. Insere e envia as credenciais.
 3. A API Gateway valida as credenciais com o Firebase.
 
 #### Credencias válidas:
+
 - Firebase retorna um token de acesso.
 - API solicita o acesso à aba de análise (com o token).
 - A requisição com token é enviada ao Serviço de Análise.
@@ -1252,21 +1281,25 @@ Define os níveis de assessores possíveis no sistema:
 - Os dados processados retornam à API, que envia a lista de perfis ao app.
 - O aplicativo exibe os perfis filtrados.
 
-#### Credenciais inválidas: 
+#### Credenciais inválidas:
+
 - API recebe erro de autenticação.
 - O app exibe mensagem de erro.
 
 ### Interação com Filtro
+
 1. O assessor clica em "Filtrar por divergência".
 2. O app envia a requisição de perfis divergentes com filtro para a API.
 3. A API reenviará a solicitação ao Serviço de Análise, agora com os filtros aplicados.
 4. O serviço consulta novamente o banco de dados com os filtros.
 
-#### Perfis encontrados: 
+#### Perfis encontrados:
+
 - Serviço retorna perfis com divergência.
 - App exibe a lista.
 
 #### Nenhum perfil encontrado:
+
 - Serviço retorna resposta vazia.
 - App exibe mensagem: "Nenhum perfil encontrado".
 
@@ -1295,8 +1328,6 @@ Define os níveis de assessores possíveis no sistema:
 &emsp;Para o gerenciamento da autenticação de usuários, será utilizado o Firebase Authentication. O Firebase oferece uma solução segura, escalável e de fácil integração com aplicações móveis, reduzindo significativamente o esforço de desenvolvimento e aumentando a segurança da aplicação. Além disso, a plataforma disponibiliza uma cota gratuita com capacidade de armazenamento razoavelmente grande, o que contribui para tornar o desenvolvimento menos custoso, especialmente nas fases iniciais do projeto.
 <br><br>
 
-
-
 # 6. Mapeamento Técnico de Infraestrutura e Implantação
 
 &emsp;Este capítulo descreve a arquitetura de infraestrutura do sistema, detalhando como os componentes são implantados, as decisões técnicas de deployment e as considerações de segurança e performance. O sistema foi projetado para ser totalmente containerizado usando Docker, garantindo portabilidade, escalabilidade e facilidade de manutenção.
@@ -1316,20 +1347,20 @@ flowchart TB
                 MongoExpress["🖥️ Mongo Express<br/>Admin Interface<br/>Port: 8081<br/>Resources: 256MB RAM, 0.25 CPU"]
             end
         end
-        
+
         subgraph "Amazon RDS"
             PostgreSQL["🗃️ PostgreSQL 16<br/>BTG Database<br/>Port: 5432<br/>Multi-AZ, Backups, Encryption"]
         end
     end
-    
+
     subgraph "Mobile Devices"
         MobileApp["📱 React Native App<br/>Expo Application<br/>Android (Primary)<br/>iOS (Future)"]
     end
-    
+
     subgraph "Google Cloud"
         Firebase["🔐 Firebase Services<br/>Authentication<br/>SDK"]
     end
-    
+
     %% Conexões principais
     MobileApp -->|HTTPS/REST API| Backend
     MobileApp -->|Authentication| Firebase
@@ -1338,13 +1369,13 @@ flowchart TB
     RecommendAPI -->|Audit Logs| MongoDB
     MongoExpress -->|Admin Access| MongoDB
     Backend -->|Token Validation| Firebase
-    
+
     %% Styling
     classDef awsService fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#fff
     classDef container fill:#0066CC,stroke:#003366,stroke-width:2px,color:#fff
     classDef mobile fill:#00C851,stroke:#007E33,stroke-width:2px,color:#fff
     classDef firebase fill:#FFA000,stroke:#FF6F00,stroke-width:2px,color:#fff
-    
+
     class Backend,RecommendAPI,MongoDB,MongoExpress container
     class PostgreSQL awsService
     class MobileApp mobile
@@ -1363,24 +1394,28 @@ flowchart TB
 #### Componentes Implantados:
 
 **1. Container: BTG Backend (.NET 8.0)**
+
 - **Porta**: 8080
 - **Função**: API principal do sistema com autenticação Firebase
 - **Recursos**: 1GB RAM, 1 CPU core
 - **Dependências**: PostgreSQL (gerenciado), Firebase Authentication
 
 **2. Container: Recommendation API (Python/FastAPI)**
-- **Porta**: 8000  
+
+- **Porta**: 8000
 - **Função**: Processamento de ML e geração de recomendações
 - **Recursos**: 2GB RAM, 2 CPU cores
 - **Dependências**: Modelos ML pré-treinados, dados CSV
 
 **3. Container: MongoDB**
+
 - **Porta**: 27017
 - **Função**: Sistema de auditoria e logs
 - **Recursos**: 512MB RAM, 0.5 CPU core
 - **Persistência**: Volume Docker para dados
 
 **4. Container: Mongo Express**
+
 - **Porta**: 8081
 - **Função**: Interface administrativa para MongoDB
 - **Recursos**: 256MB RAM, 0.25 CPU core
@@ -1388,6 +1423,7 @@ flowchart TB
 #### Banco de Dados Gerenciado - Amazon RDS PostgreSQL
 
 &emsp;O banco de dados principal utiliza **Amazon RDS PostgreSQL 16**, proporcionando:
+
 - **Alta disponibilidade** com Multi-AZ deployment
 - **Backups automatizados** com retenção de 7 dias
 - **Monitoramento** integrado via CloudWatch
@@ -1397,6 +1433,7 @@ flowchart TB
 ### Dispositivos Cliente
 
 &emsp;**Aplicativo Mobile (React Native/Expo)**
+
 - **Plataformas**: Android (primário), iOS (futuro)
 - **Conectividade**: HTTPS para API Backend
 - **Autenticação**: Firebase Authentication
@@ -1409,6 +1446,7 @@ flowchart TB
 &emsp;A adoção do **Docker** como tecnologia de containerização oferece múltiplos benefícios:
 
 #### Vantagens Técnicas:
+
 - **Isolamento de ambiente**: Cada serviço executa em seu próprio container isolado
 - **Reprodutibilidade**: Garantia de que o ambiente de desenvolvimento é idêntico ao de produção
 - **Portabilidade**: Facilita migração entre diferentes provedores de nuvem
@@ -1416,13 +1454,14 @@ flowchart TB
 - **Facilidade de deployment**: Deploy com um único comando (`docker-compose up --build`)
 
 #### Orquestração com Docker Compose:
+
 ```yaml
 # Estrutura simplificada do docker-compose.yml
 services:
-  backend:          # API .NET principal
+  backend: # API .NET principal
   api_recomendacao: # API Python ML
   mongodb_auditoria: # Sistema de auditoria
-  mongo-express:    # Interface administrativa
+  mongo-express: # Interface administrativa
 ```
 
 ### Arquitetura de Microserviços
@@ -1430,18 +1469,21 @@ services:
 &emsp;O sistema adota uma abordagem de microserviços com separação clara de responsabilidades:
 
 #### Backend Principal (.NET):
+
 - **Responsabilidade**: Autenticação, CRUD de dados, orquestração de negócio
 - **Tecnologia**: ASP.NET Core 8.0 com Entity Framework
 - **Padrão**: Repository Pattern e Dependency Injection
 - **Segurança**: Middleware de autenticação Firebase JWT
 
 #### API de Recomendação (Python):
+
 - **Responsabilidade**: Processamento de Machine Learning e geração de recomendações
 - **Tecnologia**: FastAPI com scikit-learn e pandas
 - **Modelos**: KMeans clustering e matrizes de similaridade
 - **Dados**: Processamento de arquivos CSV com dados financeiros
 
 #### Sistema de Auditoria (MongoDB):
+
 - **Responsabilidade**: Log de todas as requisições de recomendação
 - **Tecnologia**: MongoDB 7.0 com índices otimizados
 - **Funcionalidade**: TTL para limpeza automática, métricas agregadas
@@ -1452,12 +1494,14 @@ services:
 &emsp;A utilização do **Amazon RDS PostgreSQL** oferece:
 
 #### Benefícios Operacionais:
+
 - **Backup automatizado**: Eliminação de pontos únicos de falha
 - **Patches automáticos**: Atualizações de segurança sem intervenção manual
 - **Monitoramento integrado**: CloudWatch para métricas de performance
 - **Escalabilidade gerenciada**: Read replicas e vertical scaling sob demanda
 
 #### Configuração de Conexão:
+
 ```json
 "ConnectionStrings": {
   "DefaultConnection": "Host=btg-postgres.region.rds.amazonaws.com;Database=btg_db;Username=btg_user;Password=btg_pass;Port=5432"
@@ -1467,6 +1511,7 @@ services:
 ### Autenticação Externa com Firebase
 
 &emsp;A integração com **Firebase Authentication** proporciona:
+
 - **Segurança empresarial**: Padrões OAuth 2.0 e OpenID Connect
 - **Escalabilidade global**: Infraestrutura do Google Cloud
 - **Facilidade de integração**: SDKs nativos para React Native e .NET
@@ -1477,11 +1522,13 @@ services:
 ### Performance e Otimização
 
 #### Estratégias de Cache:
+
 - **Application-level caching**: Implementação de cache em memória para consultas frequentes
 - **Database query optimization**: Uso de índices compostos e procedures otimizadas
 - **Container resource limits**: Limitação de recursos para evitar contenção
 
 #### Monitoramento de Performance:
+
 ```yaml
 # Health checks implementados
 healthcheck:
@@ -1492,6 +1539,7 @@ healthcheck:
 ```
 
 #### Métricas Coletadas:
+
 - **Latência de resposta** das APIs
 - **Throughput** de requisições por segundo
 - **Utilização de recursos** (CPU, memória, I/O)
@@ -1500,11 +1548,13 @@ healthcheck:
 ### Segurança da Aplicação
 
 #### Autenticação e Autorização:
+
 - **Firebase JWT**: Tokens de acesso com expiração automática
 - **Middleware de segurança**: Validação de tokens em todas as rotas protegidas
 - **HTTPS obrigatório**: Toda comunicação criptografada via TLS 1.3
 
 #### Proteção de Dados:
+
 ```json
 // Configuração segura no appsettings.json
 "Firebase": {
@@ -1514,12 +1564,14 @@ healthcheck:
 ```
 
 #### Segurança de Infraestrutura:
+
 - **Security Groups AWS**: Firewall com regras restritivas por porta
 - **VPC isolada**: Rede privada virtual para comunicação entre serviços
 - **Secrets management**: Credenciais sensíveis em variáveis de ambiente
 - **Container isolation**: Containers sem privilégios administrativos
 
 #### Auditoria e Compliance:
+
 - **Logs centralizados**: Todas as operações auditadas no MongoDB
 - **Retention policy**: Logs mantidos por 24 meses com TTL automático
 - **Data encryption**: Dados em repouso e em trânsito criptografados
@@ -1530,6 +1582,7 @@ healthcheck:
 #### Pré-requisitos de Deploy:
 
 1. **Configuração da instância EC2**:
+
 ```bash
 # Instalação do Docker e Docker Compose
 sudo apt update && sudo apt install -y docker.io docker-compose-v2
@@ -1537,6 +1590,7 @@ sudo usermod -aG docker $USER
 ```
 
 2. **Criação da pasta de dados**:
+
 ```bash
 # Pasta necessária para a Recommendation API
 mkdir -p src/recomendationAPI/data
@@ -1544,12 +1598,14 @@ mkdir -p src/recomendationAPI/data
 ```
 
 3. **Configuração do Firebase**:
+
 ```bash
 # Adicionar arquivo de autenticação Firebase
 cp diana-446a1-firebase-adminsdk-fbsvc-cfd405b774.json src/backend/
 ```
 
 4. **Deploy da aplicação**:
+
 ```bash
 # Clone do repositório na EC2
 git clone <repository-url>
@@ -1564,6 +1620,7 @@ docker-compose up --build -d
 ```
 
 #### Monitoramento Pós-Deploy:
+
 ```bash
 # Verificação do status dos serviços
 docker-compose ps
@@ -1574,12 +1631,14 @@ docker-compose logs -f api_recomendacao
 ### Backup e Recuperação
 
 #### Estratégia de Backup:
+
 - **RDS PostgreSQL**: Backups automáticos diários com retenção de 7 dias
 - **MongoDB**: Volumes Docker com snapshot semanal da EC2
 - **Aplicação**: Código versionado no Git com tags de release
 - **Dados ML**: Modelos treinados versionados no repositório
 
 #### Plano de Recuperação:
+
 1. **Falha de serviço**: Restart automático via Docker restart policies
 2. **Falha de dados**: Restore do backup RDS mais recente
 3. **Falha de instância**: Provisioning de nova EC2 com mesmo setup
@@ -1591,18 +1650,17 @@ docker-compose logs -f api_recomendacao
 
 &emsp;Antes da implementação de qualquer solução digital, é fundamental estruturar visualmente as funcionalidades e a experiência do usuário. Por isso, o desenvolvimento do **wireframe** e do **mockup** representa uma etapa estratégica no processo de design de interfaces.
 
-&emsp;O **wireframe** atua como o esqueleto do aplicativo, permitindo mapear e testar a **estrutura, hierarquia da informação e fluxos de navegação**, sem distrações com elementos visuais. No nosso caso, o foco *Mobile First* orientou todas as decisões para garantir usabilidade, clareza e agilidade na experiência do assessor em dispositivos móveis — onde o espaço é limitado e a interação depende de toques e gestos.
+&emsp;O **wireframe** atua como o esqueleto do aplicativo, permitindo mapear e testar a **estrutura, hierarquia da informação e fluxos de navegação**, sem distrações com elementos visuais. No nosso caso, o foco _Mobile First_ orientou todas as decisões para garantir usabilidade, clareza e agilidade na experiência do assessor em dispositivos móveis — onde o espaço é limitado e a interação depende de toques e gestos.
 
 &emsp;Já o **mockup** transforma essa estrutura bruta em uma representação visual mais refinada e próxima do produto final. Ele incorpora **cores, ícones, fontes, espaçamentos e feedbacks visuais**, além de simular interações e transições, ajudando a validar a estética e a identidade visual com todos os stakeholders do projeto.
 
 Essa jornada do wireframe ao mockup possibilita:
+
 - Detectar e corrigir problemas de usabilidade antes da codificação;
 - Alinhar expectativas com o parceiro (BTG Pactual);
 - Comunicar com clareza a proposta da solução para desenvolvedores, designers e usuários finais.
 
-
-
-&emsp;O projeto visual da solução foi desenvolvido com foco na abordagem *Mobile First*, garantindo acessibilidade e usabilidade otimizadas para dispositivos móveis. O aplicativo tem como objetivo auxiliar assessores do BTG Pactual na verificação da conformidade entre o perfil de investidor e a alocação de ativos dos clientes, conforme a Resolução CVM 175.
+&emsp;O projeto visual da solução foi desenvolvido com foco na abordagem _Mobile First_, garantindo acessibilidade e usabilidade otimizadas para dispositivos móveis. O aplicativo tem como objetivo auxiliar assessores do BTG Pactual na verificação da conformidade entre o perfil de investidor e a alocação de ativos dos clientes, conforme a Resolução CVM 175.
 
 ---
 
@@ -1611,7 +1669,7 @@ Essa jornada do wireframe ao mockup possibilita:
 &emsp;Os wireframes foram elaborados no Figma utilizando boas práticas de design responsivo, como:
 
 - **Auto Layout**, **Componentes reutilizáveis** e **Propriedades** para escalabilidade.
-- **Espaçamentos múltiplos de 4px** e **grid de 8 colunas com 8px de *gutter*** para organização visual.
+- **Espaçamentos múltiplos de 4px** e **grid de 8 colunas com 8px de _gutter_** para organização visual.
 - Pensamento **Mobile First**, priorizando a navegação fluida e rápida para o assessor.
 - Sumário identificando os componentes principais de cada tela, conforme o anexo.
 
@@ -1625,7 +1683,7 @@ Essa jornada do wireframe ao mockup possibilita:
 
 ### Técnicas Mobile Avançadas
 
-- Utilização de **microinterações** visuais nas ações de navegação e feedbacks (simulados via *prototype*).
+- Utilização de **microinterações** visuais nas ações de navegação e feedbacks (simulados via _prototype_).
 - Design baseado em **tamanho de toque ideal** (mínimo 48x48px).
 - Layout adaptável para diferentes resoluções, mantendo consistência entre dispositivos.
 
@@ -1645,11 +1703,12 @@ Essa jornada do wireframe ao mockup possibilita:
 
 &emsp;Os mockups foram desenvolvidos com base no wireframe aprovado, refletindo a identidade visual do parceiro BTG Pactual. Utilizamos:
 
-- **Cores institucionais**:  
-  - Azul escuro `#001E62` (primária);  
-  - Azul claro `#AEC3F5` (secundária);  
-  - Azul muito claro `#C2D5FF` (background);  
-  - Vermelho rosado `#FF7CA1` (destaques, em alusão ao nome do grupo: *Watermelon*).
+- **Cores institucionais**:
+
+  - Azul escuro `#001E62` (primária);
+  - Azul claro `#AEC3F5` (secundária);
+  - Azul muito claro `#C2D5FF` (background);
+  - Vermelho rosado `#FF7CA1` (destaques, em alusão ao nome do grupo: _Watermelon_).
 
 - **Ícones Phosphor (peso regular)**: Uniformes e leves, garantindo consistência visual.
 - Tipografia legível e hierarquia clara de informações.
@@ -1688,28 +1747,27 @@ Essa jornada do wireframe ao mockup possibilita:
 &emsp;Nosso ponto de partida foi a paleta de cores institucional do parceiro BTG Pactual, o que nos permitiu alinhar o aplicativo à identidade da marca. Com isso, definimos um esquema de cores que equilibra seriedade e leveza visual. Adicionamos também uma cor de destaque — o vermelho rosado — como uma homenagem à identidade do nosso grupo "Watermelon", trazendo um toque único ao layout.
 
 &emsp;Além disso, definimos um sistema de componentes reutilizáveis no Figma, adotando padrões como:
+
 - **Espaçamento múltiplo de 4px** e **grid de 8 colunas**;
 - **Ícones com peso regular do Phosphor Icons**, garantindo harmonia visual;
 - Tipografia clara e responsiva, assegurando legibilidade em telas pequenas.
 
 &emsp;Esse guia foi fundamental para manter a uniformidade e a eficiência ao longo do projeto, facilitando tanto o design quanto a futura implementação técnica.
 
-
 ### Paleta de Cores
 
-| Cor               | Código Hex   | Aplicação                         |
-|------------------|--------------|-----------------------------------|
-| Azul escuro      | `#001E62`    | Cor primária (destaques, header) |
-| Azul claro       | `#AEC3F5`    | Secundária (botões, cards)       |
-| Azul muito claro | `#C2D5FF`    | Fundo geral                      |
-| Vermelho rosado  | `#FF7CA1`    | Destaques e homenagens visuais   |
+| Cor              | Código Hex | Aplicação                        |
+| ---------------- | ---------- | -------------------------------- |
+| Azul escuro      | `#001E62`  | Cor primária (destaques, header) |
+| Azul claro       | `#AEC3F5`  | Secundária (botões, cards)       |
+| Azul muito claro | `#C2D5FF`  | Fundo geral                      |
+| Vermelho rosado  | `#FF7CA1`  | Destaques e homenagens visuais   |
 
 ### Tipografia e Ícones
 
 - Fonte: Inter (padrão do Figma)
 - Tamanho mínimo de fonte: 14px
 - Ícones: Phosphor Icons – Regular
-
 
 <div align="center">
 <sub>Figura X - Guia Visual</sub><br> 
@@ -1723,8 +1781,8 @@ Essa jornada do wireframe ao mockup possibilita:
 - **Bloco de Ativos**: Listagem detalhada com tipo de ativo, valor e classificação.
 - **Componentes de Navegação**: Menu inferior e botões principais otimizados para polegar.
 
-
 # 8. Desenvolvimento do Projeto
+
 _conteúdo_
 
 ## 8.1 Arquitetura de Codificação e Estrutura de Diretórios
@@ -1747,6 +1805,7 @@ _conteúdo_
 
 - O middleware garante que apenas usuários autenticados acessem rotas privadas, consultando o token Firebase.
 - O uso da camada `services` isola regras de negócio, promovendo legibilidade e testes.
+
 ---
 
 ## Frontend
@@ -1767,11 +1826,13 @@ tailwind.config.ts     # Configuração de estilos e design system
 ### ▶️ Como executar o frontend (Expo)
 
 **Requisitos:**
+
 - Node.js instalado
 - Expo CLI (`npm install -g expo-cli`)
 - App **Expo Go** instalado no celular ou uso do emulador Android/iOS
 
 **Passos:**
+
 ```bash
 cd src/frontend/
 npm install
@@ -1779,13 +1840,16 @@ npm expo start # ou 'npm expo start --tunnel' para gerar um tunel isolado de red
 ```
 
 O comando abrirá o navegador com o Expo DevTools. Você pode:
+
 - Escanear o QR code com o app **Expo Go** no celular
 - Ou rodar em um emulador local com `i` (iOS), `a` (Android) ou `w` (web)
 
 ## 8.2 Modelo de Recomendação
+
 _conteúdo_
 
 ## 8.3 Desenvolvimento de Features
+
 _conteúdo_
 
 **Nota:** Insira uma explicação de entregas em cada Sprint.
@@ -1797,6 +1861,7 @@ _conteúdo_
 ---
 
 ## Tecnologias e Bibliotecas Utilizadas
+
 - **React Native com Expo**: para desenvolvimento mobile multiplataforma.
 - **NativeWind**: integração do estilo utilitário do Tailwind para React Native.
 - **Phosphor Icons**: biblioteca de ícones leve e versátil.
@@ -1854,27 +1919,34 @@ _conteúdo_
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
 
-### 1. Tela de Login/Cadastro  
+### 1. Tela de Login/Cadastro
+
 &emsp;Alternância via switch entre os fluxos de autenticação. Campos de entrada e botões estilizados com feedback visual.
 
-### 2. Tela Home  
+### 2. Tela Home
+
 Exibe:
+
 - Mensagem de boas-vindas com nome do assessor.
 - Campo de busca por cliente.
 - Cards de resumo da quantidade de carteiras regulares/irregulares.
 - Cards por perfil de risco.
 - Menu inferior para navegação.
 
-### 3. Tela de Carteiras por Perfil  
+### 3. Tela de Carteiras por Perfil
+
 A partir do clique em um dos cards da Home, exibe:
+
 - Campo de busca e botão de filtro.
 - Quantidade de carteiras em conformidade no respectivo perfil.
 - Apesar do componente de informações de carteiras de investimento estar pronto, não foi totalmente integrado a esta tela.
 
-### 4. Tela de Carteira Individual  
+### 4. Tela de Carteira Individual
+
 Apenas integrada, com planejamento de conclusão para a Sprint 4.
 
 ### 5. Perfil do assessor
+
 - Contém informações cadastrais do assessor, o container de histórico de carteiras com componentes completamente integrados.
 
 &emsp;Durante a Sprint 3, o foco do backend foi a implementação de autenticação segura com Firebase, comunicação entre o sistema e o modelo de recomendação através de uma API e o desenvolvimento robusto do banco de dados com regras de negócio encapsuladas. Todo o ambiente foi estruturado com Docker, garantindo portabilidade e reprodutibilidade.
@@ -1887,8 +1959,10 @@ Apenas integrada, com planejamento de conclusão para a Sprint 4.
 
 &emsp; sistema de persistência de dados foi estruturado com foco em robustez e lógica de negócio no lado do banco, sendo implementadas **Triggers**: para execução automática de regras durante inserções/atualizações; **Procedures**: para operações complexas encapsuladas; as regras de negócio foram implantadas diretamente no banco, visando integridade e menor dependência da aplicação para consistência dos dados, bem como todo o banco foi dockerizado, garantindo modularidade, segurança e disponibilidade das informações.
 
-### 5. Tela de Perfil do Assessor  
+### 5. Tela de Perfil do Assessor
+
 Apresenta:
+
 - Dados cadastrais do assessor.
 - Container com histórico de carteiras acessadas.
 
@@ -1911,7 +1985,6 @@ Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o c
 ### Uso no projeto
 
 &emsp;Será utilizado como material de apoio para revisões, apresentações e documentação do desenvolvimento do frontend.
-
 
 ## 8.3.2 Sprint 4
 
@@ -1958,53 +2031,62 @@ Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o c
 ## Principais Funções Implementadas
 
 ### `recalcular_perfil_risco`
+
 - **Objetivo:** Recalcula o perfil de risco de um cliente sempre que há alterações na tabela de investimentos
 - **Chamada por:** Triggers (`after_investimento_insert`, `after_investimento_update`, `after_investimento_delete`)
 
 ### `obter_perfil_risco_cliente`
+
 - **Retorno:** O perfil de risco mais recente do cliente, incluindo percentuais, valor total, data, nome e ID
 
 ### `obter_perfil_cliente`
+
 - **Retorno:** Apenas o **tipo de perfil de risco** mais recente do cliente (ex: "Conservador", "Moderado", "Agressivo")
 
 ### `obter_quantidade_clientes_conformes`
+
 - **Retorno:** Número de clientes cujo **risco declarado** é igual ao **risco calculado** mais recente
 
 ### `obter_quantidade_clientes_inconformes`
+
 - **Retorno:** Número de clientes cujo **risco declarado** difere do **risco calculado** mais recente
 
 ### `obter_quantidade_clientes_conformes_por_perfil`
+
 - **Retorno:** Quantidade de clientes **conformes**, agrupados por tipo de perfil de risco
 
 ### `obter_soma_conformes_inconformes` (Procedure)
+
 - **Retorno:** Via parâmetros de saída (`OUT`), fornece o **total de clientes conformes e inconformes**
 
 ## Triggers Configurados
 
 &emsp;Os seguintes triggers garantem que o perfil de risco seja recalculado automaticamente após alterações na tabela `investimentos`:
 
-| Trigger                     | Disparado Quando                     | Ação                                                          |
-|-----------------------------|--------------------------------------|---------------------------------------------------------------|
-| `after_investimento_insert` | Após a **inserção** de um investimento | Chama `recalcular_perfil_risco` para atualizar o perfil       |
-| `after_investimento_update` | Após **atualização** de investimento  | Recalcula se houver mudança no **valor** ou **ativo**         |
-| `after_investimento_delete` | Após a **exclusão** de um investimento | Atualiza o perfil de risco do cliente afetado  
+| Trigger                     | Disparado Quando                       | Ação                                                    |
+| --------------------------- | -------------------------------------- | ------------------------------------------------------- |
+| `after_investimento_insert` | Após a **inserção** de um investimento | Chama `recalcular_perfil_risco` para atualizar o perfil |
+| `after_investimento_update` | Após **atualização** de investimento   | Recalcula se houver mudança no **valor** ou **ativo**   |
+| `after_investimento_delete` | Após a **exclusão** de um investimento | Atualiza o perfil de risco do cliente afetado           |
 
 &emsp;Para a Sprint 5, espera-se a integração completa das funcionalidades do aplicativo com o front-end.
 
 ## 8.3.3 Sprint 5
+
 _conteúdo_
 
 ## 8.4 Testes Unitários e de Integração
 
 ### Planejamento de testes unitários
 
-&emsp;O desenvolvimento do aplicativo pretende seguir TDD (Test-Driven-Development), garantindo a qualidade, confiabilidade e evolução segura do sistema por meio de testes unitários. Dessa forma, essa seção detalha as estratégias para a construção de testes unitários que orientarão o desenvolvimento do aplicativo para o BTG Pactual. 
+&emsp;O desenvolvimento do aplicativo pretende seguir TDD (Test-Driven-Development), garantindo a qualidade, confiabilidade e evolução segura do sistema por meio de testes unitários. Dessa forma, essa seção detalha as estratégias para a construção de testes unitários que orientarão o desenvolvimento do aplicativo para o BTG Pactual.
 
 ---
 
 #### Procedimento esperado para o desenvolvimento
 
 - **Para cada nova funcionalidade:**
+
 1. Escreve-se primeiro um teste unitário que representa o comportamento esperado.
 2. Implementa-se o código mínimo necessário para fazer o teste passar.
 3. Refatora-se o código garantindo que os testes permaneçam passando.
@@ -2014,16 +2096,19 @@ _conteúdo_
 #### Estratégias para Testes no Backend
 
 **Ferramentas Utilizadas**
+
 - `xUnit` – Framework de teste unitário.
 - `Moq` – Mock de dependências (serviços, repositórios, VHS, API externa).
 
 **Cobertura de Testes**
+
 - **Controladores:** Validação de status codes e chamadas aos serviços.
 - **Serviços:** Regras de negócio, integração com cache VHS, manipulação de dados.
 - **Utilitários:** Funções auxiliares de formatação, cálculo, etc.
 - **VHS (Cache):** Verificação se o dado está sendo buscado, armazenado e invalidado corretamente.
 
 **Exemplo de Estrutura**
+
 - Testes seguem a estrutura AAA (Arrange, Act, Assert).
 - Cada método público deve ter ao menos 1 cenário positivo e 1 negativo testado.
 
@@ -2032,15 +2117,18 @@ _conteúdo_
 #### Estratégias para Testes no Frontend
 
 **Ferramentas Utilizadas**
+
 - `Jest` – Teste de funções, hooks e lógicas internas.
 - `React Native Testing Library (RNTL)` – Testes de componentes e interações.
 
 **Cobertura de Testes**
+
 - **Componentes Visuais:** Renderização com diferentes props e estados.
 - **Hooks Customizados:** Validação de lógica reativa (ex: uso de contexto, chamadas de API).
 - **Funções Isoladas:** Manipulação de dados, máscaras, validações de formulário.
 
 **Boas Práticas**
+
 - Testar estados iniciais, interações (ex: cliques, inputs), e efeitos visuais esperados.
 - Usar mocks de APIs quando necessário.
 
@@ -2087,7 +2175,7 @@ _conteúdo_
 - **Pré-condição:** Backend rodando localmente ou em formato Docker, dentro do respectivo servidor disponibilizado pela faculdade.
 - **Cenário Positivo:** Requisições com parâmetros válidos retornam dados esperados.
 - **Cenário Negativo:** Requisições com parâmetros inválidos ou tokens expirados retornam mensagens de erro apropriadas.
-  - Exemplos: campos obrigatórios não preenchidos, dados enviados para a requisição não atendendo às regras de negócio implementadas no banco de dados, valores inválidos, erros de conexão, etc. 
+  - Exemplos: campos obrigatórios não preenchidos, dados enviados para a requisição não atendendo às regras de negócio implementadas no banco de dados, valores inválidos, erros de conexão, etc.
 - **Pós-condição:** Tela renderiza corretamente os dados ou mensagens de erro.
 
 #### Integração: Backend ↔ Banco de Dados
@@ -2121,7 +2209,7 @@ _conteúdo_
 #### Ferramentas e Abordagens Possíveis
 
 - **Swagger (OpenAPI):** Validação de contratos de API e documentação.
-- **Postman:** Testes manuais, com exportação para coleções automatizadas (utilizando Newman), de forma a realizar  vários testes de integração ao mesmo tempo, ainda que manualmente.
+- **Postman:** Testes manuais, com exportação para coleções automatizadas (utilizando Newman), de forma a realizar vários testes de integração ao mesmo tempo, ainda que manualmente.
 - **xUnit (.NET):** Testes de integração backend com dependências reais e mockadas.
 - **React Native Testing Library (RTL):** Validação de componentes que dependem de dados da API.
 
@@ -2143,10 +2231,12 @@ _conteúdo_
 - **Tratamento de erros visível ao usuário:** Mensagens claras e apropriadas devem ser exibidas quando houver falhas (ex: falha na API externa ou erro no envio de dados).
 
 ## 8.5 Documentações automáticas
+
 _conteúdo_
 Obs.: Insira informações sobre quais frameworks foram usados e como acessar.
 
 # 9. Planejamento e Execução de Testes
+
 _conteúdo_
 
 ## 9.1 Testes Funcionais
@@ -2156,65 +2246,62 @@ _conteúdo_
 ## 9.1.1 Planejamento
 
 ### RF01 - Importação automática de dados via API
-| Cenário          | Propósito                                                                 | Pré-condições                | Instruções de Execução                        | Resultado Esperado                                 | Pós-condições        | Tipo de Teste |
-| ---------------- | ------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------- | -------------------------------------------------- | -------------------- | ------------- |
-| Dados válidos    | Verificar se o sistema importa corretamente os dados de carteira via API. | API ativa com dados válidos. | Abrir o aplicativo, navegar até a seção de 'Carteiras', verificar apresentação dos dados. | Dados importados corretamente e exibidos.          | Exibição de carteiras atualizadas de acordo com a API. | Positivo      |
-| API indisponível | Verificar comportamento diante de falha na integração.                    | API offline ou com erro 500. | Abrir o aplicativo, acessar a seção de 'Carteiras', observar o comportamento do sistema diante a indisponibilidade dos dados.        | Exibição de mensagem de erro sem travar o sistema. | Nenhuma modificação. | Negativo      |
+
+| Cenário          | Propósito                                                                 | Pré-condições                | Instruções de Execução                                                                                                        | Resultado Esperado                                 | Pós-condições                                          | Tipo de Teste |
+| ---------------- | ------------------------------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------ | ------------- |
+| Dados válidos    | Verificar se o sistema importa corretamente os dados de carteira via API. | API ativa com dados válidos. | Abrir o aplicativo, navegar até a seção de 'Carteiras', verificar apresentação dos dados.                                     | Dados importados corretamente e exibidos.          | Exibição de carteiras atualizadas de acordo com a API. | Positivo      |
+| API indisponível | Verificar comportamento diante de falha na integração.                    | API offline ou com erro 500. | Abrir o aplicativo, acessar a seção de 'Carteiras', observar o comportamento do sistema diante a indisponibilidade dos dados. | Exibição de mensagem de erro sem travar o sistema. | Nenhuma modificação.                                   | Negativo      |
 
 ### RF02 - Cálculo do perfil de risco
-| Cenário             | Propósito                                    | Pré-condições                   | Instruções de Execução                | Resultado Esperado                                  | Pós-condições                | Tipo de Teste |
-| ------------------- | -------------------------------------------- | ------------------------------- | ------------------------------------- | --------------------------------------------------- | ---------------------------- | ------------- |
-| Carteira com ativos | Validar cálculo correto do perfil.           | API de recomendação disponível. | Abrir o aplicativo, acessar o perfil de um cliente com ativos registrados na carteira e verificar o resultado exibido no componente de status da carteira. | Em caso de perfil coerente com a carteira, tag "Irregular" aparece no topo do status da carteira, bem como o quantitativo irregular e restantes estilizações do componente.                    | Perfil calculado armazenado. | Positivo      |
-| Carteira vazia      | Verificar tratamento de carteira sem ativos. | Cliente sem ativos acessado a partir da API de recomendação.             | Abrir o aplicativo, acessar o perfil de um cliente sem nenhum ativo registrado na carteira, e observar a resposta do sistema.   | Sistema informa que não é possível calcular perfil devido à falta de ativos. | Nenhuma alteração.           | Negativo      |
+
+| Cenário             | Propósito                                    | Pré-condições                                                | Instruções de Execução                                                                                                                                     | Resultado Esperado                                                                                                                                                          | Pós-condições                | Tipo de Teste |
+| ------------------- | -------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------- |
+| Carteira com ativos | Validar cálculo correto do perfil.           | API de recomendação disponível.                              | Abrir o aplicativo, acessar o perfil de um cliente com ativos registrados na carteira e verificar o resultado exibido no componente de status da carteira. | Em caso de perfil coerente com a carteira, tag "Irregular" aparece no topo do status da carteira, bem como o quantitativo irregular e restantes estilizações do componente. | Perfil calculado armazenado. | Positivo      |
+| Carteira vazia      | Verificar tratamento de carteira sem ativos. | Cliente sem ativos acessado a partir da API de recomendação. | Abrir o aplicativo, acessar o perfil de um cliente sem nenhum ativo registrado na carteira, e observar a resposta do sistema.                              | Sistema informa que não é possível calcular perfil devido à falta de ativos.                                                                                                | Nenhuma alteração.           | Negativo      |
 
 ### RF03 - Verificação de conformidade entre perfis
-| Cenário           | Propósito                                    | Pré-condições                         | Instruções de Execução               | Resultado Esperado      | Pós-condições                      | Tipo de Teste |
-| ----------------- | -------------------------------------------- | ------------------------------------- | ------------------------------------ | ----------------------- | ---------------------------------- | ------------- |
-| Perfis iguais     | Verificar se sistema reconhece conformidade. | Perfil calculado igual ao cadastrado. | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado é igual ao perfil cadastrado, abrir a seção da carteira e localizar o status de conformidade exibido pelo sistema. | Status: "Regular".     | Sistema pronto para outros testes. | Positivo      |
-| Perfis diferentes | Verificar detecção de não conformidade.      | Perfis divergentes.                   | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado difere do perfil cadastrado, abrir a seção da carteira e verificar o status de conformidade informado.        | Status: "Irregular". | Gatilho para recomendações.        | Negativo      |
 
+| Cenário           | Propósito                                    | Pré-condições                         | Instruções de Execução                                                                                                                                                                                 | Resultado Esperado   | Pós-condições                      | Tipo de Teste |
+| ----------------- | -------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ---------------------------------- | ------------- |
+| Perfis iguais     | Verificar se sistema reconhece conformidade. | Perfil calculado igual ao cadastrado. | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado é igual ao perfil cadastrado, abrir a seção da carteira e localizar o status de conformidade exibido pelo sistema. | Status: "Regular".   | Sistema pronto para outros testes. | Positivo      |
+| Perfis diferentes | Verificar detecção de não conformidade.      | Perfis divergentes.                   | Acessar o aplicativo, entrar no perfil de um cliente cujo perfil de risco calculado difere do perfil cadastrado, abrir a seção da carteira e verificar o status de conformidade informado.             | Status: "Irregular". | Gatilho para recomendações.        | Negativo      |
 
 ### RF04 - Recomendações de readequação
-| Cenário                 | Propósito                                       | Pré-condições          | Instruções de Execução                | Resultado Esperado                        | Pós-condições                      | Tipo de Teste |
-| ----------------------- | ----------------------------------------------- | ---------------------- | ------------------------------------- | ----------------------------------------- | ---------------------------------- | ------------- |
-| Cliente fora do perfil  | Verificar exibição das sugestões.               | Perfil “Irregular”. | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Não adequado', navegar até a seção de recomendações e verificar se o sistema apresenta opções de readequação da carteira. | Sistema exibe opções de readequação conforme recomendação.      | Recomendações salvas no histórico. | Positivo      |
-| Cliente em conformidade | Verificar ausência de sugestões desnecessárias. | Perfil “Regular”.     | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Adequado' e verificar se a seção de recomendações apresenta o hiperlink "Investimentos recomendados". | Ao acessar os investimentos recomendados, eles estão de acordo com o perfil declarado do cliente. | Nenhuma modificação.               | Negativo      |
+
+| Cenário                 | Propósito                                       | Pré-condições       | Instruções de Execução                                                                                                                                                                                                | Resultado Esperado                                                                                | Pós-condições                      | Tipo de Teste |
+| ----------------------- | ----------------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------- | ------------- |
+| Cliente fora do perfil  | Verificar exibição das sugestões.               | Perfil “Irregular”. | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Não adequado', navegar até a seção de recomendações e verificar se o sistema apresenta opções de readequação da carteira. | Sistema exibe opções de readequação conforme recomendação.                                        | Recomendações salvas no histórico. | Positivo      |
+| Cliente em conformidade | Verificar ausência de sugestões desnecessárias. | Perfil “Regular”.   | Acessar o aplicativo, abrir o perfil de um cliente com status de conformidade marcado como 'Adequado' e verificar se a seção de recomendações apresenta o hiperlink "Investimentos recomendados".                     | Ao acessar os investimentos recomendados, eles estão de acordo com o perfil declarado do cliente. | Nenhuma modificação.               | Negativo      |
 
 ### RF05 - Painel visual de conformidade
-| Cenário               | Propósito                                    | Pré-condições                        | Instruções de Execução                | Resultado Esperado                                          | Pós-condições               | Tipo de Teste |
-| --------------------- | -------------------------------------------- | ------------------------------------ | ------------------------------------- | ----------------------------------------------------------- | --------------------------- | ------------- |
-| Exibição correta      | Validar exibição das carteiras com status.   | Vários clientes com dados completos. | Abrir o aplicativo, fazer login, navegar até o painel principal de visualização de carteiras e verificar se todas as carteiras cadastradas são exibidas corretamente com seus respectivos status de conformidade.             | Exibição de todas as carteiras com status.                  | Visualização atualizada.    | Positivo      |
+
+| Cenário               | Propósito                                    | Pré-condições                        | Instruções de Execução                                                                                                                                                                                                            | Resultado Esperado                                          | Pós-condições               | Tipo de Teste |
+| --------------------- | -------------------------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | --------------------------- | ------------- |
+| Exibição correta      | Validar exibição das carteiras com status.   | Vários clientes com dados completos. | Abrir o aplicativo, fazer login, navegar até o painel principal de visualização de carteiras e verificar se todas as carteiras cadastradas são exibidas corretamente com seus respectivos status de conformidade.                 | Exibição de todas as carteiras com status.                  | Visualização atualizada.    | Positivo      |
 | Falha de renderização | Verificar sistema em caso de erro nos dados. | Dados inconsistentes ou incompletos. | Injetar manualmente dados corrompidos ou incompletos na base de dados de carteiras, acessar o painel principal e observar se o sistema exibe mensagens de erro amigáveis ou remove os itens problemáticos sem travar a aplicação. | Mensagem de erro amigável ou exclusão de itens corrompidos. | Sistema continua funcional. | Negativo      |
 
 ### RF06 - Filtros por status de conformidade
-| Cenário                    | Propósito                                                 | Pré-condições                                  | Instruções de Execução                     | Resultado Esperado                       | Pós-condições                 | Tipo de Teste |
-| -------------------------- | --------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------ | ---------------------------------------- | ----------------------------- | ------------- |
-| Filtrar "Regulares"         | Validar filtro de carteiras conformes.                    | Existência de carteiras com status “Regular”. | Acessar a Home, clicar no tipo de perfil, localizar o componente de filtros, selecionar o filtro de status ‘regular’ e aplicar a filtragem. Observar se a lista de carteiras exibida contém somente aquelas com status ‘regular’. | Apenas carteiras adequadas são exibidas. | Filtro aplicado corretamente. | Positivo      |
-| Filtrar status inexistente | Verificar comportamento ao aplicar filtro sem resultados. | Nenhuma carteira com o status filtrado.        | No painel principal, abrir a opção de filtros, selecionar o filtro ‘Irregular’ quando não houver carteiras com esse status cadastrado, aplicar o filtro e verificar se é exibida a mensagem ‘Nenhum resultado encontrado’ e a lista fica vazia. | Mensagem “Nenhum resultado encontrado”.  | Tela limpa.                   | Negativo      |
+
+| Cenário                    | Propósito                                                 | Pré-condições                                 | Instruções de Execução                                                                                                                                                                                                                          | Resultado Esperado                       | Pós-condições                 | Tipo de Teste |
+| -------------------------- | --------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ----------------------------- | ------------- |
+| Filtrar "Regulares"        | Validar filtro de carteiras conformes.                    | Existência de carteiras com status “Regular”. | Acessar a Home, clicar no tipo de perfil, localizar o componente de filtros, selecionar o filtro de status ‘regular’ e aplicar a filtragem. Observar se a lista de carteiras exibida contém somente aquelas com status ‘regular’.               | Apenas carteiras adequadas são exibidas. | Filtro aplicado corretamente. | Positivo      |
+| Filtrar status inexistente | Verificar comportamento ao aplicar filtro sem resultados. | Nenhuma carteira com o status filtrado.       | No painel principal, abrir a opção de filtros, selecionar o filtro ‘Irregular’ quando não houver carteiras com esse status cadastrado, aplicar o filtro e verificar se é exibida a mensagem ‘Nenhum resultado encontrado’ e a lista fica vazia. | Mensagem “Nenhum resultado encontrado”.  | Tela limpa.                   | Negativo      |
 
 ## 9.1.2 Resultados
 
 ### RF01 - Importação automática de dados via API
 
-
 ### RF02 - Cálculo do perfil de risco
-
 
 ### RF03 - Verificação de conformidade entre perfis
 
-
 ### RF04 - Recomendações de readequação
-
 
 ### RF05 - Painel visual de conformidade
 
-
 ### RF06 - Filtros por status de conformidade
 
-
-
 ### RF09 - Exibição gráfica da carteira por tipo de ativo
-
 
 ## 9.2 Testes de RNFs
 
@@ -2223,42 +2310,41 @@ _conteúdo_
 ## 9.2.1 Planejamento
 
 ### RNF01 - Portabilidade (Docker e Nuvem)
+
 | Cenário                        | Propósito                                        | Pré-condições                                                                              | Instruções de Execução                                                                                                                                                                                     | Ferramentas / Recursos Utilizados         | Resultado Esperado                                                                           | Métrica de Avaliação                                     | Pós-condições                                     | Tipo de Teste |
 | ------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------- | ------------- |
 | Execução em múltiplas nuvens   | Garantir portabilidade entre ambientes em nuvem. | Imagem Docker publicada em um registro (ex: Docker Hub); credenciais de AWS e GCP válidas. | 1. Realizar deploy da imagem Docker em uma instância EC2 (AWS) e em uma VM do Google Cloud. <br>2. Acessar a aplicação via IP público.<br>3. Verificar se todas as funcionalidades respondem corretamente. | Docker, AWS EC2, Google Cloud VM, Postman | Aplicação responde corretamente em ambas as nuvens, sem erro de dependência ou configuração. | 100% de funcionalidade operacional em ambos os ambientes | Sistema funcional em ambos os ambientes testados. | Positivo      |
 | Ambiente com incompatibilidade | Verificar falhas de portabilidade.               | Criar ambiente de teste com versão antiga do Docker (<19.03).                              | 1. Rodar o container no ambiente legado com dependências desatualizadas.<br>2. Observar falhas e capturar logs de erro.<br>3. Verificar se o sistema impede execução ou apresenta comportamento anômalo.   | Docker (versão antiga), Terminal          | Sistema não inicia corretamente ou exibe falhas claras no log.                               | Log de erro evidenciando incompatibilidade               | Log documentado e plano de ajuste traçado.        | Negativo      |
 
-
 ### RNF02 - Compatibilidade (RESTful + autenticação segura)
-| Cenário                | Propósito                                          | Pré-condições                                                                                              | Instruções de Execução                                                                                                                                   | Ferramentas / Recursos Utilizados      | Resultado Esperado                                                       | Métrica de Avaliação                                  | Pós-condições                                     | Tipo de Teste |
-| ---------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------- | ------------------------------------------------- | ------------- |
-| Requisição autenticada | Validar acesso com token válido.                   | API REST publicada; serviço de autenticação ativo (Firebase); endpoints protegidos configurados. | 1. Realizar login via Firebase para obter um token JWT válido.<br>2. Usar o token para acessar rotas protegidas da API via Postman ou Insomnia. | Postman ou Insomnia, Firebase | Requisições autenticadas retornam status **HTTP 200** e dados esperados. | Sucesso em pelo menos 95% dos testes com token válido | Sessão autenticada e acesso autorizado registrado | Positivo      |
-| Token inválido         | Verificar resposta a requisições não autenticadas. | API REST publicada com middleware de autenticação configurado.                                             | 1. Fazer requisição sem token, com token expirado ou malformado.<br>2. Observar o status HTTP e a mensagem de erro retornada.                            | Postman ou Insomnia                    | API retorna status **HTTP 401** (sem token) ou **403** (token inválido). | Todos os casos inválidos bloqueados corretamente      | Nenhum dado protegido acessado                    | Negativo      |
 
+| Cenário                | Propósito                                          | Pré-condições                                                                                    | Instruções de Execução                                                                                                                          | Ferramentas / Recursos Utilizados | Resultado Esperado                                                       | Métrica de Avaliação                                  | Pós-condições                                     | Tipo de Teste |
+| ---------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------- | ------------------------------------------------- | ------------- |
+| Requisição autenticada | Validar acesso com token válido.                   | API REST publicada; serviço de autenticação ativo (Firebase); endpoints protegidos configurados. | 1. Realizar login via Firebase para obter um token JWT válido.<br>2. Usar o token para acessar rotas protegidas da API via Postman ou Insomnia. | Postman ou Insomnia, Firebase     | Requisições autenticadas retornam status **HTTP 200** e dados esperados. | Sucesso em pelo menos 95% dos testes com token válido | Sessão autenticada e acesso autorizado registrado | Positivo      |
+| Token inválido         | Verificar resposta a requisições não autenticadas. | API REST publicada com middleware de autenticação configurado.                                   | 1. Fazer requisição sem token, com token expirado ou malformado.<br>2. Observar o status HTTP e a mensagem de erro retornada.                   | Postman ou Insomnia               | API retorna status **HTTP 401** (sem token) ou **403** (token inválido). | Todos os casos inválidos bloqueados corretamente      | Nenhum dado protegido acessado                    | Negativo      |
 
 ### RNF03 - Manutenibilidade (arquitetura modular)
+
 | Cenário                     | Propósito                                               | Pré-condições                                                               | Instruções de Execução                                                                                                                                                                             | Ferramentas / Recursos Utilizados                             | Resultado Esperado                                               | Métrica de Avaliação                                                     | Pós-condições                                 | Tipo de Teste |
 | --------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------- | ------------- |
 | Alteração isolada em módulo | Validar que mudanças em um módulo não afetam os demais. | Arquitetura modular implementada; suíte de testes automatizados atualizada. | 1. Alterar uma funcionalidade do módulo de autenticação (ex: formato do token retornado).<br>2. Rodar os testes automatizados dos módulos não relacionados.<br>3. Verificar se continuam passando. | VSCode ou outro IDE, Jest (ou framework de testes usado), Git | Testes dos demais módulos executam com sucesso após a alteração. | 100% dos testes externos ao módulo alterado passam                       | Confirmação da estabilidade da aplicação      | Positivo      |
 | Impacto em outro módulo     | Verificar existência de acoplamento indesejado.         | Arquitetura modular implementada; testes manuais permitidos.                | 1. Alterar internamente o módulo A (ex: recomendação).<br>2. Usar manualmente o módulo B (ex: consulta) que não deveria ser afetado.<br>3. Verificar anomalias no comportamento.                   | VSCode, Console do navegador/backend, checklist manual        | Mau funcionamento do módulo B indica dependência inesperada.     | Ao menos um comportamento anômalo identificado no módulo não relacionado | Registro da falha para refatoração estrutural | Negativo      |
 
-
 ### RNF04 - Confiabilidade
+
 | Cenário                               | Propósito                                              | Pré-condições                                                                                               | Instruções de Execução                                                                                                                                                                           | Ferramentas / Recursos Utilizados   | Resultado Esperado                                                                        | Métrica de Avaliação                                         | Pós-condições                                        | Tipo de Teste |
 | ------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- | ------------- |
 | Falha simulada com retorno ao usuário | Verificar se o sistema lida bem com erros previsíveis. | Sistema com tratamento de exceções implementado; funcionalidade com dependência externa (ex: recomendação). | 1. Simular falha no backend (ex: interromper o serviço de recomendação).<br>2. Acessar a funcionalidade afetada via app.<br>3. Observar se o erro é tratado e se há retorno amigável ao usuário. | Ferramenta de log, navegador ou app | Mensagem clara informando falha + opção de tentar novamente ou seguir com outras funções. | Mensagem compreensível em 100% dos testes com falha induzida | Usuário consegue continuar navegando sem travamentos | Positivo      |
 | Falha sem retorno                     | Verificar ausência de feedback ao usuário em falhas.   | Versão do sistema sem tratamento de exceções ativo.                                                         | 1. Repetir a simulação de falha anterior (ex: interrupção de serviço).<br>2. Acompanhar o comportamento da interface e a ausência de retorno ao usuário.                                         | Navegador ou app, console de erro   | Sistema trava, fecha ou exibe mensagem genérica sem contexto.                             | Identificação de falha crítica em 100% dos testes            | Registro da falha para implementação de tratamento   | Negativo      |
 
-
 ### RNF05 - Usabilidade
+
 | Cenário                  | Propósito                                                | Pré-condições                                                                                          | Instruções de Execução                                                                                                                                                               | Ferramentas / Recursos Utilizados                                          | Resultado Esperado                                                         | Métrica de Avaliação                                       | Pós-condições                                      | Tipo de Teste |
 | ------------------------ | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------- | ------------- |
 | Teste com usuários reais | Medir a facilidade de uso e identificar pontos críticos. | Interface funcional com tarefas básicas (login, consulta, recomendação).<br>Grupo de 5+ usuários-alvo. | 1. Aplicar teste com usuários reais realizando 3 tarefas básicas.<br>2. Observar tempo de execução, erros cometidos e necessidade de ajuda.<br>3. Aplicar questionário SUS ao final. | Cronômetro, gravação de tela (opcional), Google Forms com questionário SUS | Usuários concluem todas as tarefas com sucesso e dão nota SUS ≥ 70.        | ≥ 80% de sucesso nas tarefas + nota SUS ≥ 70               | Relatório de usabilidade com sugestões de melhoria | Positivo      |
 | Usuários confusos        | Detectar falhas na interface e pontos de frustração.     | Interface funcional com layout não validado por testes prévios.                                        | 1. Aplicar as mesmas tarefas com outro grupo de usuários (preferência novos).<br>2. Anotar dificuldades, desistências e comentários negativos durante ou após o uso.                 | Observação direta, anotações manuais, formulário de feedback aberto        | Usuários apresentam dúvidas recorrentes ou não conseguem concluir tarefas. | ≥ 2 desistências ou ≥ 50% com comentários negativos claros | Registro de problemas de UI/UX para correção       | Negativo      |
 
-
 ## 9.2.2 Resultados
-
 
 ## 9.3 Testes de Usabilidade
 
@@ -2267,13 +2353,16 @@ _conteúdo_
 ## 9.3.1 Planejamento
 
 ### Objetivos dos Testes de Usabilidade
-&emsp;O principal objetivo dos testes de usabilidade é avaliar a facilidade de uso, clareza de informações e fluidez de navegação do aplicativo DIANA por meio da interação de usuários externos com diferentes níveis de familiaridade com tecnologia e com o mercado financeiro. Com os testes de usabilidade, buscamos identificar: 
+
+&emsp;O principal objetivo dos testes de usabilidade é avaliar a facilidade de uso, clareza de informações e fluidez de navegação do aplicativo DIANA por meio da interação de usuários externos com diferentes níveis de familiaridade com tecnologia e com o mercado financeiro. Com os testes de usabilidade, buscamos identificar:
+
 - Barreiras de uso em funcionalidades principais como visualização de carteiras, filtros por conformidade e acesso ao histórico.
 - Clareza das instruções e termos apresentados no app.
 - Satisfação geral do usuário com a experiência de navegação.
 - Pontos de melhoria na arquitetura da informação e feedbacks visuais.
 
 ### Perfis dos Usuários e Contexto
+
 &emsp;Serão selecionados 5 usuários externos com perfis variados, conforme abaixo:
 
 | Perfil | Idade | Experiência com tecnologia | Familiaridade com mercado financeiro | Justificativa                                             |
@@ -2287,49 +2376,63 @@ _conteúdo_
 &emsp;Contexto de aplicação: O teste será aplicado de forma presencial, utilizando dispositivos com o protótipo instalado. Haverá mediação pro um membro do grupo, que conduzirá a aplicação e tomará notas de observações comportamentais.
 
 ### Método
+
 &emsp;Utilizaremos o SUS - System Usability Scale, complementado por observação direta e tarefas práticas. O SUS será aplicado ao final do teste para obter uma avaliação quantitativa padronizada da usabilidade do aplicativo. O formulário conterá:
+
 - 10 afirmações avaliadas em escala Likert (1 = Discordo totalmente, 5 = Concordo totalmente).
 - Campos adicionais para comentários livres.
 - Explicação introdutória sobre o objetivo do formulário e o que cada número representa.
 
 ### Roteiro (Passo a Passo)
+
 1. Boas Vindas e Apresentação
+
 - Cumprimentar o usuário e agradecer a participação.
 - Explicar brevemente o objetivo do teste: “Estamos testando a usabilidade de um aplicativo que auxilia na visualização de carteiras de clientes e sugestões de readequação. Você não está sendo testado, é o app que está.”
 - Solicitar autorização para coleta anônima de feedback.
 
 2. Coleta de dados iniciais
+
 - Idade, ocupação, familiaridade com apps mobile e com o merado financeiro.
 - Solicitar e-mail e telefone (opicional).
 
 3. Tarefas a serem realizadas
+
 - Cenário 1: Verificar conformidade de carteiras
+
   - Tarefa: Acesse a aba de conformidade e aplique o filtro “adequado” para visualizar carteiras conformes.
 
 - Cenário 2: Consultar cliente Platinum
+
   - Tarefa: Acesse os clientes e filtre pelo segmento “Platinum”. Diga em voz alta o que você vê.
 
 - Cenário 3: Acessar histórico de sugestões
+
   - Tarefa: Abra o perfil de um cliente e localize o histórico de sugestões de readequação.
 
 - Cenário 4: Ver gráfico de ativos
+
   - Tarefa: Acesse a composição da carteira e analise o gráfico apresentado. Você entende os dados?
 
 - Cenário 5: Explorar sem ajuda
   - Tarefa: Navegue livremente pelo aplicativo por 2 minutos. O que mais te chamou atenção? Teve algo confuso?
 
 4. Aplicação do SUS
+
 - Entregar formulário SUS ao usuário com as 10 perguntas.
 - Destacar a escala e explicar que não há respostas certas ou erradas.
 
 5. Feedback aberto
+
 - Perguntar: "Teve algo que te encomodou? Algo que você mudaria?".
 - Anotar sugestões espontâneas do usuário.
 
 6. Encerramento
+
 - Agradecer novamente a participação.
 
 ### Ferramentas e Ambiente
+
 - Dispositivo: Dispositivo com o protótipo funcional do DIANA.
 - Registro: Anotações manuais, captura de tela e gravação.
 - Software: Figma(protótipo), Google Forms(SUS), Excel(análise).
@@ -2341,8 +2444,9 @@ _conteúdo_
 Devido às limitações de acesso a assessores de investimento reais durante o período de desenvolvimento, os testes de usabilidade foram realizados com 5 colegas de outras turmas da faculdade, todos da área de tecnologia. Embora essa amostra possa ter introduzido alguns vieses devido ao background técnico dos participantes, foi possível obter insights valiosos sobre a usabilidade geral da interface.
 
 **Perfil dos Participantes:**
+
 - João Victor Wandermurem (20 anos), Engenharia da Computação
-- David Deodato (19 anos), Sistemas de Informação  
+- David Deodato (19 anos), Sistemas de Informação
 - Fernanda Correia (20 anos), Sistemas de Informação
 - João Pedro Carbone (20 anos), Ciências da Computação
 - Livia Bonotto (22 anos), Engenharia de Software - 4º ano
@@ -2355,60 +2459,62 @@ Os testes foram conduzidos individualmente com cada participante, seguindo o pro
 
 **Taxa de Sucesso por Tarefa:**
 
-| Tarefa | Taxa de Sucesso | Observações |
-|--------|----------------|-------------|
-| 1. Login no sistema | 100% (5/5) | Todos concluíram sem dificuldades |
-| 2. Visualizar dashboard principal | 100% (5/5) | Interface intuitiva, usuários gostaram da organização por status de conformidade |
-| 3. Buscar cliente específico | 100% (5/5) | Barra de pesquisa na home foi muito bem avaliada |
-| 4. Acessar perfil de investidor | 80% (4/5) | 1 participante inicialmente tentou clicar no nome em vez do card |
-| 5. Navegar entre categorias de perfil | 100% (5/5) | Cards de "Moderado", "Conservador", "Sofisticado" foram bem compreendidos |
+| Tarefa                                | Taxa de Sucesso | Observações                                                                      |
+| ------------------------------------- | --------------- | -------------------------------------------------------------------------------- |
+| 1. Login no sistema                   | 100% (5/5)      | Todos concluíram sem dificuldades                                                |
+| 2. Visualizar dashboard principal     | 100% (5/5)      | Interface intuitiva, usuários gostaram da organização por status de conformidade |
+| 3. Buscar cliente específico          | 100% (5/5)      | Barra de pesquisa na home foi muito bem avaliada                                 |
+| 4. Acessar perfil de investidor       | 80% (4/5)       | 1 participante inicialmente tentou clicar no nome em vez do card                 |
+| 5. Navegar entre categorias de perfil | 100% (5/5)      | Cards de "Moderado", "Conservador", "Sofisticado" foram bem compreendidos        |
 
 ### Tempo Médio de Execução
 
-| Tarefa | Tempo Médio | Desvio Padrão |
-|--------|-------------|---------------|
-| Login | 1m 15s | ±20s |
-| Navegação no dashboard | 2m 30s | ±45s |
-| Busca de cliente | 1m 45s | ±30s |
-| Acesso ao perfil | 2m 10s | ±1m |
-| Navegação entre categorias | 1m 55s | ±25s |
+| Tarefa                     | Tempo Médio | Desvio Padrão |
+| -------------------------- | ----------- | ------------- |
+| Login                      | 1m 15s      | ±20s          |
+| Navegação no dashboard     | 2m 30s      | ±45s          |
+| Busca de cliente           | 1m 45s      | ±30s          |
+| Acesso ao perfil           | 2m 10s      | ±1m           |
+| Navegação entre categorias | 1m 55s      | ±25s          |
 
 ### Resultados do Questionário SUS
 
 **Respostas Individuais (Escala 1-5: 1=Discordo Totalmente, 5=Concordo Totalmente):**
 
-| Pergunta | João V. | David | Fernanda | João P. | Livia | Média |
-|----------|---------|-------|----------|---------|-------|-------|
-| 1. Gostaria de usar o DIANA com frequência | 4 | 4 | 5 | 4 | 4 | 4.2 |
-| 2. Sistema desnecessariamente complexo | 2 | 2 | 1 | 2 | 2 | 1.8 |
-| 3. Sistema fácil de usar | 4 | 5 | 4 | 4 | 5 | 4.4 |
-| 4. Precisaria de ajuda de especialista | 2 | 1 | 2 | 2 | 1 | 1.6 |
-| 5. Funcionalidades bem integradas | 4 | 4 | 5 | 4 | 4 | 4.2 |
-| 6. Muita inconsistência na exibição | 2 | 2 | 1 | 2 | 2 | 1.8 |
-| 7. Maioria aprenderia rapidamente | 5 | 4 | 4 | 4 | 5 | 4.4 |
-| 8. Sistema atrapalhado para navegar | 2 | 2 | 1 | 2 | 1 | 1.6 |
-| 9. Senti-me confiante ao usar | 4 | 4 | 4 | 3 | 4 | 3.8 |
-| 10. Precisei aprender muitos termos específicos | 3 | 2 | 2 | 3 | 2 | 2.4 |
+| Pergunta                                        | João V. | David | Fernanda | João P. | Livia | Média |
+| ----------------------------------------------- | ------- | ----- | -------- | ------- | ----- | ----- |
+| 1. Gostaria de usar o DIANA com frequência      | 4       | 4     | 5        | 4       | 4     | 4.2   |
+| 2. Sistema desnecessariamente complexo          | 2       | 2     | 1        | 2       | 2     | 1.8   |
+| 3. Sistema fácil de usar                        | 4       | 5     | 4        | 4       | 5     | 4.4   |
+| 4. Precisaria de ajuda de especialista          | 2       | 1     | 2        | 2       | 1     | 1.6   |
+| 5. Funcionalidades bem integradas               | 4       | 4     | 5        | 4       | 4     | 4.2   |
+| 6. Muita inconsistência na exibição             | 2       | 2     | 1        | 2       | 2     | 1.8   |
+| 7. Maioria aprenderia rapidamente               | 5       | 4     | 4        | 4       | 5     | 4.4   |
+| 8. Sistema atrapalhado para navegar             | 2       | 2     | 1        | 2       | 1     | 1.6   |
+| 9. Senti-me confiante ao usar                   | 4       | 4     | 4        | 3       | 4     | 3.8   |
+| 10. Precisei aprender muitos termos específicos | 3       | 2     | 2        | 3       | 2     | 2.4   |
 
 **Cálculo do Score SUS:**
 
 Para cada participante, o score SUS foi calculado seguindo a metodologia padrão:
+
 - Para perguntas ímpares (1,3,5,7,9): Resposta - 1
 - Para perguntas pares (2,4,6,8,10): 5 - Resposta
 - Soma dos 10 itens multiplicada por 2.5
 
-| Participante | Score SUS |
-|--------------|-----------|
-| João Victor Wandermurem | 80.0 |
-| David Deodato | 85.0 |
-| Fernanda Correia | 87.5 |
-| João Pedro Carbone | 77.5 |
-| Livia Bonotto | 85.0 |
-| **Média Final** | **83.0** |
+| Participante            | Score SUS |
+| ----------------------- | --------- |
+| João Victor Wandermurem | 80.0      |
+| David Deodato           | 85.0      |
+| Fernanda Correia        | 87.5      |
+| João Pedro Carbone      | 77.5      |
+| Livia Bonotto           | 85.0      |
+| **Média Final**         | **83.0**  |
 
 ### Análise dos Resultados
 
 **Pontos Fortes Identificados:**
+
 - **Interface intuitiva**: Score médio de 4.4 para facilidade de uso
 - **Organização visual eficaz**: Usuários elogiaram a separação clara entre carteiras "Regulares" e "Irregulares" na tela principal
 - **Navegação fluida**: Cards clicáveis para diferentes perfis de investidor foram bem compreendidos
@@ -2416,6 +2522,7 @@ Para cada participante, o score SUS foi calculado seguindo a metodologia padrão
 - **Aprendizado rápido**: 4.4 de média na percepção de que outros usuários aprenderiam rapidamente
 
 **Áreas de Melhoria:**
+
 - **Clareza na navegação para perfis individuais**: Um participante teve dificuldade inicial para acessar detalhes do investidor
 - **Terminologia específica**: Score de 2.4 indica que alguns termos podem precisar de explicações adicionais
 - **Confiança de uso**: Score de 3.8 sugere espaço para melhorias na confiança do usuário
@@ -2423,12 +2530,14 @@ Para cada participante, o score SUS foi calculado seguindo a metodologia padrão
 ### Feedback Qualitativo
 
 **Comentários Positivos:**
+
 - "Gostei muito de ter os botões de status na tela principal, fica fácil ver rapidamente quantas carteiras estão regulares ou não" (Fernanda)
 - "A barra de pesquisa logo na home é muito prática, não preciso ficar navegando para encontrar um cliente" (David)
 - "As cores azul e vermelho para regular/irregular são bem intuitivas" (João Pedro)
 - "O design está limpo e profissional, parece um app que eu usaria no trabalho" (Livia)
 
 **Sugestões de Melhoria:**
+
 - "Seria interessante ter um indicador visual quando clico nos cards, para saber que algo está carregando" (João Victor)
 - "Talvez alguns tooltips explicando os termos técnicos ajudariam usuários novos" (David)
 - "Poderia ter um botão 'voltar' mais visível em algumas telas" (Fernanda)
@@ -2436,6 +2545,7 @@ Para cada participante, o score SUS foi calculado seguindo a metodologia padrão
 ### Limitações do Teste
 
 &emsp;É importante destacar que os resultados podem estar enviesados pelo fato de todos os participantes serem da área de tecnologia, o que pode ter influenciado positivamente:
+
 - **Familiaridade com interfaces digitais**: Podem ter tido menos dificuldades que assessores menos acostumados com tecnologia
 - **Tolerância a problemas de UX**: Podem ter sido mais complacentes com pequenas inconsistências
 - **Compreensão técnica**: Podem ter entendido mais facilmente alguns aspectos da navegação
@@ -2453,7 +2563,7 @@ Para cada participante, o score SUS foi calculado seguindo a metodologia padrão
 
 ## 9.4 Teste das APIs Externas
 
-&emsp;Esta seção apresenta o planejamento de testes voltados para as APIs externas utilizadas no sistema de recomendação da plataforma BTG. O objetivo é garantir que os componentes que dependem de serviços de terceiros — como autenticação, processamento de recomendações e fornecimento de dados — funcionem corretamente, mesmo em situações adversas. 
+&emsp;Esta seção apresenta o planejamento de testes voltados para as APIs externas utilizadas no sistema de recomendação da plataforma BTG. O objetivo é garantir que os componentes que dependem de serviços de terceiros — como autenticação, processamento de recomendações e fornecimento de dados — funcionem corretamente, mesmo em situações adversas.
 
 ---
 
@@ -2478,23 +2588,23 @@ As APIs testadas são:
 
 ### Cenários Positivos
 
-| API                      | Cenário                              | Objetivo                                                    | Instrução para Execução                                                |
-|--------------------------|--------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
-| Firebase Authentication  | Login com credenciais válidas        | Verificar autenticação bem-sucedida                         | Enviar requisição POST com e-mail/senha válidos via Postman            |
-| API de Recomendação      | Envio de perfil válido               | Confirmar resposta com recomendações coerentes              | Enviar JSON com dados completos (idade, renda, perfil declarado etc.)  |
-| API de Dados BTG         | Consulta por ativo existente         | Verificar retorno correto de dados de ativo                 | Executar GET em `/ativos/B3SA3` e validar conteúdo da resposta         |
+| API                     | Cenário                       | Objetivo                                       | Instrução para Execução                                               |
+| ----------------------- | ----------------------------- | ---------------------------------------------- | --------------------------------------------------------------------- |
+| Firebase Authentication | Login com credenciais válidas | Verificar autenticação bem-sucedida            | Enviar requisição POST com e-mail/senha válidos via Postman           |
+| API de Recomendação     | Envio de perfil válido        | Confirmar resposta com recomendações coerentes | Enviar JSON com dados completos (idade, renda, perfil declarado etc.) |
+| API de Dados BTG        | Consulta por ativo existente  | Verificar retorno correto de dados de ativo    | Executar GET em `/ativos/B3SA3` e validar conteúdo da resposta        |
 
 ---
 
 ### Cenários Negativos
 
-| API                      | Cenário                              | Objetivo                                                    | Instrução para Execução                                                |
-|--------------------------|--------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
-| Firebase Authentication  | Token expirado ou inválido           | Garantir bloqueio de acesso e erro apropriado               | Usar token expirado e simular requisição autenticada                   |
-| API de Recomendação      | JSON malformado                      | Verificar tratamento de erro e retorno de código 400        | Remover campo obrigatório do corpo da requisição                       |
-| API de Recomendação      | Perfil com dados inconsistentes      | Confirmar que regras de negócio lidam com dados anômalos    | Enviar idade negativa ou perfil inexistente                            |
-| API de Dados BTG         | Consulta de ativo inexistente        | Validar resposta 404 ou equivalente                         | Fazer GET em `/ativos/XXXX` com código inexistente                     |
-| API de Dados BTG         | API indisponível (timeout simulado)  | Testar resposta do sistema em falhas externas               | Desabilitar endpoint no ambiente de testes e monitorar resposta        |
+| API                     | Cenário                             | Objetivo                                                 | Instrução para Execução                                         |
+| ----------------------- | ----------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------- |
+| Firebase Authentication | Token expirado ou inválido          | Garantir bloqueio de acesso e erro apropriado            | Usar token expirado e simular requisição autenticada            |
+| API de Recomendação     | JSON malformado                     | Verificar tratamento de erro e retorno de código 400     | Remover campo obrigatório do corpo da requisição                |
+| API de Recomendação     | Perfil com dados inconsistentes     | Confirmar que regras de negócio lidam com dados anômalos | Enviar idade negativa ou perfil inexistente                     |
+| API de Dados BTG        | Consulta de ativo inexistente       | Validar resposta 404 ou equivalente                      | Fazer GET em `/ativos/XXXX` com código inexistente              |
+| API de Dados BTG        | API indisponível (timeout simulado) | Testar resposta do sistema em falhas externas            | Desabilitar endpoint no ambiente de testes e monitorar resposta |
 
 ---
 
@@ -2509,17 +2619,18 @@ As APIs testadas são:
 
 &emsp;As instruções de execução são aplicáveis via ferramentas como **Postman**, **Insomnia** ou testes automatizados com bibliotecas como `pytest` + `requests`.
 
-
 # 10. Procedimentos de Implantação
+
 _conteúdo_
 
 ## 10.1 Implantação e Configuração do Banco de Dados
+
 _conteúdo_
 
 ## 10.2 Implantação do Protótipo para uso por equipe de desenvolvimento
+
 _conteúdo_
 
 # Referências
 
 ELMASRI, R. et al. Sistemas de banco de dados. Pearson Addison Wesley São Paulo, 2005.
-
