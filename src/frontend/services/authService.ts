@@ -1,3 +1,5 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const API_BASE_URL = 'http://localhost:8080/api';
 
 export interface LoginRequest {
@@ -33,9 +35,9 @@ export const authService = {
       const data: AuthResponse = await response.json();
 
       if (data.success && data.idToken) {
-        // Store JWT token for future requests
-        localStorage.setItem('authToken', data.idToken);
-        localStorage.setItem('user', JSON.stringify(data.user));
+        // Store JWT token for future requests using AsyncStorage
+        await AsyncStorage.setItem('@auth_token', data.idToken);
+        await AsyncStorage.setItem('@user', JSON.stringify(data.user));
       }
 
       return data;
@@ -49,22 +51,32 @@ export const authService = {
   },
 
   async logout(): Promise<void> {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('user');
+    await AsyncStorage.removeItem('@auth_token');
+    await AsyncStorage.removeItem('@user');
   },
 
-  getStoredToken(): string | null {
-    return localStorage.getItem('authToken');
+  async getStoredToken(): Promise<string | null> {
+    try {
+      return await AsyncStorage.getItem('@auth_token');
+    } catch (error) {
+      console.error('Erro ao recuperar token:', error);
+      return null;
+    }
   },
 
-  getStoredUser(): UserInfo | null {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+  async getStoredUser(): Promise<UserInfo | null> {
+    try {
+      const user = await AsyncStorage.getItem('@user');
+      return user ? JSON.parse(user) : null;
+    } catch (error) {
+      console.error('Erro ao recuperar usuário:', error);
+      return null;
+    }
   },
 
   // Helper method to make authenticated requests
   async makeAuthenticatedRequest(url: string, options: RequestInit = {}): Promise<Response> {
-    const token = this.getStoredToken();
+    const token = await this.getStoredToken();
 
     // Garante que headers seja sempre um objeto simples
     let headers: Record<string, string> = {

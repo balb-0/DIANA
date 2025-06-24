@@ -2,12 +2,20 @@ import BarraPesquisa from "@/components/barraPesquisa";
 import CardCarteirasPerfil from "@/components/cardCarteirasPorPerfil";
 import StatusConformidade from "@/components/quantidadeConformidade";
 import { RelativePathString, useRouter } from "expo-router";
-import { View } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import { useCarteiras } from "../contexts/CarteirasProvider";
 
 export default function Index() {
     const router = useRouter();
-    const { carteiras, carteirasPorPerfil } = useCarteiras();
+    const { carteiras, carteirasPorPerfil, isLoading, error } = useCarteiras();
+
+    // Debug logs
+    console.log('[Index] Dados das carteiras:', {
+        carteiras,
+        carteirasPorPerfil,
+        isLoading,
+        error
+    });
 
     const navegarParaCategoria = (nome: string) => {
         router.push(`/categoria/${nome}` as RelativePathString);
@@ -27,9 +35,32 @@ export default function Index() {
         corQuadrado: "vermelho" as const,
         tipo: "Irregulares",
         quantidade: carteiras.Inconformes.quantidade,
-        total: carteiras.Inconformes.total,
-        onPress: () => navegarParaCategoria("Inconformes"),
+        total: carteiras.Inconformes.total, onPress: () => navegarParaCategoria("Inconformes"),
     };
+
+    // Mostrar indicador de carregamento
+    if (isLoading) {
+        return (
+            <View className="flex-1 w-full justify-center items-center bg-azul-claro-secundario">
+                <ActivityIndicator size="large" color="#0066CC" />
+                <Text className="mt-4 text-gray-600">Carregando dados das carteiras...</Text>
+            </View>
+        );
+    }
+
+    // Mostrar erro se houver
+    if (error) {
+        return (
+            <View className="flex-1 w-full justify-center items-center bg-azul-claro-secundario px-6">
+                <Text className="text-red-500 text-center mb-4">
+                    Erro ao carregar dados: {error}
+                </Text>
+                <Text className="text-gray-600 text-center">
+                    Verifique se você está logado e se o backend está rodando.
+                </Text>
+            </View>
+        );
+    }
 
     return (
         <View className="flex-1 w-full justify-between bg-azul-claro-secundario pt-[15%] overflow-hidden">

@@ -40,19 +40,20 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
     const [error, setError] = useState<string | null>(null);
 
     // Configuração da URL base da API
-    const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
-
-    // Função para obter o token do localStorage
+    const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';    // Função para obter o token do AsyncStorage
     const getAuthToken = async (): Promise<string | null> => {
         try {
             const token = await AsyncStorage.getItem('@auth_token');
-            console.log(`TOKEN: ${token}`);
+            console.log(`[CarteirasProvider] TOKEN encontrado: ${token ? 'Sim' : 'Não'}`);
+            if (token) {
+                console.log(`[CarteirasProvider] TOKEN (primeiros 20 chars): ${token.substring(0, 20)}...`);
+            }
             return token;
         } catch (error) {
-            console.error('Erro ao recuperar o token:', error);
+            console.error('[CarteirasProvider] Erro ao recuperar o token:', error);
             return null;
         }
-};
+    };
 
     // Função para testar conectividade com o backend
     const testBackendConnection = async (): Promise<boolean> => {
@@ -83,16 +84,13 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
 
         const url = `${API_BASE_URL}/api/Compliance/clients-count?nonconforming=false`;
         console.log('Fazendo requisição para:', url);
-        console.log('Token presente:', !!token);
-
-        try {
+        console.log('Token presente:', !!token); try {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                timeout: 10000, // 10 segundos de timeout
             });
 
             console.log('Response status:', response.status);
@@ -124,22 +122,19 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
     // Função para buscar dados de clientes não conformes
     const fetchNonConformingClients = async (): Promise<number> => {
         const token = await getAuthToken();
-        
+
         if (!token) {
             throw new Error('Token de autenticação não encontrado');
         }
 
         const url = `${API_BASE_URL}/api/Compliance/clients-count?nonconforming=true`;
-        console.log('Fazendo requisição para:', url);
-
-        try {
+        console.log('Fazendo requisição para:', url); try {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                timeout: 10000,
             });
 
             console.log('Response status (não conformes):', response.status);
@@ -165,23 +160,22 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
             }
             throw fetchError;
         }
-    };
-
-    // Função para atualizar dados das carteiras
+    };    // Função para atualizar dados das carteiras
     const refreshData = async (): Promise<void> => {
+        console.log('[CarteirasProvider] Iniciando refreshData...');
         setIsLoading(true);
         setError(null);
 
         try {
             // Primeiro, teste a conectividade
-            console.log('Testando conectividade com backend...');
+            console.log('[CarteirasProvider] Testando conectividade com backend...');
             const isConnected = await testBackendConnection();
-            
+
             if (!isConnected) {
                 throw new Error('Não foi possível conectar ao backend. Verifique se o servidor está rodando na porta 8080.');
             }
 
-            console.log('Conectividade OK. Buscando dados...');
+            console.log('[CarteirasProvider] Conectividade OK. Buscando dados...');
 
             // Busca dados em paralelo
             const [conformingCount, nonConformingCount] = await Promise.all([
@@ -191,7 +185,7 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
 
             const totalClients = conformingCount + nonConformingCount;
 
-            console.log('Dados processados:', {
+            console.log('[CarteirasProvider] Dados processados:', {
                 conformes: conformingCount,
                 naoConformes: nonConformingCount,
                 total: totalClients
@@ -212,9 +206,11 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
                 Todas: { quantidade: conformingCount, total: totalClients },
             });
 
+            console.log('[CarteirasProvider] Estados atualizados com sucesso!');
+
         } catch (err) {
             let errorMessage = 'Erro desconhecido';
-            
+
             if (err instanceof Error) {
                 if (err.message.includes('Network request failed')) {
                     errorMessage = 'Falha na conexão com o servidor. Verifique se o backend está rodando.';
@@ -224,16 +220,17 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
                     errorMessage = err.message;
                 }
             }
-            
+
             setError(errorMessage);
-            console.error('Erro ao buscar dados das carteiras:', err);
-            console.error('Detalhes do erro:', {
+            console.error('[CarteirasProvider] Erro ao buscar dados das carteiras:', err);
+            console.error('[CarteirasProvider] Detalhes do erro:', {
                 message: err instanceof Error ? err.message : 'Desconhecido',
                 type: typeof err,
                 backend_url: `${API_BASE_URL}/api/Compliance/clients-count`
             });
         } finally {
             setIsLoading(false);
+            console.log('[CarteirasProvider] refreshData finalizado.');
         }
     };
 
@@ -243,10 +240,10 @@ export const CarteirasProvider = ({ children }: { children: React.ReactNode }) =
     }, []);
 
     return (
-        <CarteirasContext.Provider 
-            value={{ 
-                carteiras, 
-                carteirasPorPerfil, 
+        <CarteirasContext.Provider
+            value={{
+                carteiras,
+                carteirasPorPerfil,
                 isLoading,
                 error,
                 refreshData

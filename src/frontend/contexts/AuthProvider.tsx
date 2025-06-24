@@ -20,15 +20,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     checkAuthStatus();
   }, []);
-
   const checkAuthStatus = async () => {
     try {
       const token = await AsyncStorage.getItem('@auth_token');
-      const userData = await AsyncStorage.getItem('@user_data');
-      
+      const userData = await AsyncStorage.getItem('@user');
+
       if (token && userData) {
         setIsAuthenticated(true);
-        setUser(JSON.parse(userData).name || 'Usuário');
+        const user = JSON.parse(userData);
+        setUser(user.displayName || user.email || 'Usuário');
       }
     } catch (error) {
       console.error('Error checking auth status:', error);
@@ -38,10 +38,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const login = async (email: string, password: string) => {
-    
+
     try {
       setIsLoading(true);
-      
+
       // Fazer login real com a API
       const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
@@ -53,43 +53,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (response.ok) {
         const data = await response.json();
-        
-        // Assumindo que a resposta tem a estrutura: { token: string, user: { name: string, email: string } }
-        const { idToken, user: userData } = data;
 
-        console.log(`TOKEN_LOGIN: ${idToken}`);
+        // Assumindo que a resposta tem a estrutura: { token: string, user: { name: string, email: string } }
+        const { idToken, user: userData } = data; console.log(`TOKEN_LOGIN: ${idToken}`);
         console.log(`DATA_LOGIN: ${userData}`);
-        
+
         await AsyncStorage.setItem('@auth_token', idToken);
-        await AsyncStorage.setItem('@user_data', JSON.stringify(userData));
-        
+        await AsyncStorage.setItem('@user', JSON.stringify(userData));
+
         setIsAuthenticated(true);
-        setUser(userData.name);
-        
+        setUser(userData.displayName || userData.email || 'Usuário');
+
         return { success: true };
       } else {
         const errorData = await response.json().catch(() => ({}));
-        return { 
-          success: false, 
-          message: errorData.message || 'Credenciais inválidas' 
+        return {
+          success: false,
+          message: errorData.message || 'Credenciais inválidas'
         };
       }
-      
+
     } catch (error) {
       console.error('Login error:', error);
-      return { 
-        success: false, 
-        message: 'Erro ao conectar com o servidor' 
+      return {
+        success: false,
+        message: 'Erro ao conectar com o servidor'
       };
     } finally {
       setIsLoading(false);
     }
   };
-
   const logout = async () => {
     try {
       await AsyncStorage.removeItem('@auth_token');
-      await AsyncStorage.removeItem('@user_data');
+      await AsyncStorage.removeItem('@user');
       setIsAuthenticated(false);
       setUser(null);
     } catch (error) {
