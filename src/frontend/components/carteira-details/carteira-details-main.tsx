@@ -9,13 +9,14 @@ import {
 } from "phosphor-react-native";
 import { perfilService, PerfilClienteResponse } from "@/services/perfilService";
 
-export const CarteiraDetailsMain: React.FC = () => {
+interface CarteiraDetailsMainProps {
+  clienteId: string;
+}
+
+export const CarteiraDetailsMain: React.FC<CarteiraDetailsMainProps> = ({ clienteId }) => {
   const [perfilData, setPerfilData] = useState<PerfilClienteResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  // fixo para agora → clienteId = "27"
-  const clienteId = "27.0";
 
   const loadPerfil = async () => {
     setLoading(true);
@@ -34,7 +35,7 @@ export const CarteiraDetailsMain: React.FC = () => {
 
   useEffect(() => {
     loadPerfil();
-  }, []);
+  }, [clienteId]);  
 
   if (loading) {
     return (
@@ -56,17 +57,15 @@ export const CarteiraDetailsMain: React.FC = () => {
     return null;
   }
 
-  // Agora renderizamos o conteúdo normal
-  const irregularAmount = 0;  // se você tiver lógica futura, pode colocar aqui
+  const irregularAmount = 0;
   const irregularPercentage = 0;
-  const recommendedProfile = perfilData.perfil;  // ou lógica para sugerir outro
+  const recommendedProfile = perfilData.perfil;
 
   return (
     <ScrollView className="flex-1 p-4 bg-azul-claro-principal">
 
       {/* Profile and Status Row */}
       <View className="flex-row justify-between mb-4">
-        {/* Profile Badge */}
         <View className="bg-azul-escuro-principal rounded-full px-3 py-1 flex-row items-center gap-1">
           <PiggyBank size={16} color="#AEC3F5" weight="fill" />
           <Text className="text-azul-claro-principal text-sm font-bold">
@@ -74,7 +73,6 @@ export const CarteiraDetailsMain: React.FC = () => {
           </Text>
         </View>
 
-        {/* Irregular Status */}
         <View className="bg-[#5A1A1A] rounded-full px-3 py-1 flex-row items-center gap-1">
           <Text className="text-[#E9A5A5] text-sm font-bold">
             {irregularPercentage}% Irregular
@@ -85,7 +83,6 @@ export const CarteiraDetailsMain: React.FC = () => {
 
       {/* Main Card */}
       <View className="bg-azul-escuro-principal rounded-[12px] p-6">
-        {/* Recommended Profile Section */}
         <View className="flex-row items-center mb-4 mx-auto">
           <Info size={14} color="#AEC3F5" weight="regular" />
           <Text className="text-azul-claro-principal text-xs ml-2 font-bold">
@@ -99,7 +96,6 @@ export const CarteiraDetailsMain: React.FC = () => {
           </View>
         </View>
 
-        {/* Amount Card */}
         <View className="bg-azul-claro-principal rounded-[6px] p-4 flex flex-row items-center justify-around">
           <Money size={30} color="#001E62" weight="regular" />
           <View className="flex flex-col items-center gap-2">
@@ -114,7 +110,6 @@ export const CarteiraDetailsMain: React.FC = () => {
                 investidos
               </Text>
             </View>
-            {/* Irregular Amount */}
             <View className="bg-[#5A1A1A] rounded-lg px-4 py-2">
               <Text className="text-[#E9A5A5] text-base">
                 <Text className="text-xs font-bold">R$</Text>{" "}
