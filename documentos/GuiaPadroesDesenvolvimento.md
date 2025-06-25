@@ -7,23 +7,42 @@
   </tr>
 </table>
 
-# Nome do Projeto: <nome do projeto>
+# Nome do Projeto: Diana.
 
-## Nome do Grupo: <nome do grupo>
+## Nome do Grupo: Watermelon
 
 ## Integrantes:
 
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
-- <a href="https://www.linkedin.com/in/username/">Nome</a>
+- <a href="https://www.linkedin.com/in/anacdejesus/">Ana Carolina de Jesus Pacheco da Silva</a>
+- <a href="https://www.linkedin.com/in/felipe-zillo-72b367247/">Felipe Zillo</a>
+- <a href="https://www.linkedin.com/in/gabriel-nascimento-563382243/">Gabriel Nascimento</a>
+- <a href="https://www.linkedin.com/in/joao-souza-campos/">João Victor de Souza Campos</a>
+- <a href="https://www.linkedin.com/in/lucas-tort/">Lucas Cozzolino Tort</a>
+- <a href="https://www.linkedin.com/in/natalycunha/">Nataly Cunha</a>
+- <a href="https://www.linkedin.com/in/thiagovolcati/">Thiago Volcati</a>
+- <a href="https://www.linkedin.com/in/vitor-balbo/">Vitor Balbo</a>
 
 # Sumário
 
+- [1. Introdução](#1-introdução)  
+  - [1.1 Objetivo do Documento](#11-objetivo-do-documento)  
+
+- [2. Padrões de Codificação](#2-padrões-de-codificação)  
+  - [2.1 Naming Conventions](#21-naming-conventions)  
+  - [2.2 Formatação de Código](#22-formatação-de-código)  
+  - [2.3 Comentários e Documentação](#23-comentários-e-documentação)  
+
+- [3. Padrões de Projeto](#3-padrões-de-projeto)  
+  - [3.1 Design Patterns](#31-design-patterns)  
+  - [3.2 Arquitetura de Software](#32-arquitetura-de-software)  
+
+- [4. Práticas de Desenvolvimento](#4-práticas-de-desenvolvimento)  
+  - [4.1 Testes Automatizados](#41-testes-automatizados)  
+  - [4.2 Controle de Qualidade](#42-controle-de-qualidade)  
+
+- [5. Ferramentas e Tecnologias](#5-ferramentas-e-tecnologias)  
+  - [5.1 Ferramentas de Desenvolvimento](#51-ferramentas-de-desenvolvimento)  
+  - [5.2 Tecnologias e Frameworks](#52-tecnologias-e-frameworks)  
 
 
 # 1. Introdução
