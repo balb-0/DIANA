@@ -3,6 +3,8 @@ using backend.Services;
 using backend.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Npgsql;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +60,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+
 // Registrar serviço de investimentos
 builder.Services.AddScoped<IInvestmentService, InvestmentService>();
 
@@ -72,8 +75,21 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Corrigido: injeta IConfiguration automaticamente
-builder.Services.AddScoped<IClientService, ClientService>();
+
+// Registrar serviço de carteiras
+builder.Services.AddScoped<ICarteiraService, CarteiraService>();
+builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
+
+// Registrar serviço de perfis
+// builder.Services.AddScoped<IPerfilService, PerfilService>();
+
+// Adicione esta linha após os outros AddScoped
+builder.Services.AddScoped<IDbConnection>(provider =>
+{
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    var connectionString = configuration.GetConnectionString("DefaultConnection");
+    return new NpgsqlConnection(connectionString);
+});
 
 var app = builder.Build();
 
