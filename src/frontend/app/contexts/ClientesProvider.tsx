@@ -2,7 +2,7 @@ import { ReactNode, createContext, useContext, useEffect, useState } from "react
 import { getClientesPorRisco, ClienteCarteira } from "@/services/carteiraService";
 
 type Cliente = {
-    id: number;
+    id: string;
     nome: string;
     email: string;
     cpf: string;
@@ -58,7 +58,7 @@ export const ClientesProvider = ({ children, tipoRisco }: { children: ReactNode;
             const perfilInvestidor = mapPerfil(tipoRisco);
 
             const clientesMapped = clientesAPI.map<Cliente>((c) => ({
-                id: parseInt(c.clienteId),
+                id:  c.clienteId,
                 nome: c.clienteNome,
                 email: "",
                 cpf: "",

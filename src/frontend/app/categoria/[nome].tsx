@@ -21,7 +21,7 @@ function CategoriaContent() {
         return cliente.perfilInvestidor === nome;
     });
 
-    const navegarParaCliente = (id: number) => {
+    const navegarParaCliente = (id: string) => {
         router.push(`/investor/${id}` as RelativePathString);
     };
 

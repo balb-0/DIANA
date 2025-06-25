@@ -18,7 +18,7 @@ export default function InvestorDetails() {
 
   useEffect(() => {
     // Find the client with the matching ID
-    const foundCliente = clientes.find((c) => c.id === Number(investor));
+    const foundCliente = clientes.find((c) => String(c.id) === String(investor));
     if (foundCliente) {
       setCliente(foundCliente);
     }
@@ -43,11 +43,7 @@ export default function InvestorDetails() {
           birthDate={cliente.nascimento}
         />
         <CarteiraDetailsMain
-          totalAmount={20460.57}
-          irregularAmount={3215.21}
-          irregularPercentage={30}
-          currentProfile="Conservador"
-          recommendedProfile="Moderado"
+          clienteId={String(cliente.id)}
         />
         <InvestmentToggle activeTab={activeTab} onToggle={setActiveTab} />
         {activeTab === "investments" ? (

@@ -17,7 +17,7 @@ function LayoutContent() {
     pathname.startsWith("/investor/");
     
   return (
-    <ClientesProvider>
+    <ClientesProvider tipoRisco="geral">
       <CarteirasProvider>
         <AuthGuard>
           {!hideWelcome && <Welcome user={user || "Usuário"} />}
