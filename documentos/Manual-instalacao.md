@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-## Nome do Projeto: DIANA
+## Nome do Projeto: Diana.
 
 ## Nome do Grupo: Watermelon
 
