@@ -2079,7 +2079,17 @@ Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o c
 
 ## 8.3.3 Sprint 5
 
-Finalização do projeto com integração completa entre frontend e backend, implementação de funcionalidades avançadas de recomendação e preparação para deployment em ambiente de produção.
+&emsp;Durante a sprint final, o foco principal da equipe foi consolidar a entrega do MVP, garantindo a integração completa entre backend e frontend, finalizando a documentação e preparando os materiais do pitch.
+
+&emsp;Começamos pelas atividades de integração e testes. Foram implementados e validados os endpoints de listagem de carteiras, listagem de recomendações, investimentos de clientes e perfil de risco. Também realizamos testes de integração nas principais páginas da aplicação: Página Home, Página de Autenticação, Listagem e Detalhamento de Carteiras. Após essas integrações, foi conduzido um teste geral de toda a aplicação para assegurar o funcionamento coeso do sistema.
+
+&emsp;Em paralelo, a equipe tratou da preparação do ambiente de produção. Foi configurada a conexão com o banco de dados em uma instância do Render, o backend foi corretamente ajustado e implantado no servidor do Inteli. O banco também foi populado com dados reais para garantir uma apresentação consistente.
+
+&emsp;Na parte de documentação, finalizamos a seção de desenvolvimento da sprint, bem como a documentação dos testes (unitários, funcionais e não funcionais). Também foram concluídas as entregas de "Gestão Evolutiva de Projetos" e ajustes relacionados ao Escritório de Projetos, fundamentais para o fechamento formal do projeto.
+
+&emsp;Por fim, voltamos nossos esforços para os materiais de entrega e apresentação. Foram elaborados o roteiro e os slides da apresentação final, realizados ensaios e gravado um vídeo demonstrando a aplicação funcionando, como previsto no planejamento.
+
+&emsp;Essa organização permitiu que a sprint final fosse conduzida com um bom ritmo e cobertura completa das tarefas necessárias, preparando a equipe para uma entrega consistente e profissional.
 
 ## 8.4 Testes Unitários e de Integração
 
