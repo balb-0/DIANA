@@ -5,6 +5,6 @@ namespace backend.Services
 {
     public interface ICarteiraService
     {
-        Task<ApiResponse<List<ClienteSimplificadoDto>>> GetClientesByRiscoDeclaradoAsync(string tipoRisco, string assessorId);
+        Task<ApiResponse<List<ClienteSimplificadoDto>>> GetClientesByRiscoDeclaradoAsync(string tipoRisco);
     }
 }
