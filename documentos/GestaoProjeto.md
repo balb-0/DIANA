@@ -7,9 +7,9 @@
   </tr>
 </table>
 
-# Nome do Projeto: <nome do projeto>
+# Nome do Projeto: Diana.
 
-## Nome do Grupo: <nome do grupo>
+## Nome do Grupo: Watermelon
 
 ## Integrantes:
 
@@ -27,10 +27,10 @@
 - [1. Introdução](#1-introdução)
 - [2. Avaliação das Sprints](#2-avaliação-das-sprints)
   - [2.1 Sprint 1](#21-sprint-1)
-  - [2.2 Sprint 2](#21-sprint-2)
-  - [2.3 Sprint 3](#21-sprint-3)
-  - [2.4 Sprint 4](#21-sprint-4)
-  - [2.5 Sprint 5](#21-sprint-5)
+  - [2.2 Sprint 2](#22-sprint-2)
+  - [2.3 Sprint 3](#23-sprint-3)
+  - [2.4 Sprint 4](#24-sprint-4)
+  - [2.5 Sprint 5](#25-sprint-5)
 - [3. Análise de Riscos](#3-análise-de-riscos)
   - [3.1 Riscos identificados](#31-riscos-identificados)
   - [3.2 Mitigação de Riscos](#32-mitigação-de-riscos)
