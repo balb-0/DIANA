@@ -1,9 +1,6 @@
 using backend.Middleware;
 using backend.Services;
 using backend.Repositories;
-using System.Data;
-using Npgsql;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -22,6 +19,7 @@ builder.Services.AddSwaggerGen(c =>
         Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
+
     c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement()
     {
         {
@@ -41,33 +39,11 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configuração da conexão com banco de dados
-builder.Services.AddScoped<IDbConnection>(provider =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    return new NpgsqlConnection(connectionString);
-});
-
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IComplianceRepository, ComplianceRepository>();
 
-// Registrar IPerfilService
-builder.Services.AddScoped<IPerfilService>(provider =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não encontrada.");
-    return new PerfilService(connectionString);
-});
-
-// Registrar ClientService com IConfiguration
-builder.Services.AddScoped<IClientService>(provider =>
-{
-    var configuration = provider.GetRequiredService<IConfiguration>();
-    return new ClientService(configuration);
-});
-
-// Configurar autenticação Firebase
+// Configurar autenticação
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -85,10 +61,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 // Registrar serviço de investimentos
 builder.Services.AddScoped<IInvestmentService, InvestmentService>();
 
-// Registrar novos serviços para carteiras
-builder.Services.AddScoped<ICarteiraRepository, CarteiraRepository>();
-builder.Services.AddScoped<ICarteiraService, CarteiraService>();
-
 // Configurar CORS
 builder.Services.AddCors(options =>
 {
@@ -100,22 +72,30 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Corrigido: injeta IConfiguration automaticamente
+builder.Services.AddScoped<IClientService, ClientService>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection(); // desativado no Docker, pois estamos rodando só HTTP
+app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 
 // Adicionar middleware personalizado do Firebase
 app.UseMiddleware<FirebaseAuthenticationMiddleware>();
+
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
+
 app.Run();
+
+namespace backend
+{
+    public partial class Program { }
+}
