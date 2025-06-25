@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8080/api';  // Trocar IP se rodar em celular
+const API_BASE_URL = 'http://localhost:8080/api'; 
 
 export interface Distribuicao {
   rendaFixa: number;

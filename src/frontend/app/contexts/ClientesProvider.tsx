@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import { getClientesPorRisco, ClienteCarteira } from "@/services/carteiraService";
 
 type Cliente = {
     id: number;
@@ -33,79 +34,78 @@ type ClientesContextData = {
 
 const ClientesContext = createContext({} as ClientesContextData);
 
-export const ClientesProvider = ({ children }: { children: ReactNode }) => {
+export const ClientesProvider = ({ children, tipoRisco }: { children: ReactNode; tipoRisco: string }) => {
     const [clientes, setClientes] = useState<Cliente[]>([]);
-
     const [clientesPorPerfil, setClientesPorPerfil] = useState<ClientesPorPerfil>({
         Conservador: [],
         Moderado: [],
         Sofisticado: [],
     });
-
     const [clientesPorStatus, setClientesPorStatus] = useState<ClientesPorStatus>({
         Regulares: [],
         Inconformes: [],
     });
 
     useEffect(() => {
-        // Simula chamada da API
-        setTimeout(() => {
-            const dadosMock: Cliente[] = [
-                {   
-                    id: 1,
-                    nome: "Joana Silva",
-                    email: "joana@email.com",
-                    cpf: "123.456.789-00",
-                    nascimento: "1990-04-12",
-                    telefone: "(11) 91234-5678",
-                    perfilInvestidor: "Conservador",
-                    quantiaInvestida: 10000,
-                    bancoInvestido: "Banco XPTO",
-                    quantidadeAtivos: 3,
-                    status: "Regular",
-                },
-                {
-                    id: 2,
-                    nome: "Carlos Souza",
-                    email: "carlos@email.com",
-                    cpf: "987.654.321-00",
-                    nascimento: "1985-08-22",
-                    telefone: "(21) 99876-5432",
-                    perfilInvestidor: "Moderado",
-                    quantiaInvestida: 25000,
-                    bancoInvestido: "Banco Alpha",
-                    quantidadeAtivos: 5,
-                    status: "Inconforme",
-                },
-                {
-                    id: 3,
-                    nome: "Ana Pereira",
-                    email: "ana@email.com",
-                    cpf: "111.222.333-44",
-                    nascimento: "1992-11-03",
-                    telefone: "(31) 93456-7890",
-                    perfilInvestidor: "Sofisticado",
-                    quantiaInvestida: 70000,
-                    bancoInvestido: "Banco Beta",
-                    quantidadeAtivos: 10,
-                    status: "Regular",
-                },
-            ];
+        async function fetchData() {
+            if (!tipoRisco) {
+                console.warn("ClientesProvider: tipoRisco não definido, abortando fetch.");
+                return;
+            }
 
-            setClientes(dadosMock);
+            const clientesAPI = await getClientesPorRisco(tipoRisco);
+
+            const perfilInvestidor = mapPerfil(tipoRisco);
+
+            const clientesMapped = clientesAPI.map<Cliente>((c) => ({
+                id: parseInt(c.clienteId),
+                nome: c.clienteNome,
+                email: "",
+                cpf: "",
+                nascimento: "",
+                telefone: "",
+                perfilInvestidor,
+                quantiaInvestida: 0,
+                bancoInvestido: "",
+                quantidadeAtivos: 0,
+                status: "Regular",
+            }));
+
+            setClientes(clientesMapped);
 
             setClientesPorPerfil({
-                Conservador: dadosMock.filter((c) => c.perfilInvestidor === "Conservador"),
-                Moderado: dadosMock.filter((c) => c.perfilInvestidor === "Moderado"),
-                Sofisticado: dadosMock.filter((c) => c.perfilInvestidor === "Sofisticado"),
+                Conservador: perfilInvestidor === "Conservador" || tipoRisco === "geral" ? clientesMapped : [],
+                Moderado: perfilInvestidor === "Moderado" || tipoRisco === "geral" ? clientesMapped : [],
+                Sofisticado: perfilInvestidor === "Sofisticado" || tipoRisco === "geral" ? clientesMapped : [],
             });
 
             setClientesPorStatus({
-                Regulares: dadosMock.filter((c) => c.status === "Regular"),
-                Inconformes: dadosMock.filter((c) => c.status === "Inconforme"),
+                Regulares: clientesMapped,
+                Inconformes: [],
             });
-        }, 1000);
-    }, []);
+        }
+
+        fetchData();
+    }, [tipoRisco]);
+
+    function mapPerfil(tipoRisco: string): "Conservador" | "Moderado" | "Sofisticado" {
+        switch (tipoRisco) {
+            case "conservador":
+            case "Conservador":
+                return "Conservador";
+            case "moderado":
+            case "Moderado":
+                return "Moderado";
+            case "sofisticado":
+            case "Sofisticado":
+                return "Sofisticado";
+            case "geral":
+            case "Geral":
+                return "Conservador";
+            default:
+                return "Conservador";
+        }
+    }
 
     return (
         <ClientesContext.Provider value={{ clientes, clientesPorPerfil, clientesPorStatus }}>
