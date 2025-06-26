@@ -1,3 +1,5 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const API_BASE_URL = 'http://localhost:8080/api';
 
 export interface LoginRequest {
@@ -31,13 +33,13 @@ export const authService = {
       });
 
       const data: AuthResponse = await response.json();
-      
+
       if (data.success && data.idToken) {
         // Store JWT token for future requests
-        localStorage.setItem('authToken', data.idToken);
-        localStorage.setItem('user', JSON.stringify(data.user));
+        await AsyncStorage.setItem('@auth_token', data.idToken);
+        await AsyncStorage.setItem('@user', JSON.stringify(data.user));
       }
-      
+
       return data;
     } catch (error) {
       console.error('Login error:', error);
@@ -49,23 +51,33 @@ export const authService = {
   },
 
   async logout(): Promise<void> {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('user');
+    await AsyncStorage.removeItem('@auth_token');
+    await AsyncStorage.removeItem('@user');
   },
 
-  getStoredToken(): string | null {
-    return localStorage.getItem('authToken');
+  async getStoredToken(): Promise<string | null> {
+    try {
+      return await AsyncStorage.getItem('@auth_token');
+    } catch (error) {
+      console.error('Error getting stored token:', error);
+      return null;
+    }
   },
 
-  getStoredUser(): UserInfo | null {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+  async getStoredUser(): Promise<UserInfo | null> {
+    try {
+      const user = await AsyncStorage.getItem('@user');
+      return user ? JSON.parse(user) : null;
+    } catch (error) {
+      console.error('Error getting stored user:', error);
+      return null;
+    }
   },
 
   // Helper method to make authenticated requests
   async makeAuthenticatedRequest(url: string, options: RequestInit = {}): Promise<Response> {
-    const token = this.getStoredToken();
-    
+    const token = await this.getStoredToken();
+
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
       ...(options.headers as Record<string, string>),

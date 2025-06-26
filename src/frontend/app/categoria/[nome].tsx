@@ -39,7 +39,6 @@ function CategoriaContent() {
             <View className="w-full flex-1 items-center justify-center px-6 pt-14">
                 <View className="w-full flex-row justify-center gap-2 h-fit pb-8">
                     <BarraPesquisa />
-                    <BotaoFiltro />
                 </View>
                 <View className="bg-azul-escuro-principal rounded-2xl w-full h-[68%] p-4">
                     <View className="text-sm text-azul-claro-principal w-full justify-between flex-row items-center mb-2">
@@ -51,23 +50,23 @@ function CategoriaContent() {
                             carteiras nesta categoria
                         </Text>
                     </View>
-                   <ScrollView contentContainerStyle={{ gap: 16 }}>
+                    <ScrollView contentContainerStyle={{ gap: 16 }}>
                         {clientesFiltrados.map((cliente) => (
                             <TouchableOpacity
                                 key={cliente.id}
                                 onPress={() => navegarParaCliente(cliente.id)}
                             >
-                               <ProfileBodyItem
-                                id={cliente.id}
-                                name={cliente.nome}
-                                email={cliente.email}
-                                assets={String(cliente.quantidadeAtivos)}
-                                value={cliente.quantiaInvestida}
-                                bank={cliente.bancoInvestido}
+                                <ProfileBodyItem
+                                    id={cliente.id}
+                                    name={cliente.nome}
+                                    email={cliente.email}
+                                    assets={String(cliente.quantidadeAtivos)}
+                                    value={cliente.quantiaInvestida}
+                                    bank={cliente.bancoInvestido}
                                 />
                             </TouchableOpacity>
                         ))}
-                    </ScrollView>
+                    </ScrollView>
                 </View>
             </View>
         </View>

@@ -35,26 +35,20 @@ export function ProfileBodyItem({
           <Wallet size={24} color="#AEC3F5" weight="regular" />
         </View>
 
-        <View className="flex-1">
-          <Text className="text-[#001E62] text-[14px] font-semibold">
-            {name}
-          </Text>
-          <View className="flex-row items-center gap-2 mt-1">
-            <View className="bg-[#001E62] rounded-full px-3 py-1 flex-row items-center gap-1">
-              <PiggyBank size={16} color="#AEC3F5" weight="fill" />
-              <Text className="text-[#AEC3F5] text-xs font-bold">
-                Conservador
-              </Text>
+        <View className="flex-1 gap-2">
+          <View className="gap-1">
+            <Text className="text-azul-escuro-principal text-[14px] font-semibold">
+              {name}
+            </Text>
+            <View className="bg-[#001E6229] rounded-1 flex-row text-center items-center gap-1 px-3 py-[2px] w-fit rounded-full">
+              <Envelope size={12} color="#001E62" weight="regular" />
+              <Text className="text-azul-escuro-principal text-[12px]">{email}</Text>
             </View>
-            <Text className="text-[#001E62] text-sm">{bank}</Text>
           </View>
-        </View>
-      </View>
-
-      <View className="flex-row justify-between mt-4 ">
-        <View className="bg-[#001E6229] rounded-[4px] flex-row text-center items-center gap-1 px-[12px] py-[2px]">
-          <Envelope size={12} color="#001E62" weight="regular" />
-          <Text className="text-[#001E62] text-[12px]">{email}</Text>
+          <View className="flex-row items-center gap-2 rounded-full px-3 py-[2px] bg-[#001E6229] w-fit">
+            <Text className="font-bold text-[12px] text-azul-escuro-principal">ID</Text>
+            <Text className="text-[12px] text-azul-escuro-principal">{id}</Text>
+          </View>
         </View>
       </View>
     </View>
