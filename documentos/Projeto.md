@@ -181,7 +181,7 @@
 
 <br>
 <div align="center">
-<sub>Figura x - Faz ou não faz</sub>
+<sub>Figura 1 - Faz ou não faz</sub>
 <br>
 <br>
 <img src="../documentos/img/faz-naofaz.jpg" alt='Imagem com a descrição do que o nosso aplicativo faz ou não faz' width="100%">
@@ -200,7 +200,7 @@
 &emsp;Para garantir a compreensão completa da jornada aplicada, uma breve descrição das seções pode se fazer importante.
 
 <div align="center">
-<sub>Figura x - Jornada do usuário - Guia</sub>
+<sub>Figura 2 - Jornada do usuário - Guia</sub>
   <img src="../documentos/img/jornada-guia.svg" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -224,7 +224,7 @@
 &emsp;O assessor é considerado o usuário principal da aplicação, visto que será diretamente impactado pelas funcionalidades, fluxos e pela usabilidade da plataforma. O objetivo ao mapear essa persona é garantir que o sistema entregue valor real e mensurável para o assessor, otimizando sua rotina profissiona.
 
 <div align="center">
-<sub>Figura x - Jornada do usuário - Guia</sub>
+<sub>Figura 3 - Jornada do usuário - Guia</sub>
 <img src="../documentos/img/persona-assessor.svg" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -236,7 +236,7 @@
 &emsp;Foi desenvolvida a persona secundária Mariana Rocha, que representa o cliente final atendido pelo assessor Fábio. Embora não utilize diretamente a aplicação, Mariana permite analisar os impactos indiretos da plataforma sobre a experiência do cliente, o que contribui para refinar ainda mais as funcionalidades voltadas ao trabalho do assessor.
 
 <div align="center">
-<sub>Figura x - Jornada do usuário - Guia</sub>
+<sub>Figura 4 - Jornada do usuário - Guia</sub>
 <img src="../documentos/img/persona-cliente.svg" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -250,7 +250,7 @@
 &emsp;Antes da existência da aplicação, Fábio enfrenta um processo majoritariamente manual e descentralizado no relacionamento com seus clientes, dificultando o acompanhamento do perfil de seus clientes.
 
 <div align="center">
-<sub>Figura x - Jornada do Assessor - Antes da Solução</sub>
+<sub>Figura 5 - Jornada do Assessor - Antes da Solução</sub>
 <img src="../documentos/img/jornada-antes-assessor.svg" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -258,7 +258,7 @@
 &emsp;Com a implementação da plataforma, o acompanhamento do assessor em relação aos seus clientes é significativamente agilizada, por meio de ferramentas inteligentes que emitem alertas sempre que o perfil de investimento do cliente se desvia do esperado.
 
 <div align="center">
-<sub>Figura x - Jornada do Assessor - Depois da Solução</sub>
+<sub>Figura 6 - Jornada do Assessor - Depois da Solução</sub>
 <img src="../documentos/img/jornada-depois-assessor.svg" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -272,7 +272,7 @@
 &emsp;Mesmo com boas intenções e processos funcionais, esse _gap_ de tempo abria margem para que Mariana, sem perceber, se desviasse do seu perfil de investidora original, o que poderia comprometer sua estratégia financeira de longo prazo.
 
 <div align="center">
-<sub>Figura x - Jornada do Cliente - Depois da Solução</sub>
+<sub>Figura 7 - Jornada do Cliente - Depois da Solução</sub>
 <img src="../documentos/img/jornada-antes-cliente.svg" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -282,7 +282,7 @@
 &emsp;Isso fortalece o vínculo entre assessor e cliente e garante que decisões mais críticas possam ser tomadas rapidamente — reduzindo os riscos e reforçando a sensação de segurança da Mariana diante de variações no mercado.
 
 <div align="center">
-<sub>Figura x - Jornada do Cliente - Depois da Solução</sub>
+<sub>Figura 8 - Jornada do Cliente - Depois da Solução</sub>
 <img src="../documentos/img/jornada-depois-cliente.svg" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -368,7 +368,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 
 <br>
 <div align="center">
-<sub>Figura x - Cadeia de valor</sub>
+<sub>Figura 9 - Cadeia de valor</sub>
 <br>
 <br>
 <img src="../documentos/img/cadeiadevalor.png" alt='Imagem com a cadeia de valor' width="100%">
@@ -389,7 +389,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 **Fluxo AS-IS (Processo Atual):**
 
 <div align="center">
-<sup>Figura X - Fluxo de Negócios Atual</sup>
+<sup>Figura 10 - Fluxo de Negócios Atual</sup>
 <img src="./img/fluxo_atual.jpg">
 <sub>Fonte: Material produzido pelos autores (2025).</sub>
 </div>
@@ -407,7 +407,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 **Fluxo TO-BE (Processo Proposto com a Solução):**
 
 <div align="center">
-<sup>Figura X - Fluxo de Negócios Atual</sup>
+<sup>Figura 11 - Fluxo de Negócios Atual</sup>
 <img src="./img/fluxo_proposto.jpg">
 <sub>Fonte: Material produzido pelos autores (2025).</sub>
 </div>
@@ -423,7 +423,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 &emsp;Durante o planejamento inicial do projeto, foi realizada uma análise dos principais riscos que poderiam comprometer a entrega da solução, considerando tanto a probabilidade de ocorrência, quanto o impacto de cada situação sobre o andamento e a efetividade do aplicativo.
 
 <div align="center">
-<sub>Figura x - Matriz de riscos</sub><br>
+<sub>Figura 12 - Matriz de riscos</sub><br>
 <img src="img/matrizRiscos.png"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -463,7 +463,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 &emsp;Segue abaixo, o canvas MVP da aplicação web desenvolvido a partir das atividades realizadas durante o workshop com o parceiro.
 
 <div align="center">
-<sub>Figura x - Canvas MVP do projeto</sub><br>
+<sub>Figura 13 - Canvas MVP do projeto</sub><br>
 <img src="img/canvas-mvp.jpg"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -541,7 +541,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 &emsp;Os Requisitos Funcionais (RFs) representam as funcionalidades que o sistema deve obrigatoriamente oferecer para atender às necessidades dos usuários e alcançar os objetivos de negócio. Eles descrevem o comportamento esperado do sistema diante de diferentes interações e contextos de uso, definindo claramente "o que" o sistema deve fazer. Neste projeto, os RFs foram derivados das features propostas, refinados por meio das personas e descritos tanto tecnicamente quanto na forma de user stories.
 
 <div align="center">
-<sub>Tabela X - Requisitos Funcionais</sub><br>
+<sub>Tabela 1 - Requisitos Funcionais</sub><br>
 
 | ID   | Título                                            | Descrição Breve                                                                                                                                                    | Prioridade |
 | ---- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
@@ -558,7 +558,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 ### Requisitos Funcionais Definidos como User Stories
 
 <div align="center">
-<sub>Tabela X - User Stories dos Requisitos Funcionais</sub><br>
+<sub>Tabela 2 - User Stories dos Requisitos Funcionais</sub><br>
 
 | ID          | User Story                                                                                                                                                                                                             |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -574,7 +574,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 ### Tabela de Testes para Requisitos Funcionais
 
 <div align="center">
-<sub>Tabela X - Testes associados aos Requisitos Funcionais</sub><br>
+<sub>Tabela 3 - Testes associados aos Requisitos Funcionais</sub><br>
 
 | Caso de Teste | RF   | Descrição do Teste                                                                                        | Pré-condição                                                                             | Critério de Aceite                                                                                                                                                   | Critério de Falha                                                                                                    |
 | ------------- | ---- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -593,7 +593,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 &emsp;Os Requisitos Não Funcionais (RNFs) especificam as qualidades e restrições que o sistema deve respeitar, como desempenho, segurança, usabilidade, manutenibilidade, entre outros. Diferentemente dos RFs, os RNFs não dizem respeito ao comportamento direto do sistema, mas à forma como esse comportamento deve ser entregue. Neste projeto, os RNFs foram definidos com base nas diretrizes da norma ISO/IEC 25010 e abordam critérios técnicos essenciais para garantir robustez, escalabilidade e boa experiência de uso.
 
 <div align="center">
-<sub>Tabela X - Requisitos não funcionais</sub><br>
+<sub>Tabela 4 - Requisitos não funcionais</sub><br>
 
 | **RNF#** | **Descrição**                                                                                                                                        | **Aspecto de Qualidade (ISO 25010)** | **Prioridade** |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | -------------- |
@@ -610,7 +610,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 ### Requisitos Não Funcionais Definidos como User Stories
 
 <div align="center">
-<sub>Tabela X - User Stories dos Requisitos Não Funcionais</sub><br>
+<sub>Tabela 5 - User Stories dos Requisitos Não Funcionais</sub><br>
 
 | ID    | User Story                                                                                                                                                                                                                                |
 | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -627,7 +627,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 ### Tabela de Testes para Requisitos Não Funcionais
 
 <div align="center">
-<sub>Tabela X - Testes associados aos Requisitos Não Funcionais</sub><br>
+<sub>Tabela 6 - Testes associados aos Requisitos Não Funcionais</sub><br>
 
 | Caso de Teste | RNF#  | Descrição do Teste                                                                                         | Pré-condição                                     | Caso de Aceite                                                                               | Caso de Recusa                                                                    |
 | ------------- | ----- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -644,7 +644,7 @@ Para o parceiro de negócios, o valor gerado está na capacidade de escalar um a
 ## 3.3 Correlação RFs e RNFs
 
 <div align="center">
-<sub>Tabela X - Tabela de Correlação RFs e RNFs</sub><br>
+<sub>Tabela 7 - Tabela de Correlação RFs e RNFs</sub><br>
 
 | Requisito Funcional                                      | RNFs Correlatos            | Justificativa da Correlação                                                                                                                                                                                                                                                                              |
 | -------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -681,7 +681,7 @@ Essa seção tem como objetivo apresentar uma visão geral da modelagem de dados
 &emsp; O modelo conceitual de dados tem como objetivo representar – de forma abstrata e sem preocupação com a implementação física – as entidades principais do sistema, seus atributos e os relacionamentos entre elas. Ele serve como base para o entendimento lógico e estruturado das regras de negócio envolvidas no domínio da aplicação.
 
 <div align="center">
-<sub>Figura x - Modelagem Conceitual</sub><br>
+<sub>Figura 14 - Modelagem Conceitual</sub><br>
 <img src="img/modelo-conceitual.jpg"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -713,7 +713,7 @@ Essa seção tem como objetivo apresentar uma visão geral da modelagem de dados
 &emsp;Tem-se o seguinte modelo elaborado para o presente projeto para o BTG Pactual, produzido através da plataforma de design de banco de dados [dbdiagram.io](https://dbdiagram.io/):
 
 <div align="center">
-<sub>Figura x - Modelo Lógico-Relacional</sub><br>
+<sub>Figura 15 - Modelo Lógico-Relacional</sub><br>
 <img src="img/modelologicov3.png"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -995,7 +995,7 @@ Como um assessor de investimento, quero que o sistema calcule automaticamente o 
 | RF09 | O sistema deve exibir graficamente a composição da carteira por tipo de ativo.                                       | Baixa      | Visualizar Composição da Carteira   |
 
 <div align="center">
-<sub>Figura x - Diagrama de Casos de Uso</sub><br>
+<sub>Figura 16 - Diagrama de Casos de Uso</sub><br>
 <img src="img/Assessor.jpg"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -1020,7 +1020,7 @@ As principais classes são:
 
 <br>
 <div align="center">
-<sub>Figura x - Diagrama de Classes</sub>
+<sub>Figura 17 - Diagrama de Classes</sub>
 <br>
 <br>
 <img src="../documentos/img/diagrama_de_classes.png" alt='Imagem com o diagrama de classes' width="100%">
@@ -1188,7 +1188,7 @@ Define os níveis de assessores possíveis no sistema:
 &emsp;O diagrama de componentes da UML é utilizado para representar a estrutura modular de um sistema, evidenciando como seus diferentes blocos de software se organizam e se comunicam. Nesta seção, está apresentado o diagrama que descreve a arquitetura do aplicativo mobile da plataforma de recomendação, destacando os principais componentes envolvidos — desde a interface com o usuário até os serviços de backend, autenticação e armazenamento de dados.
 
 <div align="center">
-<sup>Figura X - Diagrama de Componentes do App Mobile BTG</sup>  
+<sup>Figura 18 - Diagrama de Componentes do App Mobile BTG</sup>  
 <img src="./img/diagrama_componentes.jpg">  
 <sub>Fonte: Material produzido pelos autores (2025)</sub>  
 </div>
@@ -1252,7 +1252,7 @@ Define os níveis de assessores possíveis no sistema:
 &emsp;Este fluxo descreve o processo de autenticação e análise de perfis com inconsistências no sistema, incluindo o uso de filtros para refinar a consulta. O sistema é acessado por um assessor via aplicativo mobile, e os dados são processados por um serviço de backend que utiliza um banco PostgreSQL.
 
 <div align="center">
-<sub>Figura x - Diagrama de Filtro UML</sub><br>
+<sub>Figura 19 - Diagrama de Filtro UML</sub><br>
 <img src="img/Diagrama UML Filtro.jpg"><br>
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -1696,7 +1696,7 @@ Essa jornada do wireframe ao mockup possibilita:
 ### Visualização
 
 <div align="center">
-<sub>Figura 1 - Wireframe</sub><br> 
+<sub>Figura 20 - Wireframe</sub><br> 
 <img src="img/wireframe.svg"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -1737,7 +1737,7 @@ Essa jornada do wireframe ao mockup possibilita:
 ### Visualização
 
 <div align="center">
-<sub>Figura 2 - Mockup</sub><br> 
+<sub>Figura 21 - Mockup</sub><br> 
 <img src="img/mockup.svg"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -1776,7 +1776,7 @@ Essa jornada do wireframe ao mockup possibilita:
 - Ícones: Phosphor Icons – Regular
 
 <div align="center">
-<sub>Figura X - Guia Visual</sub><br> 
+<sub>Figura 22 - Guia Visual</sub><br> 
 <img src="img/guiaVisual.png" width="70%"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -1895,7 +1895,7 @@ Apresenta o progresso do desenvolvimento através das sprints, detalhando funcio
 ## Componentes Desenvolvidos
 
 <div align="center">
-<sub>Figura X - Componentes</sub><br> 
+<sub>Figura 23 - Componentes</sub><br> 
 <img src="img/componentes.png" width="70%"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -1920,7 +1920,7 @@ Apresenta o progresso do desenvolvimento através das sprints, detalhando funcio
 &emsp;As telas desenvolvidas seguiram como majoritariamente previsto no Mockup construído no Figma, com mínimas alterações para refletir os feedbacks coletados durante as Sprint Reviews.
 
 <div align="center">
-<sub>Figura X - Telas desenvolvidas na Sprint 3</sub><br> 
+<sub>Figura 24 - Telas desenvolvidas na Sprint 3</sub><br> 
 <img src="img/telas_sprint3.svg" width="100%"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -2003,7 +2003,7 @@ Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o c
 ### **Endpoints de login e registro de usuário**
 
 <div align="center">
-<sub>Figura X - Registro de usuário</sub><br> 
+<sub>Figura 25 - Registro de usuário</sub><br> 
 <img src="img/login_register_edp.png" width="100%"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -2013,7 +2013,7 @@ Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o c
 ### **Endpoint de retorno de perfil de risco declarado do cliente**
 
 <div align="center">
-<sub>Figura X - Perfil de risco declarado</sub><br> 
+<sub>Figura 26 - Perfil de risco declarado</sub><br> 
 <img src="img/conforme_perfil_edp.png" width="70%"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
@@ -2023,7 +2023,7 @@ Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o c
 ### **Endpoint de contagem de clientes por conformidade**
 
 <div align="center">
-<sub>Figura X - Registro de usuário</sub><br> 
+<sub>Figura 27 - Registro de usuário</sub><br> 
 <img src="img/contagem_conforme_edp.png" width="70%"><br> 
 <sup>Fonte: Material produzido pelos autores (2025) </sup>
 </div>
