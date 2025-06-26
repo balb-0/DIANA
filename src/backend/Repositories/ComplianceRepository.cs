@@ -1,15 +1,16 @@
-using Npgsql;
+using System.Data;
+using Dapper;
 
 namespace backend.Repositories
 {
     public class ComplianceRepository : IComplianceRepository
     {
-        private readonly IConfiguration _configuration;
+        private readonly IDbConnection _connection;
         private readonly ILogger<ComplianceRepository> _logger;
 
-        public ComplianceRepository(IConfiguration configuration, ILogger<ComplianceRepository> logger)
+        public ComplianceRepository(IDbConnection connection, ILogger<ComplianceRepository> logger)
         {
-            _configuration = configuration;
+            _connection = connection;
             _logger = logger;
         }
 
@@ -17,15 +18,11 @@ namespace backend.Repositories
         {
             try
             {
-                var connectionString = _configuration.GetConnectionString("DefaultConnection");
+                const string sql = "SELECT obter_quantidade_clientes_conformes()";
                 
-                using var connection = new NpgsqlConnection(connectionString);
-                await connection.OpenAsync();
-
-                using var command = new NpgsqlCommand("SELECT obter_quantidade_clientes_conformes()", connection);
-                var result = await command.ExecuteScalarAsync();
-
-                return Convert.ToInt32(result);
+                var result = await _connection.QuerySingleAsync<int>(sql, commandTimeout: 120);
+                
+                return result;
             }
             catch (Exception ex)
             {
@@ -38,15 +35,11 @@ namespace backend.Repositories
         {
             try
             {
-                var connectionString = _configuration.GetConnectionString("DefaultConnection");
+                const string sql = "SELECT obter_quantidade_clientes_inconformes()";
                 
-                using var connection = new NpgsqlConnection(connectionString);
-                await connection.OpenAsync();
-
-                using var command = new NpgsqlCommand("SELECT obter_quantidade_clientes_inconformes()", connection);
-                var result = await command.ExecuteScalarAsync();
-
-                return Convert.ToInt32(result);
+                var result = await _connection.QuerySingleAsync<int>(sql, commandTimeout: 120);
+                
+                return result;
             }
             catch (Exception ex)
             {
