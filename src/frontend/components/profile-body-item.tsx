@@ -8,16 +8,18 @@ import {
 } from "phosphor-react-native";
 
 interface ProfileBodyItemProps {
+  id: string;
   name: string;
-  email: string;
-  cpf: string;
-  type: "Regular" | "Irregular";
-  assets: number;
+  email?: string;
+  cpf?: string;
+  type?: string;
+  assets?: string;
   value: number;
-  bank: string;
+  bank?: string;
 }
 
 export function ProfileBodyItem({
+  id,
   name,
   email,
   cpf,
@@ -54,31 +56,6 @@ export function ProfileBodyItem({
           <Envelope size={12} color="#001E62" weight="regular" />
           <Text className="text-[#001E62] text-[12px]">{email}</Text>
         </View>
-
-        <View className=" bg-[#001E6229] rounded-[4px] flex-row text-center items-center gap-1 px-[12px] py-[2px]">
-          <IdentificationCard size={12} color="#001E62" weight="regular" />
-          <Text className="text-[#001E62] text-[12px]">{cpf}</Text>
-        </View>
-      </View>
-
-      <View className="flex-row items-center justify-between mt-4">
-        <View className="flex-row items-center gap-2">
-          <View
-            className={`px-3 py-1 rounded-full ${
-              type === "Regular" ? "bg-[#001E62]" : "bg-[#001E62]"
-            } flex-row items-center gap-1`}
-          >
-            <Text className="text-[#AEC3F5] text-sm">{type}</Text>
-            <CheckCircle size={14} color="#AEC3F5" weight="bold" />
-          </View>
-          <Text className="text-[#001E62] text-base">
-            <Text className="font-bold">{assets}</Text>{" "}
-            <Text className="text-sm">Ativos</Text>
-          </Text>
-        </View>
-        <Text className="text-[#001E62] text-xl font-bold">
-          R${value.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
-        </Text>
       </View>
     </View>
   );

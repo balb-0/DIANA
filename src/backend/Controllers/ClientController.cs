@@ -5,7 +5,6 @@ using backend.Services;
 namespace backend.Controllers
 {
     [ApiController]
-    [Authorize]
     [Route("[controller]")]
     public class ClientController : ControllerBase
     {

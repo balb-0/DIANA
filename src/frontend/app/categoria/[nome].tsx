@@ -4,6 +4,7 @@ import { ClientesProvider, useClientes } from "../contexts/ClientesProvider";
 import { useCarteiras } from "../contexts/CarteirasProvider";
 import BarraPesquisa from "@/components/barraPesquisa";
 import BotaoFiltro from "@/components/botaoFiltro";
+import { ProfileBodyItem } from "@/components/profile-body-item";
 
 function CategoriaContent() {
     const { nome } = useLocalSearchParams();
@@ -50,18 +51,23 @@ function CategoriaContent() {
                             carteiras nesta categoria
                         </Text>
                     </View>
-                    <ScrollView>
+                   <ScrollView contentContainerStyle={{ gap: 16 }}>
                         {clientesFiltrados.map((cliente) => (
                             <TouchableOpacity
                                 key={cliente.id}
-                                className="bg-white p-4 my-2 rounded-xl"
                                 onPress={() => navegarParaCliente(cliente.id)}
                             >
-                                <Text className="text-base font-bold text-azul-escuro-principal">{cliente.nome}</Text>
-                                <Text className="text-sm text-zinc-500">{cliente.perfilInvestidor} - {cliente.status}</Text>
+                               <ProfileBodyItem
+                                id={cliente.id}
+                                name={cliente.nome}
+                                email={cliente.email}
+                                assets={String(cliente.quantidadeAtivos)}
+                                value={cliente.quantiaInvestida}
+                                bank={cliente.bancoInvestido}
+                                />
                             </TouchableOpacity>
                         ))}
-                    </ScrollView>
+                    </ScrollView>
                 </View>
             </View>
         </View>
