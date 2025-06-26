@@ -2091,6 +2091,12 @@ Confira o frontend aqui! O vídeo mostra a aplicação em funcionamento, com o c
 
 &emsp;Essa organização permitiu que a sprint final fosse conduzida com um bom ritmo e cobertura completa das tarefas necessárias, preparando a equipe para uma entrega consistente e profissional.
 
+## Vídeo da aplicação
+
+Confira o o vídeo da aplicação aqui! O vídeo mostra a aplicação em funcionamento, com o terminal aberto durante a demonstração das telas desenvolvidas.
+
+**Link:** https://www.youtube.com/watch?v=T3OJ3BBmsE0
+
 ## 8.4 Testes Unitários e de Integração
 
 Estratégia de teste automatizado para garantir qualidade do código, incluindo cobertura de funções críticas, validação de APIs e integração entre componentes do sistema.
