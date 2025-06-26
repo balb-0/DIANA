@@ -6,5 +6,6 @@ ENV POSTGRES_DB=btg_db \
 
 COPY 01_create_database.sql /docker-entrypoint-initdb.d/
 COPY 02_initial_data.sql /docker-entrypoint-initdb.d/
+COPY 03_procedures.sql /docker-entrypoint-initdb.d/
 
 EXPOSE 5432

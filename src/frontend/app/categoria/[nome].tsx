@@ -1,11 +1,11 @@
 import { RelativePathString, useLocalSearchParams, useRouter } from "expo-router";
 import { Image, Text, View, ScrollView, TouchableOpacity } from "react-native";
-import { useClientes } from "../contexts/ClientesProvider";
+import { ClientesProvider, useClientes } from "../contexts/ClientesProvider";
 import { useCarteiras } from "../contexts/CarteirasProvider";
 import BarraPesquisa from "@/components/barraPesquisa";
 import BotaoFiltro from "@/components/botaoFiltro";
 
-export default function Categoria() {
+function CategoriaContent() {
     const { nome } = useLocalSearchParams();
     const router = useRouter();
     const { clientes } = useClientes();
@@ -24,7 +24,7 @@ export default function Categoria() {
         return cliente.perfilInvestidor === nome;
     });
 
-    const navegarParaCliente = (id: number) => {
+    const navegarParaCliente = (id: string) => {
         router.push(`/investor/${id}` as RelativePathString);
     };
 
@@ -68,5 +68,25 @@ export default function Categoria() {
                 </View>
             </View>
         </View>
+    );
+}
+
+export default function Categoria() {
+    const { nome } = useLocalSearchParams();
+
+    let tipoRisco = "";
+
+    if (nome === "Todas") {
+        tipoRisco = "geral";
+    } else if (nome === "Regulares" || nome === "Inconformes") {
+        tipoRisco = "geral"; // ou você pode omitir o Provider
+    } else {
+        tipoRisco = nome as string;
+    }
+
+    return (
+        <ClientesProvider tipoRisco={tipoRisco}>
+            <CategoriaContent />
+        </ClientesProvider>
     );
 }
