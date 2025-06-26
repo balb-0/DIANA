@@ -15,7 +15,7 @@ function LayoutContent() {
     ["/login", "/signup", "/wallet", "/profile"].includes(pathname) ||
     pathname.startsWith("/categoria/") ||
     pathname.startsWith("/investor/");
-    
+
   return (
     <ClientesProvider tipoRisco="geral">
       <CarteirasProvider>

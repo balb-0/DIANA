@@ -1,5 +1,5 @@
-import { ProfileHeader } from "@/components/profile-header";
 import { View } from "react-native";
+import { ProfileHeader } from "@/components/profile-header";
 import { ProfileBody } from "@/components/profile-body";
 
 export default function Profile() {
