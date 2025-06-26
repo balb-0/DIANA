@@ -15,11 +15,11 @@ namespace backend.Services
             _logger = logger;
         }
 
-        public async Task<ApiResponse<List<ClienteSimplificadoDto>>> GetClientesByRiscoDeclaradoAsync(string tipoRisco, string assessorId)
+        public async Task<ApiResponse<List<ClienteSimplificadoDto>>> GetClientesByRiscoDeclaradoAsync(string tipoRisco)
         {
             try
             {
-                _logger.LogInformation($"Iniciando busca por clientes com risco declarado: {tipoRisco} para o assessor: {assessorId}");
+                _logger.LogInformation($"Iniciando busca por clientes com risco declarado: {tipoRisco}");
 
                 // Validar tipo de risco - incluindo as variações de case
                 var tiposValidos = new[] { "geral", "conservador", "moderado", "sofisticado" };
@@ -29,16 +29,16 @@ namespace backend.Services
                     return ApiResponse<List<ClienteSimplificadoDto>>.CreateError("Tipo de risco inválido. Valores aceitos: Conservador, Moderado, Sofisticado, Geral");
                 }
 
-                var clientes = await _carteiraRepository.GetClientesByRiscoDeclaradoAsync(tipoRisco, assessorId);
+                var clientes = await _carteiraRepository.GetClientesByRiscoDeclaradoAsync(tipoRisco);
 
-                _logger.LogInformation($"Encontrados {clientes.Count} clientes com risco declarado {tipoRisco} para o assessor {assessorId}");
+                _logger.LogInformation($"Encontrados {clientes.Count} clientes com risco declarado {tipoRisco}");
 
                 return ApiResponse<List<ClienteSimplificadoDto>>.CreateSuccess(clientes,
                     $"Clientes com risco declarado {tipoRisco} encontrados com sucesso");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Erro ao buscar clientes com risco declarado {tipoRisco} para o assessor {assessorId}. Detalhes: {ex.Message}");
+                _logger.LogError(ex, $"Erro ao buscar clientes com risco declarado {tipoRisco}. Detalhes: {ex.Message}");
                 return ApiResponse<List<ClienteSimplificadoDto>>.CreateError("Erro interno do servidor");
             }
         }

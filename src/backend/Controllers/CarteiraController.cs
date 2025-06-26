@@ -30,15 +30,7 @@ namespace backend.Controllers
         [ProducesResponseType(500)]
         public async Task<IActionResult> GetClientesByRiscoDeclarado([FromRoute] string tipoRisco)
         {
-            // Obter o ID do usuário (assessor) do contexto
-            var assessorId = HttpContext.Items["UserId"]?.ToString();
-
-            if (string.IsNullOrEmpty(assessorId))
-            {
-                return Unauthorized(new { message = "ID do assessor não encontrado" });
-            }
-
-            var response = await _carteiraService.GetClientesByRiscoDeclaradoAsync(tipoRisco, assessorId);
+            var response = await _carteiraService.GetClientesByRiscoDeclaradoAsync(tipoRisco);
 
             if (!response.Success)
             {

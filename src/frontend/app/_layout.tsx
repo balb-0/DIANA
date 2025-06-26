@@ -15,9 +15,9 @@ function LayoutContent() {
     ["/login", "/signup", "/wallet", "/profile"].includes(pathname) ||
     pathname.startsWith("/categoria/") ||
     pathname.startsWith("/investor/");
-    
+
   return (
-    <ClientesProvider>
+    <ClientesProvider tipoRisco="geral">
       <CarteirasProvider>
         <AuthGuard>
           {!hideWelcome && <Welcome user={user || "Usuário"} />}
