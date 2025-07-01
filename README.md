@@ -48,7 +48,7 @@ A interface é desenvolvida com foco em **usabilidade, agilidade e clareza**, vi
 
 ## 📝 LINKS
 
-<a href="/documentos/manual-instalacao.md">Link para o Manual de Instruções</a> que explica como montar, conectar e utilizar o protótipo.
+<a href="/documentos/Manual-instalacao.md">Link para o Manual de Instruções</a> que explica como montar, conectar e utilizar o protótipo.
 
 <a href="/documentos/index.md">Link para a documentação geral</a> do projeto.
 
